@@ -280,6 +280,7 @@ header {
 }
 
 .slider-wrap-wrap .louvre-image {
+  position: relative;
   width: 100%;
   height: auto;
 }
@@ -319,6 +320,13 @@ header {
 }
 
 .control .control-number {
+  width: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   font-family: 'Roboto Regular';
   font-style: normal;
   font-weight: normal;
@@ -450,14 +458,39 @@ header {
 
 /*****MEDIA*****/
 @media (max-width: 1500px) {
+  .header-wrapper-container {
+    width: calc(100% - 40px);
+  }
+  .louvre-slider {
+    width: calc(100% - 40px);
+  }
+  .wrapper .wrapper-container {
+    width: calc(100% - 40px);
+  }
+  .wrapper .wrapper-container .louvre-container {
+    padding: 114px 0 317px 0;
+  }
+}
+
+@media (max-width: 1024px) {
   header::before {
     position: absolute;
     z-index: 4;
   }
+  .header-wrapper {
+    max-width: 1024px;
+  }
+  .header-wrapper-container {
+    width: calc(100% - 40px);
+  }
   .header-container {
+    position: relative;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+  }
+  .louvre-slider {
+    width: calc(100% - 40px);
   }
   .container-nav {
     position: fixed;
@@ -534,20 +567,126 @@ header {
     -webkit-transform: scale(0);
             transform: scale(0);
   }
-}
-
-@media (max-width: 1024px) {
-  .header-wrapper {
-    max-width: 1024px;
+  .control {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: end;
+    width: 700px;
+    padding-right: 75px;
   }
-  .header-wrapper-container {
+  .control .control-number {
+    width: 70px;
+    font-size: 20px;
+  }
+  .control .control-tab {
+    width: 160px;
+  }
+  .control .control-tab .control-tab-item {
+    width: 12px;
+    height: 12px;
+  }
+  .wrapper .wrapper-container {
     width: calc(100% - 40px);
   }
-  .header-container {
+  .wrapper .wrapper-container .louvre-container {
+    width: 405px;
+    padding: 50px 0 192px 0;
+  }
+  .wrapper .wrapper-container .louvre-container .louvre-title {
+    font-size: 50px;
+  }
+  .wrapper .wrapper-container .louvre-container .louvre-subtitle {
+    font-size: 24px;
+    line-height: 28.13px;
+    padding: 25px 0 50px 0;
+  }
+  .wrapper .wrapper-container .louvre-container .louvre-button {
+    width: 300px;
+    height: 60px;
+    font-size: 20px;
+    line-height: 23.44px;
+  }
+}
+
+@media (max-width: 768px) {
+  .welcom-louvre {
+    display: -ms-grid;
+    display: grid;
+    max-width: 768px;
+    height: auto;
+    -ms-grid-columns: minmax(300px, 768px);
+        grid-template-columns: minmax(300px, 768px);
+    -ms-grid-rows: auto auto;
+        grid-template-rows: auto auto;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+        grid-template-areas: 'louvre-container' 'slider';
+  }
+  .louvre-slider-wrapper {
+    height: auto;
+    padding: 0 20px;
+    margin: 0;
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    grid-area: slider;
+  }
+  .louvre-slider {
+    width: 100%;
+    height: auto;
+  }
+  .slider-wrap {
     position: relative;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .slider-wrap-wrap .louvre-image .background-image {
+    display: none;
+  }
+  .wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-area: louvre-container;
+    padding: 0 20px;
+  }
+  .wrapper .wrapper-container {
+    width: auto;
+  }
+  .wrapper .wrapper-container .louvre-container {
+    padding: 0 0 50px 0;
+  }
+  .wrapper .wrapper-container .louvre-container .louvre-title {
+    width: 332px;
+    font-size: 40px;
+    line-height: 60px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .wrapper .wrapper-container .louvre-container .louvre-subtitle {
+    font-size: 20px;
+    line-height: 23.44px;
+    width: 332px;
+    padding: 0;
+    padding-top: 25px;
+    margin: 0 auto;
+  }
+  .wrapper .wrapper-container .louvre-container .louvre-button {
+    display: none;
+  }
+  .control {
+    position: relative;
+    width: 400px;
+    height: 40px;
+    padding-right: 0;
+    margin: 30px auto;
+    bottom: 0;
   }
 }
 
@@ -561,6 +700,40 @@ header {
   .container-logo .logo-title h1 {
     font-size: 16px;
     line-height: 18px;
+  }
+  .wrapper .wrapper-container .louvre-container {
+    width: 100%;
+  }
+  .wrapper .wrapper-container .louvre-container .louvre-title {
+    width: 252px;
+    font-size: 28px;
+    line-height: 40px;
+  }
+  .wrapper .wrapper-container .louvre-container .louvre-subtitle {
+    width: 278px;
+    font-size: 16px;
+    line-height: 18.75px;
+  }
+  .control {
+    width: 236px;
+  }
+  .control .control-number {
+    width: 56px;
+    font-size: 16px;
+  }
+  .control .control-tab {
+    width: 79px;
+    margin: 0 23px;
+  }
+  .control .control-tab .control-tab-item {
+    width: 7px;
+    height: 7px;
+  }
+  .control .control-arrow {
+    width: 55px;
+  }
+  .control .control-arrow .arrow {
+    width: 20px;
   }
 }
 /*# sourceMappingURL=style.css.map */
