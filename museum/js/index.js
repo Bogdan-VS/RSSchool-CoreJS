@@ -1,12 +1,43 @@
 'use strict';
 
+const containerMenu = document.querySelector('.container-nav');
 const burgerMenu = document.querySelector('.menu-burger');
+const sliderActive = document.querySelector('.louvre-slider-wrapper');
+const sliderWrapActive = document.querySelector('.slider-wrap');
+
+
 if (burgerMenu) {
-    const containerMenu = document.querySelector('.container-nav');
     burgerMenu.addEventListener("click", function (e) {
         document.body.classList.toggle('_lock');
         containerMenu.classList.toggle('container-nav_active');
         burgerMenu.classList.toggle('menu-burger_active');
+        sliderActive.classList.toggle('slider_active');
+        sliderWrapActive.classList.toggle('slider-wrap_active');
+        const bgImage = document.querySelectorAll('.background-image');
+        // console.log(bgImage[0].classList.contains());
+        if (bgImage[0].classList.contains('background-image-burger')) {
+            bgImage.forEach(element => {
+                element.classList.remove('background-image-burger');
+            })
+        } else {
+            bgImage.forEach(element => {
+                console.log(1);
+                element.classList.add('background-image-burger');
+            })
+        }
+        // if (bgImage[0].style.position === 'absolute') {
+        //     bgImage.forEach(element => {
+        //         element.classList.remove('background-image-burger');
+        //     })
+        // } else if (bgImage[0].style.position === 'relative'){
+        //     bgImage.forEach(element => {
+        //         element.classList.add('background-image-burger');
+        //     })
+        // } else {
+        //     bgImage.forEach(element => {
+        //         element.classList.add('background-image-burger');
+        //     })
+        // }
     });
 }
 
@@ -27,12 +58,6 @@ if (menuLink.length > 0) {
                 behavior: "smooth"
             });
         }
-
-        const containerMenu = document.querySelector('.container-nav');
-        const burgerMenu = document.querySelector('.menu-burger');
-        burgerMenu.classList.remove('menu-burger_active');
-        containerMenu.classList.remove('container-nav_active');
-        document.body.classList.remove('_lock');
     }
 }
 
