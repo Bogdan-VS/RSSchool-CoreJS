@@ -562,6 +562,10 @@ header {
           justify-content: space-between;
 }
 
+.explore-main {
+  padding-bottom: 241px;
+}
+
 .explore-main .explore-main__title {
   padding-bottom: 25px;
 }
@@ -600,56 +604,84 @@ header {
 }
 
 .explore-image {
-  position: relative;
-  width: 100%;
-  height: auto;
   padding-top: 15px;
 }
 
-.explore-image .before {
-  position: absolute;
-  background: url(/museum/assets/images/jpg/Explore/before.jpg);
-  top: 0;
-  left: 0;
-  bottom: 0;
+.explore-image .explore-image_container {
+  position: relative;
   width: 100%;
-  height: auto;
-  background-repeat: no-repeat;
-  background-size: contain;
+  height: 100%;
 }
 
-.explore-image .before .after {
-  position: absolute;
-  background: url(/museum/assets/images/jpg/Explore/after.jpg);
-  top: 0;
-  left: 0;
-  bottom: 0;
+.explore-image .explore-image_container .before {
+  position: relative;
   width: 100%;
   height: auto;
-  background-repeat: no-repeat;
-  background-size: contain;
+  overflow: hidden;
 }
 
-.explore-image .before .after::before, .explore-image .before .after::after {
+.explore-image .explore-image_container .before img {
+  width: 100%;
+  height: auto;
+}
+
+.explore-image .explore-image_container .before .after {
+  position: absolute;
+  background: url(../assets/images/jpg/Explore/after.jpg);
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.explore-image .explore-image_container .before .after::before, .explore-image .explore-image_container .before .after::after {
   content: '';
   position: absolute;
   right: -2px;
   width: 4px;
-  height: calc(50% - 25px);
+  height: 39px;
+  height: calc(50% - 19.5px);
   background: white;
   z-index: 3;
 }
 
-.explore-image .before .after::before {
+.explore-image .explore-image_container .before .after::before {
   top: 0;
-  -webkit-box-shadow: 0 -3px 8px 1px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 -3px 8px 1px rgba(0, 0, 0, 0.3);
 }
 
-.explore-image .before .after::after {
+.explore-image .explore-image_container .before .after::after {
   bottom: 0;
-  -webkit-box-shadow: 0 3px 8px 1px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 3px 8px 1px rgba(0, 0, 0, 0.3);
+}
+
+.explore-image .explore-image_container input[type=range] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: absolute;
+  top: 50%;
+  left: -19.5px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-color: transparent;
+  width: calc(100% + 39px);
+  z-index: 2;
+}
+
+.explore-image .explore-image_container input[type=range]:focus, .explore-image .explore-image_container input[type=range]:active {
+  border: none;
+  outline: none;
+}
+
+.explore-image .explore-image_container input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 39px;
+  width: 39px;
+  border-radius: 50%;
+  background: transparent;
+  border: 4px solid white;
+  -webkit-box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.3);
 }
 
 .explore-image img {
