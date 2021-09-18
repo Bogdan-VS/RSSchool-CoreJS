@@ -84,7 +84,11 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 $color1: #030303;
 $color2: #FFFFFF;
 $color3: #9D8665;
+$color4: #000000;
+$color6: #710707;
 $font-forum-regular: 'Forum Regular';
+$font-roboto-thin: 'Roboto Thin';
+$font-roboto-light: 'Roboto Light';
 
 /***Variables End*/
 
@@ -201,9 +205,9 @@ header {
 
 .slider-wrap {
     position: absolute;
-    width: 69.445%;
+    width: calc(100% - 440px);
     right: 0;
-    top: 0;
+    top: -1px;
     height: auto;
     overflow-x: clip;
     z-index: 1;
@@ -325,27 +329,213 @@ header {
                 color: #FFFFFF;
                 padding: 26px 0 76px 0;
             }
-            .louvre-button {
-                width: 360px;
-                height: 75px;
-                font-family: 'Roboto Thin';
-                font-size: 22px;
-                line-height: 26px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                letter-spacing: 2px;
-                color: #FFFFFF;
-                background: #710707;
-                border-radius: 10px;
-            }
-            
-            .louvre-button:hover {
-                background: #9D8665;
+            a {
+                .louvre-button {
+                    width: 360px;
+                    height: 75px;
+                    font-family: 'Roboto Thin';
+                    font-size: 22px;
+                    line-height: 26px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    letter-spacing: 2px;
+                    color: #FFFFFF;
+                    background: #710707;
+                    border-radius: 10px;
+                }
+                
+                .louvre-button:hover {
+                    background: #9D8665;
+                }
             }
         }
     }
 }
+
+
+/*Virtual Tour*/
+
+.virtual-tour {
+    background: #FFFFFF;
+}
+
+.title-tour {
+    padding: 75px 0 25px 0;
+    h2 {
+        font-family: $font-forum-regular;
+        font-size: 80px;
+        line-height: 90px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: $color3;
+    }
+}
+
+.title-line {
+    border-bottom: 3px solid #710707;
+}
+
+.virtual-tour-contaner {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 440px));
+    grid-template-rows: repeat(2, auto);
+    column-gap: 60px;
+    row-gap: 78px;
+    padding: 75px 0;
+    .card-container {
+        a {
+            .card-container__image {
+                max-width: 100%;
+                padding-bottom: 25px;
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+            .card-container__title {
+                font-family: $font-forum-regular;
+                font-size: 32px;
+                line-height: 35px;
+                letter-spacing: 5px;
+                text-transform: uppercase;
+                color: $color4;
+                padding-bottom: 9px;
+            }
+            .card-container__line {
+                display: flex;
+                max-width: 300px;
+                border-bottom: 2px solid #710707;
+                transition: all 1s;
+            }
+            .card-container__subtitle {
+                font-family: $font-roboto-thin;
+                color: $color4;
+                p:first-child {
+                    font-size: 22px;
+                    line-height: 26px;
+                    padding: 10px 0;
+                }
+                p:last-child {
+                    padding: 0;
+                    font-size: 18px;
+                    line-height: 21px;
+                }
+            }
+            .card-container__subtitle:nth-child(2) {
+                padding-bottom: 0;
+            }
+        }
+    }
+
+    .card-container:hover {
+        .card-container__line {
+            max-width: 100%;
+        }
+    }
+}
+
+
+/*Picture Explore*/
+
+.picture-explore {
+    background: #030303;
+}
+
+.explore-container {
+    display: grid;
+    grid-template-columns: 45.75% 50%;
+    padding: 75px 0;
+    justify-content: space-between;
+}
+
+.explore-main {
+    .explore-main__title {
+        padding-bottom: 25px;
+        h2 {
+            font-family: $font-forum-regular;
+            font-size: 80px;
+            line-height: 90px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: $color2;
+        }
+    }
+    .explore-main__line {
+        border-top: $color6 solid 3px;
+        padding-bottom: 75px;
+    }
+    .explore-main__subtitle {
+        font-family: $font-roboto-light;
+        font-size: 22px;
+        line-height: 38px;
+        color: $color2;
+        p {
+            padding-bottom: 25px;
+            span {
+                color: $color3;
+            }
+        }
+        p:last-child {
+            padding-bottom: 0;
+        }
+    }
+}
+
+.explore-image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding-top: 15px;
+    .before {
+        position: absolute;
+        background: url(/museum/assets/images/jpg/Explore/before.jpg);
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        background-repeat: no-repeat;
+        background-size: contain;
+        .after {
+            position: absolute;
+            background: url(/museum/assets/images/jpg/Explore/after.jpg);
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: auto;
+            background-repeat: no-repeat;
+            background-size: contain;
+            &::before,
+            &::after {
+              content: '';
+              position: absolute;
+              right: -2px;
+              width: 4px;
+              height: calc(50% - 25px);
+              background: white;
+              z-index: 3;
+            }
+            &::before {
+                top: 0;
+                box-shadow: 0 -3px 8px 1px rgba(0,0,0,.3);
+              }
+              &::after {
+                bottom: 0;
+                box-shadow: 0 3px 8px 1px rgba(0,0,0,.3);
+              }
+        }
+    }
+}
+
+.explore-image img {
+    width: 100%;
+    height: auto;
+}
+
+
+/*-----------------------------------------------*/
 
 
 /*****MEDIA*****/
@@ -370,6 +560,10 @@ header {
 }
 
 @media (max-width: 1024px) {
+    header {
+        height: 130px;
+    }
+
     header::before {
 		position: absolute;
 		z-index: 4;
@@ -392,30 +586,75 @@ header {
         width: calc(100% - 40px);
     }
 
+    .container-logo {
+        position: relative;
+        z-index: 20;
+    }
+
     .container-nav {
         position: fixed;
         top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100%;
+        left: -440px;
+        max-width: 440px;
+        height: 550px;
         display: block;
         transition: all 0.3s ease 0s;
-        padding-top: 80px;
+        padding-top: 130px;
         align-items: center;
         background-color: rgb(0, 0, 0);
-        z-index: 1;
+        z-index: 16;
         overflow: auto;
-        ul {
+        .navigation {
             display: block;
-            li {
-                margin: 10px 0 10px 30px;
-                font-size: 24px;
+            .navigation-item {
+                margin: 10px 0 10px 90px;
+                font-size: 20px;
+                line-height: 40px;
             }
         }
     }
 
+
     .container-nav_active {
+        left: 0;
+    }
+
+    .slider_active {
+        position: relative;
+        z-index: 17;
+    }
+
+    .slider-wrap {
+        position: absolute;
+        width: calc(100% - 284px);
         right: 0;
+        top: -1px;
+        height: auto;
+        overflow-x: clip;
+        z-index: 1;
+    }
+
+    .slider-wrap_active {
+        position: absolute;
+        width: 59.349%;
+        right: 0;
+        top: 0;
+        height: auto;
+        overflow-x: clip;
+        z-index: 1;
+    }
+
+    .slider-wrap-wrap {
+        .louvre-image {
+            .background-image-burger {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                background: rgba(196, 196, 196, 0.2);
+            }
+        }
     }
 
     .menu-burger {
@@ -495,12 +734,59 @@ header {
                     line-height: 28.13px;
                     padding: 25px 0 50px 0;
                 }
-                .louvre-button {
-                    width: 300px;
-                    height: 60px;
-                    font-size: 20px;
-                    line-height: 23.44px;
+                a {
+                    .louvre-button {
+                        width: 300px;
+                        height: 60px;
+                        font-size: 20px;
+                        line-height: 23.44px;
+                    }
+                }
+            }
+        }
+    }
 
+    .title-tour {
+        padding: 60px 0 22px 0;
+        h2 {
+            font-size: 50px;
+            line-height: 75px;
+        }
+    }
+    .virtual-tour-contaner {
+        grid-template-columns: repeat(2, minmax(100px, 330px));
+        grid-template-rows: repeat(3, auto);
+        column-gap: 108px;
+        row-gap: 60px;
+        padding: 60px 0;
+        justify-content: center;
+        .card-container {
+            a {
+                .card-container__image {
+                    padding-bottom: 24px;
+                }
+                .card-container__title {
+                    font-size: 28px;
+                    line-height: 30.91px;
+                    padding-bottom: 8px;
+                }
+                .card-container__line {
+                    max-width: 150px;
+                    border-bottom: 2px solid #710707;
+                }
+                .card-container__subtitle {
+                    font-family: $font-roboto-thin;
+                    color: $color4;
+                    p:first-child {
+                        font-size: 20px;
+                        line-height: 23.44px;
+                        padding: 10px 0;
+                    }
+                    p:last-child {
+                        padding: 0;
+                        font-size: 16px;
+                        line-height: 18.75px;
+                    }
                 }
             }
         }
@@ -570,8 +856,10 @@ header {
                     padding-top: 25px;
                     margin: 0 auto;
                 }
-                .louvre-button {
-                    display: none;
+                a {
+                    .louvre-button {
+                        display: none;
+                    }
                 }
             }
         }
@@ -584,6 +872,52 @@ header {
         padding-right: 0;
         margin: 30px auto;
         bottom: 0;
+    }
+
+    .virtual-tour {
+        .wrapper {
+            .wrapper-container {
+                width: 100%
+            }
+        }
+    }
+
+    .title-tour {
+        width: 100%;
+        padding: 40px 0 22px 0;
+        h2 {
+            font-size: 40px;
+            line-height: 60px;
+        }
+    }
+    .virtual-tour-contaner {
+        grid-template-columns: repeat(2, minmax(100px, 280px));
+        grid-template-rows: repeat(3, auto);
+        column-gap: 56px;
+        row-gap: 40px;
+        padding: 40px 0 80px 0;
+        .card-container {
+            a {
+                .card-container__image {
+                    padding-bottom: 24px;
+                }
+                .card-container__title {
+                    font-size: 22px;
+                    line-height: 24.9px;
+                    padding-bottom: 7px;
+                }
+                .card-container__subtitle {
+                    p:first-child {
+                        font-size: 18px;
+                        line-height: 21.09px;
+                    }
+                    p:last-child {
+                        font-size: 16px;
+                        line-height: 18.75px;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -636,6 +970,52 @@ header {
             width: 55px;
             .arrow {
                 width: 20px;
+            }
+        }
+    }
+
+    .virtual-tour {
+        .wrapper {
+            .wrapper-container {
+                width: 100%
+            }
+        }
+    }
+
+    .title-tour {
+        width: 100%;
+        padding: 40px 0 22px 0;
+        h2 {
+            font-size: 40px;
+            line-height: 60px;
+        }
+    }
+    .virtual-tour-contaner {
+        grid-template-columns: repeat(1, minmax(100px, 280px));
+        grid-template-rows: repeat(6, auto);
+        column-gap: 50px;
+        row-gap: 45px;
+        padding: 40px 0 40px 0;
+        .card-container {
+            a {
+                .card-container__image {
+                    padding-bottom: 24px;
+                }
+                .card-container__title {
+                    font-size: 18px;
+                    line-height: 19.87px;
+                    padding-bottom: 7px;
+                }
+                .card-container__subtitle {
+                    p:first-child {
+                        font-size: 16px;
+                        line-height: 18.75px;
+                    }
+                    p:last-child {
+                        font-size: 16px;
+                        line-height: 18.75px;
+                    }
+                }
             }
         }
     }
