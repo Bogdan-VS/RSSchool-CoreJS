@@ -121,3 +121,19 @@ slides.addEventListener('transitionend', function() {
 });
 
 /***Slider End */
+
+/**Slider Explore */
+
+const after = document.querySelector('.after'),
+      slider = document.querySelector('.slider');
+
+
+function moveAfter() {
+    after.style.width = slider.value+"%";
+}
+
+window.onload = function() {
+	moveAfter();
+};
+
+/**Slider explore end */
