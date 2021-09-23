@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
     <link rel="stylesheet" href="style/style.css">
     <title>Museum</title>
 </head>
@@ -243,29 +244,51 @@
                         </div>
                     </div>
                     <div class="vidio-container">
-                        <div class="vidio">
-                            <button class="main-start-vidio">
-                                <img src="assets/svg/start.svg" alt="Start">
-                            </button>
+                        <video src="assets/video/WelcometotheLouvre.mp4" width="100%" height="100%" poster="assets/images/jpg/poster.jpg" class="video"></video>
+                        <div class="video-start">
+                            <img class="disabled current" src="assets/images/svg/start.svg" alt="Start video">
                         </div>
                         <div class="adjustment">
                             <button class="start">
-                                <img src="assets/svg/start-m.svg" alt="Start">
+                                <img class="disabled" src="assets/images/svg/start-m.svg" alt="Start">
                             </button>
-                            <input type="range" value="47" min="0" max="100" step="1" class="move-line">
+                            <input type="range" value="53.5" min="0" max="100" step="1" class="move-line">
                             <button class="microphone">
-                                <img src="assets/svg/mircophone.svg" alt="Volume">
+                                <img class="volume current-volume" src="assets/images/svg/mircophone.svg" alt="Volume">
                             </button>
-                            <input type="range" value="43" min="0" max="100" step="1" class="volume-line">
+                            <input type="range" value="43" min="0" max="100" class="volume-line">
                             <button class="full">
-                                <img src="assets/svg/full.svg" alt="Full screen">
+                                <img src="assets/images/svg/full.svg" alt="Full screen">
                             </button>
                         </div>
+                    </div>
+                    <div class="video-slider swiper">
+                        <div class="video-slider-wrapper swiper-wrapper">
+                            <div class="video-slide swiper-slide">
+                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/zp1BXPX8jcU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-slide swiper-slide">
+                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Vi5D6FKhRmo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-slide swiper-slide">
+                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/NOhDysLnTvY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-slide swiper-slide">
+                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-slide swiper-slide">
+                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/2OR0OCr6uRE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>
