@@ -14,30 +14,15 @@ if (burgerMenu) {
         sliderActive.classList.toggle('slider_active');
         sliderWrapActive.classList.toggle('slider-wrap_active');
         const bgImage = document.querySelectorAll('.background-image');
-        // console.log(bgImage[0].classList.contains());
         if (bgImage[0].classList.contains('background-image-burger')) {
             bgImage.forEach(element => {
                 element.classList.remove('background-image-burger');
             })
         } else {
             bgImage.forEach(element => {
-                console.log(1);
                 element.classList.add('background-image-burger');
             })
         }
-        // if (bgImage[0].style.position === 'absolute') {
-        //     bgImage.forEach(element => {
-        //         element.classList.remove('background-image-burger');
-        //     })
-        // } else if (bgImage[0].style.position === 'relative'){
-        //     bgImage.forEach(element => {
-        //         element.classList.add('background-image-burger');
-        //     })
-        // } else {
-        //     bgImage.forEach(element => {
-        //         element.classList.add('background-image-burger');
-        //     })
-        // }
     });
 }
 
@@ -137,3 +122,38 @@ window.onload = function() {
 };
 
 /**Slider explore end */
+
+/**Video */
+const moveLine = document.querySelector('.move-line'),
+      volumeLine = document.querySelector('.volume-line')
+      
+
+
+moveLine.addEventListener('input', function() {
+    let value = this.value;
+    console.log(value);
+    this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
+})
+
+volumeLine.addEventListener('input', function() {
+    let value = this.value;
+    console.log(value);
+    this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
+})
+
+/**Video End */
+
+new Swiper('.video-slider', {
+    slidesPerView: 3,
+    spaceBetween: 42,
+    loop: true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true,
+      },
+});
