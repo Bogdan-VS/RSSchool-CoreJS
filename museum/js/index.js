@@ -157,3 +157,19 @@ new Swiper('.video-slider', {
         clickable: true,
       },
 });
+
+/**Booking-tickets */
+
+const ticket = document.querySelector('.booking-tickets'),
+      btnTicket = document.querySelector('.amount-button');
+
+btnTicket.addEventListener('click', function() {
+    buyTickets();
+})
+
+const buyTickets = () => {
+    console.log(1);
+    ticket.classList.toggle('booking-tickets__active');
+}
+
+/**Booking-tickets End */
