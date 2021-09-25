@@ -23,12 +23,12 @@
                     </div>
                     <nav class="container-nav">
                         <ul class="navigation">
-                            <li class="navigation-item"><a data-goto=".visiting" href="#">Visiting</a></li>
-                            <li class="navigation-item"><a data-goto=".explore" href="#">Explore</a></li>
-                            <li class="navigation-item"><a data-goto=".video" href="#">Video</a></li>
-                            <li class="navigation-item"><a data-goto=".gallery" href="#">Gallery</a></li>
-                            <li class="navigation-item"><a data-goto=".tickets" href="#">Tickets</a></li>
-                            <li class="navigation-item"><a data-goto=".contacts" href="#">Contacts</a></li>
+                            <li class="navigation-item"><a data-goto=".visiting" href="#Visiting">Visiting</a></li>
+                            <li class="navigation-item"><a data-goto=".explore" href="#Explore">Explore</a></li>
+                            <li class="navigation-item"><a data-goto=".video" href="#Video">Video</a></li>
+                            <li class="navigation-item"><a data-goto=".gallery" href="#Gallery">Gallery</a></li>
+                            <li class="navigation-item"><a data-goto=".tickets" href="#Tickets">Tickets</a></li>
+                            <li class="navigation-item"><a data-goto=".contacts" href="#Contacts">Contacts</a></li>
                         </ul>
                     </nav>
                     <div class="menu-burger">
@@ -79,12 +79,12 @@
                                 <span class="control-tab-item"></span>
                             </div>
                             <div class="control-arrow">
-                                <div class="arrow-left arrow">
+                                <button class="arrow-left arrow">
                                     <img src="assets/images/svg/arrow-left.svg" alt="Arrow left">
-                                </div>
-                                <div class="arrow-right arrow">
+                                </button>
+                                <butto class="arrow-right arrow">
                                     <img src="assets/images/svg/arrow-right.svg" alt="Arrow-right">
-                                </div>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -222,7 +222,7 @@
                         <div class="explore-image">
                             <div class="explore-image_container">
                                 <div class="before">
-                                    <img src="assets/images/jpg/Explore/before.jpg" alt="Explore">
+                                    <img src="assets/images/jpg/Explore/after.jpg" alt="Explore">
                                     <div class="after"></div>
                                     <input type="range" min="0" max="100" value="61.11" class="slider" oninput="moveAfter()">
                                 </div>
@@ -245,9 +245,9 @@
                     </div>
                     <div class="vidio-container">
                         <video src="assets/video/WelcometotheLouvre.mp4" width="100%" height="100%" poster="assets/images/jpg/poster.jpg" class="video"></video>
-                        <div class="video-start">
+                        <button class="video-start">
                             <img class="disabled current" src="assets/images/svg/start.svg" alt="Start video">
-                        </div>
+                        </button>
                         <div class="adjustment">
                             <button class="start">
                                 <img class="disabled" src="assets/images/svg/start-m.svg" alt="Start">
@@ -265,7 +265,7 @@
                     <div class="video-slider swiper">
                         <div class="video-slider-wrapper swiper-wrapper">
                             <div class="video-slide swiper-slide">
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/zp1BXPX8jcU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                             <div class="video-slide swiper-slide">
                                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Vi5D6FKhRmo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -274,20 +274,310 @@
                                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/NOhDysLnTvY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                             <div class="video-slide swiper-slide">
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/zp1BXPX8jcU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                             <div class="video-slide swiper-slide">
                                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/2OR0OCr6uRE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                         </div>
                         <div class="swiper-pagination"></div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
+                        <button class="swiper-button-prev"></button>
+                        <button class="swiper-button-next"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="gallery" id="Gallery">
+            <div class="wrapper">
+                <div class="wrapper-container">
+                    <div class="gallery-container">
+                        <div class="gallery-container-title">
+                            <h2>Art Gallery</h2>
+                        </div>
+                        <div class="picture-container">
+                            <div class="picture-inner-container">
+                                <div class="picture-item">
+                                    <img src="assets/images/jpg/Gallery/galery2.jpg" alt="Gallery">
+                                </div>
+                                <div class="picture-item">
+                                    <img src="assets/images/jpg/Gallery/galery9.jpg" alt="Gallery">
+                                </div>
+                                <div class="picture-item">
+                                    <img src="assets/images/jpg/Gallery/galery4.jpg" alt="Gallery">
+                                </div>
+                                <div class="picture-item">
+                                    <img src="assets/images/jpg/Gallery/galery6.jpg" alt="Gallery">
+                                </div>
+                                <div class="picture-item">
+                                    <img src="assets/images/jpg/Gallery/galery11.jpg" alt="Gallery">
+                                </div>
+                                <div class="picture-item">
+                                    <img src="assets/images/jpg/Gallery/galery1.jpg" alt="Gallery">
+                                </div>
+                                <div class="picture-item">
+                                    <img src="assets/images/jpg/Gallery/galery8.jpg" alt="Gallery">
+                                </div>
+                                <div class="picture-item">
+                                    <img src="assets/images/jpg/Gallery/galery3.jpg" alt="Gallery">
+                                </div>
+                                <div class="picture-item">
+                                    <img src="assets/images/jpg/Gallery/galery5.jpg" alt="Gallery">
+                                </div>
+                                <div class="picture-item">
+                                    <img src="assets/images/jpg/Gallery/galery13.jpg" alt="Gallery">
+                                </div>
+                                <div class="picture-item">
+                                    <img src="assets/images/jpg/Gallery/galery7.jpg" alt="Gallery">
+                                </div>
+                                <div class="picture-item">
+                                    <img src="assets/images/jpg/Gallery/galery10.jpg" alt="Gallery">
+                                </div>
+                                <div class="picture-item">
+                                    <img src="assets/images/jpg/Gallery/galery15.jpg" alt="Gallery">
+                                </div>
+                                <div class="picture-item">
+                                    <img src="assets/images/jpg/Gallery/galery12.jpg" alt="Gallery">
+                                </div>
+                                <div class="picture-item">
+                                    <img src="assets/images/jpg/Gallery/galery14.jpg" alt="Gallery">
+                                </div>
+                            </div>
+                            <div class="gradient-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="buy-tickets" id="Tickets">
+            <div class="wrapper">
+                <div class="wrapper-container tickets-wrapper">
+                    <div class="tickets-container">
+                        <div class="tickets-title">
+                            <h2>Buy tickets</h2>
+                        </div>
+                        <div class="tickets-line"></div>
+                        <div class="tickets-content">
+                            <div class="tickets-content__image">
+                                <img src="assets/images/jpg/Buy-tickets.jpg" alt="Buy tickets">
+                            </div>
+                            <div class="tickets-content__container">
+                                <div class="tickets-container__type">
+                                    <h4>Ticket Type</h4>
+                                    <div class="type-container">
+                                        <label class="type-container__block">Permanent exhibition
+                                            <input type="radio" name="radio" checked="checked">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="type-container__block">Temporary exhibition
+                                            <input type="radio" name="radio">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="type-container__block">Combined Admission
+                                            <input type="radio" name="radio">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="tickets-container__amount">
+                                    <h4>Amount</h4>
+                                    <div class="amount-container">
+                                        <h4>Basic 18+</h4>
+                                        <div class="amount-container__block">
+                                            <button class="button-amount" onclick="this.nextElementSibling.stepDown()">–</button>
+                                            <input type="number" min="0" max="100" value="1" readonly class="amount-item">
+                                            <button class="button-amount" onclick="this.previousElementSibling.stepUp()">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="amount-container">
+                                        <h4>Senior 65+</h4>
+                                        <div class="amount-container__block">
+                                            <button class="button-amount" onclick="this.nextElementSibling.stepDown()">–</button>
+                                            <input type="number" min="0" max="100" value="1" readonly class="amount-item">
+                                            <button class="button-amount" onclick="this.previousElementSibling.stepUp()">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="total">
+                                        <h4><span>Total €</span><span>220</span></h4>
+                                    </div>
+                                    <button class="amount-button">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="booking-tickets">
+                        <div class="booking-container">
+                            <div class="booking-container__left left-container">
+                                <div class="left-container__header">
+                                    <div class="logo">
+                                        <img src="assets/images/svg/logo-ticket.svg" alt="Logo">
+                                    </div>
+                                    <div class="title">
+                                        <h2>BOOKING TICKETS</h2>
+                                    </div>
+                                    <div class="subtitle">
+                                        <p>Tour to Louvre</p>
+                                    </div>
+                                    <div class="line"></div>
+                                </div>
+                                <form action="#" class="left-form" method="POST">
+                                    <div class="item-data">
+                                        <div class="data-container">
+                                            <select name="Data" class="data">
+                                                <option value=""></option>
+                                            </select>
+                                            <span class="img img-data"></span>
+                                            <span class="text">Date</span>
+                                        </div>
+                                        <div class="data-container">
+                                            <select name="Time" class="data">
+                                                <option value=""></option>
+                                            </select>
+                                            <span class="img img-time"></span>
+                                            <span class="text">Time</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-person">
+                                        <div class="person-container">
+                                            <input type="text" name="username" class="container-item">
+                                            <span class="img1"></span>
+                                            <span class="text text1">Name</span>
+                                        </div>
+                                        <div class="person-container">
+                                            <input type="email" name="mail" class="container-item">
+                                            <span class="img2"></span>
+                                            <span class="text text2">E-mail</span>
+                                        </div>
+                                        <div class="person-container">
+                                            <input type="tel" name="phone" class="container-item">
+                                            <span class="img3"></span>
+                                            <span class="text text2">Phone</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-tickets-type">
+                                        <select name="Tickets-type" class="tickets-type">
+                                            <option value=""></option>
+                                        </select>
+                                        <span class="img"></span>
+                                        <span class="text">Ticket Type</span>
+                                    </div>
+                                    <div class="entry-ticket">
+                                        <div class="entry-container">
+                                            <div class="entry-title">
+                                                <h3>Entry ticket</h3>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="amount-entry__block">
+                                                <div class="amount-container">
+                                                    <div class="amount-container-title">Basic 18+ (20 €)</div>
+                                                    <div class="amount-container-item">
+                                                        <button type="button" onclick="this.nextElementSibling.stepDown()">–</button>
+                                                        <input type="number" min="0" max="20" value="2" readonly class="number">
+                                                        <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="amount-entry__block">
+                                                <div class="amount-container">
+                                                    <div class="amount-container-title">Senior 65+ (10 €)</div>
+                                                    <div class="amount-container-item">
+                                                        <button type="button" onclick="this.nextElementSibling.stepDown()">–</button>
+                                                        <input type="number" min="0" max="20" value="2" readonly class="number">
+                                                        <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="booking-container__right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="parallax">
+            <div class="parallax-conteiner"></div>
+        </section>
+        <section class="contacts" id="Contacts"> -->
+            <div class="wrapper">
+                <div class="wrapper-container">
+                    <div class="contacts-title">
+                        <h2>Contacts</h2>
+                    </div>
+                    <div class="contacts-line"></div>
+                    <div class="contacts-container">
+                        <div class="contacts-content">
+                            <div class="contacts-content__title">
+                                <h4>Palais Royal</h4>
+                                <h4>Musee du Louvre</h4>
+                            </div>
+                            <div class="contacts-content__subtitle">
+                                <span>address:</span>
+                                <span>75001 Paris, France</span>
+                            </div>
+                            <div class="contacts-content__subtitle">
+                                <span>phone:</span>
+                                <span>+33(0) 1 40 20 50 50</span>
+                            </div>
+                            <div class="contacts-content__subtitle">
+                                <span>mail:</span>
+                                <span>info@louvre.fr</span>
+                            </div>
+                        </div>
+                        <div class="contacts-map">
+                            <img src="assets/images/png/map.png" alt="Contacts map">
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+    <footer>
+        <div class="wrapper footer-wrapper">
+            <div class="wrapper-container">
+                <div class="footer-container">
+                    <div class="main-container">
+                        <div class="container-logo">
+                            <div class="logo-image">
+                                <img src="assets/images/svg/logo.svg" alt="The logo">
+                            </div>
+                            <div class="logo-title">
+                                <h3>Louvre</h3>
+                            </div>
+                        </div>
+                        <nav class="container-navigation">
+                            <ul class="navigation-container">
+                                <li class="navigation-container__item welcom"><a href="#Welcome">Welcome</a></li>
+                                <li class="navigation-container__item visiting"><a href="#Visiting">Visiting</a></li>
+                                <li class="navigation-container__item explore"><a href="#Explore">Explore</a></li>
+                                <li class="navigation-container__item vidio"><a href="#Video">Video</a></li>
+                                <li class="navigation-container__item tickets"><a href="#Tickets">Tickets</a></li>
+                                <li class="navigation-container__item contacts"><a href="#Contacts">Contacts</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="social-container">
+                        <ul class="social">
+                            <li class="social-item"><a href="#"><img src="assets/images/svg/youtube.svg" alt="Youtube"></a></li>
+                            <li class="social-item"><a href="#"><img src="assets/images/svg/instagram.svg" alt="Instagram"></a></li>
+                            <li class="social-item"><a href="#"><img src="assets/images/svg/facebook.svg" alt="Faebook"></a></li>
+                            <li class="social-item"><a href="#"><img src="assets/images/svg/twitter.svg" alt="Twitter"></a></li>
+                            <li class="social-item"><a href="#"><img src="assets/images/svg/pinterest.svg" alt="Pinterest"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom-container">
+                    <div class="bottom-content">
+                        <p>© 2021</p>
+                        <p>The Rolling Scopes School</p>
+                        <p>Bogdan-VS</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-line"></div>
+        </div>
+    </footer>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <script src="js/index.js"></script>
 </body>
