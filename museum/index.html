@@ -422,18 +422,14 @@
                                 <div class="left-form">
                                     <div class="item-data">
                                         <div class="data-container">
-                                            <select name="Data" class="data">
-                                                <option value=""></option>
-                                            </select>
+                                            <label for="data" class="text">Data</label>
+                                            <input type="date" name="data" id="data" class="data">
                                             <span class="img img-data"></span>
-                                            <span class="text">Date</span>
                                         </div>
                                         <div class="data-container">
-                                            <select name="Time" class="data">
-                                                <option value=""></option>
-                                            </select>
+                                            <label for="data" class="text">Time</label>
+                                            <input type="time" name="data" id="data" class="data">
                                             <span class="img img-time"></span>
-                                            <span class="text">Time</span>
                                         </div>
                                     </div>
                                     <div class="item-person">
@@ -504,7 +500,65 @@
                                             <img src="assets/images/jpg/Booking/background.jpg" alt="Background">
                                         </div>
                                     </div>
+                                    <div class="booking-item-middle">
+                                        <div class="middle-item">
+                                            <div class="item-basic">
+                                                <div class="basic-bg">2</div>
+                                                <p class="basic-text">Basic (20 €)</p>
+                                            </div>
+                                            <div class="item-basic-cost">40 €</div>
+                                        </div>
+                                        <div class="middle-item">
+                                            <div class="item-basic basic2 ">
+                                                <div class="basic-bg">2</div>
+                                                <p class="basic-text">Senior (10 €)</p>
+                                            </div>
+                                            <div class="item-basic-cost">20 €</div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="bottom-item">
+                                            <p class="total-text item1">Total:</p>
+                                            <p class="total-text item2">60 €</p>
+                                        </div>
+                                    </div>
+                                    <div class="booking-item-bottom">
+                                        <div class="booking-card-wrapper">
+                                            <div class="booking-card-end">
+                                                <div class="card-bg"></div>
+                                                <div class="card-end-bottom">
+                                                    <div class="card-end-text">
+                                                        <label for="cvc">CVC/CVV</label>
+                                                        <input type="text" name="cvc" id="cvc">
+                                                        <p class="card-end-item-text">The last <br> 3 or 4 digits on back <br> of the card</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="booking-card-start">
+                                                <div class="booking-card-start-wrapper">
+                                                    <label for="card-number" class="card-number">Card number</label>
+                                                    <input type="number" name="" id="card-number">
+                                                    <h5 class="card-number">Expiration date</h5>
+                                                    <input type="number" name="" id="month" value="03" min="01" max="12" class="month-year">
+                                                    <input type="number" name="" id="month" value="2024" min="2000" max="2040" class="month-year month-year-right">
+                                                    <h5 class="card-number bottom-text">Cardholder name</h5>
+                                                    <input type="number" name="" id="surname">
+                                                    <div class="visa">
+                                                        <img src="assets/images/svg/booking-tickets/Visa.svg" alt="Visa">
+                                                    </div>
+                                                    <div class="mastercard">
+                                                        <img src="assets/images/svg/booking-tickets/Mastercard.svg" alt="Visa">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="book-submit">
+                                            <input type="submit" value="Book">
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="close">
+                                <img src="assets/images/svg/booking-tickets/Close.svg" alt="">
                             </div>
                         </form>
                     </div>
