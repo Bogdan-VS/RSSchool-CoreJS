@@ -1570,6 +1570,13 @@ header {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  padding-left: 45px;
+  font-family: "Roboto Medium";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #030303;
   background: bottom 14px right 15px/17px 17px no-repeat url(../assets/images/svg/booking-tickets/arrow.svg);
 }
 
@@ -1580,18 +1587,6 @@ header {
   width: 15px;
   height: 15px;
   background: 15px 15px url(../assets/images/svg/booking-tickets/ballot.svg);
-}
-
-.booking-container__left .left-form .item-tickets-type .text {
-  position: absolute;
-  top: 13px;
-  left: 45px;
-  font-family: "Roboto Medium";
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 21px;
-  color: #030303;
 }
 
 .booking-container__left .left-form .entry-ticket {
@@ -2122,6 +2117,10 @@ header {
   line-height: 26px;
   color: #000000;
   padding-bottom: 25px;
+}
+
+.contacts-container .contacts-content .contacts-content__subtitle a {
+  color: #000000;
 }
 
 .contacts-container .contacts-content .contacts-content__subtitle:last-child {
