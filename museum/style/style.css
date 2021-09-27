@@ -1027,7 +1027,7 @@ header {
 }
 
 .gallery-container-title {
-  padding-bottom: 55px;
+  padding-bottom: 75px;
 }
 
 .gallery-container-title h2 {
@@ -1042,7 +1042,7 @@ header {
 }
 
 .picture-container {
-  height: 1981px;
+  height: 1960px;
   position: relative;
 }
 
@@ -1054,23 +1054,18 @@ header {
           column-count: 3;
 }
 
-.picture-container .picture-inner-container .picture-item {
+.picture-container .picture-inner-container img {
   padding-bottom: 24px;
   max-width: 456px;
   height: auto;
 }
 
-.picture-container .picture-inner-container .picture-item img {
-  width: 100%;
-  height: auto;
+.picture-container .picture-inner-container img:nth-child(1) {
+  padding-top: 50px;
 }
 
-.picture-container .picture-inner-container .picture-item:nth-child(1) {
-  padding-top: 70px;
-}
-
-.picture-container .picture-inner-container .picture-item:nth-child(11) {
-  padding-top: 70px;
+.picture-container .picture-inner-container img:nth-child(11) {
+  padding-top: 50px;
 }
 
 .picture-container .gradient-container {

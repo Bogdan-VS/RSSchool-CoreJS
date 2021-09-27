@@ -851,7 +851,7 @@ header {
 }
 
 .gallery-container-title {
-    padding-bottom: 55px;
+    padding-bottom: 75px;
     h2 {
         font-family: $font-forum-regular;
         font-style: normal;
@@ -865,26 +865,22 @@ header {
 }
 
 .picture-container {
-    height: 1981px;
+    height: 1960px;
     position: relative;
     .picture-inner-container {
         height: 2900px;
         column-gap: 36px;
         column-count: 3;
-        .picture-item {
+        img {
             padding-bottom: 24px;
             max-width: 456px;
             height: auto;
-            img {
-                width: 100%;
-                height: auto;
-            }
         }
-        .picture-item:nth-child(1) {
-            padding-top: 70px;
+        img:nth-child(1) {
+            padding-top: 50px;
         }
-        .picture-item:nth-child(11) {
-            padding-top: 70px;
+        img:nth-child(11) {
+            padding-top: 50px;
         }
     }
     .gradient-container {
