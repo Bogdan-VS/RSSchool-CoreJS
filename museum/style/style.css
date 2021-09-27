@@ -123,6 +123,18 @@ body ._lock {
   overflow: hidden;
 }
 
+body.overlay:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 50;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -1217,6 +1229,12 @@ header {
   background: #FFFFFF;
 }
 
+.tickets-content__container .tickets-container__amount .amount-container .amount-container__block .amount-item::-webkit-outer-spin-button,
+.tickets-content__container .tickets-container__amount .amount-container .amount-container__block .amount-item::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .tickets-content__container .tickets-container__amount .total {
   padding-bottom: 35px;
   padding-top: 40px;
@@ -1259,13 +1277,22 @@ header {
 
 .booking-tickets {
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
   top: 0;
   right: -100%;
   height: 100%;
   -webkit-transition: all 1s ease 0s;
   transition: all 1s ease 0s;
-  z-index: 10;
+  z-index: 100;
 }
 
 .booking-tickets__active {
@@ -1273,8 +1300,13 @@ header {
   background-color: #FFFFFF;
 }
 
-.booking-container {
+.booking-tickets-wrapper {
   position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.booking-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1290,15 +1322,15 @@ header {
 
 .close {
   position: absolute;
-  right: -180px;
-  top: -56px;
+  top: 30px;
+  right: 30px;
   width: 25px;
   height: 25px;
 }
 
 .close img {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .booking-container__left .left-container__header .logo {
@@ -1579,6 +1611,12 @@ header {
   line-height: 21px;
   color: #030303;
   text-align: center;
+}
+
+.booking-container__left .left-form .entry-ticket .entry-container .amount-entry__block .amount-container .amount-container-item .number::-webkit-outer-spin-button,
+.booking-container__left .left-form .entry-ticket .entry-container .amount-entry__block .amount-container .amount-container-item .number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .booking-container__right {
