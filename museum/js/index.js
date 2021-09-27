@@ -161,15 +161,26 @@ new Swiper('.video-slider', {
 /**Booking-tickets */
 
 const ticket = document.querySelector('.booking-tickets'),
-      btnTicket = document.querySelector('.amount-button');
+      overlayBody = document.querySelector('body'),
+      btnTicket = document.querySelector('.amount-button'),
+      btnClose = document.querySelector('.close');
+
+let overlayActive;
+    
+console.log(overlayActive);
 
 btnTicket.addEventListener('click', function() {
     buyTickets();
 })
 
+btnClose.addEventListener('click', function() {
+    buyTickets();
+})
+
 const buyTickets = () => {
-    console.log(1);
     ticket.classList.toggle('booking-tickets__active');
+    overlayBody.classList.toggle('overlay');
 }
+
 
 /**Booking-tickets End */

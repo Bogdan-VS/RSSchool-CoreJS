@@ -109,6 +109,18 @@ body ._lock {
 	overflow: hidden;
 }
 
+body.overlay:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+  }
+
 html {
     scroll-behavior: smooth;
 }
@@ -849,6 +861,8 @@ header {
 
 .buy-tickets {
     background: $color2;
+    // position: sticky;
+    // top: 0;
 }
 
 .tickets-container {
@@ -1009,6 +1023,11 @@ header {
                     color: $color4;
                     background: $color2;
                 }
+                .amount-item::-webkit-outer-spin-button,
+                .amount-item::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+                }          
             }
         }
         .total {
@@ -1048,12 +1067,15 @@ header {
 
 .booking-tickets {
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     top: 0;
     right: -100%;
     height: 100%;
     transition: all 1s ease 0s;
-    z-index: 10;
+    z-index: 100;
 }
 
 .booking-tickets__active {
@@ -1061,8 +1083,13 @@ header {
     background-color: $color2;
 }
 
-.booking-container {
+.booking-tickets-wrapper {
     position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.booking-container {
     display: flex;
     width: 970px;
     height: 100%;
@@ -1073,13 +1100,13 @@ header {
 
 .close {
     position: absolute;
-    right: -180px;
-    top: -56px;
+    top: 30px;
+    right: 30px;
     width: 25px;
     height: 25px;
     img {
         width: 100%;
-        height: auto;
+        height: 100%;
     }
 }
 
@@ -1316,6 +1343,11 @@ header {
                                 line-height: 21px;
                                 color: $color1;
                                 text-align: center;
+                            }
+                            .number::-webkit-outer-spin-button,
+                            .number::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                            margin: 0;
                             }
                         }
                     }
