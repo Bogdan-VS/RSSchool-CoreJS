@@ -375,26 +375,25 @@ header {
                 color: $color2;
                 padding: 26px 0 76px 0;
             }
-            .louvre-button {
-                width: 360px;
-                height: 75px;
-                font-family: 'Roboto Thin';
-                font-size: 22px;
-                line-height: 26px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                letter-spacing: 2px;
-                background: $color6;
-                border-radius: 10px;
-                transition: 0.5s;
-                a {
+            form {
+                .louvre-button {
+                    width: 360px;
+                    height: 75px;
+                    font-family: 'Roboto Thin';
+                    font-size: 22px;
+                    line-height: 26px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    letter-spacing: 2px;
+                    background: $color6;
+                    border-radius: 10px;
+                    transition: 0.5s;
                     color: $color2;
                 }
-            }
-            
-            .louvre-button:hover {
-                background: $color3;
+                .louvre-button:hover {
+                    background: $color3;
+                }
             }
         }
     }
@@ -645,6 +644,10 @@ header {
     height: 100%;
     width: 100%;
     padding-bottom: 40px;
+    video {
+        width: 100%;
+        height: 100%;
+    }
     .video-start {
         position: absolute;
         left: 42.5%;
@@ -773,6 +776,10 @@ header {
 
 .video-slide {
     height: 254px;
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
@@ -1139,6 +1146,7 @@ header {
     right: 30px;
     width: 25px;
     height: 25px;
+    cursor: pointer;
     img {
         width: 100%;
         height: 100%;
