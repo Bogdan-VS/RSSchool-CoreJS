@@ -95,7 +95,9 @@
                     <div class="louvre-container">
                         <h2 class="louvre-title">Welcome <br>to the Louvre</h2>
                         <p class="louvre-subtitle">From the castle to the museum</p>
-                        <button class="louvre-button"><a href="tours/tours7.html" target="_blank">Discover the Louvre</a></button>
+                        <form action="tours/tours7.html" target="_blank">
+                            <button class="louvre-button">Discover the Louvre</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -242,7 +244,7 @@
                         </div>
                     </div>
                     <div class="vidio-container">
-                        <video src="assets/video/WelcometotheLouvre.mp4" width="100%" height="100%" poster="assets/images/jpg/poster.jpg" class="video"></video>
+                        <video src="assets/video/WelcometotheLouvre.mp4" poster="assets/images/jpg/poster.jpg" class="video"></video>
                         <button class="video-start">
                             <img class="disabled current" src="assets/images/svg/start.svg" alt="Start video">
                         </button>
@@ -263,19 +265,19 @@
                     <div class="video-slider swiper">
                         <div class="video-slider-wrapper swiper-wrapper">
                             <div class="video-slide swiper-slide">
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                             <div class="video-slide swiper-slide">
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Vi5D6FKhRmo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/Vi5D6FKhRmo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                             <div class="video-slide swiper-slide">
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/NOhDysLnTvY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/NOhDysLnTvY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                             <div class="video-slide swiper-slide">
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/zp1BXPX8jcU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/zp1BXPX8jcU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                             <div class="video-slide swiper-slide">
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/2OR0OCr6uRE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/2OR0OCr6uRE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                         </div>
                         <div class="swiper-pagination"></div>
@@ -390,7 +392,7 @@
                                         <h4>Senior 65+</h4>
                                         <div class="amount-container__block">
                                             <button class="button-amount" onclick="this.nextElementSibling.stepDown()">–</button>
-                                            <input type="number" min="0" max="200" value="1" readonly class="amount-item">
+                                            <input type="number" min="0" max="20" value="1" readonly class="amount-item">
                                             <button class="button-amount" onclick="this.previousElementSibling.stepUp()">+</button>
                                         </div>
                                     </div>
@@ -426,8 +428,8 @@
                                                 <span class="img img-data"></span>
                                             </div>
                                             <div class="data-container">
-                                                <label for="data" class="text">Time</label>
-                                                <input type="time" name="data" id="data" class="data">
+                                                <label for="time" class="text">Time</label>
+                                                <input type="time" name="data" id="time" class="data">
                                                 <span class="img img-time"></span>
                                             </div>
                                         </div>
@@ -450,7 +452,7 @@
                                         </div>
                                         <div class="item-tickets-type">
                                             <select name="Tickets-type" class="tickets-type">
-                                                <option value=""></option>
+                                                <option value="person"></option>
                                             </select>
                                             <span class="img"></span>
                                             <span class="text">Ticket Type</span>
@@ -535,17 +537,17 @@
                                                 <div class="booking-card-start">
                                                     <div class="booking-card-start-wrapper">
                                                         <label for="card-number" class="card-number">Card number</label>
-                                                        <input type="number" name="" id="card-number">
+                                                        <input type="number" name="card-number" id="card-number">
                                                         <h5 class="card-number">Expiration date</h5>
-                                                        <input type="number" name="" id="month" value="03" min="01" max="12" class="month-year">
-                                                        <input type="number" name="" id="month" value="2024" min="2000" max="2040" class="month-year month-year-right">
+                                                        <input type="number" name="month" id="month" value="03" min="01" max="12" class="month-year">
+                                                        <input type="number" name="year" id="year" value="2024" min="2000" max="2040" class="month-year month-year-right">
                                                         <h5 class="card-number bottom-text">Cardholder name</h5>
-                                                        <input type="text" name="" id="surname">
+                                                        <input type="text" name="surname" id="surname">
                                                         <div class="visa">
                                                             <img src="assets/images/svg/booking-tickets/Visa.svg" alt="Visa">
                                                         </div>
                                                         <div class="mastercard">
-                                                            <img src="assets/images/svg/booking-tickets/Mastercard.svg" alt="Visa">
+                                                            <img src="assets/images/svg/booking-tickets/Mastercard.svg" alt="Mastercard">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -558,7 +560,7 @@
                                 </div>
                             </form>
                             <div class="close">
-                                <img src="assets/images/svg/booking-tickets/Close.svg" alt="">
+                                <img src="assets/images/svg/booking-tickets/Close.svg" alt="Close">
                             </div>
                         </div>
                     </div>
@@ -566,7 +568,7 @@
             </div>
         </section>
         <section class="parallax">
-            <div class="parallax-conteiner"></div>
+            <h2 class="parallax-conteiner"></h2>
         </section>
         <section class="contacts" id="Contacts">
             <div class="wrapper">
