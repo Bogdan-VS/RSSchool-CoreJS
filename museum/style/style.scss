@@ -94,6 +94,8 @@ $color11: #A4A4A3;
 $color12: #939393;
 $color13: #161615;
 $color14: #BCBCBC;
+$color15: #D2B183;
+
 
 
 
@@ -197,6 +199,7 @@ header {
             cursor: pointer;
             a {
                 color: $color2;
+                transition: 0.5s;
             }
             a:hover {
                 color: $color3;
@@ -291,7 +294,7 @@ header {
         font-size: 22px;
         line-height: 40px;
         text-transform: uppercase;
-        color: #FFFFFF;
+        color: $color2;
     }
     .control-tab {
         width: 180px;
@@ -301,11 +304,17 @@ header {
         .control-tab-item {
             width: 16px;
             height: 16px;
-            background: #FFFFFF;
+            background: $color2;
             cursor: pointer;
+            transition: 0.5s;
         }
+
+        .control-tab-item:hover {
+            background: $color3;
+        }
+
         .active {
-            background: #D2B183;
+            background: $color15;
         }
     }
     .control-arrow {
@@ -318,13 +327,18 @@ header {
             height: auto;
             cursor: pointer;
             background: none;
+            transition: 0.5s;
             img {
                 width: 100%;
                 height: auto;
+                transition: 0.5s;
+            }
+            img:hover {
+                filter: invert(56%) sepia(7%) saturate(1560%) hue-rotate(356deg) brightness(95%) contrast(87%);
             }
         }
         .arrow:hover {
-            cursor: pointer;
+            cursor: pointer; 
         }
     }
 }
@@ -350,7 +364,7 @@ header {
                 line-height: 90px;
                 letter-spacing: 5px;
                 text-transform: uppercase;
-                color: #FFFFFF;
+                color: $color2;
             }
             .louvre-subtitle {
                 display: flex;
@@ -358,28 +372,29 @@ header {
                 font-size: 28px;
                 line-height: 33px;
                 letter-spacing: 2px;
-                color: #FFFFFF;
+                color: $color2;
                 padding: 26px 0 76px 0;
             }
-            a {
-                .louvre-button {
-                    width: 360px;
-                    height: 75px;
-                    font-family: 'Roboto Thin';
-                    font-size: 22px;
-                    line-height: 26px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    letter-spacing: 2px;
-                    color: #FFFFFF;
-                    background: #710707;
-                    border-radius: 10px;
+            .louvre-button {
+                width: 360px;
+                height: 75px;
+                font-family: 'Roboto Thin';
+                font-size: 22px;
+                line-height: 26px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                letter-spacing: 2px;
+                background: $color6;
+                border-radius: 10px;
+                transition: 0.5s;
+                a {
+                    color: $color2;
                 }
-                
-                .louvre-button:hover {
-                    background: #9D8665;
-                }
+            }
+            
+            .louvre-button:hover {
+                background: $color3;
             }
         }
     }
@@ -389,7 +404,7 @@ header {
 /*Virtual Tour*/
 
 .virtual-tour {
-    background: #FFFFFF;
+    background: $color2;
 }
 
 .title-tour {
@@ -405,7 +420,7 @@ header {
 }
 
 .title-line {
-    border-bottom: 3px solid #710707;
+    border-bottom: 3px solid $color6;
 }
 
 .virtual-tour-contaner {
@@ -580,7 +595,7 @@ header {
           width: 39px;
           border-radius: 50%;
           background: transparent;
-          border: 4px solid white;
+          border: 4px solid $color2;
           box-shadow: 0 0 8px 1px rgba(0,0,0,.3);
         }
     }
@@ -595,7 +610,7 @@ header {
 /*Vidio journey*/
 
 .vidio-journey {
-    background: #FFFFFF;
+    background: $color2;
 }
 
 .text-container {
@@ -608,7 +623,7 @@ header {
         line-height: 90px;
         letter-spacing: 5px;
         text-transform: uppercase;
-        color: #9D8665;
+        color: $color3;
     }
     .text-subtitle {
         max-width: 720px;
@@ -620,7 +635,7 @@ header {
             line-height: 38px;
             display: flex;
             align-items: center;
-            color: #000000;
+            color: $color4;
         }
     }
 }
@@ -640,6 +655,7 @@ header {
         height: auto;
         cursor: pointer;
         background: none;
+        transition: 0.5s;
         img {
             width: 100%;
             height: auto;
@@ -673,6 +689,7 @@ header {
             img{
                 width: 100%;
                 height: auto;
+                transition: 0.5s;
             }
             img:hover {
                 filter: invert(71%) sepia(0%) saturate(7%) hue-rotate(206deg) brightness(86%) contrast(86%);
@@ -694,7 +711,7 @@ header {
             border-radius: 50%;
             -webkit-appearance: none;
             cursor: pointer;
-            background: #FFFFFF;
+            background: $color2;
         }
         
         .microphone {
@@ -704,6 +721,7 @@ header {
             img {
                 width: 100%;
                 height: auto;
+                transition: 0.5s;
             }
             img:hover {
                 filter: invert(71%) sepia(0%) saturate(7%) hue-rotate(206deg) brightness(86%) contrast(86%);
@@ -725,7 +743,7 @@ header {
             border-radius: 50%;
             -webkit-appearance: none;
             cursor: pointer;
-            background: #FFFFFF;
+            background: $color2;
           }
         
         .full {
@@ -735,6 +753,7 @@ header {
             img {
                 width: 100%;
                 height: auto;
+                transition: 0.5s;
             }
             img:hover {
                 filter: invert(71%) sepia(0%) saturate(7%) hue-rotate(206deg) brightness(86%) contrast(86%);
@@ -770,6 +789,11 @@ header {
     height: 12px;
     background: #999999;
     opacity: 100%;
+    transition: 0.5s;
+}
+
+.swiper-pagination-bullet:hover {
+    background: $color6;
 }
 
 .swiper-pagination-bullet-active {
@@ -786,11 +810,21 @@ header {
 .swiper-button-prev {
     background: url(../assets/images/svg/left-arrow-slide-video.svg);
     left: calc(50% - 100px);
+    transition: 0.5s;
+}
+
+.swiper-button-prev:hover {
+    filter: invert(12%) sepia(56%) saturate(3196%) hue-rotate(347deg) brightness(96%) contrast(107%);
 }
 
 .swiper-button-next {
     background: url(../assets/images/svg/right-arrow-slider-video.svg);
     right: calc(50% - 100px);
+    transition: 0.5s;
+}
+
+.swiper-button-next:hover {
+    filter: invert(12%) sepia(56%) saturate(3196%) hue-rotate(347deg) brightness(96%) contrast(107%);
 }
 
 .swiper-button-next::after,
@@ -1058,6 +1092,7 @@ header {
             justify-content: center;
             letter-spacing: 2px;
             color: $color2;
+            transition: 0.5s;
         }
         .amount-button:hover {
             background: #9D8665
@@ -1806,6 +1841,7 @@ footer {
                 background: none;
                 a {
                     color: $color2;
+                    transition: 0.5s;
                 }
                 a:hover {
                     color: $color3;
@@ -1840,6 +1876,7 @@ footer {
             border-radius: 50%;
             border: $color8 1px solid;
             cursor: pointer;
+            transition: 0.5s;
             a img {
                 width: 24px;
                 height: 24px;
@@ -1874,6 +1911,13 @@ footer {
             line-height: 22px;
             letter-spacing: 2px;
             color: $color2;
+            a {
+                color: $color2;
+                transition: 0.5s;
+            }
+            a:hover {
+                color: $color3;
+            }
         }
         p:nth-child(2) {
             margin-left: 40px;
