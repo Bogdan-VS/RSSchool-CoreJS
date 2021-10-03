@@ -18,8 +18,6 @@ const arrayImg = [
 	'assets/images/jpg/Gallery/galery15.jpg',
 ];
 
-
-
 function addImg() {
 	shuffle(arrayImg);
 	let images = '';
