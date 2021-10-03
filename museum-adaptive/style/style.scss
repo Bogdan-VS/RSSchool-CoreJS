@@ -451,7 +451,7 @@ header {
             .card-container__line {
                 display: flex;
                 max-width: 300px;
-                border-bottom: 2px solid #710707;
+                border-bottom: 2px solid $color6;
                 transition: all 1s;
             }
             .card-container__subtitle {
@@ -485,7 +485,7 @@ header {
 /*Picture Explore*/
 
 .picture-explore {
-    background: #030303;
+    background: $color1;
 }
 
 .explore-container {
