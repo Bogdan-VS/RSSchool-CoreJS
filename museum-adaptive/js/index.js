@@ -195,7 +195,7 @@ new Swiper('.video-slider', {
 /**Booking-tickets */
 
 const ticket = document.querySelector('.booking-tickets'),
-      overlayBody = document.querySelector('body'),
+      overlay = document.querySelector('.overlay'),
       btnTicket = document.querySelector('.amount-button'),
       btnClose = document.querySelector('.close');
 
@@ -210,9 +210,18 @@ btnClose.addEventListener('click', function() {
     buyTickets();
 })
 
+overlay.addEventListener('click', function() {
+    closeOverlay();
+})
+
+const closeOverlay = () => {
+    ticket.classList.toggle('booking-tickets__active');
+    overlay.classList.toggle('overlay-active');
+}
+
 const buyTickets = () => {
     ticket.classList.toggle('booking-tickets__active');
-    overlayBody.classList.toggle('overlay');
+    overlay.classList.toggle('overlay-active');
 }
 
 /**Booking-tickets End */

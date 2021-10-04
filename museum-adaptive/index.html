@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style/style.css">
     <title>Museum</title>
 </head>
-<body class="">
+<body>
     <header>
         <div class="header-wrapper">
             <div class="header-wrapper-container">
@@ -324,6 +324,166 @@
             </div>
         </section>
         <section class="buy-tickets" id="Tickets">
+            <div class="overlay"></div>
+            <div class="booking-tickets">
+                <div class="booking-tickets-wrapper">
+                    <form class="booking-container" action="#" method="POST">
+                        <div class="booking-container__left left-container">
+                            <div class="left-container__header">
+                                <div class="logo">
+                                    <img src="assets/images/svg/logo-ticket.svg" alt="Logo">
+                                </div>
+                                <div class="title">
+                                    <h2>BOOKING TICKETS</h2>
+                                </div>
+                                <div class="subtitle">
+                                    <p>Tour to Louvre</p>
+                                </div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="left-form">
+                                <div class="item-data">
+                                    <div class="data-container">
+                                        <label for="data" class="text">Data</label>
+                                        <input type="date" name="data" id="data" class="data">
+                                        <span class="img img-data"></span>
+                                    </div>
+                                    <div class="data-container">
+                                        <label for="time" class="text">Time</label>
+                                        <input type="time" name="data" id="time" class="data">
+                                        <span class="img img-time"></span>
+                                    </div>
+                                </div>
+                                <div class="item-person">
+                                    <div class="person-container">
+                                        <input type="text" name="username" class="container-item">
+                                        <span class="img1"></span>
+                                        <span class="text text1">Name</span>
+                                    </div>
+                                    <div class="person-container">
+                                        <input type="email" name="mail" class="container-item">
+                                        <span class="img2"></span>
+                                        <span class="text text2">E-mail</span>
+                                    </div>
+                                    <div class="person-container">
+                                        <input type="tel" name="phone" class="container-item">
+                                        <span class="img3"></span>
+                                        <span class="text text2">Phone</span>
+                                    </div>
+                                </div>
+                                <div class="item-tickets-type">
+                                    <select name="Tickets-type" class="tickets-type">
+                                        <option value="person">Ticket Type</option>
+                                    </select>
+                                    <span class="img"></span>
+                                </div>
+                                <div class="entry-ticket">
+                                    <div class="entry-container">
+                                        <div class="entry-title">
+                                            <h3>Entry ticket</h3>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="amount-entry__block">
+                                            <div class="amount-container">
+                                                <div class="amount-container-title">Basic 18+ (20 €)</div>
+                                                <div class="amount-container-item">
+                                                    <button type="button" onclick="this.nextElementSibling.stepDown()">–</button>
+                                                    <input type="number" min="0" max="20" value="2" readonly class="number">
+                                                    <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="amount-entry__block">
+                                            <div class="amount-container">
+                                                <div class="amount-container-title">Senior 65+ (10 €)</div>
+                                                <div class="amount-container-item">
+                                                    <button type="button" onclick="this.nextElementSibling.stepDown()">–</button>
+                                                    <input type="number" min="0" max="20" value="2" readonly class="number">
+                                                    <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="booking-container__right">
+                            <div class="booking-container__right-wrapper">
+                                <div class="booking-item__top">
+                                    <div class="item-top-main">
+                                        <h3 class="title">Overview</h3>
+                                        <p class="subtitle">Tour to Louvre</p>
+                                        <p class="subtitle-item item1">Friday, August 19</p>
+                                        <p class="subtitle-item item2">16 : 30</p>
+                                        <p class="subtitle-item item3">Temporary exhibition</p>
+                                    </div>
+                                    <div class="item-top-img">
+                                        <img src="assets/images/jpg/Booking/background.jpg" alt="Background">
+                                    </div>
+                                </div>
+                                <div class="booking-item-middle">
+                                    <div class="middle-item">
+                                        <div class="item-basic">
+                                            <div class="basic-bg">2</div>
+                                            <p class="basic-text">Basic (20 €)</p>
+                                        </div>
+                                        <div class="item-basic-cost">40 €</div>
+                                    </div>
+                                    <div class="middle-item">
+                                        <div class="item-basic basic2 ">
+                                            <div class="basic-bg">2</div>
+                                            <p class="basic-text">Senior (10 €)</p>
+                                        </div>
+                                        <div class="item-basic-cost basic-cost2">20 €</div>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="bottom-item">
+                                        <p class="total-text item1">Total:</p>
+                                        <p class="total-text item2">60 €</p>
+                                    </div>
+                                </div>
+                                <div class="booking-item-bottom">
+                                    <div class="booking-card-wrapper">
+                                        <div class="booking-card-end">
+                                            <div class="card-bg"></div>
+                                            <div class="card-end-bottom">
+                                                <div class="card-end-text">
+                                                    <label for="cvc">CVC/CVV</label>
+                                                    <input type="text" name="cvc" id="cvc">
+                                                    <p class="card-end-item-text">The last <br> 3 or 4 digits on back <br> of the card</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="booking-card-start">
+                                            <div class="booking-card-start-wrapper">
+                                                <label for="card-number" class="card-number">Card number</label>
+                                                <input type="number" name="card-number" id="card-number">
+                                                <h5 class="card-number">Expiration date</h5>
+                                                <input type="number" name="month" id="month" value="03" min="01" max="12" class="month-year">
+                                                <input type="number" name="year" id="year" value="2024" min="2000" max="2040" class="month-year month-year-right">
+                                                <h5 class="card-number bottom-text">Cardholder name</h5>
+                                                <input type="text" name="surname" id="surname">
+                                                <div class="visa">
+                                                    <img src="assets/images/svg/booking-tickets/Visa.svg" alt="Visa">
+                                                </div>
+                                                <div class="mastercard">
+                                                    <img src="assets/images/svg/booking-tickets/Mastercard.svg" alt="Mastercard">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="book-submit">
+                                        <input type="submit" value="Book">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="close">
+                        <img src="assets/images/svg/booking-tickets/Close.svg" alt="Close">
+                    </div>
+                </div>
+            </div>
             <div class="wrapper">
                 <div class="wrapper-container tickets-wrapper">
                     <div class="tickets-container">
@@ -376,165 +536,6 @@
                                     </div>
                                     <button class="amount-button">Buy Now</button>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="booking-tickets">
-                        <div class="booking-tickets-wrapper">
-                            <form class="booking-container" action="#" method="POST">
-                                <div class="booking-container__left left-container">
-                                    <div class="left-container__header">
-                                        <div class="logo">
-                                            <img src="assets/images/svg/logo-ticket.svg" alt="Logo">
-                                        </div>
-                                        <div class="title">
-                                            <h2>BOOKING TICKETS</h2>
-                                        </div>
-                                        <div class="subtitle">
-                                            <p>Tour to Louvre</p>
-                                        </div>
-                                        <div class="line"></div>
-                                    </div>
-                                    <div class="left-form">
-                                        <div class="item-data">
-                                            <div class="data-container">
-                                                <label for="data" class="text">Data</label>
-                                                <input type="date" name="data" id="data" class="data">
-                                                <span class="img img-data"></span>
-                                            </div>
-                                            <div class="data-container">
-                                                <label for="time" class="text">Time</label>
-                                                <input type="time" name="data" id="time" class="data">
-                                                <span class="img img-time"></span>
-                                            </div>
-                                        </div>
-                                        <div class="item-person">
-                                            <div class="person-container">
-                                                <input type="text" name="username" class="container-item">
-                                                <span class="img1"></span>
-                                                <span class="text text1">Name</span>
-                                            </div>
-                                            <div class="person-container">
-                                                <input type="email" name="mail" class="container-item">
-                                                <span class="img2"></span>
-                                                <span class="text text2">E-mail</span>
-                                            </div>
-                                            <div class="person-container">
-                                                <input type="tel" name="phone" class="container-item">
-                                                <span class="img3"></span>
-                                                <span class="text text2">Phone</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-tickets-type">
-                                            <select name="Tickets-type" class="tickets-type">
-                                                <option value="person">Ticket Type</option>
-                                            </select>
-                                            <span class="img"></span>
-                                        </div>
-                                        <div class="entry-ticket">
-                                            <div class="entry-container">
-                                                <div class="entry-title">
-                                                    <h3>Entry ticket</h3>
-                                                </div>
-                                                <div class="line"></div>
-                                                <div class="amount-entry__block">
-                                                    <div class="amount-container">
-                                                        <div class="amount-container-title">Basic 18+ (20 €)</div>
-                                                        <div class="amount-container-item">
-                                                            <button type="button" onclick="this.nextElementSibling.stepDown()">–</button>
-                                                            <input type="number" min="0" max="20" value="2" readonly class="number">
-                                                            <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="amount-entry__block">
-                                                    <div class="amount-container">
-                                                        <div class="amount-container-title">Senior 65+ (10 €)</div>
-                                                        <div class="amount-container-item">
-                                                            <button type="button" onclick="this.nextElementSibling.stepDown()">–</button>
-                                                            <input type="number" min="0" max="20" value="2" readonly class="number">
-                                                            <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="booking-container__right">
-                                    <div class="booking-container__right-wrapper">
-                                        <div class="booking-item__top">
-                                            <div class="item-top-main">
-                                                <h3 class="title">Overview</h3>
-                                                <p class="subtitle">Tour to Louvre</p>
-                                                <p class="subtitle-item item1">Friday, August 19</p>
-                                                <p class="subtitle-item item2">16 : 30</p>
-                                                <p class="subtitle-item item3">Temporary exhibition</p>
-                                            </div>
-                                            <div class="item-top-img">
-                                                <img src="assets/images/jpg/Booking/background.jpg" alt="Background">
-                                            </div>
-                                        </div>
-                                        <div class="booking-item-middle">
-                                            <div class="middle-item">
-                                                <div class="item-basic">
-                                                    <div class="basic-bg">2</div>
-                                                    <p class="basic-text">Basic (20 €)</p>
-                                                </div>
-                                                <div class="item-basic-cost">40 €</div>
-                                            </div>
-                                            <div class="middle-item">
-                                                <div class="item-basic basic2 ">
-                                                    <div class="basic-bg">2</div>
-                                                    <p class="basic-text">Senior (10 €)</p>
-                                                </div>
-                                                <div class="item-basic-cost">20 €</div>
-                                            </div>
-                                            <div class="line"></div>
-                                            <div class="bottom-item">
-                                                <p class="total-text item1">Total:</p>
-                                                <p class="total-text item2">60 €</p>
-                                            </div>
-                                        </div>
-                                        <div class="booking-item-bottom">
-                                            <div class="booking-card-wrapper">
-                                                <div class="booking-card-end">
-                                                    <div class="card-bg"></div>
-                                                    <div class="card-end-bottom">
-                                                        <div class="card-end-text">
-                                                            <label for="cvc">CVC/CVV</label>
-                                                            <input type="text" name="cvc" id="cvc">
-                                                            <p class="card-end-item-text">The last <br> 3 or 4 digits on back <br> of the card</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="booking-card-start">
-                                                    <div class="booking-card-start-wrapper">
-                                                        <label for="card-number" class="card-number">Card number</label>
-                                                        <input type="number" name="card-number" id="card-number">
-                                                        <h5 class="card-number">Expiration date</h5>
-                                                        <input type="number" name="month" id="month" value="03" min="01" max="12" class="month-year">
-                                                        <input type="number" name="year" id="year" value="2024" min="2000" max="2040" class="month-year month-year-right">
-                                                        <h5 class="card-number bottom-text">Cardholder name</h5>
-                                                        <input type="text" name="surname" id="surname">
-                                                        <div class="visa">
-                                                            <img src="assets/images/svg/booking-tickets/Visa.svg" alt="Visa">
-                                                        </div>
-                                                        <div class="mastercard">
-                                                            <img src="assets/images/svg/booking-tickets/Mastercard.svg" alt="Mastercard">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="book-submit">
-                                                <input type="submit" value="Book">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="close">
-                                <img src="assets/images/svg/booking-tickets/Close.svg" alt="Close">
                             </div>
                         </div>
                     </div>

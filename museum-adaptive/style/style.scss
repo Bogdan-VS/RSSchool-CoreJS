@@ -111,18 +111,6 @@ body ._lock {
 	overflow: hidden;
 }
 
-body.overlay:before {
-    content: '';
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 50;
-  }
-
 html {
     scroll-behavior: smooth;
 }
@@ -904,6 +892,20 @@ header {
     background: $color2;
 }
 
+.overlay {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 20;
+}
+
+.overlay-active {
+    display: block;
+}
+
 .tickets-container {
     position: relative;
     padding: 75px 0;
@@ -1106,27 +1108,29 @@ header {
 }
 
 .booking-tickets {
-    position: absolute;
+    position: fixed;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    top: 0;
-    right: -100%;
-    height: 100%;
+    width: calc(100% - 480px);
+    justify-content: space-between;
+    top: 50%;
+    left: -100%;
+    transform: translate(-50%, -50%);
     transition: all 1s ease 0s;
-    z-index: 100;
+    z-index: 20;
 }
 
 .booking-tickets__active {
-    right: 0;
-    background-color: $color2;
+    left: 50%;
 }
 
 .booking-tickets-wrapper {
     position: relative;
     width: 100%;
+    margin: 0 auto;
     height: 100%;
+    padding: 91px 0;
+    background-color: $color2;
+    z-index: 100;
 }
 
 .booking-container {
@@ -1166,7 +1170,7 @@ header {
             font-style: normal;
             font-weight: normal;
             font-size: 50px;
-            line-height: 55px;
+            line-height: 46px;
             text-transform: uppercase;
             color: $color3;
             padding-bottom: 15px;
@@ -1361,6 +1365,7 @@ header {
                         }
                         .amount-container-item {
                             border: 1px solid $color1;
+                            height: 26px;
                             button {
                                 font-family: $font-roboto-medium;
                                 width: 35px;
@@ -1372,7 +1377,7 @@ header {
                             .number {
                                 box-sizing: border-box;
                                 width: 35px;
-                                height: 25px;
+                                height: 24px;
                                 font-family: $font-roboto-medium;
                                 font-style: normal;
                                 font-weight: normal;
@@ -1414,7 +1419,6 @@ header {
                     font-size: 32px;
                     line-height: 37px;
                     color: $color10;
-                    margin-bottom: 2px;
                 }
                 .subtitle {
                     font-family: $font-roboto-medium;
@@ -1957,6 +1961,14 @@ footer {
             }
         }
     }
+
+    .booking-tickets {
+        width: 100%;
+    }
+
+    .booking-tickets-wrapper {
+        padding: 75px 0 30px 0;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -2460,6 +2472,111 @@ footer {
             margin-right: 0;
         }
     }
+}
+
+@media (max-width: 1000px) {
+
+    .booking-tickets {
+        max-width: 590px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: -webkit-fill-available;
+    }
+
+    .booking-tickets-wrapper {
+        position: relative;
+        width: 100%;
+        height: 1479px;
+        margin: 0 auto;
+    }
+
+    .booking-container {
+        position: absolute;
+        top: 80px;
+        left: 30px;
+        display: block;
+        max-width: 530px;
+        height: 1359px;
+        align-items: center;
+        column-gap: 0;
+        margin: 0 auto;
+        overflow-y: auto;
+    }
+
+    .booking-container__left {
+        .left-container__header {
+            .title {
+                padding-bottom: 24px;
+            }
+            .line {
+                width: 100%;
+                margin-bottom: 40px;
+            }
+        }
+        .left-form {
+            .item-data {
+                column-gap: 28px;
+                .data-container {
+                    .data {
+                        width: 251px;
+                    }
+                    input::-webkit-calendar-picker-indicator {
+                        width: 251px;
+                    }
+                }
+            }
+            .item-person {
+                .person-container {
+                    .container-item {
+                        width: 100%;
+                    }
+                }
+            }
+            .item-tickets-type {
+                .tickets-type {
+                    width: 100%;
+                }
+            }
+            .entry-ticket {
+                margin-bottom: 50px;
+                .entry-container {
+                    width: calc(100% - 30px);
+                    .line {
+                        margin-bottom: 10px;
+                    }
+                    .amount-entry__block {
+                        .amount-container {
+                            margin-bottom: 14px;
+                            .amount-container-title {
+                                line-height: 28px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .booking-container__right {
+        .booking-container__right-wrapper {
+            width: calc(100% - 30px);
+            .booking-item__top {
+                width: 500px;
+                .item-top-main {
+                    .subtitle {
+                        margin-bottom: 12px;
+                    }
+                }
+            }
+            .booking-item-middle {
+                .bottom-item {
+                    margin-bottom: 18px;
+                }
+            }
+        }
+    }
+
+
 }
 
 @media (max-width: 970px) {
@@ -3409,6 +3526,164 @@ footer {
         }
     }
 
+    .booking-tickets {
+        max-width: 420px;
+
+    }
+    
+    .booking-tickets-wrapper {
+        height: 1754px;
+    }
+    .booking-container {
+        position: absolute;
+        top: 80px;
+        left: 30px;
+        display: block;
+        width: calc(100% - 60px);
+        height: 1625px;
+        align-items: center;
+        column-gap: 0;
+        margin: 0 auto;
+        overflow-y: auto;
+    }
+    .booking-container__left {
+        .left-container__header {
+            .title {
+                font-size: 32px;
+                line-height: 35px;
+                padding-bottom: 15px;
+            }
+            .line {
+                width: 100%;
+                margin-bottom: 40px;
+            }
+        }
+        .left-form {
+            .item-data {
+                display: block;
+                column-gap: 0;
+                .data-container {
+                    .data {
+                        width: 100%;
+                        margin-bottom: 20px;
+                    }
+                    input::-webkit-calendar-picker-indicator {
+                        width: 100%;
+                    }
+                }
+                .data-container:last-child {
+                    .data {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+            .item-person {
+                .person-container {
+                    .container-item {
+                        width: 100%;
+                    }
+                }
+            }
+            .item-tickets-type {
+                .tickets-type {
+                    width: 100%;
+                }
+            }
+            .entry-ticket {
+                margin-bottom: 50px;
+                .entry-container {
+                    width: calc(100% - 30px);
+                    .line {
+                        margin-bottom: 10px;
+                    }
+                    .amount-entry__block {
+                        .amount-container {
+                            margin-bottom: 14px;
+                            .amount-container-title {
+                                line-height: 28px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .booking-container__right {
+        width: 100%;
+        .booking-container__right-wrapper {
+            width: calc(100% - 30px);
+            .booking-item__top {
+                width: 100%;
+                margin: 25px 0 26px 0;
+                .item-top-img {
+                    width: 120px;
+                    height: 96px;
+                }
+                .item-top-main {
+                    .subtitle {
+                        margin-bottom: 12px;
+                    }
+                }
+            }
+            .booking-item-middle {
+                width: 100%;
+                .bottom-item {
+                    margin-bottom: 14px;
+                }
+                .middle-item {
+                    .basic-cost2 {
+                        margin-top: 5px;
+                    }
+                }
+            }
+            .booking-item-bottom {
+                max-width: 330px;
+                height: auto;
+                .booking-card-wrapper {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-template-rows: auto auto;
+                    grid-template-areas: 'start'
+                                         'end';
+                    height: auto;
+                    margin-bottom: 37px;
+                    .booking-card-start {
+                        position: relative;
+                        width: 100%;
+                        height: auto;
+                        grid-area: start;
+                        margin-bottom: 23px;
+                        .booking-card-start-wrapper {
+                            #surname {
+                                width: 100%;
+                            }
+                            #card-number {
+                                width: calc(100% - 73px);
+                            }
+                            .month-year {
+                                max-width: 100px;
+                            }
+                            .month-year-right {
+                                max-width: 100px;
+                            }
+                        }
+                    }
+
+                    .booking-card-end {
+                        grid-area: end;
+                        width: 100%;
+                    }
+                }
+                .book-submit {
+                    input {
+                        letter-spacing: 0;
+                    }
+                }
+            }
+        }
+    }
+
+
     .contacts-title h2 {
         font-size: 28px;
         line-height: 40px;
@@ -3530,6 +3805,50 @@ footer {
             }
             p:nth-child(2) {
                 display: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 400px) {
+
+    .booking-container__left {
+        .left-form {
+            .entry-ticket {
+                margin-bottom: 50px;
+                .entry-container {
+                    width: calc(100% - 30px);
+                    .line {
+                        margin-bottom: 10px;
+                    }
+                    .amount-entry__block {
+                        .amount-container {
+                            margin-bottom: 14px;
+                            .amount-container-title {
+                                line-height: 28px;
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .booking-container__right {
+        .booking-container__right-wrapper {
+            .booking-item-bottom {
+                .booking-card-wrapper {
+                    .booking-card-start {
+                        .booking-card-start-wrapper {
+                            .month-year {
+                                max-width: 100px;
+                                display: block;
+                                margin-left: 0;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
