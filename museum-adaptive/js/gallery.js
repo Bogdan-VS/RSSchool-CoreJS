@@ -1,21 +1,21 @@
 const pictureContainer = document.querySelector('.picture-inner-container');
 
 const arrayImg = [
-	'assets/images/jpg/Gallery/galery1.jpg',
-	'assets/images/jpg/Gallery/galery2.jpg',
-	'assets/images/jpg/Gallery/galery3.jpg',
-	'assets/images/jpg/Gallery/galery4.jpg',
-	'assets/images/jpg/Gallery/galery5.jpg',
-	'assets/images/jpg/Gallery/galery6.jpg',
-	'assets/images/jpg/Gallery/galery7.jpg',
-	'assets/images/jpg/Gallery/galery8.jpg',
-	'assets/images/jpg/Gallery/galery9.jpg',
-	'assets/images/jpg/Gallery/galery10.jpg',
-	'assets/images/jpg/Gallery/galery11.jpg',
-	'assets/images/jpg/Gallery/galery12.jpg',
-	'assets/images/jpg/Gallery/galery13.jpg',
-	'assets/images/jpg/Gallery/galery14.jpg',
-	'assets/images/jpg/Gallery/galery15.jpg',
+	'assets/images/jpg/Gallery/optima/galery1.jpg',
+	'assets/images/jpg/Gallery/optima/galery2.jpg',
+	'assets/images/jpg/Gallery/optima/galery3.jpg',
+	'assets/images/jpg/Gallery/optima/galery4.jpg',
+	'assets/images/jpg/Gallery/optima/galery5.jpg',
+	'assets/images/jpg/Gallery/optima/galery6.jpg',
+	'assets/images/jpg/Gallery/optima/galery7.jpg',
+	'assets/images/jpg/Gallery/optima/galery8.jpg',
+	'assets/images/jpg/Gallery/optima/galery9.jpg',
+	'assets/images/jpg/Gallery/optima/galery10.jpg',
+	'assets/images/jpg/Gallery/optima/galery11.jpg',
+	'assets/images/jpg/Gallery/optima/galery12.jpg',
+	'assets/images/jpg/Gallery/optima/galery13.jpg',
+	'assets/images/jpg/Gallery/optima/galery14.jpg',
+	'assets/images/jpg/Gallery/optima/galery15.jpg',
 ];
 
 function addImg() {
