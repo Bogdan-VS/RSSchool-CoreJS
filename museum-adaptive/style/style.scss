@@ -1170,10 +1170,10 @@ header {
             font-style: normal;
             font-weight: normal;
             font-size: 50px;
-            line-height: 46px;
+            line-height: 55px;
             text-transform: uppercase;
             color: $color3;
-            padding-bottom: 15px;
+            margin-bottom: 15px;
         }
         .subtitle {
             font-family: $font-roboto-light;
@@ -1182,7 +1182,7 @@ header {
             font-size: 18px;
             line-height: 21px;
             color: $color6;
-            padding-bottom: 10px;
+            margin-bottom: 10px;
         }
         .line {
             width: 400px;
@@ -2245,7 +2245,7 @@ footer {
 
     .explore-image {
         padding-top: 0;
-        width: 100%;
+        max-width: 720px;
         margin: 0 auto;
     }
 
@@ -2457,7 +2457,7 @@ footer {
     }
 
     .footer-container {
-        padding: 60px 0 43px 0;
+        padding: 55px 0 43px 0;
         grid-template-columns: 56.09% 34.55%;
         justify-content: space-between;
     }
@@ -2500,13 +2500,12 @@ footer {
         align-items: center;
         column-gap: 0;
         margin: 0 auto;
-        overflow-y: auto;
     }
 
     .booking-container__left {
         .left-container__header {
             .title {
-                padding-bottom: 24px;
+                margin-bottom: 24px;
             }
             .line {
                 width: 100%;
@@ -2873,7 +2872,10 @@ footer {
         }
     }
 
-
+    .explore-image {
+        width: 100%;
+        max-width: none;
+    }
     .text-container {
         padding: 40px 0 20px 0;
         .text-title {
@@ -3180,22 +3182,24 @@ footer {
         }
     }
 
-    .wrapper {
-        .wrapper-container {
-            .louvre-container {
-                width: 100%;
-                padding: 6px 0 50px 0;
-                .louvre-title {
-                    width: 252px;
-                    font-size: 28px;
-                    line-height: 40px;
-                    text-align: center;
-                    margin-left: 16px;
-                }
-                .louvre-subtitle {
-                    width: 278px;
-                    font-size: 16px;
-                    line-height: 18.75px;
+    .welcom-louvre {
+        .wrapper {
+            .wrapper-container {
+                .louvre-container {
+                    width: 100%;
+                    padding: 6px 0 50px 0;
+                    .louvre-title {
+                        width: 252px;
+                        font-size: 28px;
+                        line-height: 40px;
+                        text-align: center;
+                        margin-left: 16px;
+                    }
+                    .louvre-subtitle {
+                        width: 278px;
+                        font-size: 16px;
+                        line-height: 18.75px;
+                    }
                 }
             }
         }
@@ -3544,14 +3548,13 @@ footer {
         align-items: center;
         column-gap: 0;
         margin: 0 auto;
-        overflow-y: auto;
     }
     .booking-container__left {
         .left-container__header {
             .title {
                 font-size: 32px;
                 line-height: 35px;
-                padding-bottom: 15px;
+                margin-bottom: 15px;
             }
             .line {
                 width: 100%;
