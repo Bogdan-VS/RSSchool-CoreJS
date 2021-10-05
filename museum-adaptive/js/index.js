@@ -1,6 +1,6 @@
 'use strict';
 
-const containerMenu = document.querySelector('.container-nav');
+const containerMenu = document.querySelector('.burger-container');
 const burgerMenu = document.querySelector('.menu-burger');
 const sliderActive = document.querySelector('.louvre-slider-wrapper');
 const sliderWrapActive = document.querySelector('.slider-wrap');
@@ -8,40 +8,33 @@ const sliderWrapActive = document.querySelector('.slider-wrap');
 
 if (burgerMenu) {
     burgerMenu.addEventListener("click", function (e) {
-        document.body.classList.toggle('_lock');
-        containerMenu.classList.toggle('container-nav_active');
+        containerMenu.classList.toggle('burger-container__active');
         burgerMenu.classList.toggle('menu-burger_active');
         sliderActive.classList.toggle('slider_active');
         sliderWrapActive.classList.toggle('slider-wrap_active');
     });
 }
 
-const menuLink = document.querySelectorAll('.navigation-item[data-goto]');
+const menuLink = document.querySelectorAll('.navigation-item__burger[data-goto]');
 if (menuLink.length > 0) {
-    console.log(1);
     menuLink.forEach(menuLink => {
         menuLink.addEventListener("click", onMenuLinkClick);
     });
 
     function onMenuLinkClick(e) {
-        console.log(1);
         const menuLink = e.target;
         if (menuLink.dataset.goto && document.querySelector(menuLink.dataset.goto)) {
             const gotoBlock = document.querySelector(menuLink.dataset.goto);
             const gotoBlockValue = gotoBlock.getBoundingClientRect().top + pageYOffset;
-
             window.scrollTo({
                 top: gotoBlockValue,
                 behavior: "smooth"
             });
         }
-
-        console.log(1);
-        document.body.classList.remove('_lock');
-        containerMenu.classList.remove('container-nav_active');
-        burgerMenu.classList.remove('menu-burger_active');
-        sliderActive.classList.remove('slider_active');
-        sliderWrapActive.classList.remove('slider-wrap_active');
+        containerMenu.classList.toggle('burger-container__active');
+        burgerMenu.classList.toggle('menu-burger_active');
+        sliderActive.classList.toggle('slider_active');
+        sliderWrapActive.classList.toggle('slider-wrap_active');
     }
 }
 

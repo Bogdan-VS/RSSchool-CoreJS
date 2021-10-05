@@ -344,7 +344,7 @@ header {
             width: 598px;
             flex-direction: column;
             padding: 150px 0 272px 0;
-            z-index: 15;
+            z-index: 20;
             .louvre-title {
                 display: flex;
                 font-family: $font-forum-regular;
@@ -386,7 +386,6 @@ header {
         }
     }
 }
-
 
 /*Virtual Tour*/
 
@@ -1994,6 +1993,11 @@ footer {
         align-items: center;
         height: 130px;
     }
+
+    .louvre-slider-wrapper {
+        position: relative;
+        z-index: 17;
+    }
     
     .louvre-slider {
         width: calc(100% - 40px);
@@ -2043,7 +2047,8 @@ footer {
 
     .slider_active {
         position: relative;
-        z-index: 17;
+        z-index: 25;
+        transition: 2.5s;
     }
 
     .slider-wrap {
@@ -2153,8 +2158,69 @@ footer {
                     }
                 }
             }
+            .louvre-container__active {
+                z-index: 15;
+            }
         }
     }
+
+    .welcom-louvre {
+        position: relative;
+    }
+
+
+    .burger-container {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 440px;
+        height: 100%;
+        background: $color4;
+        z-index: 20;
+        transition: all 1s ease 0s;
+        .burger-wrapper {
+            width: calc(100% - 110px);
+            margin: 0 auto;
+            .container-nav__burger {
+                .navigation-burger {
+                    margin: 35px 0;
+                    li {
+                        width: 122px;
+                        margin-bottom: 25px;
+                        .navigation-item__burger {
+                            font-family: $font-roboto-light;
+                            font-style: normal;
+                            font-weight: 300;
+                            font-size: 20px;
+                            line-height: 23px;
+                            letter-spacing: 2px;
+                            color: $color2;
+                            display: flex;
+                            font-size: 20px;
+                            line-height: 23px;
+                            background: top 5.5px right 0 / 12px 12px no-repeat url(../assets/images/svg/burger/arrow.svg);
+                        }
+                    }
+                    li:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+            .burger-images {
+                display: none;
+            }
+            .social-container {
+                display: none;
+            }
+        }
+    }
+
+    .burger-container__active {
+        left: 0;
+    }
+
+
+    
 
     .title-tour {
         padding: 60px 0 22px 0;
@@ -2636,6 +2702,7 @@ footer {
         padding: 0 20px;
         margin: 0;
         grid-area: slider;
+        z-index: 17;
     }
 
     .louvre-slider {
@@ -2657,40 +2724,117 @@ footer {
         }
     }
 
-    .welcom-louvre {
-        .wrapper {
-            display: flex;
-            margin: 0;
-            justify-content: center;
-            grid-area: louvre-container;
-            padding: 0 20px;
-            .wrapper-container {
-                width: auto;
-                .louvre-container {
-                    padding: 0 0 50px 0;
-                    .louvre-title {
-                        width: 332px;
-                        font-size: 40px;
-                        line-height: 60px;
-                        text-align: center;
-                        margin: 0 auto;
-                    }
-                    .louvre-subtitle {
-                        font-size: 20px;
-                        line-height: 23.44px;
-                        width: 332px;
-                        padding: 0;
-                        padding-top: 25px;
-                        margin: 0 auto;
-                    }
-                    form {
-                        .louvre-button {
-                            display: none;
-                        }
+    .wrapper {
+        display: flex;
+        margin: 0;
+        justify-content: center;
+        grid-area: louvre-container;
+        padding: 0 20px;
+        .wrapper-container {
+            width: auto;
+            .louvre-container {
+                padding: 0 0 50px 0;
+                .louvre-title {
+                    width: 332px;
+                    font-size: 40px;
+                    line-height: 60px;
+                    text-align: center;
+                    margin: 0 auto;
+                }
+                .louvre-subtitle {
+                    font-size: 20px;
+                    line-height: 23.44px;
+                    width: 332px;
+                    padding: 0;
+                    padding-top: 25px;
+                    margin: 0 auto;
+                }
+                form {
+                    .louvre-button {
+                        display: none;
                     }
                 }
             }
         }
+    }
+
+    .burger-container {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: $color4;
+        z-index: 20;
+        .burger-wrapper {
+            max-width: 658px;
+            margin: 0 auto;
+            .container-nav__burger {
+                .navigation-burger {
+                    margin: 35px 0;
+                    li {
+                        width: 122px;
+                        margin-bottom: 25px;
+                        .navigation-item__burger {
+                            font-family: $font-roboto-light;
+                            font-style: normal;
+                            font-weight: 300;
+                            font-size: 20px;
+                            line-height: 23px;
+                            letter-spacing: 2px;
+                            color: $color2;
+                            display: flex;
+                            font-size: 20px;
+                            line-height: 23px;
+                            background: top 5.5px right 0 / 12px 12px no-repeat url(../assets/images/svg/burger/arrow.svg);
+                        }
+                    }
+                    li:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+            .burger-images {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto;
+                grid-template-areas: 'image1 image1'
+                                     'image2 image3';
+                row-gap: 20px;
+                column-gap: 20px;
+                padding-bottom: 35px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.5);;
+                .image-item {
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+                    img:nth-child(2) {
+                        display: none;
+                    }
+                }
+                .image-item:nth-child(1) {
+                    grid-area: image1;
+                }
+                .image-item:nth-child(2) {
+                    grid-area: image2;
+                }
+                .image-item:nth-child(3) {
+                    grid-area: image3;
+                }
+            }
+            .social-container {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                padding-right: 0;
+            }
+        }
+    }
+
+    .burger-container__active {
+        left: 0;
     }
 
     .control {
@@ -3178,27 +3322,60 @@ footer {
         }
     }
 
-    .welcom-louvre {
-        .wrapper {
-            .wrapper-container {
-                .louvre-container {
-                    width: 100%;
-                    padding: 6px 0 50px 0;
-                    .louvre-title {
-                        width: 252px;
-                        font-size: 28px;
-                        line-height: 40px;
-                        text-align: center;
-                        margin-left: 16px;
-                    }
-                    .louvre-subtitle {
-                        width: 278px;
-                        font-size: 16px;
-                        line-height: 18.75px;
-                    }
+    .wrapper {
+        .wrapper-container {
+            .louvre-container {
+                width: 100%;
+                padding: 6px 0 50px 0;
+                .louvre-title {
+                    width: 252px;
+                    font-size: 28px;
+                    line-height: 40px;
+                    text-align: center;
+                    margin-left: 16px;
+                }
+                .louvre-subtitle {
+                    width: 278px;
+                    font-size: 16px;
+                    line-height: 18.75px;
                 }
             }
         }
+    }
+
+    .burger-container {
+        .burger-wrapper {
+            .burger-images {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: auto;
+                grid-template-areas: 'image2 image1 image3';
+                row-gap: 0;
+                column-gap: 12px;
+                padding-bottom: 35px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+                .image-item {
+                    width: 100%;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .image-item:nth-child(1) {
+                    grid-area: image1;
+                }
+                .image-item:nth-child(2) {
+                    grid-area: image2;
+                }
+                .image-item:nth-child(3) {
+                    grid-area: image3;
+                }
+            }
+        }
+    }
+
+    .burger-container__active {
+        left: 0;
     }
 
     .control {
@@ -3809,7 +3986,94 @@ footer {
     }
 }
 
+@media (max-width: 420px) {
+    .burger-container {
+        .burger-wrapper {
+            .burger-images {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: auto;
+                grid-template-areas: 'image2 image1 image3';
+                row-gap: 0;
+                column-gap: 12px;
+                padding-bottom: 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+                .image-item {
+                    width: 100%;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                    img:nth-child(1) {
+                        display: none;
+                    }
+                    img:nth-child(2) {
+                        display: block;
+                    }
+                }
+                .image-item:nth-child(1) {
+                    grid-area: image1;
+                }
+                .image-item:nth-child(2) {
+                    grid-area: image2;
+                }
+                .image-item:nth-child(3) {
+                    grid-area: image3;
+                }
+            }
+        }
+    }
+
+    .burger-container__active {
+        left: 0;
+    }
+}
+
 @media (max-width: 400px) {
+
+    .burger-container {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: $color4;
+        z-index: 20;
+        .burger-wrapper {
+            max-width: 658px;
+            margin: 0 auto;
+            .container-nav__burger {
+                .navigation-burger {
+                    margin: 35px 0;
+                    li {
+                        width: 122px;
+                        margin-bottom: 10px;
+                        .navigation-item__burger {
+                            font-family: $font-roboto-light;
+                            font-style: normal;
+                            font-weight: 300;
+                            font-size: 20px;
+                            line-height: 23px;
+                            letter-spacing: 2px;
+                            color: $color2;
+                            display: flex;
+                            font-size: 20px;
+                            line-height: 23px;
+                            background: top 5.5px right 0 / 12px 12px no-repeat url(../assets/images/svg/burger/arrow.svg);
+                        }
+                    }
+                    li:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .burger-container__active {
+        left: 0;
+    }
 
     .booking-container__left {
         .left-form {
