@@ -387,6 +387,10 @@ header {
     }
 }
 
+.burger-container {
+    display: none;
+}
+
 /*Virtual Tour*/
 
 .virtual-tour {
@@ -2170,6 +2174,7 @@ footer {
 
 
     .burger-container {
+        display: block;
         position: absolute;
         top: 0;
         left: -100%;

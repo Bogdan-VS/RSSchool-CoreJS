@@ -486,6 +486,10 @@ header {
   background: #9D8665;
 }
 
+.burger-container {
+  display: none;
+}
+
 /*Virtual Tour*/
 .virtual-tour {
   background: #FFFFFF;
@@ -2591,6 +2595,7 @@ footer {
     position: relative;
   }
   .burger-container {
+    display: block;
     position: absolute;
     top: 0;
     left: -100%;
