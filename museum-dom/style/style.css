@@ -1066,6 +1066,19 @@ header {
   padding-bottom: 24px;
   width: 100%;
   height: auto;
+  -webkit-transform: translate(0, 15%);
+          transform: translate(0, 15%);
+  opacity: 0;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+.picture-container .picture-inner-container .image-active {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  opacity: 1;
 }
 
 .picture-container .picture-inner-container img:nth-child(1) {

@@ -35,3 +35,35 @@ function shuffle(array) {
 		[array[i], array[j]] = [array[j], array[i]];
 	}
 }
+
+
+const animImages = document.querySelectorAll('.gallery-img');
+window.addEventListener('scroll', addAnimationImage);
+function addAnimationImage () {
+
+	for (let i = 0; i < animImages.length; i++) {
+		const itemImage = animImages[i];
+		const itemImageHeight = itemImage.offsetHeight;
+		const animImagesOffset = offset(itemImage).top;
+		const animStart = 4;
+
+		let itemImagePoint = window.innerHeight - itemImageHeight / animStart;
+		if (itemImageHeight > window.innerHeight) {
+			itemImagePoint = window.innerHeight - window.innerHeight / animStart;
+		}
+
+		if ((pageYOffset > animImagesOffset - itemImagePoint) && pageYOffset <(animImagesOffset + itemImageHeight)) {
+			itemImage.classList.add('image-active');
+		} else {
+			itemImage.classList.remove('image-active');
+		}
+
+	}
+
+	function offset(el) {
+		const rect = el.getBoundingClientRect(),
+		      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+		return {top: rect.top + scrollTop}
+	}
+}
