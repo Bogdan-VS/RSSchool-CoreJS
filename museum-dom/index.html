@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="style/style.css">
     <title>Museum</title>
 </head>
@@ -272,7 +273,7 @@
         </section>
         <section class="vidio-journey" id="Video">
             <div class="wrapper">
-                <div class="wrapper-container">
+                <div class="wrapper-container video-wrapper">
                     <div class="text-container">
                         <div class="text-title">
                             <h2>Video journey</h2>
@@ -282,44 +283,43 @@
                         </div>
                     </div>
                     <div class="vidio-container">
-                        <video src="assets/video/WelcometotheLouvre.mp4" poster="assets/images/jpg/poster.jpg" class="video"></video>
+                        <video src="assets/Video/video0.mp4" poster="assets/images/jpg/Video/poster0.jpg" class="video"></video>
                         <button class="video-start">
                             <img class="disabled current" src="assets/images/svg/start.svg" alt="Start video">
                         </button>
                         <div class="adjustment">
                             <button class="start">
-                                <img class="disabled" src="assets/images/svg/start-m.svg" alt="Start">
+                                <img class="disabled current" src="assets/images/svg/start-m.svg" alt="Start">
+                                <img class="disabled" src="assets/images/svg/pause.svg" alt="Pause">
                             </button>
                             <input type="range" value="53.5" min="0" max="100" step="1" class="move-line">
-                            <input type="range" value="40" min="0" max="100" step="1" class="move-line__adaptive-1024">
-                            <input type="range" value="31" min="0" max="100" step="1" class="move-line__adaptive-768">
-                            <input type="range" value="40" min="0" max="100" step="1" class="move-line__adaptive-420">
                             <button class="microphone">
                                 <img class="volume current-volume" src="assets/images/svg/mircophone.svg" alt="Volume">
+                                <img class="volume" src="assets/images/svg/mute.svg" alt="Volume">
                             </button>
                             <input type="range" value="43" min="0" max="100" class="volume-line">
-                            <input type="range" value="40" min="0" max="100" class="volume-line__adaptive-768">
                             <button class="full">
-                                <img src="assets/images/svg/full.svg" alt="Full screen">
+                                <img class="fullscreen fullscreen__exit" src="assets/images/svg/full.svg" alt="Full screen">
+                                <img class="fullscreen" src="assets/images/svg/fullscreen_exit.svg" alt="Full screen">
                             </button>
                         </div>
                     </div>
                     <div class="video-slider swiper">
                         <div class="video-slider-wrapper swiper-wrapper">
                             <div class="video-slide swiper-slide">
-                                <iframe src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                <iframe data-video="1" src="https://www.youtube.com/embed/zp1BXPX8jcU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                             </div>
                             <div class="video-slide swiper-slide">
-                                <iframe src="https://www.youtube.com/embed/Vi5D6FKhRmo" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                <iframe data-video="2" src="https://www.youtube.com/embed/Vi5D6FKhRmo" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                             </div>
                             <div class="video-slide swiper-slide">
-                                <iframe src="https://www.youtube.com/embed/NOhDysLnTvY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                <iframe data-video="3" src="https://www.youtube.com/embed/NOhDysLnTvY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                             </div>
                             <div class="video-slide swiper-slide">
-                                <iframe src="https://www.youtube.com/embed/zp1BXPX8jcU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                <iframe data-video="4" src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                             </div>
                             <div class="video-slide swiper-slide">
-                                <iframe src="https://www.youtube.com/embed/2OR0OCr6uRE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                <iframe data-video="5" src="https://www.youtube.com/embed/2OR0OCr6uRE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                             </div>
                         </div>
                         <div class="swiper-pagination"></div>
@@ -537,15 +537,15 @@
                                     <h4>Ticket Type</h4>
                                     <div class="type-container">
                                         <label class="type-container__block">Permanent exhibition
-                                            <input type="radio" name="radio" checked="checked">
+                                            <input type="radio" name="radio" value="1" checked class="check" data-check="check">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="type-container__block">Temporary exhibition
-                                            <input type="radio" name="radio">
+                                            <input type="radio" name="radio" value="2" class="check" data-check="check">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="type-container__block">Combined Admission
-                                            <input type="radio" name="radio">
+                                            <input type="radio" name="radio" value="3" class="check" data-check="check">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -555,21 +555,21 @@
                                     <div class="amount-container">
                                         <h4>Basic 18+</h4>
                                         <div class="amount-container__block">
-                                            <button class="button-amount" onclick="this.nextElementSibling.stepDown()">–</button>
-                                            <input type="number" min="0" max="20" value="1" readonly class="amount-item">
-                                            <button class="button-amount" onclick="this.previousElementSibling.stepUp()">+</button>
+                                            <button class="button-amount" onclick="this.nextElementSibling.stepDown()" data-basic="basic">–</button>
+                                            <input type="number" min="0" max="20" value="1" readonly class="amount-item basic">
+                                            <button class="button-amount" onclick="this.previousElementSibling.stepUp()" data-basic="basic">+</button>
                                         </div>
                                     </div>
                                     <div class="amount-container">
                                         <h4>Senior 65+</h4>
                                         <div class="amount-container__block">
-                                            <button class="button-amount" onclick="this.nextElementSibling.stepDown()">–</button>
-                                            <input type="number" min="0" max="20" value="1" readonly class="amount-item">
-                                            <button class="button-amount" onclick="this.previousElementSibling.stepUp()">+</button>
+                                            <button class="button-amount" onclick="this.nextElementSibling.stepDown()" data-basic="sanior">–</button>
+                                            <input type="number" min="0" max="20" value="1" readonly class="amount-item sanior">
+                                            <button class="button-amount" onclick="this.previousElementSibling.stepUp()" data-basic="sanior">+</button>
                                         </div>
                                     </div>
                                     <div class="total">
-                                        <h4><span>Total €</span><span>220</span></h4>
+                                        <h4><span>Total €</span><span>30</span></h4>
                                     </div>
                                     <button class="amount-button">Buy Now</button>
                                 </div>
@@ -608,17 +608,8 @@
                                 <a href="mailto:info@louvre.fr" target="_blank">info@louvre.fr</a>
                             </div>
                         </div>
-                        <div class="contacts-map map-1">
-                            <img src="assets/images/png/map.png" alt="Contacts map">
-                        </div>
-                        <div class="contacts-map map-2">
-                            <img src="assets/images/png/map-1024.png" alt="Contacts map">
-                        </div>
-                        <div class="contacts-map map-3">
-                            <img src="assets/images/png/map-768.png" alt="Contacts map">
-                        </div>
-                        <div class="contacts-map map-4">
-                            <img src="assets/images/png/map-420.png" alt="Contacts map">
+                        <div class="map-container">
+                            <div class="contacts-map" id='map'></div>
                         </div>
                     </div>
                 </div>
@@ -671,6 +662,7 @@
         </div>
     </footer>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
     <script src="js/gallery.js"></script>
     <script src="js/index.js"></script>
 </body>

@@ -1,5 +1,7 @@
 'use strict';
 
+/**Burger */
+
 const containerMenu = document.querySelector('.burger-container');
 const burgerMenu = document.querySelector('.menu-burger');
 const sliderActive = document.querySelector('.louvre-slider-wrapper');
@@ -37,6 +39,8 @@ if (menuLink.length > 0) {
         sliderWrapActive.classList.toggle('slider-wrap_active');
     }
 }
+
+/**Burger End*/
 
 
 /***SLIDER */
@@ -79,35 +83,34 @@ right.addEventListener('click', function() {
 slides.addEventListener('transitionend', function() {
 
     if (flag) {
-        console.log(controlTab.onclick);
         return;
     } else {
         if (!flagUp) {
             slides.style.transition = 'none';
             slides.style.transform = 'translate(-20%, 0)';
       
-              let last = slides.querySelector('.louvre-image:last-of-type');
-      
-              last.remove();
-          
-              slides.prepend(last);
-          
-              setTimeout(function(){
-                slides.style.transition = '';
-              });
-          } else if (flagUp) {
+            let last = slides.querySelector('.louvre-image:last-of-type');
+    
+            last.remove();
+        
+            slides.prepend(last);
+        
+            setTimeout(function(){
+            slides.style.transition = '';
+            });
+        } else if (flagUp) {
             slides.style.transition = 'none';
             slides.style.transform = 'translate(-20%, 0)';
           
-              let first = slides.querySelector('.louvre-image:first-of-type');
-              first.remove();
-          
-              slides.append(first);
-          
-              setTimeout(function(){
-                slides.style.transition = '';
-              });
-          }
+            let first = slides.querySelector('.louvre-image:first-of-type');
+            first.remove();
+        
+            slides.append(first);
+        
+            setTimeout(function(){
+            slides.style.transition = '';
+            });
+        }
     }
 });
 
@@ -117,10 +120,7 @@ const controlNumber = document.querySelector('.control-number span:nth-child(1)'
 const addPaginationRight = () => {
     countPagin++;
     countNumber++;
-    console.log('Номер квадрата: ' + countPagin);
-    console.log('Номер слайда ' + countNumber);
     if (countPagin < 5) {
-        console.log(25);
         pagination.forEach(element => {
             element.classList.remove('active');
         })
@@ -151,14 +151,12 @@ const controlTab = document.querySelector('.control-tab');
 controlTab.onclick = function(event) {
     let target = event.target;
     flag = true;
-    console.log(target.dataset.count);
     addSlide(target.dataset.count);
 }
 
 const addSlide = (num) => {
     if (num == 5) {
         countPagin = num - 1;
-        console.log(true);
         slides.style.transform = 'translate(0, 0)';
         pagination.forEach(element => {
             element.classList.remove('active');
@@ -173,7 +171,6 @@ const addSlide = (num) => {
         })
 
         pagination[num - 1].classList.add('active');
-        console.log(num);
     }
     
     countNumber = num;
@@ -222,42 +219,234 @@ window.onload = function() {
 
 /**Slider explore end */
 
-/**Video */
+/**Video*/
 const moveLine = document.querySelector('.move-line'),
-      volumeLine = document.querySelector('.volume-line')
-const volumeLineAdaptive768 = document.querySelector('.volume-line__adaptive-768');      
-const moveLineAdaptive1024 = document.querySelector('.move-line__adaptive-1024');
-const moveLineAdaptive768 = document.querySelector('.move-line__adaptive-768');
-const moveLineAdaptive420 = document.querySelector('.move-line__adaptive-420');
+      volumeLine = document.querySelector('.volume-line'),
+      player = document.querySelector('.video'),
+      start = document.querySelector('.video-start'),
+      startBtn = document.querySelector('.start'),
+      disabled = document.querySelectorAll('.disabled'),
+      volume = document.querySelectorAll('.volume'),
+      full = document.querySelector('.full'),
+      fullscreen =document.querySelectorAll('.fullscreen'),
+      controls = document.querySelector('.adjustment'),
+      videoContainer = document.querySelector('.vidio-container'),
+      mute = document.querySelector('.microphone');
 
+const valueB = volumeLine.value;
+
+start.addEventListener('click', function() {
+  startPlayer();
+});
+
+startBtn.addEventListener('click', function() {
+    startPlayer();
+});
+
+moveLine.addEventListener('click', function() {
+    rewindMoveLine();
+})
+
+mute.addEventListener('click', function() {
+    addMute();
+})
+
+full.addEventListener('click', function() {
+    fullScreenBtn();
+})
+
+document.addEventListener('keydown', function(e) {
+    if (event.code === 'Space') {
+      e.stopPropagation();
+      e.preventDefault();
+      startPlayerBtn();
+    }
+}, false)
+
+document.addEventListener('keydown', function() {
+    fullScreen();
+})
+
+document.addEventListener('keydown', function() {
+    addMuteBtn();
+})
+
+document.addEventListener('keydown', function() {
+    addSpeedUp();
+})
+
+document.addEventListener('keydown', function() {
+    addSpeedDown();
+})
+
+player.addEventListener('ended', function() {
+    disabled[0].classList.toggle('current');
+    disabled[1].classList.toggle('current');
+    disabled[2].classList.toggle('current');
+})
 
 moveLine.addEventListener('input', function() {
     let value = this.value;
     this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
 })
-moveLineAdaptive1024.addEventListener('input', function() {
-    let value = this.value;
-    this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
-})
-moveLineAdaptive768.addEventListener('input', function() {
-    let value = this.value;
-    this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
-})
-moveLineAdaptive420.addEventListener('input', function() {
-    let value = this.value;
-    this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
-})
 
 volumeLine.addEventListener('input', function() {
+    changeVolumeLine();
     let value = this.value;
     this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
-})
-volumeLineAdaptive768.addEventListener('input', function() {
-    let value = this.value;
-    this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
+    if (value == 0) {
+        volume[1].classList.toggle('current-volume');
+        volume[0].classList.toggle('current-volume');
+    } else {
+        volume[0].classList.add('current-volume');
+        volume[1].classList.remove('current-volume');
+    }
 })
 
+const addSpeedUp = () => {
+    if (event.code === 'Period') {
+        if (player.playbackRate != 2) {
+            player.playbackRate = 2;
+        } else {
+            player.playbackRate = 1;
+        }
+    }
+}
+
+const addSpeedDown = () => {
+    if (event.code === 'Comma') {
+        if (player.playbackRate != 0.5) {
+            player.playbackRate = 0.5;
+        } else {
+            player.playbackRate = 1;
+        }
+    }
+}
+
+const changeMoveLine = () => {
+    moveLine.value = player.currentTime * 100 / player.duration;
+    const value = moveLine.value;
+    moveLine.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
+}
+
+player.ontimeupdate = changeMoveLine;
+
+const changeVolumeLine = () => {
+    player.volume = volumeLine.value / 100;
+}
+
+const startPlayerBtn = () => {
+    if (event.code === 'Space') {
+        event.stopPropagation();
+        if (player.paused) {
+            player.play();
+            disabled[0].classList.toggle('current');
+            disabled[1].classList.toggle('current');
+            disabled[2].classList.toggle('current');
+        } else {
+            player.pause();
+            disabled[0].classList.toggle('current');
+            disabled[1].classList.toggle('current');
+            disabled[2].classList.toggle('current');
+        }
+    }
+}
+  
+const startPlayer = () => {
+    if (player.paused) {
+      player.play();
+      disabled[0].classList.toggle('current');
+      disabled[1].classList.toggle('current');
+      disabled[2].classList.toggle('current');
+    } else {
+      player.pause();
+      disabled[0].classList.toggle('current');
+      disabled[1].classList.toggle('current');
+      disabled[2].classList.toggle('current');
+    }
+}
+
+const rewindMoveLine = () => {
+    let w = moveLine.offsetWidth;
+    let o = event.offsetX;
+    let p = o * 100 / w;
+    player.currentTime = (p * Math.floor(player.duration) / 100);
+}
+
+const addMute = () => {
+    const valueMute = 0;
+
+    if (player.muted === false) {
+      player.muted = true;
+      volumeLine.value = valueMute;
+      volumeLine.style.background = `linear-gradient(to right, #710707 0%, #710707 ${valueMute}%, #C4C4C4 ${valueMute}%, #C4C4C4 100%)`;
+      volume[1].classList.toggle('current-volume');
+      volume[0].classList.toggle('current-volume');
+    } else {
+      player.muted = false;
+      volumeLine.value = valueB;
+      volumeLine.style.background = `linear-gradient(to right, #710707 0%, #710707 ${valueB}%, #C4C4C4 ${valueB}%, #C4C4C4 100%)`;
+      volume[1].classList.toggle('current-volume');
+      volume[0].classList.toggle('current-volume');
+    }
+}
+
+const addMuteBtn = () => {
+    if (event.code === 'Keym' || event.code === 'KeyM') {
+        const valueMute = 0;
+    
+        if (player.muted === false) {
+          player.muted = true;
+          volumeLine.value = valueMute;
+          volumeLine.style.background = `linear-gradient(to right, #710707 0%, #710707 ${valueMute}%, #C4C4C4 ${valueMute}%, #C4C4C4 100%)`;
+          volume[1].classList.toggle('current-volume');
+          volume[0].classList.toggle('current-volume');
+        } else {
+          player.muted = false;
+          volumeLine.value = valueB;
+          volumeLine.style.background = `linear-gradient(to right, #710707 0%, #710707 ${valueB}%, #C4C4C4 ${valueB}%, #C4C4C4 100%)`;
+          volume[1].classList.toggle('current-volume');
+          volume[0].classList.toggle('current-volume');
+        }
+    }
+}
+
+const fullScreen = () => {
+    if (event.code === 'Keyf' || event.code === 'KeyF') {
+      if (!document.fullscreenElement) {
+        videoContainer.requestFullscreen();
+        controls.classList.toggle('adjustment__full');
+        fullscreen[0].classList.toggle('fullscreen__exit');
+        fullscreen[1].classList.toggle('fullscreen__exit');
+      } else {
+        document.exitFullscreen();
+        controls.classList.toggle('adjustment__full');
+        fullscreen[0].classList.toggle('fullscreen__exit');
+        fullscreen[1].classList.toggle('fullscreen__exit');
+      }
+    }
+}
+
+const fullScreenBtn = () => {
+    if (event.code !== 'undefined') {
+      if (!document.fullscreenElement) {
+        videoContainer.requestFullscreen();
+        controls.classList.toggle('adjustment__full');
+        fullscreen[0].classList.toggle('fullscreen__exit');
+        fullscreen[1].classList.toggle('fullscreen__exit');
+      } else {
+        document.exitFullscreen();
+        controls.classList.toggle('adjustment__full');
+        fullscreen[0].classList.toggle('fullscreen__exit');
+        fullscreen[1].classList.toggle('fullscreen__exit');
+      }
+    }
+}
+
+
 /**Video End */
+
+/**Video Slider*/
 
 new Swiper('.video-slider', {
     slidesPerView: 3,
@@ -292,12 +481,88 @@ new Swiper('.video-slider', {
     }
 });
 
+/**Video Slider End*/
+
 /**Booking-tickets */
 
 const ticket = document.querySelector('.booking-tickets'),
       overlay = document.querySelector('.overlay'),
       btnTicket = document.querySelector('.amount-button'),
       btnClose = document.querySelector('.close');
+
+const buttonAmount = document.querySelectorAll('.button-amount');
+const amountContainerBlock = document.querySelectorAll('.amount-container__block');
+const check = document.querySelectorAll('.check');
+const typeContayner = document.querySelector('.type-container');
+
+
+amountContainerBlock[0].onclick = function(event) {
+    let target = event.target;
+    console.log(target.dataset.basic)
+    if (target.dataset.basic == 'basic') {
+        totalCountTickets();
+    }
+}
+
+amountContainerBlock[1].onclick = function(event) {
+    let target = event.target;
+    console.log(target.dataset.sanior)
+    if (target.dataset.basic == 'sanior') {
+        totalCountTickets();
+    }
+}
+
+typeContayner.onclick = function(event) {
+    let target = event.target;
+    if (target.dataset.check == 'check') {
+        totalCountTickets();
+    }
+}
+
+let save = totalCountTickets();
+
+localStorage.setItem('saveTotalCount', save);
+console.log(localStorage.getItem('saveTotalCount'));
+
+function totalCountTickets () {
+
+    const total = document.querySelector('.total span:nth-child(2)');
+    const basic = document.querySelector('.basic');
+    const sanior = document.querySelector('.sanior');    
+
+    const permanentTicket = 20;
+    const temporaryTicket = 25;
+    const combinedTicket = 40;
+    let basicCount;
+    let seniorCount;
+    let totalCount;
+    let countCheck = 1;
+
+    for (let i = 0; i < check.length; i++) {
+        if (check[i].checked) {
+            countCheck = check[i].value;
+        }
+    }
+
+    if (countCheck == 1) {
+        basicCount = permanentTicket * basic.value;
+        seniorCount = permanentTicket / 2 * sanior.value;
+        totalCount = +(basicCount) + +(seniorCount);
+        localStorage.setItem("someVarKey", totalCount);
+        total.innerHTML = localStorage.getItem("someVarKey");
+        return total.innerHTML;
+    } else if (countCheck == 2) {
+        basicCount = temporaryTicket * basic.value;
+        seniorCount = temporaryTicket / 2 * sanior.value;
+        totalCount = +(basicCount) + +(seniorCount);
+        return total.innerHTML = totalCount;
+    } else {
+        basicCount = combinedTicket * basic.value;
+        seniorCount = combinedTicket / 2 * sanior.value;
+        totalCount = +(basicCount) + +(seniorCount);
+        return total.innerHTML = totalCount;
+    }
+}
 
 let overlayActive;
     
@@ -325,6 +590,36 @@ const buyTickets = () => {
 }
 
 /**Booking-tickets End */
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiZGVudml0ZSIsImEiOiJja3VsbWZra24wMjZhMm9vYWRoem96cXBvIn0.HmGq0Lvzh4rH_32pqeoS_A';
+const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/denvite/ckumnz46aes3p17mp63vp3r0d',
+    center: [2.3358, 48.8610],
+    zoom: 15.8
+});
+
+map.addControl(new mapboxgl.NavigationControl());
+
+const marker1 = new mapboxgl.Marker({color: 'gray'})
+.setLngLat([2.3329, 48.8618])
+.addTo(map);
+
+const marker2 = new mapboxgl.Marker({color: 'gray'})
+.setLngLat([2.3370991861181665,48.86309999936893])
+.addTo(map);
+
+const marker3 = new mapboxgl.Marker({color: 'gray'})
+.setLngLat([2.333008687539632,48.86004893163957])
+.addTo(map);
+
+const marker4 = new mapboxgl.Marker({color: 'gray'})
+.setLngLat([2.3397836022322736,48.86077918899949])
+.addTo(map);
+
+const marker5 = new mapboxgl.Marker({color: 'black'})
+.setLngLat([2.336337893750624,48.86080124478542])
+.addTo(map);
 
 // console.log('Самооценка:');
 // console.log('header, main, footer 2 / 2');
