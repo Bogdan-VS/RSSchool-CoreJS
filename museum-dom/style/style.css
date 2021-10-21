@@ -1071,8 +1071,8 @@ header {
   opacity: 0;
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
-  -webkit-transition: all 0.8s;
-  transition: all 0.8s;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 .picture-container .picture-inner-container .image-active {
