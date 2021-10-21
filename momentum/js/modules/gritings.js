@@ -31,22 +31,22 @@ function getTimeOfDay() {
 
     if (hours >= 6 && hours <= 11) {
         timeOfDay = 'morning';
-        greeting.innerHTML = `Good ${timeOfDay}`;
+        greeting.innerHTML = `Good ${timeOfDay}, `;
     }
 
     if (hours >= 12 && hours <= 17) {
-        timeOfDay = 'afternon';
-        greeting.innerHTML = `Good ${timeOfDay}`;
+        timeOfDay = 'afternoon';
+        greeting.innerHTML = `Good ${timeOfDay}, `;
     }
 
     if (hours >= 18 && hours <= 23) {
         timeOfDay = 'evening';
-        greeting.innerHTML = `Good ${timeOfDay}`;
+        greeting.innerHTML = `Good ${timeOfDay}, `;
     }
 
     if (hours >= 0 && hours <= 5) {
         timeOfDay = 'night';
-        greeting.innerHTML = `Good ${timeOfDay}`;
+        greeting.innerHTML = `Good ${timeOfDay}, `;
     }
 
     setTimeout(getTimeOfDay, 1000);
@@ -92,7 +92,6 @@ function getRandomArbitrary(min, max) {
 }
 
 getRandomArbitrary(1, 20);
-console.log(getRandomArbitrary(1, 20));
 
 function getSlideNext() {
     if (randomNum < 20) {
