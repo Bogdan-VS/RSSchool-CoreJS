@@ -64,7 +64,6 @@ getRandomNum();
 function setBg() {
     let img = new Image();
     randomNum = String(randomNum).padStart(2, '0');
-    console.log(randomNum);
     img.src = `https://raw.githubusercontent.com/Bogdan-VS/stage1-tasks/assets/images/${timeOfDay}/${randomNum}.jpg`;
     img.onload = () => {
         body.style.backgroundImage = body.style.backgroundImage = `url('https://raw.githubusercontent.com/Bogdan-VS/stage1-tasks/assets/images/${timeOfDay}/${randomNum}.jpg')`;
