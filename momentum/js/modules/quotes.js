@@ -11,7 +11,6 @@ const getQuotes = () => {
 
         author.textContent = `${data[randomNum].author}`;
         quote.textContent = `${data[randomNum].text}`;
-        console.log(data[0].author);
       });
 }
 
@@ -19,7 +18,6 @@ getQuotes();
 
 const getNumberQuote = (min, max) => {
   let number = String(Math.floor(Math.random() * (max - min) + min));
-  console.log(number);
   return number;
 }
 
