@@ -35,7 +35,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 350px;
+  width: 600px;
   margin-bottom: 28px;
 }
 
@@ -93,10 +93,15 @@ body {
   color: #C5B358;
 }
 
+.progress-container {
+  position: relative;
+}
+
 .audio-line {
   height: 8px;
   width: 150px;
   margin-left: 20px;
+  border-radius: 3px;
   background: linear-gradient(to right, rgb(169 18 18) 25%, rgb(169 18 18) 25%, rgb(196, 196, 196) 0%, rgb(196, 196, 196) 100%);
   outline: none;
   transition: background 450ms ease-in;
@@ -104,10 +109,39 @@ body {
   cursor: pointer;
 }
 
+.track-title {
+  position: absolute;
+  top: -24px;
+  left: 20px;
+  width: 450px;
+  text-align: left;
+}
+
 .audio-line::-webkit-slider-thumb {
   opacity: 0;
   max-width: 15px;
   height: 15px;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: #C4C4C4;
+}
+
+.volume-line {
+  margin-left: 20px;
+  height: 5px;
+  width: 70px;
+  margin-right: 50px;
+  background: linear-gradient(to right, rgb(169 18 18) 0%, rgb(169 18 18) 43%, #C4C4C4 43%, #C4C4C4 100%);
+  outline: none;
+  transition: background 450ms ease-in;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.volume-line::-webkit-slider-thumb {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   -webkit-appearance: none;
   cursor: pointer;
@@ -167,6 +201,38 @@ body {
   margin-left: 20px;
 }
 
+.microphone {
+  width: 32px;
+  height: 32px;
+  margin-left: 20px;
+  border: 0;
+  outline: 0;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: .3s; 
+  background: url(../assets/svg/micro.svg) center / contain no-repeat;
+}
+
+.microphone:hover {
+  opacity: 1;
+}
+
+.mute {
+  width: 32px;
+  height: 32px;
+  margin-left: 20px;
+  border: 0;
+  outline: 0;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: .3s; 
+  background: url(../assets/svg/mute.svg) center / contain no-repeat;
+}
+
+.mute:hover {
+  opacity: 1;
+}
+
 .weather {
   display: flex;
   flex-direction: column;
@@ -189,6 +255,7 @@ body {
   line-height: 31px;
   padding-left: 30px;
   cursor: pointer;
+  transition: .3s; 
 }
 
 .track-list:hover {
