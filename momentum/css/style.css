@@ -102,7 +102,7 @@ body {
   width: 150px;
   margin-left: 20px;
   border-radius: 3px;
-  background: linear-gradient(to right, rgb(169 18 18) 25%, rgb(169 18 18) 25%, rgb(196, 196, 196) 0%, rgb(196, 196, 196) 100%);
+  background: linear-gradient(to right, rgb(169 18 18) 0%, rgb(169 18 18) 0%, rgb(196, 196, 196) 0%, rgb(196, 196, 196) 100%);
   outline: none;
   transition: background 450ms ease-in;
   -webkit-appearance: none;

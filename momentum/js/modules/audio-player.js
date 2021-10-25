@@ -60,21 +60,20 @@ const addPlay = async () => {
     const list = 'js/modules/audio.json';
     const res = await fetch(list);
     const data = await res.json();
-    
+
     trackTitle.innerHTML = `${data[counter].title}`;
     if (audioPlayer.paused) {
-        console.log('play')
         audioPlayer.play();
         trackList.classList.add('track-list__active');
         trackList.classList.add('track-list__active::before');
         play.classList.add('pause');
     } else {
-        console.log('pause')
         audioPlayer.pause();
         trackList.classList.remove('track-list__active');
         trackList.classList.remove('track-list__active::before');
         play.classList.remove('pause');
     }
+
 }
 
 const clearTrack = () => {
@@ -87,7 +86,7 @@ const clearTrack = () => {
 
 const changeAudioLine = () => {
     audioLine.value = audioPlayer.currentTime * 100 / audioPlayer.duration;
-    const value = audioLine.value;
+    const value = audioPlayer.duration ? audioLine.value : 0;
     audioLine.style.background = `linear-gradient(to right, rgb(169 18 18) 0%, rgb(169 18 18) ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
     
     let minutes = Math.floor(audioPlayer.currentTime / 60);
@@ -116,7 +115,7 @@ const changeAudioLine = () => {
         secondsVal = '0' + seconds;
     }
 
-    audioTime.innerHTML = `${minutesVal}:${secondsVal} / ${generalMinVal}:${generalSecVal}`;
+    audioTime.innerHTML = `${minutesVal}:${secondsVal} / ${generalMinVal || '00'}:${generalSecVal || '00'}`;
 }
 
 audioPlayer.ontimeupdate = changeAudioLine;
@@ -153,7 +152,6 @@ audioPlayer.addEventListener('ended', function() {
 
 
 playList.onclick = async function(event) {
-    console.log(playList);
     let target = event.target;
     counter = +(target.dataset.set);
     
@@ -161,12 +159,15 @@ playList.onclick = async function(event) {
     const res = await fetch(list);
     const data = await res.json();
     clearTrack();
-    if (counter >= 0) {
+
+    if (audioPlayer.src !== `${data[counter].src}`) {
         audioPlayer.src = `${data[counter].src}`;
+    }
+
+    if (counter >= 0) {
         addPlay();
     } else {
         counter = 5;
-        audioPlayer.src = `${data[counter].src}`;
         addPlay();
     }
 }
