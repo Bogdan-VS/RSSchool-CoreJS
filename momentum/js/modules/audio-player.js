@@ -5,6 +5,11 @@ const audioTime = document.querySelector('.audio-time');
 const playList = document.querySelector('.play-list')
 const playNext = document.querySelector('.play-next');
 const playPrev = document.querySelector('.play-prev');
+const trackTitle = document.querySelector('.track-title');
+const volumeLine = document.querySelector('.volume-line');
+const microphone = document.querySelector('.microphone');
+
+const valueB = volumeLine.value;
 
 let counter = 0;
 
@@ -50,14 +55,21 @@ const playPrevTrack = async () => {
     }
 }
 
-const addPlay = () => {
-    const trackList = document.querySelector(`.track-list:nth-child(${counter + 1})`); 
+const addPlay = async () => {
+    const trackList = document.querySelector(`.track-list:nth-child(${counter + 1})`);
+    const list = 'js/modules/audio.json';
+    const res = await fetch(list);
+    const data = await res.json();
+    
+    trackTitle.innerHTML = `${data[counter].title}`;
     if (audioPlayer.paused) {
+        console.log('play')
         audioPlayer.play();
         trackList.classList.add('track-list__active');
         trackList.classList.add('track-list__active::before');
         play.classList.add('pause');
     } else {
+        console.log('pause')
         audioPlayer.pause();
         trackList.classList.remove('track-list__active');
         trackList.classList.remove('track-list__active::before');
@@ -73,28 +85,6 @@ const clearTrack = () => {
     });
 }
 
-playNext.addEventListener('click', function() {
-    playNextTrack();
-})
-
-playPrev.addEventListener('click', function() {
-    playPrevTrack();
-})
-
-play.addEventListener('click', function() {
-    Audio.currentTime = 0;
-    addPlay();
-})
-
-audioLine.addEventListener('click', function() {
-    rewindAudioLine();
-})
-
-audioLine.addEventListener('input', function() {
-    let value = this.value;
-    this.style.background = `linear-gradient(to right, rgb(169 18 18) 0%, rgb(169 18 18) ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
-})
-
 const changeAudioLine = () => {
     audioLine.value = audioPlayer.currentTime * 100 / audioPlayer.duration;
     const value = audioLine.value;
@@ -105,6 +95,19 @@ const changeAudioLine = () => {
     let minutesVal = minutes;
     let secondsVal = seconds;
 
+    let generalMin = Math.floor(audioPlayer.duration / 60);
+    let generalSec = Math.floor(audioPlayer.duration - generalMin * 60);
+    let generalMinVal = generalMin;
+    let generalSecVal = generalSec;
+
+    if (generalMin < 10) {
+        generalMinVal = '0' + generalMin;
+    }
+
+    if (generalSec < 10) {
+        generalSecVal = '0' + generalSec;
+    }
+
     if (minutes < 10) {
         minutesVal = '0' + minutes;
     }
@@ -113,7 +116,7 @@ const changeAudioLine = () => {
         secondsVal = '0' + seconds;
     }
 
-    audioTime.innerHTML = `${minutesVal}:${secondsVal}`;
+    audioTime.innerHTML = `${minutesVal}:${secondsVal} / ${generalMinVal}:${generalSecVal}`;
 }
 
 audioPlayer.ontimeupdate = changeAudioLine;
@@ -146,6 +149,9 @@ audioPlayer.addEventListener('ended', function() {
     playNextTrack();
 })
 
+
+
+
 playList.onclick = async function(event) {
     console.log(playList);
     let target = event.target;
@@ -163,5 +169,62 @@ playList.onclick = async function(event) {
         audioPlayer.src = `${data[counter].src}`;
         addPlay();
     }
-    
 }
+
+playNext.addEventListener('click', function() {
+    playNextTrack();
+})
+
+playPrev.addEventListener('click', function() {
+    playPrevTrack();
+})
+
+play.addEventListener('click', function() {
+    Audio.currentTime = 0;
+    addPlay();
+})
+
+audioLine.addEventListener('click', function() {
+    rewindAudioLine();
+})
+
+audioLine.addEventListener('input', function() {
+    let value = this.value;
+    this.style.background = `linear-gradient(to right, rgb(169 18 18) 0%, rgb(169 18 18) ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
+})
+
+
+volumeLine.addEventListener('input', function() {
+    changeVolumeLine();
+    let value = this.value;
+    this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
+    if (value == 0) {
+        microphone.classList.add('mute');
+    } else {
+        microphone.classList.remove('mute');
+    }
+})
+
+const changeVolumeLine = () => {
+    audioPlayer.volume = volumeLine.value / 100;
+}
+
+const addMute = () => {
+    const valueMute = 0;
+
+    if (audioPlayer.muted === false) {
+        audioPlayer.muted = true;
+        volumeLine.value = valueMute;
+        volumeLine.style.background = `linear-gradient(to right, rgb(169 18 18) 0%, rgb(169 18 18) ${valueMute}%, #C4C4C4 ${valueMute}%, #C4C4C4 100%)`;
+        microphone.classList.toggle('mute');
+    } else {
+        audioPlayer.muted = false;
+        volumeLine.value = valueB;
+        volumeLine.style.background = `linear-gradient(to right, rgb(169 18 18) 0%, rgb(169 18 18) ${valueB}%, #C4C4C4 ${valueB}%, #C4C4C4 100%)`;
+        microphone.classList.toggle('mute');
+    }
+}
+
+microphone.addEventListener('click', function() {
+    addMute();
+})
