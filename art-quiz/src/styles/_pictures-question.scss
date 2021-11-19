@@ -1,0 +1,62 @@
+.time-container {
+    display: none;
+}
+
+.time-container__active {
+    display: block;
+}
+
+.container-question {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    .container-content {
+        .title {
+            color: #FFFFFF;
+            text-align: center;
+            margin: 20px;
+            font-size: 20px;
+        }
+        .pictures-container {
+            width: 100%;
+            padding-bottom: 60%;
+            border-radius: 20px;
+            background: top 0 left 0 / 100% 100% url('https://raw.githubusercontent.com/Bogdan-VS/image-data/master/img/0.jpg');
+        }
+        .answer-buttons {
+            display: grid;
+            margin-top: 30px;
+            width: 100%;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 50px 50px;
+            column-gap: 15px;
+            row-gap: 15px;
+            button {
+                width: 290px;
+                height: 50px;
+                border: 1.5px solid #FFFFFF;
+                border-radius: 60px;
+                background-color: transparent;
+                color: white;
+                font-size: 25px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: 0.2s;
+            }
+    
+            button:hover {
+                border: 1.5px solid rgb(179, 1, 1);
+                color: rgb(179, 1, 1);
+                -webkit-box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.2) inset;
+                -moz-box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.2) inset;
+                box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.2) inset;
+                transform: scale(1.05);
+            }
+            
+        }
+    }
+}
+
+.container-question__active {
+    display: flex;
+}
