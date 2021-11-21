@@ -2,7 +2,7 @@ const settingsItem = document.querySelector('.settings-item');
 const main = document.querySelector('main');
 const settings = document.querySelector('.settings');
 
-const settingsWrapper = document.createElement('div');
+export const settingsWrapper = document.createElement('div');
 
 let settingsFlag = false;
 

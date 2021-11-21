@@ -11,19 +11,21 @@ const body = document.querySelector('body');
 const artistWrapper = document.createElement('div');
 const artistTitle = document.createElement('div');
 
-let activeSetting = true;
-let activeArtistPage = false;
-let activePicturesPage = false;
+ export const appFlags = {
+    activeSetting: true,
+    activeArtistPage: false,
+    activePicturesPage: false,
+}
 
 artist.addEventListener('click', function() {
-    activeArtistPage = true;
-    activePicturesPage = false;
+    appFlags.activeArtistPage = true;
+    appFlags.activePicturesPage = false;
     openArtistPage();
 })
 
 pictures.addEventListener('click', function() {
-    activePicturesPage = true;
-    activeArtistPage = false;
+    appFlags.activePicturesPage = true;
+    appFlags.activeArtistPage = false;
     openArtistPage();
 })
 
@@ -31,12 +33,12 @@ settingsItem.addEventListener('click', function() {
     openSettings();
 })
 
-body.onclick = function(event) {
+body.addEventListener('click', (event) => {
     let target = event.target
     if (target.dataset.set === 'home') {
         openMainPage();
     }
-}
+})
 
 const drowArtistPage = () => {
 
@@ -85,16 +87,13 @@ drowArtistPage();
 
 const openArtistPage = () => {
 
-    // activeArtistPage = true;
     settings.classList.toggle('settings-artist__active');
     artistTitle.classList.toggle('artist-title__active');
     artistWrapper.classList.toggle('artist-wrapper__active');
     document.querySelector('.main-container').classList.toggle('main-container__active');
     const artistCont = document.querySelectorAll('.artist-container')
 
-    console.log(activeArtistPage);
-
-    if (activeArtistPage) {
+    if (appFlags.activeArtistPage) {
 
         artistCont.forEach((element, index) => {
             element.classList.add('artistCurrent');
@@ -104,7 +103,7 @@ const openArtistPage = () => {
         });
     }
 
-    if (activePicturesPage) {
+    if (appFlags.activePicturesPage) {
         artistCont.forEach((element, index) => {
             element.classList.add('picturesCurrent');
             element.classList.remove('artistCurrent');
@@ -116,9 +115,9 @@ const openArtistPage = () => {
 
 const openSettings = () => {
 
-    if (activeArtistPage) {
-        if (activeSetting) {
-            activeSetting = false;
+    if (appFlags.activeArtistPage) {
+        if (appFlags.activeSetting) {
+            appFlags.activeSetting = false;
             settings.classList.toggle('settings-artist__active');
             artistTitle.classList.toggle('artist-title__active');
             artistWrapper.classList.toggle('artist-wrapper__active');
@@ -127,7 +126,7 @@ const openSettings = () => {
             settingsItem.classList.toggle('settings-item__active');
             document.querySelector('.settings-title').classList.add('settings-title__active');
         } else {
-            activeSetting = true;
+            appFlags.activeSetting = true;
             document.querySelector('.settings-title').classList.remove('settings-title__active');
             settings.classList.remove('settings-active');
             settings.classList.toggle('settings-artist__active');
@@ -142,7 +141,7 @@ const openSettings = () => {
 
 const openMainPage = () => {
 
-    activeArtistPage = false;
+    appFlags.activeArtistPage = false;
 
     settings.classList.toggle('settings-artist__active');
     artistTitle.classList.toggle('artist-title__active');

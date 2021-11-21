@@ -1,15 +1,35 @@
+body {
+    position: relative;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+}
+
+.overlay__active {
+    left: 0;
+}
+
 main {
     position: relative;
 }
 
 .popap-container {
-    position: absolute;
+    position: fixed;
     top: 50%;
-    left: 50%;
+    left: -100%;
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 20;
+    opacity: 0;
     .popap-content {
         background-color: #FFFFFF;
         padding: 30px;
@@ -23,7 +43,19 @@ main {
                 padding-bottom: 60%;
                 border-radius: 20px;
             }
-
+            .checkmark {
+                position: absolute;
+                bottom: 10%;
+                left: 10%;
+                width: 40px;
+                height: 40px;
+            }
+            .checkmark__succses {
+                background: top 0 left 0 / 100% 100% url(../images/svg/sucsses.svg);
+            }
+            .checkmark__error {
+                background: top 0 left 0 / 100% 100% url(../images/svg/error.svg);
+            }
         }
         h4 {
             font-size: 25px;
@@ -54,8 +86,11 @@ main {
                 -webkit-box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.2) inset;
                 -moz-box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.2) inset;
                 box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.2) inset;
-                // transform: scale(1.05);
             }
         }
     }
+}
+
+.popap-container__active {
+    left: 50%;
 }

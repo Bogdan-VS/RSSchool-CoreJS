@@ -1,5 +1,39 @@
 .time-container {
     display: none;
+    .time-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 10px;
+        .bg-timer {
+            width: 16px;
+            height: 16px;
+            background: top 0 left 0 / 100% 100% url(../images/svg/exit.svg);
+        }
+        div {
+            display: flex;
+            align-items: center;
+            .time-line {
+                height: 2px;
+                width: 300px;
+                background: linear-gradient(to right, #FFBCA2 0%, #FFBCA2 25%, #C4C4C4 25%, #C4C4C4 100%);
+                outline: none;
+                transition: background 450ms ease-in;
+                -webkit-appearance: none;
+            }
+            
+            .time-line::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                cursor: pointer;
+                background: #FFFFFF;
+            }
+        }
+        .time {
+            font-size: 20px;
+            color: #FFFFFF;
+        }
+    }
+
 }
 
 .time-container__active {
@@ -38,7 +72,7 @@
                 border-radius: 60px;
                 background-color: transparent;
                 color: white;
-                font-size: 25px;
+                font-size: 20px;
                 font-weight: 500;
                 cursor: pointer;
                 transition: 0.2s;
