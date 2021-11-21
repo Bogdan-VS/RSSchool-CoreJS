@@ -4,6 +4,7 @@ import { containerQuestions } from "./artist-quetion";
 import { timeConteiner } from "./artist-quetion";
 import { appFlags } from "./artist";
 import { correctAnswer } from "./popaps";
+import { getResult } from "./artist-quetion";
 
 
 export const endGame = document.createElement('div');
@@ -37,6 +38,8 @@ export const drawEndGame = () => {
     document.querySelector('.result-counts').textContent = `${correctAnswer}`;
 }
 
+
+
 endGame.addEventListener('click', (event) => {
     let target  = event.target;
     if (target.dataset.homebtn === 'home') {
@@ -49,6 +52,7 @@ endGame.addEventListener('click', (event) => {
         timeConteiner.classList.remove('time-container__active');
         document.querySelector('.main-container').classList.toggle('main-container__active');
         overlay.classList.toggle('overlay__active');
+        getResult();
     }
 
     // if (target.dataset.homeBtn === 'Next') {

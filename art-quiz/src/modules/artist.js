@@ -52,18 +52,15 @@ const drowArtistPage = () => {
         artistContainer.classList.add('artist-container');
         artistContainer.innerHTML = `
             <div class="item-top">
-                <h3></h3>
-                <p></p>
+                <h3>${category[i].name}</h3>
+                <p>${category[i].points}</p>
             </div>
             <div class="item-bottom">
-                <div class="card"></div>
+                <div class="card" style="background: top 0 left 0 / 100% 100% url(${category[i].src})"></div>
                  <div class="card-text"></div>
             </div>
         `;
         artistWrapper.prepend(artistContainer);
-        document.querySelector('.item-top h3').textContent = `${category[i].name}`;
-        document.querySelector('.item-top p').textContent = `${category[i].points}`;
-        document.querySelector('.card').style.background = `top 0 left 0 / 100% 100% url(${category[i].src})`;
 
     }
 

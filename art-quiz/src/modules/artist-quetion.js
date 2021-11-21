@@ -1,6 +1,7 @@
 import { artistList } from "./artist-list";
 import { drawSucsses } from "./popaps";
 import { generationData } from "./popaps";
+import { correctAnswer } from "./popaps";
 
 const settings = document.querySelector('.settings');
 const main = document.querySelector('main');
@@ -16,8 +17,6 @@ export const counter = {
     numberQuestion: 0,
 }
 export let cardNumber;
-// export let numberQuestion = 0;
-
 const drawArtistQuestion = () => {
 
     timeConteiner.classList.add('time-container');
@@ -71,13 +70,27 @@ artistWrapper.addEventListener('click', (event) => {
     let target = event.target.closest('section');
     cardNumber = Number(target.dataset.artist) - 1;
     
+
+    const artistContainer = document.querySelectorAll('.artist-container');
+    // console.log(artistContainer[`${cardNumber}`].querySelector('.item-top p'));
+    console.log(artistContainer);
+    console.log(cardNumber);
+    // artistContainer[`${cardNumber}`].querySelector('.item-top p').textContent = `0 / 10`;
+
     document.querySelector('.settings-item').style.display = 'none';
     settings.classList.add('settings-center');
     openQuestionPage();
     addData();
     getRandom(0, 9);
-    console.log(1);
 })
+
+// console.log(artistContainer[`${cardNumber}`].querySelector('.item-top p'));
+
+export const getResult = () => {
+
+    const artistContainer = document.querySelectorAll('.artist-container');
+    artistContainer[`${cardNumber}`].querySelector('.item-top p').textContent = `${correctAnswer} / 10`
+}
 
 const openQuestionPage = () => {
 
@@ -90,7 +103,6 @@ const openQuestionPage = () => {
 }
 
 export const addData = () => {
-    console.log(cardNumber)
     const title = document.querySelector('.title');
     const pictures = document.querySelector('.pictures-container')
     title.textContent = `Какой автор нарисовал картину "${artistList[cardNumber][counter.numberQuestion].name}" ?`;
@@ -114,7 +126,6 @@ export const getRandom = (min, max) => {
     }
 
     let randomNumbers = mass.map(i=>[Math.random(), i]).sort().map(i=>i[1]);
-    console.log(randomNumbers);
     const Buttons = document.querySelectorAll('.button');
 
     Buttons.forEach((element, index) => {
