@@ -1,11 +1,10 @@
 import { settingsWrapper } from "./settings";
 import { overlay } from "./popaps";
 import { containerQuestionsArtist } from "./artist-quetion";
+import { containerQuestionsPictures } from "./artist-quetion";
 import { timeConteiner } from "./artist-quetion";
 import { appFlags } from "./artist";
 import { correctAnswer } from "./popaps";
-import { getResult } from "./artist-quetion";
-
 
 export const endGame = document.createElement('div');
 const main = document.querySelector('main');
@@ -44,15 +43,16 @@ endGame.addEventListener('click', (event) => {
     let target  = event.target;
     if (target.dataset.homebtn === 'home') {
         appFlags.activeArtistPage = false;
+        appFlags.activePicturesPage = false;
         document.querySelector('.settings-item').style.display = 'block';
         settingsWrapper.classList.remove('settings-wrapper__active');
         endGame.classList.toggle('end-game-popap__active');
         containerQuestionsArtist.classList.remove('container-question__active');
+        containerQuestionsPictures.classList.remove('container-questions-pictures__active');
         document.querySelector('.settings').classList.remove('settings-center');
         timeConteiner.classList.remove('time-container__active');
         document.querySelector('.main-container').classList.toggle('main-container__active');
         overlay.classList.toggle('overlay__active');
-        // getResult();
     }
 
     // if (target.dataset.homeBtn === 'Next') {

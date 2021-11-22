@@ -1,7 +1,6 @@
 import { artistList } from "./artist-list";
 import { drawSucsses } from "./popaps";
 import { generationData } from "./popaps";
-// import { correctAnswer } from "./popaps";
 import { appFlags } from "./artist";
 
 const settings = document.querySelector('.settings');
@@ -13,17 +12,17 @@ export const containerQuestionsPictures = document.createElement('div');
 const artistTitle = document.querySelector('.artist-title');
 const body = document.querySelector('body');
 
-
-
-const getlistPictures = async () => {
-    const list = './pictures.json';
+export let listPictures;
+const getListPictures = async () => {
+    const list = 'https://raw.githubusercontent.com/Bogdan-VS/image-data/master/pictures.json';
     const res = await fetch(list);
     const data = await res.json();
+    listPictures = data;
     return data
 }
 
-const listPictures = getlistPictures();
-console.log(listPictures);
+getListPictures();
+
 
 export const counter = {
     numberQuestion: 0,
@@ -95,25 +94,23 @@ drawArtistQuestion();
 
 artistWrapper.addEventListener('click', (event) => {
     let target = event.target.closest('section');
-    cardNumber = Number(target.dataset.artist) - 1;
+
+    if (target.dataset.artist) {
+        cardNumber = Number(target.dataset.artist) - 1;
+    }
+    if (target.dataset.pictures) {
+        cardNumber = Number(target.dataset.pictures) - 1;
+    }
     
     document.querySelector('.settings-item').style.display = 'none';
     settings.classList.add('settings-center');
+
     openQuestionPage();
     addData();
     getRandom(0, 9);
 })
 
-// console.log(artistContainer[`${cardNumber}`].querySelector('.item-top p'));
-
-// export const getResult = () => {
-
-//     const artistContainer = document.querySelectorAll('.artist-container');
-//     artistContainer[`${cardNumber}`].querySelector('.item-top p').textContent = `${correctAnswer} / 10`
-// }
-
 const openQuestionPage = () => {
-
     
     if (appFlags.activeArtistPage) {
         containerQuestionsArtist.classList.add('container-question__active');
@@ -139,13 +136,10 @@ export const addData = () => {
         pictures.style.background = `top 0 left 0 / 100% 100% url(${artistList[cardNumber][counter.numberQuestion].src})`;
     }
     if (appFlags.activePicturesPage) {
+        console.log(cardNumber);
         const titlePictures = document.querySelector('.title-pictures');
-        titlePictures.textContent = `Какую картину нарисовал ${artistList[cardNumber][counter.numberQuestion].author} ?`
+        titlePictures.textContent = `Какую картину нарисовал ${listPictures[cardNumber][counter.numberQuestion].author} ?`
     }
-    // const title = document.querySelector('.title');
-    // const pictures = document.querySelector('.pictures-container')
-    // title.textContent = `Какой автор нарисовал картину "${artistList[cardNumber][counter.numberQuestion].name}" ?`;
-    // pictures.style.background = `top 0 left 0 / 100% 100% url(${artistList[cardNumber][counter.numberQuestion].src})`;
     
 }
 
@@ -180,6 +174,7 @@ export const getRandom = (min, max) => {
 
         pictureItems.forEach((element, index) => {
             element.style.background = `top 0 left 0 / 100% 100% url(${listPictures[cardNumber][randomNumbers[index]].src})`;
+            element.setAttribute('data-pictureSucsses', `${randomNumbers[index]}`);
         });
     }
 
@@ -192,12 +187,18 @@ export const getRandom = (min, max) => {
 
 export let sucssesCard;
 
-body.onclick = function(event) {
+body.addEventListener('click', (event) => {
     let target = event.target;
-    sucssesCard = target.dataset.btn;
     if (target.dataset.btn) {
+        sucssesCard = target.dataset.btn;
         drawSucsses();
         generationData();
     }
-}
+    if (target.dataset.picturesucsses) {
+        sucssesCard = target.dataset.picturesucsses;
+        console.log(sucssesCard);
+        drawSucsses();
+        generationData();
+    }
+})
 

@@ -136,6 +136,28 @@ const openSettings = () => {
         }
     }
 
+    if (appFlags.activePicturesPage) {
+        if (appFlags.activeSetting) {
+            appFlags.activeSetting = false;
+            settings.classList.toggle('settings-artist__active');
+            artistTitle.classList.toggle('artist-title__active');
+            artistWrapper.classList.toggle('artist-wrapper__active');
+            document.querySelector('.main-container').classList.toggle('main-container__active');
+            settings.classList.add('settings-active');
+            settingsItem.classList.toggle('settings-item__active');
+            document.querySelector('.settings-title').classList.add('settings-title__active');
+        } else {
+            appFlags.activeSetting = true;
+            document.querySelector('.settings-title').classList.remove('settings-title__active');
+            settings.classList.remove('settings-active');
+            settings.classList.toggle('settings-artist__active');
+            artistTitle.classList.toggle('artist-title__active');
+            artistWrapper.classList.toggle('artist-wrapper__active');
+            document.querySelector('.main-container').classList.toggle('main-container__active');
+            settingsItem.classList.toggle('settings-item__active');
+        }
+    }
+
 }
 
 const openMainPage = () => {

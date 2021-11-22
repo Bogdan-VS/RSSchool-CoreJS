@@ -6,6 +6,8 @@ import { getRandom } from "./artist-quetion";
 import { sucssesCard } from "./artist-quetion";
 import { drawEndGame } from "./the-end-popap";
 import { endGame } from "./the-end-popap";
+import { listPictures } from "./artist-quetion";
+import { appFlags } from "./artist";
 
 const popapContainer = document.createElement('div');
 const main = document.querySelector('main');
@@ -44,9 +46,19 @@ export const generationData = () => {
     const checkmark = document.querySelector('.checkmark');
     popapContainer.classList.toggle('popap-container__active');
     overlay.classList.toggle('overlay__active');
-    popapContentTitle.textContent = `Картина называется "${artistList[cardNumber][counter.numberQuestion - 1].name}"`;
-    popapContentSubtitle.textContent = `${artistList[cardNumber][counter.numberQuestion - 1].author}, ${artistList[cardNumber][counter.numberQuestion - 1].year}`;
-    popapImage.style.background = `top 0 left 0 / 100% 100% url(${artistList[cardNumber][counter.numberQuestion - 1].src})`;
+
+    if (appFlags.activeArtistPage) {
+        popapContentTitle.textContent = `Картина называется "${artistList[cardNumber][counter.numberQuestion - 1].name}"`;
+        popapContentSubtitle.textContent = `${artistList[cardNumber][counter.numberQuestion - 1].author}, ${artistList[cardNumber][counter.numberQuestion - 1].year}`;
+        popapImage.style.background = `top 0 left 0 / 100% 100% url(${artistList[cardNumber][counter.numberQuestion - 1].src})`;
+    }
+
+    if (appFlags.activePicturesPage) {
+        popapContentTitle.textContent = `Картина называется "${listPictures[cardNumber][counter.numberQuestion - 1].name}"`;
+        popapContentSubtitle.textContent = `${listPictures[cardNumber][counter.numberQuestion - 1].author}, ${artistList[cardNumber][counter.numberQuestion - 1].year}`;
+        popapImage.style.background = `top 0 left 0 / 100% 100% url(${listPictures[cardNumber][counter.numberQuestion - 1].src})`;
+    }
+
 
     if (+sucssesCard === counter.numberQuestion - 1) {
         correctAnswer++;
