@@ -1,23 +1,35 @@
 import { artistList } from "./artist-list";
 import { drawSucsses } from "./popaps";
 import { generationData } from "./popaps";
-import { correctAnswer } from "./popaps";
+// import { correctAnswer } from "./popaps";
+import { appFlags } from "./artist";
 
 const settings = document.querySelector('.settings');
 const main = document.querySelector('main');
 const artistWrapper = document.querySelector('.artist-wrapper');
 export const timeConteiner = document.createElement('div');
-export const containerQuestions = document.createElement('div');
+export const containerQuestionsArtist = document.createElement('div');
+export const containerQuestionsPictures = document.createElement('div');
 const artistTitle = document.querySelector('.artist-title');
 const body = document.querySelector('body');
 
 
 
+const getlistPictures = async () => {
+    const list = './pictures.json';
+    const res = await fetch(list);
+    const data = await res.json();
+    return data
+}
+
+const listPictures = getlistPictures();
+console.log(listPictures);
+
 export const counter = {
     numberQuestion: 0,
 }
 export let cardNumber;
-const drawArtistQuestion = () => {
+export const drawArtistQuestion = () => {
 
     timeConteiner.classList.add('time-container');
     settings.prepend(timeConteiner);
@@ -31,13 +43,12 @@ const drawArtistQuestion = () => {
         </div>
     `;
     
-    
 
-    containerQuestions.classList.add('container-question');
-    main.prepend(containerQuestions);
-    containerQuestions.innerHTML = `
+    containerQuestionsArtist.classList.add('container-question');
+    main.append(containerQuestionsArtist);
+    containerQuestionsArtist.innerHTML = `
         <div class="container-content">
-            <h4 class="title">Who is the author of this picture?</h4>
+            <h4 class="title"></h4>
             <div class="pictures-container">
                 <div class="pictures-item"></div>
                 <ul>
@@ -61,8 +72,24 @@ const drawArtistQuestion = () => {
             </div>
         </div>
     `;
+
+    containerQuestionsPictures.classList.add('container-questions-pictures');
+    main.prepend(containerQuestionsPictures);
+
+    containerQuestionsPictures.innerHTML = `
+        <div class="container-content">
+            <h4 class="title-pictures"></h4>
+            <div class="answer-pictures">
+                <div class="picture-item"></div>
+                <div class="picture-item"></div>
+                <div class="picture-item"></div>
+                <div class="picture-item"></div>
+            </div>
+        </div>
+    `;
     
 }
+
 
 drawArtistQuestion();
 
@@ -70,13 +97,6 @@ artistWrapper.addEventListener('click', (event) => {
     let target = event.target.closest('section');
     cardNumber = Number(target.dataset.artist) - 1;
     
-
-    const artistContainer = document.querySelectorAll('.artist-container');
-    // console.log(artistContainer[`${cardNumber}`].querySelector('.item-top p'));
-    console.log(artistContainer);
-    console.log(cardNumber);
-    // artistContainer[`${cardNumber}`].querySelector('.item-top p').textContent = `0 / 10`;
-
     document.querySelector('.settings-item').style.display = 'none';
     settings.classList.add('settings-center');
     openQuestionPage();
@@ -86,16 +106,24 @@ artistWrapper.addEventListener('click', (event) => {
 
 // console.log(artistContainer[`${cardNumber}`].querySelector('.item-top p'));
 
-export const getResult = () => {
+// export const getResult = () => {
 
-    const artistContainer = document.querySelectorAll('.artist-container');
-    artistContainer[`${cardNumber}`].querySelector('.item-top p').textContent = `${correctAnswer} / 10`
-}
+//     const artistContainer = document.querySelectorAll('.artist-container');
+//     artistContainer[`${cardNumber}`].querySelector('.item-top p').textContent = `${correctAnswer} / 10`
+// }
 
 const openQuestionPage = () => {
 
+    
+    if (appFlags.activeArtistPage) {
+        containerQuestionsArtist.classList.add('container-question__active');
+        containerQuestionsPictures.classList.remove('container-questions-pictures__active');
+    }
+    if (appFlags.activePicturesPage) {
+        containerQuestionsPictures.classList.add('container-questions-pictures__active');
+        containerQuestionsArtist.classList.remove('container-question__active');
+    }
     timeConteiner.classList.add('time-container__active');
-    containerQuestions.classList.add('container-question__active');
     settings.classList.toggle('settings-artist__active');
     artistTitle.classList.toggle('artist-title__active');
     artistWrapper.classList.toggle('artist-wrapper__active');
@@ -103,10 +131,21 @@ const openQuestionPage = () => {
 }
 
 export const addData = () => {
-    const title = document.querySelector('.title');
-    const pictures = document.querySelector('.pictures-container')
-    title.textContent = `Какой автор нарисовал картину "${artistList[cardNumber][counter.numberQuestion].name}" ?`;
-    pictures.style.background = `top 0 left 0 / 100% 100% url(${artistList[cardNumber][counter.numberQuestion].src})`;
+
+    if (appFlags.activeArtistPage) {
+        const title = document.querySelector('.title');
+        const pictures = document.querySelector('.pictures-container')
+        title.textContent = `Какой автор нарисовал картину "${artistList[cardNumber][counter.numberQuestion].name}" ?`;
+        pictures.style.background = `top 0 left 0 / 100% 100% url(${artistList[cardNumber][counter.numberQuestion].src})`;
+    }
+    if (appFlags.activePicturesPage) {
+        const titlePictures = document.querySelector('.title-pictures');
+        titlePictures.textContent = `Какую картину нарисовал ${artistList[cardNumber][counter.numberQuestion].author} ?`
+    }
+    // const title = document.querySelector('.title');
+    // const pictures = document.querySelector('.pictures-container')
+    // title.textContent = `Какой автор нарисовал картину "${artistList[cardNumber][counter.numberQuestion].name}" ?`;
+    // pictures.style.background = `top 0 left 0 / 100% 100% url(${artistList[cardNumber][counter.numberQuestion].src})`;
     
 }
 
@@ -126,12 +165,23 @@ export const getRandom = (min, max) => {
     }
 
     let randomNumbers = mass.map(i=>[Math.random(), i]).sort().map(i=>i[1]);
-    const Buttons = document.querySelectorAll('.button');
 
-    Buttons.forEach((element, index) => {
-        element.textContent = `${artistList[cardNumber][randomNumbers[index]].author}`;
-        element.setAttribute('data-btn', `${randomNumbers[index]}`);
-    });
+    if (appFlags.activeArtistPage) {
+        const Buttons = document.querySelectorAll('.button');
+
+        Buttons.forEach((element, index) => {
+            element.textContent = `${artistList[cardNumber][randomNumbers[index]].author}`;
+            element.setAttribute('data-btn', `${randomNumbers[index]}`);
+        });
+    }
+
+    if (appFlags.activePicturesPage) {
+        const pictureItems = document.querySelectorAll('.picture-item');
+
+        pictureItems.forEach((element, index) => {
+            element.style.background = `top 0 left 0 / 100% 100% url(${listPictures[cardNumber][randomNumbers[index]].src})`;
+        });
+    }
 
     if (counter.numberQuestion > 9) {
         counter.numberQuestion = 0;

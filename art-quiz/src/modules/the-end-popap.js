@@ -1,6 +1,6 @@
 import { settingsWrapper } from "./settings";
 import { overlay } from "./popaps";
-import { containerQuestions } from "./artist-quetion";
+import { containerQuestionsArtist } from "./artist-quetion";
 import { timeConteiner } from "./artist-quetion";
 import { appFlags } from "./artist";
 import { correctAnswer } from "./popaps";
@@ -47,12 +47,12 @@ endGame.addEventListener('click', (event) => {
         document.querySelector('.settings-item').style.display = 'block';
         settingsWrapper.classList.remove('settings-wrapper__active');
         endGame.classList.toggle('end-game-popap__active');
-        containerQuestions.classList.remove('container-question__active');
+        containerQuestionsArtist.classList.remove('container-question__active');
         document.querySelector('.settings').classList.remove('settings-center');
         timeConteiner.classList.remove('time-container__active');
         document.querySelector('.main-container').classList.toggle('main-container__active');
         overlay.classList.toggle('overlay__active');
-        getResult();
+        // getResult();
     }
 
     // if (target.dataset.homeBtn === 'Next') {

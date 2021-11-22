@@ -7,9 +7,9 @@ const main = document.querySelector('main');
 const settingsItem = document.querySelector('.settings-item');
 const body = document.querySelector('body');
 
-
 const artistWrapper = document.createElement('div');
 const artistTitle = document.createElement('div');
+
 
  export const appFlags = {
     activeSetting: true,
@@ -108,6 +108,8 @@ const openArtistPage = () => {
             element.removeAttribute('data-artist');
         });
     }
+
+    // drawArtistQuestion();
 }
 
 const openSettings = () => {
