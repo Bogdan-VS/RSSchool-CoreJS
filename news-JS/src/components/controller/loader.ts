@@ -1,13 +1,19 @@
+interface Ioptions {
+    apiKey?: string;
+    sources?: string
+}
+
 class Loader {
-    public baseLink: string;
-    public options: {};
-    constructor(baseLink: string, options: {}) {
+    baseLink: string;
+    options: Ioptions;
+    constructor({ baseLink, options }: { baseLink: string; options: Ioptions}) {
         this.baseLink = baseLink;
         this.options = options;
     }
+    baselink: string;
 
     getResp(
-        { endpoint, options = {} },
+        {endpoint, options}:{endpoint:string, options:Ioptions},
         callback = () => {
             console.error('No callback for GET response');
         }
@@ -25,11 +31,11 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: {}, endpoint: string | number) {
-        const urlOptions = { ...this.options, ...options };
-        let url = `${this.baseLink}${endpoint}?`;
+    makeUrl(options: Ioptions, endpoint: string) {
+        const urlOptions: {apiKey?: string} = { ...this.options, ...options };
+        let url: string = `${this.baseLink}${endpoint}?`;
 
-        Object.keys(urlOptions).forEach((key) => {
+        Object.keys(urlOptions).forEach((key: string) => {
             url += `${key}=${urlOptions[key]}&`;
         });
 
@@ -37,7 +43,7 @@ class Loader {
     }
 
     // tslint:disable-next-line: unified-signatures
-    load(method: string, endpoint: string | number, callback: { (): void; (arg0: string): void; }, options = {}) {
+    load(method: string, endpoint: string, callback: { (): void; (arg0: string): void; }, options: Ioptions) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res: Response) => res.json())
