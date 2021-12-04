@@ -1,6 +1,7 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
 
+
 interface IApp {
     controller: AppController,
     view: AppView,
@@ -17,9 +18,9 @@ class App implements IApp {
 
     start() {
         document
-            .querySelector('.sources')
-            .addEventListener('click', (e: Event) => this.controller.getNews(e, (data: void) => this.view.drawNews(data)));
-        this.controller.getSources((data: void) => this.view.drawSources(data));
+            .querySelector('.sources')!
+            .addEventListener('click', (e: Event) => this.controller.getNews(e, (data) => this.view.drawNews(data)));
+        this.controller.getSources((data) => this.view.drawSources(data));
     }
 }
 

@@ -1,27 +1,29 @@
-interface Ioptions {
+import { IData } from '../interface/interface'
+
+interface IOptions {
+    sources?: string;
     apiKey?: string;
-    sources?: string
 }
 
 class Loader {
+    options: IOptions;
     baseLink: string;
-    options: Ioptions;
-    constructor({ baseLink, options }: { baseLink: string; options: Ioptions}) {
+    constructor(baseLink: string, options: IOptions) {
         this.baseLink = baseLink;
         this.options = options;
     }
-    baselink: string;
 
     getResp(
-        {endpoint, options}:{endpoint:string, options:Ioptions},
-        callback = () => {
+        { endpoint, options = {} }:{endpoint: string, options?: IOptions},
+        callback: (data: IData) => void = () => {
             console.error('No callback for GET response');
         }
     ) {
         this.load('GET', endpoint, callback, options);
     }
 
-    errorHandler(res: { ok: boolean; status: number; statusText: string; }) {
+    errorHandler(res: Response): Response {
+        console.log(res)
         if (!res.ok) {
             if (res.status === 401 || res.status === 404)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -31,23 +33,23 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: Ioptions, endpoint: string) {
-        const urlOptions: {apiKey?: string} = { ...this.options, ...options };
-        let url: string = `${this.baseLink}${endpoint}?`;
+    makeUrl(options: IOptions, endpoint: string) {
+        const urlOptions: {[index: string]: string} = { ...this.options, ...options };
+        let url = `${this.baseLink}${endpoint}?`;
 
-        Object.keys(urlOptions).forEach((key: string) => {
-            url += `${key}=${urlOptions[key]}&`;
+        Object.keys(urlOptions).forEach((key) => {
+            url += `${key}=${(urlOptions)[key]}&`;
         });
 
         return url.slice(0, -1);
     }
 
     // tslint:disable-next-line: unified-signatures
-    load(method: string, endpoint: string, callback: { (): void; (arg0: string): void; }, options: Ioptions) {
+    load(method: string, endpoint: string, callback: (data: IData) => void, options = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res: Response) => res.json())
-            .then((data) => callback(data))
+            .then((data: IData) => callback(data))
             .catch((err) => console.error(err));
     }
 }
