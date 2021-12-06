@@ -1,13 +1,14 @@
 import { IData } from '../interface/interface'
+// import { IOptions } from '../interface/interface'
 
-interface IOptions {
+type IOptions = {
     sources?: string;
     apiKey?: string;
 }
 
 class Loader {
-    options: IOptions;
-    baseLink: string;
+    private options: IOptions;
+    private baseLink: string;
     constructor(baseLink: string, options: IOptions) {
         this.baseLink = baseLink;
         this.options = options;

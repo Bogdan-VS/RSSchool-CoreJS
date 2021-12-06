@@ -15,11 +15,51 @@ header h1 {
 }
 
 footer {
-    height: 100px;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.footer-container {
+    display: flex;
+    width: 100%;
+    column-gap: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.rs-link {
+    width: 120px;
+    height: 40px;
+    background: top 0 left 0 / 100% 100% url(../src/images/rs_school_js.svg);
+    transition: 0.3s;
+}
+
+.rs-link:hover {
+    transform: scale(1.05);
+}
+
+.webdev {
+    opacity: 0.6;
+}
+
+.github-link {
+    width: 40px;
+    height: 40px;
+    background: top 0 left 0 / 100% 100% url(../src/images/github.svg);
+    transition: 0.3s;
+}
+
+.github-link:hover {
+    transform: scale(1.1);
+}
+
+.webdev span {
+    margin-left: 20px;
+}
+
 footer .copyright {
     font-size: 14px;
     color: #333;

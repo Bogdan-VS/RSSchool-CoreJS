@@ -1,4 +1,3 @@
-import { node } from 'webpack';
 import './news.css';
 import { IArticle } from '../../interface/interface';
 
