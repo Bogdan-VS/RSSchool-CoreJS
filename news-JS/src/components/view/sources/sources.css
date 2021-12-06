@@ -1,5 +1,5 @@
 main {
-    position: relative;
+    /* height: calc(100% - 230px); */
 }
 
 .sources-bg-top {
@@ -12,10 +12,34 @@ main {
 
 .sources-bg-bottom {
     position: absolute;
-    top: 180px;
+    bottom: 0;
     width: 98%;
     height: 30px;
     background-color: rgba(23, 24, 28, 0.8);
+}
+
+.source-container {
+    height: 210px;
+    position: relative;
+    margin: 30px;
+}
+
+.source-title {
+    text-align: center;
+}
+
+.source-title h2 {
+    font-size: 20px;
+    letter-spacing: 0.07em;
+    font-weight: 500;
+    line-height: 150%;
+}
+
+.source-title p {
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    font-weight: 300;
+    line-height: 150%;
 }
 
 .sources {

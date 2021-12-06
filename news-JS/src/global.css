@@ -2,10 +2,19 @@ body {
     color: #fff;
     background: #17181c;
     font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.wrapper-container {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 130px 1fr 150px;
 }
 
 header {
     padding: 10px 30px;
+    box-sizing: border-box;
 }
 
 header h1 {
@@ -15,10 +24,10 @@ header h1 {
 }
 
 footer {
-    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .footer-container {
