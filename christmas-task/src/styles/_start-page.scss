@@ -6,6 +6,15 @@ main {
     url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/bg.jpg);
 }
 
+.start-game {
+  width: 100%;
+  height: 100%;
+}
+
+.start {
+  background: #192f2d;
+}
+
 .wrapper {
   width: calc(100% - 170px);
   height: 100%;
@@ -120,4 +129,8 @@ footer {
         url(../assets/images/rs_school_js.png);
     }
   }
+}
+
+.hide {
+  display: none;
 }

@@ -1,0 +1,581 @@
+.toys {
+  width: 100%;
+  height: 100%;
+}
+
+.toys-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr;
+  column-gap: 10px;
+}
+
+.settings {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 20px 0;
+  .audio {
+    width: 36px;
+    height: 36px;
+    transition: 00.3s;
+    background: top 0 left 0 / 100% 100%
+      url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/audio.svg);
+  }
+  .audio:hover {
+    opacity: 75%;
+  }
+
+  .snow {
+    width: 36px;
+    height: 36px;
+    transition: 00.3s;
+    background: top 0 left 0 / 100% 100%
+      url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/snow.svg);
+  }
+  .snow:hover {
+    opacity: 75%;
+  }
+
+  .search {
+    position: relative;
+    .search-item {
+      width: 260px;
+      height: 36px;
+      padding: 0 50px 0 20px;
+      font-family: 'Steppe';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      color: #fff;
+      background: radial-gradient(
+        118.88% 606.86% at 0% 0%,
+        rgba(36, 197, 219, 0.15) 0%,
+        rgba(36, 197, 219, 0) 100%
+      );
+      backdrop-filter: blur(31px);
+      border-radius: 30px;
+      border: 1px solid #03a9f4;
+    }
+  }
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    background: top 0 left 0 / 100% 100%
+      url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/search.svg);
+  }
+  .search-icon:hover {
+    opacity: 75%;
+  }
+}
+
+.sort {
+  display: flex;
+  column-gap: 40px;
+  align-items: center;
+  p {
+    font-family: 'Neucha-Regular';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  .sort-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 210px;
+    height: 36px;
+    background: radial-gradient(
+      118.88% 606.86% at 0% 0%,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(157, 243, 255, 0.2) 100%
+    );
+    backdrop-filter: blur(31px);
+    border-radius: 30px;
+    border: 1px solid #03a9f4;
+    p {
+      font-size: 16px;
+      text-transform: none;
+      padding-left: 20px;
+    }
+
+    .choose-item {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 20px;
+      transition: 00.3s;
+      background: top 0 left 0 / 100% 100%
+        url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/arrow-down.svg);
+    }
+    .choose-item:hover {
+      opacity: 75%;
+    }
+  }
+}
+
+.sort-category {
+  margin: 20px 0;
+  font-family: 'Neucha-Regular';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  .category-container {
+    width: 24px;
+    height: 24px;
+    text-transform: none;
+    .all {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: 1px solid #d6d6cd;
+      width: 25px;
+      height: 25px;
+      margin-right: 15px;
+      cursor: pointer;
+      position: relative;
+      top: 7px;
+      background: radial-gradient(
+        118.88% 606.86% at 0% 0%,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(157, 243, 255, 0.2) 100%
+      );
+      backdrop-filter: blur(31px);
+      border-radius: 5px;
+    }
+    .all::before {
+      content: '🗸';
+      color: #ffffff;
+      font-size: 20px;
+      position: absolute;
+      right: 50%;
+      bottom: 50%;
+      transform: translate(50%, 50%);
+      opacity: 0;
+      transition: 0.1s ease-in;
+    }
+    .all:checked::before {
+      opacity: 1;
+    }
+  }
+}
+
+.toys-form {
+  margin: 20px 0;
+  h3 {
+    font-family: 'Neucha-Regular';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    color: #fff;
+  }
+
+  .form-container {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    .form-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .form-icon {
+        margin-bottom: 15px;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .form-icon:hover {
+        filter: invert(76%) sepia(94%) saturate(1912%) hue-rotate(0deg)
+          brightness(101%) contrast(105%);
+      }
+
+      .icon-1 {
+        width: 100%;
+        height: 42px;
+        background: top 0 left 0 / 100% 100%
+          url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/bell.svg);
+      }
+      .icon-2 {
+        width: 100%;
+        height: 42px;
+        background: top 0 left 0 / 100% 100%
+          url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/ball.svg);
+      }
+      .icon-3 {
+        width: 100%;
+        height: 42px;
+        background: top 0 left 0 / 100% 100%
+          url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/cone.svg);
+      }
+      .icon-4 {
+        width: 100%;
+        height: 42px;
+        background: top 0 left 0 / 100% 100%
+          url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/snowflake.svg);
+      }
+      .icon-5 {
+        width: 100%;
+        height: 42px;
+        background: top 0 left 0 / 100% 100% no-repeat
+          url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/snow.svg);
+      }
+      .icon-6 {
+        width: 100%;
+        height: 42px;
+        background: top 0 left 0 / 100% 100%
+          url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/toy.svg);
+      }
+
+      .icon-name {
+        font-family: 'Steppe';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        text-align: center;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.count-copy {
+  position: relative;
+  margin: 20px 0;
+  h3 {
+    font-family: 'Neucha-Regular';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    color: #fff;
+  }
+  .count-copy-item {
+    margin-top: 15px;
+    height: 2px;
+    width: 100%;
+    border-radius: 3px;
+    background: linear-gradient(
+      to right,
+      #24c5db 0%,
+      #24c5db 38.5%,
+      rgb(196, 196, 196) 38.5%,
+      rgb(196, 196, 196) 100%
+    );
+    outline: none;
+    transition: background 450ms ease-in;
+    -webkit-appearance: none;
+    cursor: pointer;
+  }
+
+  .count-copy-item::-webkit-slider-thumb {
+    max-width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+      radial-gradient(
+        57.23% 248.2% at 107.17% 104.02%,
+        rgba(34, 153, 235, 0.92) 0%,
+        rgba(34, 153, 235, 0.07) 100%
+      ),
+      radial-gradient(
+        104.22% 230.94% at -4.22% 0%,
+        #24c5db 3.62%,
+        rgba(36, 197, 219, 0.26) 55.1%
+      );
+  }
+
+  .min {
+    position: absolute;
+    top: 125%;
+    left: 0;
+    font-family: 'Steppe';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+  }
+  .max {
+    position: absolute;
+    top: 125%;
+    right: 0;
+    font-family: 'Steppe';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+  }
+}
+
+.year-purchase {
+  position: relative;
+  margin: 40px 0 20px 0;
+  h3 {
+    font-family: 'Neucha-Regular';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    color: #fff;
+  }
+  .year-purchase-item {
+    margin-top: 15px;
+    height: 2px;
+    width: 100%;
+    border-radius: 3px;
+    background: linear-gradient(
+      to right,
+      #24c5db 0%,
+      #24c5db 12.34%,
+      rgb(196, 196, 196) 12.34%,
+      rgb(196, 196, 196) 100%
+    );
+    outline: none;
+    transition: background 450ms ease-in;
+    -webkit-appearance: none;
+    cursor: pointer;
+  }
+
+  .year-purchase-item::-webkit-slider-thumb {
+    max-width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+      radial-gradient(
+        57.23% 248.2% at 107.17% 104.02%,
+        rgba(34, 153, 235, 0.92) 0%,
+        rgba(34, 153, 235, 0.07) 100%
+      ),
+      radial-gradient(
+        104.22% 230.94% at -4.22% 0%,
+        #24c5db 3.62%,
+        rgba(36, 197, 219, 0.26) 55.1%
+      );
+  }
+
+  .min {
+    position: absolute;
+    top: 125%;
+    left: 0;
+    font-family: 'Steppe';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+  }
+  .max {
+    position: absolute;
+    top: 125%;
+    right: 0;
+    font-family: 'Steppe';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+  }
+}
+
+.color {
+  margin: 40px 0 20px 0;
+  h3 {
+    font-family: 'Neucha-Regular';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    color: #fff;
+  }
+
+  .color-container {
+    display: flex;
+    column-gap: 25px;
+    margin-top: 15px;
+    .color-item {
+      width: 25px;
+      height: 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .color-item:hover {
+      opacity: 75%;
+    }
+    .item-1 {
+      background: #ffffff;
+    }
+    .item-2 {
+      background: #fdd700;
+    }
+    .item-3 {
+      background: #fd0000;
+    }
+    .item-4 {
+      background: #2299eb;
+    }
+    .item-5 {
+      background: #08aa05;
+    }
+  }
+}
+
+.size {
+  margin: 20px 0;
+  h3 {
+    font-family: 'Neucha-Regular';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    color: #fff;
+  }
+
+  .size-container {
+    display: flex;
+    margin-top: 15px;
+    justify-content: space-between;
+    .container-item {
+      font-family: 'Steppe';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .size-item {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: 1px solid #d6d6cd;
+      width: 25px;
+      height: 25px;
+      margin-right: 15px;
+      cursor: pointer;
+      position: relative;
+      top: 7px;
+      background: radial-gradient(
+        118.88% 606.86% at 0% 0%,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(157, 243, 255, 0.2) 100%
+      );
+      backdrop-filter: blur(31px);
+      border-radius: 5px;
+    }
+    .size-item::before {
+      content: '🗸';
+      color: #ffffff;
+      font-size: 20px;
+      position: absolute;
+      right: 50%;
+      bottom: 50%;
+      transform: translate(50%, 50%);
+      opacity: 0;
+      transition: 0.1s ease-in;
+    }
+    .size-item:checked::before {
+      opacity: 1;
+    }
+  }
+}
+
+.favorite {
+  margin: 20px 0;
+  .container-favorite {
+    font-family: 'Steppe';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: #ffffff;
+    .favorite-item {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: 1px solid #d6d6cd;
+      width: 25px;
+      height: 25px;
+      margin-right: 15px;
+      cursor: pointer;
+      position: relative;
+      top: 7px;
+      background: radial-gradient(
+        118.88% 606.86% at 0% 0%,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(157, 243, 255, 0.2) 100%
+      );
+      backdrop-filter: blur(31px);
+      border-radius: 5px;
+    }
+    .favorite-item::before {
+      content: '🗸';
+      color: #ffffff;
+      font-size: 20px;
+      position: absolute;
+      right: 50%;
+      bottom: 50%;
+      transform: translate(50%, 50%);
+      opacity: 0;
+      transition: 0.1s ease-in;
+    }
+    .favorite-item:checked::before {
+      opacity: 1;
+    }
+  }
+}
+
+.sucsses {
+  display: flex;
+  margin: 25px 0;
+  justify-content: center;
+  column-gap: 40px;
+  .apply-btn {
+    width: 180px;
+    height: 30px;
+    background: radial-gradient(
+      118.88% 606.86% at 0% 0%,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(157, 243, 255, 0.2) 100%
+    );
+    backdrop-filter: blur(31px);
+    border-radius: 30px;
+    font-family: 'Steppe';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .apply-btn:hover {
+    opacity: 75%;
+  }
+}
