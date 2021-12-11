@@ -9,6 +9,7 @@ export class StartGame extends App {
     const start: HTMLElement = document.querySelector('.start');
     start.addEventListener('click', buttonHandler.bind(this));
   }
+
 }
 
 function buttonHandler() {

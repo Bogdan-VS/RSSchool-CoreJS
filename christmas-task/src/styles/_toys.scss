@@ -7,9 +7,34 @@
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 450px 1fr;
   grid-template-rows: 1fr;
   column-gap: 10px;
+}
+
+.filter-conteiner {
+  overflow: hidden;
+}
+
+.filter-container-wrapper {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.filter-container-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filter-container-wrapper::-webkit-scrollbar-track {
+  background: none;
+}
+
+.filter-container-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+}
+
+.filter-container-content {
+  margin-right: 10px;
 }
 
 .settings {
@@ -21,8 +46,7 @@
     width: 36px;
     height: 36px;
     transition: 00.3s;
-    background: top 0 left 0 / 100% 100%
-      url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/audio.svg);
+    background: top 0 left 0 / 100% 100% url(../assets/images/svg/audio.svg);
   }
   .audio:hover {
     opacity: 75%;
@@ -32,8 +56,7 @@
     width: 36px;
     height: 36px;
     transition: 00.3s;
-    background: top 0 left 0 / 100% 100%
-      url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/snow.svg);
+    background: top 0 left 0 / 100% 100% url(../assets/images/svg/snow.svg);
   }
   .snow:hover {
     opacity: 75%;
@@ -70,8 +93,7 @@
     height: 20px;
     cursor: pointer;
     transition: 0.3s;
-    background: top 0 left 0 / 100% 100%
-      url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/search.svg);
+    background: top 0 left 0 / 100% 100% url(../assets/images/svg/search.svg);
   }
   .search-icon:hover {
     opacity: 75%;
@@ -121,7 +143,7 @@
       height: 20px;
       transition: 00.3s;
       background: top 0 left 0 / 100% 100%
-        url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/arrow-down.svg);
+        url(../assets/images/svg/arrow-down.svg);
     }
     .choose-item:hover {
       opacity: 75%;
@@ -210,38 +232,34 @@
       .icon-1 {
         width: 100%;
         height: 42px;
-        background: top 0 left 0 / 100% 100%
-          url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/bell.svg);
+        background: top 0 left 0 / 100% 100% url(../assets/images/svg/bell.svg);
       }
       .icon-2 {
         width: 100%;
         height: 42px;
-        background: top 0 left 0 / 100% 100%
-          url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/ball.svg);
+        background: top 0 left 0 / 100% 100% url(../assets/images/svg/ball.svg);
       }
       .icon-3 {
         width: 100%;
         height: 42px;
-        background: top 0 left 0 / 100% 100%
-          url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/cone.svg);
+        background: top 0 left 0 / 100% 100% url(../assets/images/svg/cone.svg);
       }
       .icon-4 {
         width: 100%;
         height: 42px;
         background: top 0 left 0 / 100% 100%
-          url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/snowflake.svg);
+          url(../assets/images/svg/snowflake.svg);
       }
       .icon-5 {
         width: 100%;
         height: 42px;
         background: top 0 left 0 / 100% 100% no-repeat
-          url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/snow.svg);
+          url(../assets/images/svg/snow.svg);
       }
       .icon-6 {
         width: 100%;
         height: 42px;
-        background: top 0 left 0 / 100% 100%
-          url(https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/svg/toy.svg);
+        background: top 0 left 0 / 100% 100% url(../assets/images/svg/toy.svg);
       }
 
       .icon-name {
@@ -577,5 +595,106 @@
 
   .apply-btn:hover {
     opacity: 75%;
+  }
+}
+
+.toys-collection-container {
+  overflow: hidden;
+  h2 {
+    margin: 20px 0 20px 50px;
+    font-family: 'Neucha-Regular';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  .collection-container {
+    height: 100%;
+    overflow: scroll;
+    .collection-container-wrapper {
+      display: flex;
+      column-gap: 25px;
+      row-gap: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-right: 10px;
+    }
+    .container-content {
+      width: 225px;
+      padding: 10px;
+      margin: 10px 0 50px 0;
+      background: radial-gradient(
+        109.56% 109.56% at 0% -2.94%,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(179, 246, 255, 0.5) 100%
+      );
+      backdrop-filter: blur(4px);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.5s;
+      h4 {
+        font-family: 'Neucha-Regular';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        letter-spacing: 0.05em;
+        color: #fff;
+      }
+      .icon-toy-container {
+        margin-top: 15px;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        .icon-toy {
+          width: 110px;
+          height: 110px;
+          transition: 0.5s;
+        }
+      }
+      .data-toy {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        li {
+          font-family: 'Steppe';
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          letter-spacing: 0.02em;
+          color: #ffffff;
+        }
+      }
+    }
+
+    .container-content:hover {
+      box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.7);
+      background: radial-gradient(
+        109.56% 109.56% at 0% -2.94%,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(179, 246, 255, 0.4) 100%
+      );
+      .icon-toy-container {
+        .icon-toy {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  .collection-container::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .collection-container::-webkit-scrollbar-track {
+    background: #152625;
+  }
+
+  .collection-container::-webkit-scrollbar-thumb {
+    background-color: #43686a;
+    border-radius: 6px;
   }
 }

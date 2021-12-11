@@ -18,122 +18,136 @@
         <button class="start">Начать</button>
       </section>
 
-      <section class="toys">
+      <section class="toys hide" id="toys">
         <div class="toys-container">
           <div class="filter-conteiner">
+            <div class="filter-container-wrapper">
+              <div class="filter-container-content">
 
-            <div class="settings">
-              <button class="audio"></button>
-              <button class="snow"></button>
-              <div class="search">
-                <input type="text" name="search" id="search" placeholder="Поиск" class="search-item">
-                <div class="search-icon"></div>
+                <div class="settings">
+                  <button class="audio"></button>
+                  <button class="snow"></button>
+                  <div class="search">
+                    <input type="text" name="search" id="search" placeholder="Поиск" class="search-item">
+                    <div class="search-icon"></div>
+                  </div>
+                </div>
+    
+                <div class="sort">
+                  <p>Сортировать</p>
+                  <div class="sort-container">
+                    <p data-sort="По возрастанию">По возрастанию</p>
+                    <button class="choose-item"></button>
+                  </div>
+                </div>
+    
+                <div class="sort-category">
+                  <h3>Категории</h3>
+                  <label class="category-container">
+                    <input type="checkbox" name="all" id="all" checked class="all">
+                    Все
+                  </label>
+                </div>
+    
+                <div class="toys-form">
+                  <h3>Форма</h3>
+                  <div class="form-container">
+                    <div class="form-item">
+                      <div class="form-icon icon-1"></div>
+                      <p class="icon-name">Колокол</p>
+                    </div>
+                    <div class="form-item">
+                      <div class="form-icon icon-2"></div>
+                      <p class="icon-name">Шар</p>
+                    </div>
+                    <div class="form-item">
+                      <div class="form-icon icon-3"></div>
+                      <p class="icon-name">Шишка</p>
+                    </div>
+                    <div class="form-item">
+                      <div class="form-icon icon-4"></div>
+                      <p class="icon-name">Звезда</p>
+                    </div>
+                    <div class="form-item">
+                      <div class="form-icon icon-5"></div>
+                      <p class="icon-name">Снежинка</p>
+                    </div>
+                    <div class="form-item">
+                      <div class="form-icon icon-6"></div>
+                      <p class="icon-name">Фигурка</p>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="count-copy">
+                  <h3>Количество экземпляров</h3>
+                  <input type="range" value="5" min="1" max="12" class="count-copy-item" step="1">
+                  <span class="min">1</span>
+                  <span class="max">5</span>
+                </div>
+    
+                <div class="year-purchase">
+                  <h3>Год приобретения</h3>
+                  <input type="range" value="1950" min="1940" max="2021" class="year-purchase-item" step="1">
+                  <span class="min">1940</span>
+                  <span class="max">1950</span>
+                </div>
+    
+                <div class="color">
+                  <h3>Цвет</h3>
+                  <ul class="color-container">
+                    <li class="color-item item-1"></li>
+                    <li class="color-item item-2"></li>
+                    <li class="color-item item-3"></li>
+                    <li class="color-item item-4"></li>
+                    <li class="color-item item-5"></li>
+                  </ul>
+                </div>
+    
+                <div class="size">
+                  <h3>Размер</h3>
+                  <div class="size-container">
+                    <label class="container-item">
+                      <input type="checkbox" name="little" id="little" class="size-item">
+                      Большой
+                    </label>
+                    <label class="container-item">
+                      <input type="checkbox" name="average" id="average" class="size-item">
+                      Средний
+                    </label>
+                    <label class="container-item">
+                      <input type="checkbox" name="big" id="big" class="size-item">
+                      Маленький
+                    </label>
+                  </div>
+                </div>
+    
+                <div class="favorite">
+                  <label class="container-favorite">
+                    <input type="checkbox" name="little" id="little" class="favorite-item">
+                    Только любимые
+                  </label>
+                </div>
+    
+                <div class="sucsses">
+                  <button class="apply-btn apply-filter">Применить фильтры</button>
+                  <button class="apply-btn apply-settings">Сбросить фильтры</button>
+                </div>
+
               </div>
             </div>
+          </div>
+          <div class="toys-collection-container">
 
-            <div class="sort">
-              <p>Сортировать</p>
-              <div class="sort-container">
-                <p data-sort="По возрастанию">По возрастанию</p>
-                <button class="choose-item"></button>
+            <h2>Игрушки</h2>
+
+            <div class="collection-container">
+              <div class="collection-container-wrapper">
+
               </div>
-            </div>
-
-            <div class="sort-category">
-              <h3>Категории</h3>
-              <label class="category-container">
-                <input type="checkbox" name="all" id="all" checked class="all">
-                Все
-              </label>
-            </div>
-
-            <div class="toys-form">
-              <h3>Форма</h3>
-              <div class="form-container">
-                <div class="form-item">
-                  <div class="form-icon icon-1"></div>
-                  <p class="icon-name">Колокол</p>
-                </div>
-                <div class="form-item">
-                  <div class="form-icon icon-2"></div>
-                  <p class="icon-name">Шар</p>
-                </div>
-                <div class="form-item">
-                  <div class="form-icon icon-3"></div>
-                  <p class="icon-name">Шишка</p>
-                </div>
-                <div class="form-item">
-                  <div class="form-icon icon-4"></div>
-                  <p class="icon-name">Звезда</p>
-                </div>
-                <div class="form-item">
-                  <div class="form-icon icon-5"></div>
-                  <p class="icon-name">Снежинка</p>
-                </div>
-                <div class="form-item">
-                  <div class="form-icon icon-6"></div>
-                  <p class="icon-name">Фигурка</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="count-copy">
-              <h3>Количество экземпляров</h3>
-              <input type="range" value="5" min="1" max="12" class="count-copy-item" step="1">
-              <span class="min">1</span>
-              <span class="max">5</span>
-            </div>
-
-            <div class="year-purchase">
-              <h3>Год приобретения</h3>
-              <input type="range" value="1950" min="1940" max="2021" class="year-purchase-item" step="1">
-              <span class="min">1940</span>
-              <span class="max">1950</span>
-            </div>
-
-            <div class="color">
-              <h3>Цвет</h3>
-              <ul class="color-container">
-                <li class="color-item item-1"></li>
-                <li class="color-item item-2"></li>
-                <li class="color-item item-3"></li>
-                <li class="color-item item-4"></li>
-                <li class="color-item item-5"></li>
-              </ul>
-            </div>
-
-            <div class="size">
-              <h3>Размер</h3>
-              <div class="size-container">
-                <label class="container-item">
-                  <input type="checkbox" name="little" id="little" class="size-item">
-                  Большой
-                </label>
-                <label class="container-item">
-                  <input type="checkbox" name="average" id="average" class="size-item">
-                  Средний
-                </label>
-                <label class="container-item">
-                  <input type="checkbox" name="big" id="big" class="size-item">
-                  Маленький
-                </label>
-              </div>
-            </div>
-
-            <div class="favorite">
-              <label class="container-favorite">
-                <input type="checkbox" name="little" id="little" class="favorite-item">
-                Только любимые
-              </label>
-            </div>
-
-            <div class="sucsses">
-              <button class="apply-btn apply-filter">Применить фильтры</button>
-              <button class="apply-btn apply-settings">Сбросить фильтры</button>
             </div>
 
           </div>
-          <div class="toys-collection-container"></div>
         </div>
       </section>
 
