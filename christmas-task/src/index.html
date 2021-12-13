@@ -7,7 +7,7 @@
   <title>Chirstmas-task</title>
 </head>
 <body>
-  <main class="start">
+  <main class="main-container">
     <div class="wrapper">
       <section class="start-game" id="start">
         <div class="toys-circle-left"></div>
@@ -33,11 +33,16 @@
                   </div>
                 </div>
     
-                <div class="sort">
+                <div class="sort" id="sort">
                   <p>Сортировать</p>
                   <div class="sort-container">
-                    <p data-sort="По возрастанию">По возрастанию</p>
+                    <p data-sort="Все игрушки" id="current-categories">Все игрушки</p>
                     <button class="choose-item"></button>
+                    <div class="all-item hide" id="open-category">
+                      <p class="sort-item" data-sort="По имени">По имени</p>
+                      <p class="sort-item" data-sort="По году выпуска">По году выпуска</p>
+                      <p class="sort-item" data-sort="Все игрушки">Все игрушки</p>
+                    </div>
                   </div>
                 </div>
     
@@ -139,10 +144,13 @@
           </div>
           <div class="toys-collection-container">
 
-            <h2>Игрушки</h2>
+            <div class="title">
+              <h2>Игрушки</h2>
+              <h2>Избранные игрушки: <span id="count-toys">0</span></h2>
+            </div>
 
             <div class="collection-container">
-              <div class="collection-container-wrapper">
+              <div class="collection-container-wrapper" id="collection">
 
               </div>
             </div>
