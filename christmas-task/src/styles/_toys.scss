@@ -249,8 +249,14 @@
         cursor: pointer;
       }
       .form-icon:hover {
-        filter: invert(76%) sepia(94%) saturate(1912%) hue-rotate(0deg)
-          brightness(101%) contrast(105%);
+        // filter: invert(54%) sepia(107%) saturate(901%) hue-rotate(25deg)
+        //   brightness(140%) contrast(93%);
+        opacity: 85%;
+        transform: scale(1.1);
+      }
+      .form-icon__active {
+        filter: invert(54%) sepia(107%) saturate(901%) hue-rotate(25deg)
+          brightness(140%) contrast(93%);
       }
 
       .icon-1 {

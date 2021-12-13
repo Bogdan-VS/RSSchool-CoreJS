@@ -2,11 +2,13 @@ import { App } from '../app/app';
 import { SortToys } from './sort-toys.component';
 
 export class Toys extends App {
+  newData: any;
   dataToys: any;
   sortToys: SortToys;
   constructor(id: string) {
     super(id);
     this.dataToys;
+    this.newData;
     this.sortToys = new SortToys();
   }
 
@@ -18,6 +20,8 @@ export class Toys extends App {
     start.addEventListener('click', buttonHandler.bind(this));
     chooseItem.addEventListener('click', this.addSortToys.bind(this));
     this.$el.addEventListener('click', this.getSortToys.bind(this));
+    this.$el.addEventListener('click', this.getFilterForm.bind(this));
+    this.$el.addEventListener('click', this.applyBtnSucsses.bind(this));
   }
 
   async getData() {
@@ -29,7 +33,6 @@ export class Toys extends App {
   }
 
   drawToys(data: any = this.dataToys) {
-    console.log(this.dataToys);
     const collection = document.querySelector('.collection-container-wrapper');
     for (let i = 0; i < this.dataToys.length; i++) {
       const content = document.createElement('aside');
@@ -62,27 +65,83 @@ export class Toys extends App {
   }
 
   getSortToys(event: Event) {
+    const currentCategories = document.getElementById('current-categories');
     const target = (event.target as HTMLElement).closest('.sort-item');
     if (target) {
       if ((target as HTMLTemplateElement).dataset.sort === 'По году выпуска') {
-        const currentCategories = document.getElementById('current-categories');
         currentCategories.textContent = 'По году выпуска';
-        const newData = this.sortToys.sortToIncrease(this.dataToys);
-        this.removeData();
-        this.drawToys(newData);
+        this.addSortToys();
       }
       if ((target as HTMLTemplateElement).dataset.sort === 'Все игрушки') {
-        this.removeData();
-        this.drawToys(this.dataToys);
+        currentCategories.textContent = 'Все игрушки';
+        this.addSortToys();
       }
       if ((target as HTMLTemplateElement).dataset.sort === 'По имени') {
-        const currentCategories = document.getElementById('current-categories');
         currentCategories.textContent = 'По имени';
-        const newData = this.sortToys.sortToName(this.dataToys);
-        this.removeData();
-        this.drawToys(newData);
+        this.addSortToys();
       }
     }
+  }
+
+  applyBtnSucsses() {
+    const target = (event.target as HTMLElement).closest('#apply-filter');
+    if (target) {
+      const massForm = document.querySelectorAll('.form-icon');
+      let massFormAttribures: string[] = [];
+
+      massForm.forEach(element => {
+        if (element.classList.contains('form-icon__active')) {
+          massFormAttribures.push(element.getAttribute('data-form'));
+        }
+      });
+
+      let succsessFilterForm = this.dataToys.filter((el: any) => {
+        return massFormAttribures.includes(el.shape);
+      })
+
+      this.getResult(succsessFilterForm);
+    }
+  }
+
+  getFilterForm() {
+    const target = (event.target as HTMLElement).closest('.form-icon');
+
+    if (target && (target as HTMLTemplateElement).dataset.form === 'колокольчик') {
+      target.classList.toggle('form-icon__active');
+    }
+    if (target && (target as HTMLTemplateElement).dataset.form === 'шар') {
+      target.classList.toggle('form-icon__active');
+    }
+    if (target && (target as HTMLTemplateElement).dataset.form === 'шишка') {
+      target.classList.toggle('form-icon__active');
+    }
+    if (target && (target as HTMLTemplateElement).dataset.form === 'звезда') {
+      target.classList.toggle('form-icon__active');
+    }
+    if (target && (target as HTMLTemplateElement).dataset.form === 'снежинка') {
+      target.classList.toggle('form-icon__active');
+    }
+    if (target && (target as HTMLTemplateElement).dataset.form === 'фигурка') {
+      target.classList.toggle('form-icon__active');
+    }
+
+  }
+
+  getResult(arg: any[]) {
+    let sortData;
+    const currentCategories = document.getElementById('current-categories');
+    if (currentCategories.textContent === 'По году выпуска') {
+      sortData = this.sortToys.sortToIncrease(arg);
+    }
+    if (currentCategories.textContent === 'Все игрушки') {
+      sortData = this.sortToys.sortALL(arg);
+    }
+    if (currentCategories.textContent === 'По имени') {
+      sortData = this.sortToys.sortALL(arg);
+    }
+
+    this.removeData();
+    this.drawToys(sortData);
   }
 
   removeData() {

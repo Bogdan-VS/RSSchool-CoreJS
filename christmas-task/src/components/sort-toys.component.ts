@@ -10,6 +10,6 @@ export class SortToys {
   }
 
   sortALL(data: any[]) {
-    return data;
+    return data.sort((a, b) => (a.num - b.num));
   }
 } 
