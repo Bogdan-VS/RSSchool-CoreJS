@@ -61,7 +61,7 @@ export class Toys extends App {
       `
       collection.append(content);
       const iconToy = document.querySelector(`.toy${i}`) as HTMLTemplateElement;
-      iconToy.style.background = `top 0 left 0 / 100% 100% url(../assets/images/toys/${data[i].num}.png)`;
+      iconToy.style.background = `top 0 left 0 / 100% 100% url(./assets/images/toys/${data[i].num}.png)`;
     }
   }
 
