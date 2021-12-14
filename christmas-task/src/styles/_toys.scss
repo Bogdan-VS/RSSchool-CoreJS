@@ -35,6 +35,7 @@
 
 .filter-container-content {
   margin-right: 10px;
+  padding: 10px;
 }
 
 .settings {
@@ -249,8 +250,6 @@
         cursor: pointer;
       }
       .form-icon:hover {
-        // filter: invert(54%) sepia(107%) saturate(901%) hue-rotate(25deg)
-        //   brightness(140%) contrast(93%);
         opacity: 85%;
         transform: scale(1.1);
       }
@@ -324,8 +323,8 @@
     background: linear-gradient(
       to right,
       #24c5db 0%,
-      #24c5db 38.5%,
-      rgb(196, 196, 196) 38.5%,
+      #24c5db 45.45%,
+      rgb(196, 196, 196) 45.45%,
       rgb(196, 196, 196) 100%
     );
     outline: none;
@@ -473,6 +472,10 @@
     }
     .color-item:hover {
       opacity: 75%;
+    }
+
+    .color-item__active {
+      box-shadow: 0px 0px 6px 2px rgba(253, 215, 0, 0.8);
     }
     .item-1 {
       background: #ffffff;

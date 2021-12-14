@@ -7,7 +7,8 @@
     "shape": "шар",
     "color": "желтый",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "2",
@@ -17,7 +18,8 @@
     "shape": "шар",
     "color": "зелёный",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "3",
@@ -27,7 +29,8 @@
     "shape": "шар",
     "color": "красный",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "4",
@@ -37,7 +40,8 @@
     "shape": "фигурка",
     "color": "красный",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "5",
@@ -47,7 +51,8 @@
     "shape": "фигурка",
     "color": "красный",
     "size": "средний",
-    "favorite": true
+    "favorite": true,
+    "like": "да"
   },
   {
     "num": "6",
@@ -57,7 +62,8 @@
     "shape": "шар",
     "color": "красный",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "7",
@@ -67,7 +73,8 @@
     "shape": "шар",
     "color": "белый",
     "size": "средний",
-    "favorite": true
+    "favorite": true,
+    "like": "да"
   },
   {
     "num": "8",
@@ -77,7 +84,8 @@
     "shape": "шар",
     "color": "красный",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "9",
@@ -87,7 +95,8 @@
     "shape": "колокольчик",
     "color": "белый",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "10",
@@ -97,7 +106,8 @@
     "shape": "шар",
     "color": "белый",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "11",
@@ -107,7 +117,8 @@
     "shape": "шишка",
     "color": "белый",
     "size": "малый",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "12",
@@ -117,7 +128,8 @@
     "shape": "шар",
     "color": "белый",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "13",
@@ -127,7 +139,8 @@
     "shape": "шар",
     "color": "синий",
     "size": "большой",
-    "favorite": true
+    "favorite": true,
+    "like": "да"
   },
   {
     "num": "14",
@@ -137,7 +150,8 @@
     "shape": "шар",
     "color": "синий",
     "size": "большой",
-    "favorite": true
+    "favorite": true,
+    "like": "да"
   },
   {
     "num": "15",
@@ -147,7 +161,8 @@
     "shape": "колокольчик",
     "color": "синий",
     "size": "средний",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "16",
@@ -157,7 +172,8 @@
     "shape": "шишка",
     "color": "синий",
     "size": "средний",
-    "favorite": true
+    "favorite": true,
+    "like": "да"
   },
   {
     "num": "17",
@@ -167,7 +183,8 @@
     "shape": "шишка",
     "color": "красный",
     "size": "средний",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "18",
@@ -177,7 +194,8 @@
     "shape": "шар",
     "color": "желтый",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "19",
@@ -187,7 +205,8 @@
     "shape": "шар",
     "color": "желтый",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "20",
@@ -197,7 +216,8 @@
     "shape": "шар",
     "color": "красный",
     "size": "средний",
-    "favorite": true
+    "favorite": true,
+    "like": "да"
   },
   {
     "num": "21",
@@ -207,7 +227,8 @@
     "shape": "шар",
     "color": "красный",
     "size": "большой",
-    "favorite": true
+    "favorite": true,
+    "like": "да"
   },
   {
     "num": "22",
@@ -217,7 +238,8 @@
     "shape": "шишка",
     "color": "желтый",
     "size": "малый",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "23",
@@ -227,7 +249,8 @@
     "shape": "колокольчик",
     "color": "желтый",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "24",
@@ -237,7 +260,8 @@
     "shape": "снежинка",
     "color": "белый",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "25",
@@ -247,7 +271,8 @@
     "shape": "шар",
     "color": "красный",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "26",
@@ -257,7 +282,8 @@
     "shape": "шар",
     "color": "желтый",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "27",
@@ -267,7 +293,8 @@
     "shape": "шар",
     "color": "красный",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "28",
@@ -277,7 +304,8 @@
     "shape": "шар",
     "color": "красный",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "29",
@@ -287,7 +315,8 @@
     "shape": "шар",
     "color": "желтый",
     "size": "большой",
-    "favorite": true
+    "favorite": true,
+    "like": "да"
   },
   {
     "num": "30",
@@ -297,7 +326,8 @@
     "shape": "шар",
     "color": "желтый",
     "size": "большой",
-    "favorite": true
+    "favorite": true,
+    "like": "да"
   },
   {
     "num": "31",
@@ -307,7 +337,8 @@
     "shape": "шар",
     "color": "красный",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "32",
@@ -317,7 +348,8 @@
     "shape": "шар",
     "color": "синий",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "33",
@@ -327,7 +359,8 @@
     "shape": "шар",
     "color": "синий",
     "size": "средний",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "34",
@@ -337,7 +370,8 @@
     "shape": "шар",
     "color": "зелёный",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "35",
@@ -347,7 +381,8 @@
     "shape": "фигурка",
     "color": "желтый",
     "size": "средний",
-    "favorite": true
+    "favorite": true,
+    "like": "да"
   },
   {
     "num": "36",
@@ -357,7 +392,8 @@
     "shape": "шар",
     "color": "синий",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "37",
@@ -367,7 +403,8 @@
     "shape": "шар",
     "color": "зелёный",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "38",
@@ -377,7 +414,8 @@
     "shape": "шар",
     "color": "синий",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "39",
@@ -387,7 +425,8 @@
     "shape": "снежинка",
     "color": "красный",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "40",
@@ -397,7 +436,8 @@
     "shape": "снежинка",
     "color": "желтый",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "41",
@@ -407,7 +447,8 @@
     "shape": "снежинка",
     "color": "белый",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "42",
@@ -417,7 +458,8 @@
     "shape": "шар",
     "color": "зелёный",
     "size": "средний",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "43",
@@ -427,7 +469,8 @@
     "shape": "снежинка",
     "color": "красный",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "44",
@@ -437,7 +480,8 @@
     "shape": "фигурка",
     "color": "красный",
     "size": "средний",
-    "favorite": true
+    "favorite": true,
+    "like": "да"
   },
   {
     "num": "45",
@@ -447,7 +491,8 @@
     "shape": "снежинка",
     "color": "белый",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "46",
@@ -457,7 +502,8 @@
     "shape": "фигурка",
     "color": "красный",
     "size": "малый",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "47",
@@ -467,7 +513,8 @@
     "shape": "фигурка",
     "color": "красный",
     "size": "малый",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "48",
@@ -477,7 +524,8 @@
     "shape": "шар",
     "color": "желтый",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "49",
@@ -487,7 +535,8 @@
     "shape": "снежинка",
     "color": "желтый",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "50",
@@ -497,7 +546,8 @@
     "shape": "колокольчик",
     "color": "красный",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "51",
@@ -507,7 +557,8 @@
     "shape": "шишка",
     "color": "красный",
     "size": "малый",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "52",
@@ -517,7 +568,8 @@
     "shape": "шар",
     "color": "красный",
     "size": "большой",
-    "favorite": true
+    "favorite": true,
+    "like": "да"
   },
   {
     "num": "53",
@@ -527,7 +579,8 @@
     "shape": "снежинка",
     "color": "белый",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "54",
@@ -537,7 +590,8 @@
     "shape": "шар",
     "color": "зелёный",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "55",
@@ -547,7 +601,8 @@
     "shape": "фигурка",
     "color": "желтый",
     "size": "большой",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "56",
@@ -557,7 +612,8 @@
     "shape": "фигурка",
     "color": "желтый",
     "size": "малый",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "57",
@@ -567,7 +623,8 @@
     "shape": "фигурка",
     "color": "желтый",
     "size": "средний",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "58",
@@ -577,7 +634,8 @@
     "shape": "фигурка",
     "color": "белый",
     "size": "средний",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "59",
@@ -587,7 +645,8 @@
     "shape": "шар",
     "color": "желтый",
     "size": "средний",
-    "favorite": false
+    "favorite": false,
+    "like": "нет"
   },
   {
     "num": "60",
@@ -597,6 +656,7 @@
     "shape": "фигурка",
     "color": "белый",
     "size": "средний",
-    "favorite": true
+    "favorite": true,
+    "like": "да"
   }
 ]
