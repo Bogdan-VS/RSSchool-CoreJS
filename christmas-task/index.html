@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chirstmas-task</title>
+<script defer src="index.js"></script></head>
+<body>
+  <main class="main-container">
+    <div class="wrapper">
+      <section class="start-game" id="start">
+        <div class="toys-circle-left"></div>
+        <div class="toys-circle-right"></div>
+        <div class="title-conteiner">
+          <h1>Помогите бабушке<br> нарядить елку</h1>
+        </div>
+        <button class="start">Начать</button>
+      </section>
+
+      <section class="toys hide" id="toys">
+        <div class="toys-container">
+          <div class="filter-conteiner">
+            <div class="filter-container-wrapper">
+              <div class="filter-container-content">
+
+                <div class="settings">
+                  <button class="audio"></button>
+                  <button class="snow"></button>
+                  <div class="search">
+                    <input type="text" name="search" id="search" placeholder="Поиск" class="search-item">
+                    <div class="search-icon"></div>
+                  </div>
+                </div>
+    
+                <div class="sort" id="sort">
+                  <p>Сортировать</p>
+                  <div class="sort-container">
+                    <p data-sort="Все игрушки" id="current-categories">Все игрушки</p>
+                    <button class="choose-item"></button>
+                    <div class="all-item hide" id="open-category">
+                      <p class="sort-item" data-sort="По имени">По имени</p>
+                      <p class="sort-item" data-sort="По году выпуска">По году выпуска</p>
+                      <p class="sort-item" data-sort="Все игрушки">Все игрушки</p>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="sort-category">
+                  <h3>Категории</h3>
+                  <label class="category-container">
+                    <input type="checkbox" name="all" id="all" checked class="all">
+                    Все
+                  </label>
+                </div>
+    
+                <div class="toys-form">
+                  <h3>Форма</h3>
+                  <div class="form-container">
+                    <div class="form-item">
+                      <div class="form-icon icon-1" data-form="колокольчик"></div>
+                      <p class="icon-name">Колокольчик</p>
+                    </div>
+                    <div class="form-item">
+                      <div class="form-icon icon-2" data-form="шар"></div>
+                      <p class="icon-name">Шар</p>
+                    </div>
+                    <div class="form-item">
+                      <div class="form-icon icon-3" data-form="шишка"></div>
+                      <p class="icon-name">Шишка</p>
+                    </div>
+                    <div class="form-item">
+                      <div class="form-icon icon-4" data-form="звезда"></div>
+                      <p class="icon-name">Звезда</p>
+                    </div>
+                    <div class="form-item">
+                      <div class="form-icon icon-5" data-form="снежинка"></div>
+                      <p class="icon-name">Снежинка</p>
+                    </div>
+                    <div class="form-item">
+                      <div class="form-icon icon-6" data-form="фигурка"></div>
+                      <p class="icon-name">Фигурка</p>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="count-copy">
+                  <h3>Количество экземпляров</h3>
+                  <input type="range" value="5" min="0" max="11" class="count-copy-item" step="1">
+                  <span class="min">0</span>
+                  <span class="max count-max">5</span>
+                </div>
+    
+                <div class="year-purchase">
+                  <h3>Год приобретения</h3>
+                  <input type="range" value="10" min="0" max="81" class="year-purchase-item" step="1">
+                  <span class="min">1940</span>
+                  <span class="max year-max">1950</span>
+                </div>
+    
+                <div class="color">
+                  <h3>Цвет</h3>
+                  <ul class="color-container">
+                    <li class="color-item item-1" data-color="белый"></li>
+                    <li class="color-item item-2" data-color="желтый"></li>
+                    <li class="color-item item-3" data-color="красный"></li>
+                    <li class="color-item item-4" data-color="синий"></li>
+                    <li class="color-item item-5" data-color="зеленый"></li>
+                  </ul>
+                </div>
+    
+                <div class="size">
+                  <h3>Размер</h3>
+                  <div class="size-container">
+                    <label class="container-item">
+                      <input type="checkbox" name="little" id="little" class="size-item" data-size="большой">
+                      Большой
+                    </label>
+                    <label class="container-item">
+                      <input type="checkbox" name="average" id="average" class="size-item" data-size="средний">
+                      Средний
+                    </label>
+                    <label class="container-item">
+                      <input type="checkbox" name="big" id="big" class="size-item" data-size="малый">
+                      Малый
+                    </label>
+                  </div>
+                </div>
+    
+                <div class="favorite">
+                  <label class="container-favorite">
+                    <input type="checkbox" name="little" id="little" class="favorite-item" data-favorite="true">
+                    Только любимые
+                  </label>
+                </div>
+    
+                <div class="sucsses">
+                  <button class="apply-btn apply-filter" id="apply-filter">Применить фильтры</button>
+                  <button class="apply-btn apply-settings" id="apply-settings">Сбросить фильтры</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="toys-collection-container">
+
+            <div class="title">
+              <h2>Игрушки</h2>
+              <h2>Избранные игрушки: <span id="count-toys">0</span></h2>
+            </div>
+
+            <div class="collection-container">
+              <div class="collection-container-wrapper" id="collection">
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+  <footer>
+    <div class="wrapper">
+      <div class="footer-container">
+        <div class="left-element">
+          <p>Работу выполнил: Богдан Самонов <span>2021</span></p>
+          <a href="#" class="github"></a>
+        </div>
+        <div class="right-element">
+          <a href="#" class="rs-school"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
