@@ -26,7 +26,7 @@
 
                 <div class="settings">
                   <button class="audio"></button>
-                  <button class="snow"></button>
+                  <button class="snow" id="snow"></button>
                   <div class="search">
                     <input type="text" name="search" id="search" placeholder="Поиск" class="search-item">
                     <div class="search-icon"></div>
@@ -46,39 +46,31 @@
                   </div>
                 </div>
     
-                <div class="sort-category">
-                  <h3>Категории</h3>
-                  <label class="category-container">
-                    <input type="checkbox" name="all" id="all" checked class="all">
-                    Все
-                  </label>
-                </div>
-    
                 <div class="toys-form">
                   <h3>Форма</h3>
                   <div class="form-container">
                     <div class="form-item">
-                      <div class="form-icon icon-1" data-form="колокольчик"></div>
+                      <div class="form-icon icon-1 form-icon__active" data-form="колокольчик"></div>
                       <p class="icon-name">Колокольчик</p>
                     </div>
                     <div class="form-item">
-                      <div class="form-icon icon-2" data-form="шар"></div>
+                      <div class="form-icon icon-2 form-icon__active" data-form="шар"></div>
                       <p class="icon-name">Шар</p>
                     </div>
                     <div class="form-item">
-                      <div class="form-icon icon-3" data-form="шишка"></div>
+                      <div class="form-icon icon-3 form-icon__active" data-form="шишка"></div>
                       <p class="icon-name">Шишка</p>
                     </div>
                     <div class="form-item">
-                      <div class="form-icon icon-4" data-form="звезда"></div>
+                      <div class="form-icon icon-4 form-icon__active" data-form="звезда"></div>
                       <p class="icon-name">Звезда</p>
                     </div>
                     <div class="form-item">
-                      <div class="form-icon icon-5" data-form="снежинка"></div>
+                      <div class="form-icon icon-5 form-icon__active" data-form="снежинка"></div>
                       <p class="icon-name">Снежинка</p>
                     </div>
                     <div class="form-item">
-                      <div class="form-icon icon-6" data-form="фигурка"></div>
+                      <div class="form-icon icon-6 form-icon__active" data-form="фигурка"></div>
                       <p class="icon-name">Фигурка</p>
                     </div>
                   </div>
@@ -86,26 +78,26 @@
     
                 <div class="count-copy">
                   <h3>Количество экземпляров</h3>
-                  <input type="range" value="5" min="0" max="11" class="count-copy-item" step="1">
-                  <span class="min">0</span>
-                  <span class="max count-max">5</span>
+                  <div id="range" class="count-copy-item"></div>
+                  <span class="min">1</span>
+                  <span class="max count-max">12</span>
                 </div>
     
                 <div class="year-purchase">
                   <h3>Год приобретения</h3>
-                  <input type="range" value="10" min="0" max="81" class="year-purchase-item" step="1">
+                  <div id="range-year" class="count-copy-item"></div>
                   <span class="min">1940</span>
-                  <span class="max year-max">1950</span>
+                  <span class="max year-max">2021</span>
                 </div>
     
                 <div class="color">
                   <h3>Цвет</h3>
                   <ul class="color-container">
-                    <li class="color-item item-1" data-color="белый"></li>
-                    <li class="color-item item-2" data-color="желтый"></li>
-                    <li class="color-item item-3" data-color="красный"></li>
-                    <li class="color-item item-4" data-color="синий"></li>
-                    <li class="color-item item-5" data-color="зеленый"></li>
+                    <li class="color-item item-1 color-item__active" data-color="белый"></li>
+                    <li class="color-item item-2 color-item__active" data-color="желтый"></li>
+                    <li class="color-item item-3 color-item__active" data-color="красный"></li>
+                    <li class="color-item item-4 color-item__active" data-color="синий"></li>
+                    <li class="color-item item-5 color-item__active" data-color="зелёный"></li>
                   </ul>
                 </div>
     
@@ -113,15 +105,15 @@
                   <h3>Размер</h3>
                   <div class="size-container">
                     <label class="container-item">
-                      <input type="checkbox" name="little" id="little" class="size-item" data-size="большой">
+                      <input type="checkbox" name="little" id="little" checked class="size-item" data-size="большой">
                       Большой
                     </label>
                     <label class="container-item">
-                      <input type="checkbox" name="average" id="average" class="size-item" data-size="средний">
+                      <input type="checkbox" name="average" id="average" checked class="size-item" data-size="средний">
                       Средний
                     </label>
                     <label class="container-item">
-                      <input type="checkbox" name="big" id="big" class="size-item" data-size="малый">
+                      <input type="checkbox" name="big" id="big" checked class="size-item" data-size="малый">
                       Малый
                     </label>
                   </div>

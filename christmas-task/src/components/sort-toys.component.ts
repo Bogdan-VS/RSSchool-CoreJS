@@ -18,8 +18,8 @@ export class SortToys {
     const dataActiveItem: string[] = [];
 
     const massForm = document.querySelectorAll('.form-icon');
-    const countCopyes = document.querySelector('.count-copy-item');
-    const year = document.querySelector('.year-purchase-item');
+    const countCopyes = document.querySelectorAll('#range .noUi-handle');
+    const year = document.querySelectorAll('#range-year .noUi-handle');
     const colorContainer = document.querySelectorAll('.color-item');
     const sizeItem = document.querySelectorAll('.size-item');
     const favoriteToys = document.querySelector('.favorite-item');
@@ -30,11 +30,11 @@ export class SortToys {
       }
     });
 
-    for (let i = 1; i <= +(countCopyes as any).value; i++) {
+    for (let i = +countCopyes[0].ariaValueNow; i <= +countCopyes[1].ariaValueNow; i++) {
       dataActiveItem.push(String(i));
     }
 
-    for (let i = 1940; i <= (+(year as any).value + 1940); i++) {
+    for (let i = +year[0].ariaValueNow; i <= +year[1].ariaValueNow; i++) {
       dataActiveItem.push(String(i));
     }
 

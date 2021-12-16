@@ -129,6 +129,7 @@
     backdrop-filter: blur(31px);
     border-radius: 30px;
     border: 1px solid #03a9f4;
+    z-index: 5;
     p {
       font-size: 16px;
       text-transform: none;
@@ -304,6 +305,92 @@
   }
 }
 
+/*Slider*/
+
+main .noUi-target {
+  background: #fafafa;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px #f0f0f0, 0 3px 6px -5px #bbb;
+  border: none;
+  cursor: pointer;
+}
+
+main .noUi-horizontal {
+  height: 2px;
+}
+
+main .noUi-handle:before,
+.noUi-handle:after {
+  content: none;
+  display: none !important;
+  position: absolute;
+  height: 0px;
+  width: 0px;
+  background: #e8e7e6;
+  left: 14px;
+  top: 6px;
+}
+
+main .noUi-horizontal .noUi-handle {
+  width: 15px;
+  height: 15px;
+  right: -13px;
+  top: -6px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    radial-gradient(
+      57.23% 248.2% at 107.17% 104.02%,
+      rgba(34, 153, 235, 0.92) 0%,
+      rgba(34, 153, 235, 0.07) 100%
+    ),
+    radial-gradient(
+      104.22% 230.94% at -4.22% 0%,
+      #24c5db 3.62%,
+      rgba(36, 197, 219, 0.26) 55.1%
+    );
+  border-radius: 50%;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+}
+
+main .noUi-connect {
+  background: #24c5db;
+}
+
+main .noUi-base,
+.noUi-connects {
+  width: 97%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+main .noUi-tooltip {
+  display: block;
+  position: absolute;
+  border: none;
+  border-radius: none;
+  background: none;
+  color: #fff;
+  padding: 5px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 14px;
+  font-family: 'Steppe';
+  font-style: normal;
+  font-weight: normal;
+}
+
+#range-year .noUi-tooltip {
+  left: 50%;
+}
+
+#range-year {
+  margin-top: 40px;
+}
+
+/*Slider-END*/
+
 .count-copy {
   position: relative;
   margin: 20px 0;
@@ -316,40 +403,7 @@
     color: #fff;
   }
   .count-copy-item {
-    margin-top: 15px;
-    height: 2px;
-    width: 100%;
-    border-radius: 3px;
-    background: linear-gradient(
-      to right,
-      #24c5db 0%,
-      #24c5db 45.45%,
-      rgb(196, 196, 196) 45.45%,
-      rgb(196, 196, 196) 100%
-    );
-    outline: none;
-    transition: background 450ms ease-in;
-    -webkit-appearance: none;
-    cursor: pointer;
-  }
-
-  .count-copy-item::-webkit-slider-thumb {
-    max-width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    -webkit-appearance: none;
-    cursor: pointer;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-      radial-gradient(
-        57.23% 248.2% at 107.17% 104.02%,
-        rgba(34, 153, 235, 0.92) 0%,
-        rgba(34, 153, 235, 0.07) 100%
-      ),
-      radial-gradient(
-        104.22% 230.94% at -4.22% 0%,
-        #24c5db 3.62%,
-        rgba(36, 197, 219, 0.26) 55.1%
-      );
+    margin-top: 40px;
   }
 
   .min {
@@ -388,40 +442,7 @@
     color: #fff;
   }
   .year-purchase-item {
-    margin-top: 15px;
-    height: 2px;
-    width: 100%;
-    border-radius: 3px;
-    background: linear-gradient(
-      to right,
-      #24c5db 0%,
-      #24c5db 12.34%,
-      rgb(196, 196, 196) 12.34%,
-      rgb(196, 196, 196) 100%
-    );
-    outline: none;
-    transition: background 450ms ease-in;
-    -webkit-appearance: none;
-    cursor: pointer;
-  }
-
-  .year-purchase-item::-webkit-slider-thumb {
-    max-width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    -webkit-appearance: none;
-    cursor: pointer;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-      radial-gradient(
-        57.23% 248.2% at 107.17% 104.02%,
-        rgba(34, 153, 235, 0.92) 0%,
-        rgba(34, 153, 235, 0.07) 100%
-      ),
-      radial-gradient(
-        104.22% 230.94% at -4.22% 0%,
-        #24c5db 3.62%,
-        rgba(36, 197, 219, 0.26) 55.1%
-      );
+    margin-top: 35px;
   }
 
   .min {
@@ -648,7 +669,7 @@
     }
   }
   .collection-container {
-    height: 100%;
+    height: calc(100% - 48px);
     overflow: scroll;
     .collection-container-wrapper {
       display: flex;
@@ -741,7 +762,7 @@
   }
 
   .collection-container::-webkit-scrollbar-track {
-    background: #152625;
+    background: none;
   }
 
   .collection-container::-webkit-scrollbar-thumb {

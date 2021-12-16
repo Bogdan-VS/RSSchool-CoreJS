@@ -1,5 +1,7 @@
 import { App } from '../app/app';
 import { SortToys } from './sort-toys.component';
+import { range } from '..';
+import { rangeYear } from '..';
 
 export class Toys extends App {
   newData: any;
@@ -17,16 +19,13 @@ export class Toys extends App {
     this.getData();
     const start: HTMLElement = document.querySelector('.start');
     const chooseItem: HTMLElement = document.querySelector('.choose-item');
-    const countCopy: HTMLElement = document.querySelector('.count-copy-item');
-    const yearPurchase: HTMLElement = document.querySelector('.year-purchase-item');
 
-    countCopy.addEventListener('input', this.changeCountCopy.bind(this));
-    yearPurchase.addEventListener('input', this.chageYearPurchase.bind(this));
     start.addEventListener('click', buttonHandler.bind(this));
     chooseItem.addEventListener('click', this.addSortToys.bind(this));
     this.$el.addEventListener('click', this.getSortToys.bind(this));
     this.$el.addEventListener('click', this.getFilterForm.bind(this));
     this.$el.addEventListener('click', this.applyBtnSucsses.bind(this));
+    this.$el.addEventListener('click', this.applyBtnReset.bind(this));
     this.$el.addEventListener('click', this.addActiveColor.bind(this));
   }
 
@@ -88,32 +87,14 @@ export class Toys extends App {
         this.addSortToys();
         break;
     }
-
-    // if (target) {
-    //   if ((target as HTMLTemplateElement).dataset.sort === 'По году выпуска') {
-    //     currentCategories.textContent = 'По году выпуска';
-    //     this.addSortToys();
-    //   }
-    //   if ((target as HTMLTemplateElement).dataset.sort === 'Все игрушки') {
-    //     currentCategories.textContent = 'Все игрушки';
-    //     this.addSortToys();
-    //   }
-    //   if ((target as HTMLTemplateElement).dataset.sort === 'По имени') {
-    //     currentCategories.textContent = 'По имени';
-    //     this.addSortToys();
-    //   }
-    // }
   }
 
   applyBtnSucsses() {
     const target = (event.target as HTMLElement).closest('#apply-filter');
-    const allCategories = document.getElementById('all');
     if (target) {
-
       const massFilter: string[] = this.sortToys.getCurrentActiveElements();
-      console.log(massFilter);
 
-      let succsessFilterForm = this.dataToys.filter((el: any) => {
+      const succsessFilterForm = this.dataToys.filter((el: any) => {
         return massFilter.includes(el.shape) &&
           massFilter.includes(el.count) &&
           massFilter.includes(el.year) &&
@@ -122,34 +103,32 @@ export class Toys extends App {
           massFilter.includes(el.favorite);
       })
 
-      if ((allCategories as any).checked) {
-        this.getResult(this.dataToys);
-      } else {
-        this.getResult(succsessFilterForm);
-      }
+      this.getResult(succsessFilterForm);
     }
   }
 
   getFilterForm() {
     const target = (event.target as HTMLElement).closest('.form-icon');
 
-    if (target && (target as HTMLTemplateElement).dataset.form === 'колокольчик') {
-      target.classList.toggle('form-icon__active');
-    }
-    if (target && (target as HTMLTemplateElement).dataset.form === 'шар') {
-      target.classList.toggle('form-icon__active');
-    }
-    if (target && (target as HTMLTemplateElement).dataset.form === 'шишка') {
-      target.classList.toggle('form-icon__active');
-    }
-    if (target && (target as HTMLTemplateElement).dataset.form === 'звезда') {
-      target.classList.toggle('form-icon__active');
-    }
-    if (target && (target as HTMLTemplateElement).dataset.form === 'снежинка') {
-      target.classList.toggle('form-icon__active');
-    }
-    if (target && (target as HTMLTemplateElement).dataset.form === 'фигурка') {
-      target.classList.toggle('form-icon__active');
+    switch (target && (target as HTMLTemplateElement).dataset.form) {
+      case 'колокольчик':
+        target.classList.toggle('form-icon__active');
+        break;
+      case 'шар':
+        target.classList.toggle('form-icon__active');
+        break;
+      case 'шишка':
+        target.classList.toggle('form-icon__active');
+        break;
+      case 'звезда':
+        target.classList.toggle('form-icon__active');
+        break;
+      case 'снежинка':
+        target.classList.toggle('form-icon__active');
+        break;
+      case 'фигурка':
+        target.classList.toggle('form-icon__active');
+        break;
     }
 
   }
@@ -161,40 +140,21 @@ export class Toys extends App {
     }
     let sortData;
     const currentCategories = document.getElementById('current-categories');
-    if (currentCategories.textContent === 'По году выпуска') {
-      sortData = this.sortToys.sortToIncrease(arg);
-    }
-    if (currentCategories.textContent === 'Все игрушки') {
-      sortData = this.sortToys.sortALL(arg);
-    }
-    if (currentCategories.textContent === 'По имени') {
-      sortData = this.sortToys.sortALL(arg);
+
+    switch (currentCategories.textContent) {
+      case 'По году выпуска':
+        sortData = this.sortToys.sortToIncrease(arg);
+        break
+      case 'Все игрушки':
+        sortData = this.sortToys.sortALL(arg);
+        break
+      case 'По имени':
+        sortData = this.sortToys.sortALL(arg);
+        break
     }
 
     this.removeData();
     this.drawToys(sortData);
-  }
-
-  changeCountCopy() {
-    const countCopy = document.querySelector('.count-copy-item');
-    const maxCount = document.querySelector('.count-max');
-
-    const value = String((countCopy as any).value * 100 / (countCopy as any).max);
-    const currentValue = (countCopy as any).value;
-    maxCount.textContent = `${+currentValue + 1}`;
-    (countCopy as any).style.background = `linear-gradient(to right, #24c5db 0%, #24c5db ${value}%, rgb(196, 196, 196) ${value}%, rgb(196, 196, 196) 100%)`;
-    console.log(value);
-  }
-
-  chageYearPurchase() {
-    const yearPurchase: HTMLElement = document.querySelector('.year-purchase-item');
-    const maxYear = document.querySelector('.year-max');
-
-    const value = String((yearPurchase as any).value * 100 / (yearPurchase as any).max);
-    const currentValue = +(yearPurchase as any).value + 1940;
-    maxYear.textContent = `${+currentValue}`;
-    (yearPurchase as any).style.background = `linear-gradient(to right, #24c5db 0%, #24c5db ${value}%, rgb(196, 196, 196) ${value}%, rgb(196, 196, 196) 100%)`;
-    console.log(value);
   }
 
   addActiveColor() {
@@ -214,9 +174,33 @@ export class Toys extends App {
         console.log('синий');
         target.classList.toggle('color-item__active');
         break
-      case "зеленый":
+      case "зелёный":
         target.classList.toggle('color-item__active');
         break
+    }
+  }
+
+  applyBtnReset() {
+    const target = (event.target as HTMLElement).closest('#apply-settings');
+    const colorContainer = document.querySelectorAll('.color-item');
+    const massForm = document.querySelectorAll('.form-icon');
+    const sizeItem = document.querySelectorAll('.size-item');
+
+    if (target) {
+      (range as any).noUiSlider.reset();
+      (rangeYear as any).noUiSlider.reset();
+
+      massForm.forEach(element => {
+        element.classList.add('form-icon__active');
+      });
+
+      colorContainer.forEach(element => {
+        element.classList.add('color-item__active');
+      });
+
+      sizeItem.forEach(element => {
+        (element as any).checked = 'checked';
+      });
     }
   }
 
@@ -232,4 +216,5 @@ function buttonHandler() {
   this.show();
   this.drawToys();
 }
+
 
