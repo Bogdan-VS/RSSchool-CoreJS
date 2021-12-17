@@ -669,8 +669,25 @@ main .noUi-tooltip {
     }
   }
   .collection-container {
+    position: relative;
     height: calc(100% - 48px);
     overflow: scroll;
+
+    .message {
+      display: none;
+      position: absolute;
+      right: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: 0.5s;
+      .message-item {
+        padding: 30px;
+        background: #43686a;
+        color: #fafafa;
+        font-size: 20px;
+      }
+    }
     .collection-container-wrapper {
       display: flex;
       column-gap: 25px;
@@ -754,6 +771,11 @@ main .noUi-tooltip {
     }
     .active-toy:hover {
       box-shadow: 0px 0px 10px 3px rgba(76, 175, 80, 0.75);
+    }
+
+    .message_active {
+      display: block;
+      opacity: 1;
     }
   }
 

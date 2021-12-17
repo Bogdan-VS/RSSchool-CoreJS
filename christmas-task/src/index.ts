@@ -7,7 +7,7 @@ import 'nouislider/dist/nouislider.css';
 import './components/snow-component.ts';
 
 new StartGame('start');
-new Toys('toys');
+const toys = new Toys('toys');
 new FavoriteToys('collection');
 
 export const range = document.getElementById('range');
@@ -52,6 +52,10 @@ noUiSlider.create(rangeYear, {
     }
   }
 });
+
+(range as any).noUiSlider.on('change', () => {
+  toys.addResultData();
+})
 
 
 

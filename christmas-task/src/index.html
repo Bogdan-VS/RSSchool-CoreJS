@@ -28,7 +28,7 @@
                   <button class="audio"></button>
                   <button class="snow" id="snow"></button>
                   <div class="search">
-                    <input type="text" name="search" id="search" placeholder="Поиск" class="search-item">
+                    <input type="text" name="search" id="search" placeholder="Поиск" autocomplete="off" class="search-item">
                     <div class="search-icon"></div>
                   </div>
                 </div>
@@ -62,11 +62,7 @@
                       <p class="icon-name">Шишка</p>
                     </div>
                     <div class="form-item">
-                      <div class="form-icon icon-4 form-icon__active" data-form="звезда"></div>
-                      <p class="icon-name">Звезда</p>
-                    </div>
-                    <div class="form-item">
-                      <div class="form-icon icon-5 form-icon__active" data-form="снежинка"></div>
+                      <div class="form-icon icon-4 form-icon__active" data-form="снежинка"></div>
                       <p class="icon-name">Снежинка</p>
                     </div>
                     <div class="form-item">
@@ -127,8 +123,8 @@
                 </div>
     
                 <div class="sucsses">
-                  <button class="apply-btn apply-filter" id="apply-filter">Применить фильтры</button>
                   <button class="apply-btn apply-settings" id="apply-settings">Сбросить фильтры</button>
+                  <button class="apply-btn apply-filter" id="apply-filter">Сбросить настройки</button>
                 </div>
 
               </div>
@@ -143,11 +139,17 @@
 
             <div class="collection-container">
               <div class="collection-container-wrapper" id="collection">
+                <div class="message">
+                  <p class="message-item">
+                    По вашему запросу игрушек не найдено. Попробуйте изменить название или критерии подбора игрушек.
+                  </p>
+                </div>
 
               </div>
             </div>
 
           </div>
+
         </div>
       </section>
 

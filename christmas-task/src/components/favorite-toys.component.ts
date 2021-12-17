@@ -17,6 +17,7 @@ export class FavoriteToys extends Toys {
       if (this.count === 20 && !(target.classList.contains('active-toy'))) {
         alert("Извините, все слоты заполнены");
       } else {
+        console.log(target);
         target.classList.toggle('active-toy');
         if (target.classList.contains('active-toy')) {
           this.count++;
