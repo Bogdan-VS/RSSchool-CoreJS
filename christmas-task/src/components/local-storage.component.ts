@@ -28,7 +28,6 @@ export class LocalStorage {
     } else {
       let currentCopyes = [];
       for (let i = +currentRange[0].ariaValueNow; i <= +currentRange[1].ariaValueNow; i++) {
-        console.log('false');
         currentCopyes.push(String(i));
       }
       localStorage.setItem(index, JSON.stringify(currentCopyes));
@@ -40,9 +39,7 @@ export class LocalStorage {
     const values = document.querySelectorAll(`${className}`);
     const currentValues = localStorage.getItem(index);
     values.forEach(element => {
-      console.log(element.getAttribute(`data-${set}`));
       if (currentValues.includes(element.getAttribute(`data-${set}`))) {
-        console.log(element.getAttribute(`data-${set}`));
         element.classList.toggle(`${activeClass}`);
       }
     });

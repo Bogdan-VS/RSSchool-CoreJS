@@ -53,4 +53,8 @@ export class FavoriteToys extends Toys {
       this.getFavoriteCountToLacalStaorage('dataCount', 'count-toys');
     }
   }
+
+  applySucsses(): void {
+    this.count = 0;
+  }
 }

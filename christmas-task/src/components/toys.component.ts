@@ -33,6 +33,7 @@ export class Toys extends App {
     this.$el.addEventListener('click', this.applySucsses.bind(this));
     this.$el.addEventListener('click', this.applyResetFilters.bind(this));
     this.$el.addEventListener('click', this.applyResetSettings.bind(this));
+    this.$el.addEventListener('click', this.addCleanSearch.bind(this));
   }
 
   async getData() {
@@ -241,7 +242,10 @@ export class Toys extends App {
   }
 
   applyResetSettings() {
-    localStorage.clear();
+    const resetSettings = (event.target as HTMLElement).closest('#reset-setting');
+    if (resetSettings) {
+      localStorage.clear();
+    }
   }
 
   addSearch() {
@@ -270,6 +274,16 @@ export class Toys extends App {
     }
 
     this.getResult(massRequest);
+  }
+
+  addCleanSearch() {
+    const cleanSearch = (event.target as HTMLElement).closest('.clean-icon');
+    const search: HTMLElement = document.getElementById('search');
+
+    if (cleanSearch) {
+      (search as any).value = '';
+      this.addSearch();
+    }
   }
 
   removeData() {
