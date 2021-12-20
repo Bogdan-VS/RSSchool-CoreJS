@@ -20,7 +20,7 @@ export class LocalStorage {
     const currentValue = JSON.parse(localStorage.getItem(index));
     const currentRange = document.querySelectorAll(`${className}`);
     if (currentValue) {
-      let currentCopyes = []
+      let currentCopyes = [];
       for (let i = +currentRange[0].ariaValueNow; i <= +currentRange[1].ariaValueNow; i++) {
         currentCopyes.push(String(i));
       }

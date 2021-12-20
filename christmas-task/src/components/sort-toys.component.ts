@@ -6,8 +6,16 @@ export class SortToys {
     return data.sort((a, b) => a.name.localeCompare(b.name));
   }
 
+  sortToNameReverse(data: any[]) {
+    return data.sort((a, b) => b.name.localeCompare(a.name));
+  }
+
   sortToIncrease(data: any[]) {
     return data.sort((a, b) => (a.year - b.year));
+  }
+
+  sortToIncreaseReverse(data: any[]) {
+    return data.sort((a, b) => (b.year - a.year));
   }
 
   sortALL(data: any[]) {

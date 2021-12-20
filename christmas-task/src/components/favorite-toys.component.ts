@@ -2,9 +2,11 @@ import { Toys } from './toys.component';
 
 export class FavoriteToys extends Toys {
   count: number;
+  activeToys: string[];
   constructor(id: string) {
     super(id);
     this.count = 0;
+    this.activeToys = [];
   }
 
   init(): void {
@@ -24,15 +26,18 @@ export class FavoriteToys extends Toys {
         target.classList.toggle('active-toy');
         if (target.classList.contains('active-toy')) {
           this.count++;
+          this.activeToys.push(target.getAttribute('data-set'));
         } else {
           this.count--;
-      }
+          const index = this.activeToys.indexOf((target.getAttribute('data-set')));
+          this.activeToys.splice(index, 1);
+        }
     }
 
     const countToys: HTMLElement = document.getElementById('count-toys');
     countToys.textContent = `${this.count}`;
     this.localStorage.setDataLocalStorage('dataFavorite', currentTarget);
-      this.setfavoriteCountToLocalStorage('dataCount', this.count);
+    this.setfavoriteCountToLocalStorage('dataCount', this.count);
     }
 
   }
@@ -55,6 +60,13 @@ export class FavoriteToys extends Toys {
   }
 
   applySucsses(): void {
-    this.count = 0;
+    const toysContainers = document.querySelectorAll('.container-content');
+
+    console.log(toysContainers);
+    toysContainers.forEach(element => {
+      if (this.activeToys.includes(element.getAttribute('data-set'))) {
+        element.classList.toggle('active-toy');
+      }
+    });
   }
 }

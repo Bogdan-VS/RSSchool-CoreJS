@@ -50,7 +50,7 @@ export class Toys extends App {
       const content = document.createElement('aside');
       content.classList.add('container-content');
       content.setAttribute('id', `toy-${i}`);
-      content.setAttribute('data-set', `${i}`);
+      content.setAttribute('data-set', `${data[i].name}`);
       content.innerHTML = `
         <h4>${data[i].name}</h4>
         <div class="icon-toy-container">
@@ -81,8 +81,13 @@ export class Toys extends App {
     const target = (event.target as HTMLElement).closest('.sort-item');
 
     switch(target && (target as HTMLTemplateElement).dataset.sort) {
-      case 'По году выпуска':
-        currentCategories.textContent = 'По году выпуска';
+      case 'По возрастанию года выпуска':
+        currentCategories.textContent = 'По возрастанию года выпуска';
+        this.addSortToys();
+        this.addResultData();
+        break;
+      case 'По убыванию года выпуска':
+        currentCategories.textContent = 'По убыванию года выпуска';
         this.addSortToys();
         this.addResultData();
         break;
@@ -91,8 +96,13 @@ export class Toys extends App {
         this.addSortToys();
         this.addResultData();
         break;
-      case 'По имени':
-        currentCategories.textContent = 'По имени';
+      case 'По имени А-Я':
+        currentCategories.textContent = 'По имени А-Я';
+        this.addSortToys();
+        this.addResultData();
+        break;
+      case 'По имени Я-А':
+        currentCategories.textContent = 'По имени Я-А';
         this.addSortToys();
         this.addResultData();
         break;
@@ -196,14 +206,20 @@ export class Toys extends App {
     const currentCategories = document.getElementById('current-categories');
 
     switch (currentCategories.textContent) {
-      case 'По году выпуска':
+      case 'По возрастанию года выпуска':
         sortData = this.sortToys.sortToIncrease(arg);
+        break
+      case 'По убыванию года выпуска':
+        sortData = this.sortToys.sortToIncreaseReverse(arg);
         break
       case 'Все игрушки':
         sortData = this.sortToys.sortALL(arg);
         break
-      case 'По имени':
+      case 'По имени А-Я':
         sortData = this.sortToys.sortToName(arg);
+        break
+      case 'По имени Я-А':
+        sortData = this.sortToys.sortToNameReverse(arg);
         break
     }
 
