@@ -46,7 +46,7 @@ export class SortToys {
 
     sizeItem.forEach(element => {
       if ((element as any).checked) {
-        dataActiveItem.push(element.getAttribute('data-size'));
+        dataActiveItem.push(element.getAttribute('data-check'));
       }
     });
 

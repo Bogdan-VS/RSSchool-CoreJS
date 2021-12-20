@@ -1,18 +1,21 @@
 import { App } from '../app/app';
 import { SortToys } from './sort-toys.component';
-import { range } from '..';
-import { rangeYear } from '..';
+import { LocalStorage } from './local-storage.component';
+import { range } from './ui-slider.component';
+import { rangeYear } from './ui-slider.component';
 
 export class Toys extends App {
   newData: any;
   dataToys: any;
   sortToys: SortToys;
+  localStorage: LocalStorage;
   countCopy: any;
   constructor(id: string) {
     super(id);
     this.dataToys;
     this.newData;
     this.sortToys = new SortToys();
+    this.localStorage = new LocalStorage;
   }
 
   init() {
@@ -27,8 +30,9 @@ export class Toys extends App {
     this.$el.addEventListener('click', this.getSortToys.bind(this));
     this.$el.addEventListener('click', this.getFilterForm.bind(this));
     this.$el.addEventListener('click', this.addActiveColor.bind(this));
-    this.$el.addEventListener('click', this.applyBtnSucsses.bind(this));
-    this.$el.addEventListener('click', this.applyBtnReset.bind(this));
+    this.$el.addEventListener('click', this.applySucsses.bind(this));
+    this.$el.addEventListener('click', this.applyResetFilters.bind(this));
+    this.$el.addEventListener('click', this.applyResetSettings.bind(this));
   }
 
   async getData() {
@@ -109,16 +113,18 @@ export class Toys extends App {
     this.getResult(succsessFilterForm);
   }
 
-  applyBtnSucsses() {
+  applySucsses() {
     const formTarget = (event.target as HTMLElement).closest('.form-icon');
     const colorTarget = (event.target as HTMLElement).closest('.color-item');
-    const sizeTarget = (event.target as HTMLElement).closest('.size-item');
-    const favoriteTarget = (event.target as HTMLElement).closest('.favorite-item');
+    const checkTarget = (event.target as HTMLElement).closest('.checked');
+    const currentCheck = (checkTarget as HTMLTemplateElement)?.dataset.check;
 
     if (formTarget ||
       colorTarget ||
-      sizeTarget ||
-      favoriteTarget) {
+      checkTarget) {
+      if (currentCheck) {
+        this.localStorage.setDataLocalStorage('dataChecked', currentCheck);
+      }
       this.addResultData();
     }
 
@@ -126,23 +132,27 @@ export class Toys extends App {
 
   getFilterForm() {
     const target = (event.target as HTMLElement).closest('.form-icon');
+    const currentForm = (target as HTMLTemplateElement)?.dataset.form;
 
-    switch (target && (target as HTMLTemplateElement).dataset.form) {
-      case 'колокольчик':
-        target.classList.toggle('form-icon__active');
-        break;
-      case 'шар':
-        target.classList.toggle('form-icon__active');
-        break;
-      case 'шишка':
-        target.classList.toggle('form-icon__active');
-        break;
-      case 'снежинка':
-        target.classList.toggle('form-icon__active');
-        break;
-      case 'фигурка':
-        target.classList.toggle('form-icon__active');
-        break;
+    if (currentForm) {
+      switch (currentForm) {
+        case 'колокольчик':
+          target.classList.toggle('form-icon__active');
+          break;
+        case 'шар':
+          target.classList.toggle('form-icon__active');
+          break;
+        case 'шишка':
+          target.classList.toggle('form-icon__active');
+          break;
+        case 'снежинка':
+          target.classList.toggle('form-icon__active');
+          break;
+        case 'фигурка':
+          target.classList.toggle('form-icon__active');
+          break;
+      }
+      this.localStorage.setDataLocalStorage('dataForm', currentForm);
     }
   }
 
@@ -168,37 +178,8 @@ export class Toys extends App {
           target.classList.toggle('color-item__active');
           break
       }
-      this.setDataLocalStorage('dataColor', currentColor);
+      this.localStorage.setDataLocalStorage('dataColor', currentColor);
     }
-  }
-
-  setDataLocalStorage(index: string, value: string) {
-    const currentValue = JSON.parse(localStorage.getItem(index));
-    if (currentValue) {
-      if (currentValue.includes(value)) {
-        const index = currentValue.indexOf(value);
-        currentValue.splice(index, 1);
-      } else {
-        currentValue.push(value);
-      }
-
-      localStorage.setItem(index, JSON.stringify(currentValue));
-    } else {
-      localStorage.setItem(index, JSON.stringify([value]));
-    }
-  }
-
-  getDataLocalStorage(index: string, set: string, className: string, activeClass: string) {
-    const values = document.querySelectorAll(`${className}`);
-    console.log(values);
-    const currentValues = localStorage.getItem(index);
-    values.forEach(element => {
-      console.log(currentValues);
-      console.log(element.getAttribute(`data-${set}`));
-      if (currentValues.includes(element.getAttribute(`data-${set}`))) {
-        element.classList.toggle(`${activeClass}`);
-      }
-    });
   }
 
   getResult(arg: any[]) {
@@ -229,8 +210,8 @@ export class Toys extends App {
     this.drawToys(sortData);
   }
 
-  applyBtnReset() {
-    const target = (event.target as HTMLElement).closest('#apply-settings');
+  applyResetFilters() {
+    const target = (event.target as HTMLElement).closest('#reset-filters');
     const colorContainer = document.querySelectorAll('.color-item');
     const massForm = document.querySelectorAll('.form-icon');
     const sizeItem = document.querySelectorAll('.size-item');
@@ -257,6 +238,10 @@ export class Toys extends App {
       this.addResultData();
     }
 
+  }
+
+  applyResetSettings() {
+    localStorage.clear();
   }
 
   addSearch() {
@@ -296,10 +281,19 @@ export class Toys extends App {
 
   buttonHandler() {
     if (localStorage.getItem('dataColor')) {
-      this.getDataLocalStorage('dataColor', 'color', '.color-item', 'color-item__active');
+      this.localStorage.getDataLocalStorage('dataColor', 'color', '.color-item', 'color-item__active');
+    }
+    if (localStorage.getItem('dataForm')) {
+      this.localStorage.getDataLocalStorage('dataForm', 'form', '.form-icon', 'form-icon__active');
+    }
+    if (localStorage.getItem('dataChecked')) {
+      this.localStorage.getCheckedLocalStorage('dataChecked', 'check', '.checked');
     }
     this.show();
-    this.drawToys();
+    this.addResultData();
+    if (localStorage.getItem('dataFavorite')) {
+      this.localStorage.getDataLocalStorage('dataFavorite', 'set', '.container-content', 'active-toy');
+    }
   }
 }
 

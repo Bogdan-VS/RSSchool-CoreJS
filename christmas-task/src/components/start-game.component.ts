@@ -16,5 +16,4 @@ function buttonHandler() {
   this.hide();
   const search: HTMLElement = document.getElementById('search');
   search.focus();
-  console.log('focus');
 }
