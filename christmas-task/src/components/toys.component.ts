@@ -23,7 +23,11 @@ export class Toys extends App {
     const start: HTMLElement = document.querySelector('.start');
     const chooseItem: HTMLElement = document.querySelector('.choose-item');
     const search: HTMLElement = document.getElementById('search');
+    const tree = document.getElementById('tree-page');
+    const toys = document.getElementById('toys-page')
 
+    toys.addEventListener('click', this.openToysPages.bind(this));
+    tree.addEventListener('click', this.openChristmasTreePage.bind(this));
     search.addEventListener('input', this.addSearch.bind(this));
     start.addEventListener('click', this.buttonHandler.bind(this));
     chooseItem.addEventListener('click', this.addSortToys.bind(this));
@@ -307,6 +311,14 @@ export class Toys extends App {
     cards.forEach(element => {
       element.remove();
     });
+  }
+
+  openChristmasTreePage() {
+    this.hide();
+  }
+
+  openToysPages() {
+    this.show();
   }
 
   buttonHandler() {

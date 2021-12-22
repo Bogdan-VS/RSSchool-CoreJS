@@ -666,6 +666,13 @@ main .noUi-tooltip {
       letter-spacing: 0.05em;
       text-transform: uppercase;
       color: #fff;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    h2:hover {
+      color: #009688;
+      transform: scale(1.05);
     }
   }
   .collection-container {

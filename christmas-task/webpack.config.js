@@ -19,7 +19,7 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, './dist'),
-    assetModuleFilename: 'assets/images/[name][ext]',
+    assetModuleFilename: 'assets/images/[hash][name][ext]',
     clean: true
   },
   plugins: [
