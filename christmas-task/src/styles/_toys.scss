@@ -75,11 +75,7 @@
       font-size: 14px;
       letter-spacing: 0.05em;
       color: #fff;
-      background: radial-gradient(
-        118.88% 606.86% at 0% 0%,
-        rgba(36, 197, 219, 0.15) 0%,
-        rgba(36, 197, 219, 0) 100%
-      );
+      background: radial-gradient(118.88% 606.86% at 0% 0%, rgba(36, 197, 219, 0.15) 0%, rgba(36, 197, 219, 0) 100%);
       backdrop-filter: blur(31px);
       border-radius: 30px;
       border: 1px solid #03a9f4;
@@ -121,11 +117,7 @@
     align-items: center;
     width: 270px;
     height: 36px;
-    background: radial-gradient(
-      118.88% 606.86% at 0% 0%,
-      rgba(255, 255, 255, 0.2) 0%,
-      rgba(157, 243, 255, 0.2) 100%
-    );
+    background: radial-gradient(118.88% 606.86% at 0% 0%, rgba(255, 255, 255, 0.2) 0%, rgba(157, 243, 255, 0.2) 100%);
     backdrop-filter: blur(31px);
     border-radius: 30px;
     border: 1px solid #03a9f4;
@@ -144,8 +136,7 @@
       width: 30px;
       height: 20px;
       transition: 00.3s;
-      background: top 0 left 0 / 100% 100%
-        url(../assets/images/svg/arrow-down.svg);
+      background: top 0 left 0 / 100% 100% url(../assets/images/svg/arrow-down.svg);
     }
     .choose-item:hover {
       opacity: 75%;
@@ -201,11 +192,7 @@
       cursor: pointer;
       position: relative;
       top: 7px;
-      background: radial-gradient(
-        118.88% 606.86% at 0% 0%,
-        rgba(255, 255, 255, 0.2) 0%,
-        rgba(157, 243, 255, 0.2) 100%
-      );
+      background: radial-gradient(118.88% 606.86% at 0% 0%, rgba(255, 255, 255, 0.2) 0%, rgba(157, 243, 255, 0.2) 100%);
       backdrop-filter: blur(31px);
       border-radius: 5px;
     }
@@ -255,8 +242,7 @@
         transform: scale(1.1);
       }
       .form-icon__active {
-        filter: invert(54%) sepia(107%) saturate(901%) hue-rotate(25deg)
-          brightness(140%) contrast(93%);
+        filter: invert(54%) sepia(107%) saturate(901%) hue-rotate(25deg) brightness(140%) contrast(93%);
       }
 
       .icon-1 {
@@ -277,14 +263,12 @@
       .icon-4 {
         width: 100%;
         height: 42px;
-        background: top 0 left 0 / 100% 100%
-          url(../assets/images/svg/snowflake.svg);
+        background: top 0 left 0 / 100% 100% url(../assets/images/svg/snowflake.svg);
       }
       .icon-5 {
         width: 100%;
         height: 42px;
-        background: top 0 left 0 / 100% 100% no-repeat
-          url(../assets/images/svg/snow.svg);
+        background: top 0 left 0 / 100% 100% no-repeat url(../assets/images/svg/snow.svg);
       }
       .icon-6 {
         width: 100%;
@@ -337,16 +321,8 @@ main .noUi-horizontal .noUi-handle {
   right: -13px;
   top: -6px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    radial-gradient(
-      57.23% 248.2% at 107.17% 104.02%,
-      rgba(34, 153, 235, 0.92) 0%,
-      rgba(34, 153, 235, 0.07) 100%
-    ),
-    radial-gradient(
-      104.22% 230.94% at -4.22% 0%,
-      #24c5db 3.62%,
-      rgba(36, 197, 219, 0.26) 55.1%
-    );
+    radial-gradient(57.23% 248.2% at 107.17% 104.02%, rgba(34, 153, 235, 0.92) 0%, rgba(34, 153, 235, 0.07) 100%),
+    radial-gradient(104.22% 230.94% at -4.22% 0%, #24c5db 3.62%, rgba(36, 197, 219, 0.26) 55.1%);
   border-radius: 50%;
   box-shadow: none;
   border: none;
@@ -552,11 +528,7 @@ main .noUi-tooltip {
       cursor: pointer;
       position: relative;
       top: 7px;
-      background: radial-gradient(
-        118.88% 606.86% at 0% 0%,
-        rgba(255, 255, 255, 0.2) 0%,
-        rgba(157, 243, 255, 0.2) 100%
-      );
+      background: radial-gradient(118.88% 606.86% at 0% 0%, rgba(255, 255, 255, 0.2) 0%, rgba(157, 243, 255, 0.2) 100%);
       backdrop-filter: blur(31px);
       border-radius: 5px;
     }
@@ -598,11 +570,7 @@ main .noUi-tooltip {
       cursor: pointer;
       position: relative;
       top: 7px;
-      background: radial-gradient(
-        118.88% 606.86% at 0% 0%,
-        rgba(255, 255, 255, 0.2) 0%,
-        rgba(157, 243, 255, 0.2) 100%
-      );
+      background: radial-gradient(118.88% 606.86% at 0% 0%, rgba(255, 255, 255, 0.2) 0%, rgba(157, 243, 255, 0.2) 100%);
       backdrop-filter: blur(31px);
       border-radius: 5px;
     }
@@ -631,11 +599,7 @@ main .noUi-tooltip {
   .apply-btn {
     width: 180px;
     height: 30px;
-    background: radial-gradient(
-      118.88% 606.86% at 0% 0%,
-      rgba(255, 255, 255, 0.2) 0%,
-      rgba(157, 243, 255, 0.2) 100%
-    );
+    background: radial-gradient(118.88% 606.86% at 0% 0%, rgba(255, 255, 255, 0.2) 0%, rgba(157, 243, 255, 0.2) 100%);
     backdrop-filter: blur(31px);
     border-radius: 30px;
     font-family: 'Steppe';
@@ -668,11 +632,6 @@ main .noUi-tooltip {
       color: #fff;
       transition: 0.3s;
       cursor: pointer;
-    }
-
-    h2:hover {
-      color: #009688;
-      transform: scale(1.05);
     }
   }
   .collection-container {
@@ -714,6 +673,7 @@ main .noUi-tooltip {
         rgba(255, 255, 255, 0.5) 0%,
         rgba(179, 246, 255, 0.5) 100%
       );
+      border: rgba(121, 139, 144, 0.1) solid 5px;
       backdrop-filter: blur(4px);
       border-radius: 10px;
       cursor: pointer;
@@ -755,7 +715,7 @@ main .noUi-tooltip {
 
     .active-toy {
       box-sizing: border-box;
-      padding: 5px 5px;
+      // padding: 5px 5px;
       border: #4caf50 solid 5px;
       background: radial-gradient(
         109.56% 109.56% at 0% -2.94%,

@@ -7,6 +7,17 @@
   <title>Chirstmas-task</title>
 </head>
 <body>
+
+  <header>
+    <div class="wrapper">
+      <div class="header-container">
+        <div class="logo" id="start-page"></div>
+        <h2 id="toys-page" class="page">Игрушки</h2>
+        <h2 id="tree-page" class="page">Елка</h2>
+      </div>
+    </div>
+  </header>
+
   <main class="main-container">
     <div class="wrapper">
       <section class="start-game" id="start">
@@ -26,7 +37,7 @@
 
                 <div class="settings">
                   <button class="audio"></button>
-                  <button class="snow" id="snow"></button>
+                  <!-- <button class="snow" id="snow"></button> -->
                   <div class="search">
                     <input type="text" name="search" id="search" placeholder="Поиск" autocomplete="off" class="search-item">
                     <div class="clean-icon"></div>
@@ -135,7 +146,6 @@
           <div class="toys-collection-container">
 
             <div class="title">
-              <h2 id="tree-page">Елка</h2>
               <h2>Избранные игрушки: <span id="count-toys">0</span></h2>
             </div>
 
@@ -164,7 +174,7 @@
   
                 <div class="settings settings-tree-page">
                   <button class="audio" id="audio"></button>
-                  <button class="snow" id="snow"></button>
+                  <button class="snow"></button>
                 </div>
       
                 <div class="christmas-tree-collection">
@@ -232,13 +242,46 @@
           <div class="main-tree">
 
             <div class="christmas-bg-current"></div>
-            <div class="christmas-tree-carrent"></div>
+            <map name="tree-map">
+              <area shape="poly" coords="135,0,165,0,215,90,240,140,260,223,300,350,280,410,210,437,90,437,10,418,0,345,20,271,65,132" class="area">
+              <svg class="garland" height="450" width="300">
+                <path d="M150 0 C 145 35, 120 60, 120 45,
+                C 120 45, 140 60, 160 45, 
+                C 160 45, 140 85, 110 80, 
+                C 110 80, 150 105, 190 95, 
+                C 190 95, 150 130, 85 110, 
+                C 85 110, 155 150, 220 125, 
+                C 220 125, 155 185, 85 150, 
+                C 85 150, 155 220, 235 200, 
+                C 235 200, 155 285, 25 255, 
+                C 25 255, 155 355, 290 315, 
+                C 290 315, 155 400, 35 370,              
+                         " stroke="black" fill="transparent" />
+                <circle cx="150" cy="5" r="5" class="red" />
+                <circle cx="120" cy="45" r="5" class="blue" />
+                <circle cx="160" cy="45" r="5" class="green" />
+                <circle cx="110" cy="80" r="5" class="yellow" />
+                <circle cx="150" cy="95" r="5" class="red" />
+                <circle cx="190" cy="95" r="5" class="blue" />
+                <circle cx="135" cy="115" r="5" class="green" />
+                <circle cx="160" cy="132" r="5" class="yellow" />
+                <circle cx="85" cy="110" r="5" class="red" />
+                <circle cx="145" cy="160" r="5" class="blue" />
+                <circle cx="220" cy="125" r="5" class="green" />
+                <circle cx="85" cy="150" r="5" class="yellow" />
+                <circle cx="25" cy="255" r="5" class="red" />
+                <circle cx="195" cy="355" r="5" class="blue" />
+                <circle cx="290" cy="315" r="5" class="blue" />
+                <circle cx="110" cy="375" r="5" class="blue" />
+                <circle cx="35" cy="370" r="5" class="blue" />
+            </svg> 
+            </map>
+            <img src="./assets/images/tree/1.png" alt="tree" usemap="#tree-map" class="christmas-tree-carrent" id="tree">
+            <!-- <div class="christmas-tree-carrent"></div> -->
 
           </div>
           <div class="toys-tree">
-            
-            <div class="title">
-              <h2 id="toys-page">Игрушки</h2>
+            <div class="toys-tree-container">
             </div>
           </div>
 

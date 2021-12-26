@@ -32,14 +32,13 @@ export class FavoriteToys extends Toys {
           const index = this.activeToys.indexOf((target.getAttribute('data-set')));
           this.activeToys.splice(index, 1);
         }
-    }
+      }
 
     const countToys: HTMLElement = document.getElementById('count-toys');
     countToys.textContent = `${this.count}`;
     this.localStorage.setDataLocalStorage('dataFavorite', currentTarget);
     this.setfavoriteCountToLocalStorage('dataCount', this.count);
     }
-
   }
 
   setfavoriteCountToLocalStorage(index: string, count: number) {
@@ -59,14 +58,20 @@ export class FavoriteToys extends Toys {
     }
   }
 
-  applySucsses(): void {
+  addCurrentFavotiteToys(): void {
     const toysContainers = document.querySelectorAll('.container-content');
+    const countToys: HTMLElement = document.getElementById('count-toys');
+    
 
-    console.log(toysContainers);
+    this.count = 0;
     toysContainers.forEach(element => {
       if (this.activeToys.includes(element.getAttribute('data-set'))) {
-        element.classList.toggle('active-toy');
+        console.log(element);
+        element.classList.add('active-toy');
+        this.count++;
       }
     });
+
+    countToys.textContent = `${this.count}`;
   }
 }

@@ -47,15 +47,15 @@ export class LocalStorage {
   }
 
   getCheckedLocalStorage(index: string, set: string, className: string) {
-    const sizeItem = document.querySelectorAll(`${className}`);
+    const sizeItem: NodeListOf<HTMLInputElement> = document.querySelectorAll(`${className}`);
     const currentCheck = localStorage.getItem(`${index}`);
 
     sizeItem.forEach(element => {
       if (currentCheck.includes(element.getAttribute(`data-${set}`))) {
         if (element.getAttribute(`data-${set}`) === 'true') {
-          (element as any).checked = 'checked';
+          element.checked = true;
         } else {
-          (element as any).checked = '';
+          element.checked = false;
         }
       }
     });

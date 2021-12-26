@@ -3,10 +3,12 @@ import { SortToys } from './sort-toys.component';
 import { LocalStorage } from './local-storage.component';
 import { range } from './ui-slider.component';
 import { rangeYear } from './ui-slider.component';
+import { favorite } from '..';
+import { Data } from '../modules/interface';
 
 export class Toys extends App {
-  newData: any;
-  dataToys: any;
+  newData: Data[];
+  dataToys: Data[];
   sortToys: SortToys;
   localStorage: LocalStorage;
   countCopy: any;
@@ -24,10 +26,12 @@ export class Toys extends App {
     const chooseItem: HTMLElement = document.querySelector('.choose-item');
     const search: HTMLElement = document.getElementById('search');
     const tree = document.getElementById('tree-page');
-    const toys = document.getElementById('toys-page')
+    const toys = document.getElementById('toys-page');
+    const startPage = document.getElementById('start-page');
 
     toys.addEventListener('click', this.openToysPages.bind(this));
     tree.addEventListener('click', this.openChristmasTreePage.bind(this));
+    startPage.addEventListener('click', this.openStartPage.bind(this));
     search.addEventListener('input', this.addSearch.bind(this));
     start.addEventListener('click', this.buttonHandler.bind(this));
     chooseItem.addEventListener('click', this.addSortToys.bind(this));
@@ -54,7 +58,7 @@ export class Toys extends App {
       const content = document.createElement('aside');
       content.classList.add('container-content');
       content.setAttribute('id', `toy-${i}`);
-      content.setAttribute('data-set', `${data[i].name}`);
+      content.setAttribute('data-set', `${data[i].num}`);
       content.innerHTML = `
         <h4>${data[i].name}</h4>
         <div class="icon-toy-container">
@@ -72,6 +76,8 @@ export class Toys extends App {
       collection.append(content);
       const iconToy = document.querySelector(`.toy${i}`) as HTMLTemplateElement;
       iconToy.style.background = `top 0 left 0 / 100% 100% url(./assets/images/toys/${data[i].num}.png)`;
+
+      favorite.addCurrentFavotiteToys();
     }
   }
 
@@ -114,7 +120,7 @@ export class Toys extends App {
   }
 
   addResultData() {
-    const massFilter: string[] = this.sortToys.getCurrentActiveElements();
+    const massFilter = this.sortToys.getCurrentActiveElements();
 
     const succsessFilterForm = this.dataToys.filter((el: any) => {
       return massFilter.includes(el.shape) &&
@@ -269,10 +275,10 @@ export class Toys extends App {
   }
 
   addSearch() {
-    const search: HTMLElement = document.getElementById('search');
-    let value = (search as any).value.trim();
+    const search = document.getElementById('search') as HTMLInputElement;
+    let value = search.value.trim();
     const massFilter: string[] = this.sortToys.getCurrentActiveElements();
-    let massRequest: String[] = [];
+    let massRequest: Data[] = [];
 
     const succsessFilterForm = this.dataToys.filter((el: any) => {
       return massFilter.includes(el.shape) &&
@@ -319,6 +325,10 @@ export class Toys extends App {
 
   openToysPages() {
     this.show();
+  }
+
+  openStartPage() {
+    this.hide();
   }
 
   buttonHandler() {
