@@ -228,7 +228,7 @@ export class ChristmasTree extends App {
     }
     
     if (currentElem.classList.contains('christmas-bg-current')) {
-      (currentElem as HTMLTemplateElement).style.background = `center / cover url(../assets/images/bg/${data}.jpg)`;
+      (currentElem as HTMLTemplateElement).style.background = `center / cover url(./assets/images/bg/${data}.jpg)`;
     }
   }
 
