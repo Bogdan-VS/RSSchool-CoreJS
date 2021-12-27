@@ -7,6 +7,17 @@
   <title>Chirstmas-task</title>
 <script defer src="index.js"></script></head>
 <body>
+
+  <header>
+    <div class="wrapper">
+      <div class="header-container">
+        <div class="logo" id="start-page"></div>
+        <h2 id="toys-page" class="page">Игрушки</h2>
+        <h2 id="tree-page" class="page">Елка</h2>
+      </div>
+    </div>
+  </header>
+
   <main class="main-container">
     <div class="wrapper">
       <section class="start-game" id="start">
@@ -26,7 +37,7 @@
 
                 <div class="settings">
                   <button class="audio"></button>
-                  <button class="snow" id="snow"></button>
+                  <!-- <button class="snow" id="snow"></button> -->
                   <div class="search">
                     <input type="text" name="search" id="search" placeholder="Поиск" autocomplete="off" class="search-item">
                     <div class="clean-icon"></div>
@@ -135,7 +146,6 @@
           <div class="toys-collection-container">
 
             <div class="title">
-              <h2>Игрушки</h2>
               <h2>Избранные игрушки: <span id="count-toys">0</span></h2>
             </div>
 
@@ -150,6 +160,137 @@
               </div>
             </div>
 
+          </div>
+
+        </div>
+      </section>
+
+      <section id="christmas-tree" class="christmas-tree hide">
+        <div class="christmas-tree-container">
+
+          <div class="settings-tree">
+            <div class="settings-container">
+              <div class="settings-container-wrapper">
+  
+                <div class="settings settings-tree-page">
+                  <button class="audio" id="audio"></button>
+                  <button class="snow"></button>
+                </div>
+      
+                <div class="christmas-tree-collection">
+                  <h2>Выберете Елку</h2>
+                  <div class="collection-continer">
+                    <div class="conteiner-content">
+                      <div class="conteiner-item tree-1" data-tree="1"></div>
+                    </div>
+                    <div class="conteiner-content">
+                      <div class="conteiner-item tree-2" data-tree="2"></div>
+                    </div>
+                    <div class="conteiner-content">
+                      <div class="conteiner-item tree-3" data-tree="3"></div>
+                    </div>
+                    <div class="conteiner-content">
+                      <div class="conteiner-item tree-4" data-tree="4"></div>
+                    </div>
+                    <div class="conteiner-content">
+                      <div class="conteiner-item tree-5" data-tree="5"></div>
+                    </div>
+                    <div class="conteiner-content">
+                      <div class="conteiner-item tree-6" data-tree="6"></div>
+                    </div>
+                  </div>
+                </div>
+      
+                <div class="christmas-tree-background">
+                  <h2>Выберете Фон</h2>
+                  <div class="background-continer">
+                    <div class="conteiner-content-bg bg-1" data-bg="1"></div>
+                    <div class="conteiner-content-bg bg-2" data-bg="2"></div>
+                    <div class="conteiner-content-bg bg-3" data-bg="3"></div>
+                    <div class="conteiner-content-bg bg-4" data-bg="4"></div>
+                    <div class="conteiner-content-bg bg-5" data-bg="5"></div>
+                    <div class="conteiner-content-bg bg-6" data-bg="6"></div>
+                    <div class="conteiner-content-bg bg-7" data-bg="7"></div>
+                    <div class="conteiner-content-bg bg-8" data-bg="8"></div>
+                    <div class="conteiner-content-bg bg-9" data-bg="9"></div>
+                    <div class="conteiner-content-bg bg-10" data-bg="10"></div>
+                  </div>
+                </div>
+      
+                <div class="christmas-tree-garland">
+                  <h2>Гирлянда</h2>
+                  <div class="garland-conteiner">
+                    <div class="garland-container-item garland-1" data-garland="all"></div>
+                    <div class="garland-container-item garland-2" data-garland="red"></div>
+                    <div class="garland-container-item garland-3" data-garland="blue"></div>
+                    <div class="garland-container-item garland-4" data-garland="green"></div>
+                    <div class="garland-container-item garland-5" data-garland="yellow"></div>
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round"></span>
+                  </label>
+                  </div>
+                </div>
+
+                <div class="sucsses">
+                  <button class="apply-btn apply-filter" id="reset-setting">Сбросить настройки</button>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+          <div class="main-tree">
+
+            <div class="christmas-bg-current"></div>
+            <map name="tree-map">
+              <area shape="poly" coords="135,0,165,0,215,90,240,140,260,223,300,350,280,410,210,437,90,437,10,418,0,345,20,271,65,132" class="area">
+              <svg class="garland" height="450" width="300">
+                <path d="M150 0 C 145 35, 120 60, 125 45,
+                C 125 45, 140 60, 160 45, 
+                C 160 45, 140 85, 110 80, 
+                C 110 80, 150 105, 190 95, 
+                C 190 95, 150 130, 100 110, 
+                C 100 110, 155 150, 200 125, 
+                C 200 125, 155 185, 85 150, 
+                C 85 150, 155 220, 235 200, 
+                C 235 200, 155 285, 50 245, 
+                C 50 245, 155 355, 270 315, 
+                C 270 315, 155 400, 35 370,              
+                         " stroke="black" fill="transparent" />
+                <circle cx="150" cy="5" r="5" class="garland-item red_1"/>
+                <circle cx="125" cy="45" r="5" class="garland-item red_2"/>
+                <circle cx="160" cy="45" r="5" class="garland-item red_1"/>
+                <circle cx="110" cy="80" r="5" class="garland-item red_2"/>
+                <circle cx="150" cy="95" r="5" class="garland-item red_1"/>
+                <circle cx="190" cy="95" r="5" class="garland-item red_2"/>
+                <circle cx="135" cy="115" r="5" class="garland-item red_1"/>
+                <circle cx="160" cy="132" r="5" class="garland-item red_2"/>
+                <circle cx="100" cy="110" r="5" class="garland-item red_1"/>
+                <circle cx="145" cy="160" r="5" class="garland-item red_2"/>
+                <circle cx="200" cy="125" r="5" class="garland-item red_1"/>
+                <circle cx="85" cy="150" r="5" class="garland-item red_2"/>
+                <circle cx="50" cy="245" r="5" class="garland-item red_1"/>
+                <circle cx="135" cy="185" r="5" class="garland-item red_2"/>
+                <circle cx="185" cy="200" r="5" class="garland-item red_1"/>
+                <circle cx="232" cy="199" r="5" class="garland-item red_2"/>
+                <circle cx="180" cy="237" r="5" class="garland-item red_1"/>
+                <circle cx="107" cy="258" r="5" class="garland-item red_2"/>
+                <circle cx="90" cy="275" r="5" class="garland-item red_1"/>
+                <circle cx="140" cy="305" r="5" class="garland-item red_2"/>
+                <circle cx="210" cy="324" r="5" class="garland-item red_1"/>
+                <circle cx="195" cy="355" r="5" class="garland-item red_2"/>
+                <circle cx="270" cy="315" r="5" class="garland-item red_1"/>
+                <circle cx="110" cy="375" r="5" class="garland-item red_2"/>
+                <circle cx="35" cy="370" r="5" class="garland-item red_1"/>
+            </svg> 
+            </map>
+            <img src="assets/images/f8724de1d5ef384cddea1.png" alt="tree" usemap="#tree-map" class="christmas-tree-carrent" id="tree">
+            <!-- <div class="christmas-tree-carrent"></div> -->
+
+          </div>
+          <div class="toys-tree">
+            <div class="toys-tree-container">
+            </div>
           </div>
 
         </div>
