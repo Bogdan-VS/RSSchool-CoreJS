@@ -188,7 +188,7 @@
   .garland-conteiner {
     display: flex;
     justify-content: space-around;
-    .garland-item {
+    .garland-container-item {
       width: 20px;
       height: 20px;
       border-radius: 50%;
@@ -400,21 +400,32 @@
 }
 
 .garland {
+  display: none;
   position: absolute;
-  top: 10%;
+  bottom: -4%;
   left: 50%;
   transform: translateX(-50%);
   --red: #ff2c2c;
   --yellow: #ffeb00;
   --green: #00ff5d;
   --blue: #0095ff;
-  --speed: 1.5s;
+  --speed: 2s;
   z-index: 15;
+  pointer-events: none;
 }
 
 .red {
-  fill: var(--red);
-  animation: var(--speed) alternate 0s infinite blinkRed;
+  fill: #f80606;
+  animation: var(--speed) alternate 0s infinite blinkRedRed;
+}
+
+.red_1 {
+  fill: #f80606;
+  animation: var(--speed) alternate 0s infinite blinkRed_1;
+}
+.red_2 {
+  fill: #f7b1b1;
+  animation: var(--speed) alternate 0s infinite blinkRed_2;
 }
 
 .yellow {
@@ -422,14 +433,44 @@
   animation: var(--speed) alternate 0s infinite blinkYellow;
 }
 
+.yellow_1 {
+  fill: var(--yellow);
+  animation: var(--speed) alternate 0s infinite blinkYellow_1;
+}
+
+.yellow_2 {
+  fill: var(--yellow);
+  animation: var(--speed) alternate 0s infinite blinkYellow_2;
+}
+
 .blue {
   fill: var(--blue);
   animation: var(--speed) alternate 0s infinite blinkBlue;
 }
 
+.blue_1 {
+  fill: var(--blue);
+  animation: var(--speed) alternate 0s infinite blinkBlue_1;
+}
+
+.blue_2 {
+  fill: var(--blue);
+  animation: var(--speed) alternate 0s infinite blinkBlue_2;
+}
+
 .green {
   fill: var(--green);
   animation: var(--speed) alternate 0s infinite blinkGreen;
+}
+
+.green_1 {
+  fill: var(--green);
+  animation: var(--speed) alternate 0s infinite blinkGreen_1;
+}
+
+.green_2 {
+  fill: var(--green);
+  animation: var(--speed) alternate 0s infinite blinkGreen_2;
 }
 
 @keyframes blinkRed {
@@ -444,6 +485,36 @@
   }
   75% {
     fill: var(--yellow);
+  }
+}
+
+@keyframes blinkRed_1 {
+  0% {
+    fill: #f80606;
+  }
+  25% {
+    fill: #f7b1b1;
+  }
+  50% {
+    fill: #f80606;
+  }
+  75% {
+    fill: #f7b1b1;
+  }
+}
+
+@keyframes blinkRed_2 {
+  0% {
+    fill: #f7b1b1;
+  }
+  25% {
+    fill: #f80606;
+  }
+  50% {
+    fill: #f7b1b1;
+  }
+  75% {
+    fill: #f80606;
   }
 }
 
@@ -462,6 +533,36 @@
   }
 }
 
+@keyframes blinkYellow_1 {
+  0% {
+    fill: #ffd904;
+  }
+  25% {
+    fill: #f7f3cd;
+  }
+  50% {
+    fill: #ffd904;
+  }
+  75% {
+    fill: #f7f3cd;
+  }
+}
+
+@keyframes blinkYellow_2 {
+  0% {
+    fill: #f7f3cd;
+  }
+  25% {
+    fill: #ffd904;
+  }
+  50% {
+    fill: #f7f3cd;
+  }
+  75% {
+    fill: #ffd904;
+  }
+}
+
 @keyframes blinkBlue {
   0% {
     fill: var(--blue);
@@ -477,6 +578,36 @@
   }
 }
 
+@keyframes blinkBlue_1 {
+  0% {
+    fill: #1100ff;
+  }
+  25% {
+    fill: #92cdf7;
+  }
+  50% {
+    fill: #1100ff;
+  }
+  75% {
+    fill: #92cdf7;
+  }
+}
+
+@keyframes blinkBlue_2 {
+  0% {
+    fill: #92cdf7;
+  }
+  25% {
+    fill: #1100ff;
+  }
+  50% {
+    fill: #92cdf7;
+  }
+  75% {
+    fill: #1100ff;
+  }
+}
+
 @keyframes blinkGreen {
   0% {
     fill: var(--green);
@@ -489,5 +620,35 @@
   }
   75% {
     fill: var(--blue);
+  }
+}
+
+@keyframes blinkGreen_1 {
+  0% {
+    fill: #28c700;
+  }
+  25% {
+    fill: #bcffd5;
+  }
+  50% {
+    fill: #28c700;
+  }
+  75% {
+    fill: #bcffd5;
+  }
+}
+
+@keyframes blinkGreen_2 {
+  0% {
+    fill: #bcffd5;
+  }
+  25% {
+    fill: #28c700;
+  }
+  50% {
+    fill: #bcffd5;
+  }
+  75% {
+    fill: #28c700;
   }
 }

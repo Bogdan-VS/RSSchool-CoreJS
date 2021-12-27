@@ -220,13 +220,13 @@
                 <div class="christmas-tree-garland">
                   <h2>Гирлянда</h2>
                   <div class="garland-conteiner">
-                    <div class="garland-item garland-1 garland-item__active"></div>
-                    <div class="garland-item garland-2"></div>
-                    <div class="garland-item garland-3 garland-item__active"></div>
-                    <div class="garland-item garland-4"></div>
-                    <div class="garland-item garland-5"></div>
+                    <div class="garland-container-item garland-1" data-garland="all"></div>
+                    <div class="garland-container-item garland-2" data-garland="red"></div>
+                    <div class="garland-container-item garland-3" data-garland="blue"></div>
+                    <div class="garland-container-item garland-4" data-garland="green"></div>
+                    <div class="garland-container-item garland-5" data-garland="yellow"></div>
                     <label class="switch">
-                      <input type="checkbox" checked>
+                      <input type="checkbox">
                       <span class="slider round"></span>
                   </label>
                   </div>
@@ -245,35 +245,43 @@
             <map name="tree-map">
               <area shape="poly" coords="135,0,165,0,215,90,240,140,260,223,300,350,280,410,210,437,90,437,10,418,0,345,20,271,65,132" class="area">
               <svg class="garland" height="450" width="300">
-                <path d="M150 0 C 145 35, 120 60, 120 45,
-                C 120 45, 140 60, 160 45, 
+                <path d="M150 0 C 145 35, 120 60, 125 45,
+                C 125 45, 140 60, 160 45, 
                 C 160 45, 140 85, 110 80, 
                 C 110 80, 150 105, 190 95, 
-                C 190 95, 150 130, 85 110, 
-                C 85 110, 155 150, 220 125, 
-                C 220 125, 155 185, 85 150, 
+                C 190 95, 150 130, 100 110, 
+                C 100 110, 155 150, 200 125, 
+                C 200 125, 155 185, 85 150, 
                 C 85 150, 155 220, 235 200, 
-                C 235 200, 155 285, 25 255, 
-                C 25 255, 155 355, 290 315, 
-                C 290 315, 155 400, 35 370,              
+                C 235 200, 155 285, 50 245, 
+                C 50 245, 155 355, 270 315, 
+                C 270 315, 155 400, 35 370,              
                          " stroke="black" fill="transparent" />
-                <circle cx="150" cy="5" r="5" class="red" />
-                <circle cx="120" cy="45" r="5" class="blue" />
-                <circle cx="160" cy="45" r="5" class="green" />
-                <circle cx="110" cy="80" r="5" class="yellow" />
-                <circle cx="150" cy="95" r="5" class="red" />
-                <circle cx="190" cy="95" r="5" class="blue" />
-                <circle cx="135" cy="115" r="5" class="green" />
-                <circle cx="160" cy="132" r="5" class="yellow" />
-                <circle cx="85" cy="110" r="5" class="red" />
-                <circle cx="145" cy="160" r="5" class="blue" />
-                <circle cx="220" cy="125" r="5" class="green" />
-                <circle cx="85" cy="150" r="5" class="yellow" />
-                <circle cx="25" cy="255" r="5" class="red" />
-                <circle cx="195" cy="355" r="5" class="blue" />
-                <circle cx="290" cy="315" r="5" class="blue" />
-                <circle cx="110" cy="375" r="5" class="blue" />
-                <circle cx="35" cy="370" r="5" class="blue" />
+                <circle cx="150" cy="5" r="5" class="garland-item red_1"/>
+                <circle cx="125" cy="45" r="5" class="garland-item red_2"/>
+                <circle cx="160" cy="45" r="5" class="garland-item red_1"/>
+                <circle cx="110" cy="80" r="5" class="garland-item red_2"/>
+                <circle cx="150" cy="95" r="5" class="garland-item red_1"/>
+                <circle cx="190" cy="95" r="5" class="garland-item red_2"/>
+                <circle cx="135" cy="115" r="5" class="garland-item red_1"/>
+                <circle cx="160" cy="132" r="5" class="garland-item red_2"/>
+                <circle cx="100" cy="110" r="5" class="garland-item red_1"/>
+                <circle cx="145" cy="160" r="5" class="garland-item red_2"/>
+                <circle cx="200" cy="125" r="5" class="garland-item red_1"/>
+                <circle cx="85" cy="150" r="5" class="garland-item red_2"/>
+                <circle cx="50" cy="245" r="5" class="garland-item red_1"/>
+                <circle cx="135" cy="185" r="5" class="garland-item red_2"/>
+                <circle cx="185" cy="200" r="5" class="garland-item red_1"/>
+                <circle cx="232" cy="199" r="5" class="garland-item red_2"/>
+                <circle cx="180" cy="237" r="5" class="garland-item red_1"/>
+                <circle cx="107" cy="258" r="5" class="garland-item red_2"/>
+                <circle cx="90" cy="275" r="5" class="garland-item red_1"/>
+                <circle cx="140" cy="305" r="5" class="garland-item red_2"/>
+                <circle cx="210" cy="324" r="5" class="garland-item red_1"/>
+                <circle cx="195" cy="355" r="5" class="garland-item red_2"/>
+                <circle cx="270" cy="315" r="5" class="garland-item red_1"/>
+                <circle cx="110" cy="375" r="5" class="garland-item red_2"/>
+                <circle cx="35" cy="370" r="5" class="garland-item red_1"/>
             </svg> 
             </map>
             <img src="./assets/images/tree/1.png" alt="tree" usemap="#tree-map" class="christmas-tree-carrent" id="tree">

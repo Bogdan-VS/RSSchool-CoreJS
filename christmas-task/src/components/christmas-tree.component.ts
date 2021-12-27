@@ -2,17 +2,20 @@ import { App } from '../app/app';
 import { favorite } from '..';
 import { toys } from '..';
 import { Data } from '../modules/interface';
+import { Garland } from './garland.component';
 
 
 export class ChristmasTree extends App {
   count: number;
   allDataToys: Data[];
   leaveFlag: boolean;
+  garland: Garland;
   constructor(id: string) {
     super(id);
     this.count = 0;
     this.allDataToys;
     this.leaveFlag;
+    this.garland = new Garland;
   }
 
   init(): void {
@@ -20,7 +23,9 @@ export class ChristmasTree extends App {
     const tree = document.getElementById('tree-page');
     const area = document.querySelector('.area');
     const startPage = document.getElementById('start-page');
+    const garlandBtn = document.querySelector('.switch input');
 
+    garlandBtn.addEventListener('input', this.garlandBtnOn.bind(this));
     startPage.addEventListener('click', this.openStartPage.bind(this));
     tree.addEventListener('click', this.openChristmasTreePage.bind(this));
     toys.addEventListener('click', this.openToysPages.bind(this));
@@ -29,6 +34,7 @@ export class ChristmasTree extends App {
     this.$el.addEventListener('dragstart', this.startDrag);
     this.$el.addEventListener('dragend', this.endDrag.bind(this));
     this.$el.addEventListener('dragenter', this.enterDrag.bind(this));
+    this.$el.addEventListener('click', this.garlandOn.bind(this));
     area.addEventListener('dragleave', this.dragLeave.bind(this));
     area.addEventListener('dragover', this.dragOver.bind(this));
     area.addEventListener('drop', this.drop.bind(this));
@@ -77,8 +83,8 @@ export class ChristmasTree extends App {
       toyElement1.setAttribute('data-active', `${this.count}`);
       toyElement1.setAttribute('data-toycount', `${data1}`);
       toyElement1.style.position = 'absolute';
-      toyElement1.style.width = '30px';
-      toyElement1.style.height = '30px';
+      toyElement1.style.width = '35px';
+      toyElement1.style.height = '35px';
       toyElement1.style.zIndex = '100';
       toyElement1.style.background = `top 0 left 0 / 100% 100% url(./assets/images/toys/${data1}.png)`;
       (event.target as any).appendChild(toyElement1);
@@ -224,6 +230,60 @@ export class ChristmasTree extends App {
     if (currentElem.classList.contains('christmas-bg-current')) {
       (currentElem as HTMLTemplateElement).style.background = `center / cover url(../assets/images/bg/${data}.jpg)`;
     }
+  }
+
+  garlandBtnOn() {
+    const garlandBtn = document.querySelector('.switch input') as HTMLInputElement;
+    const garland = document.querySelector('.garland') as HTMLTemplateElement;
+    const redGarland = document.querySelector('.garland-2');
+
+    if (garlandBtn.checked) {
+      garland.style.display = 'block';
+      redGarland.classList.add('garland-item__active');
+    } else {
+      garland.style.display = 'none';
+      this.cleanGarlandActiveClass();
+    }
+  }
+
+  garlandOn() {
+    const garlands = (event as any).target.closest('.garland-container-item');
+    const garlandItem = garlands.dataset.garland;
+    console.log(garlandItem);
+
+    if (garlands) {
+      this.cleanGarlandActiveClass();
+      switch (garlandItem) {
+        case 'red':
+          this.garland.addColorGarland('red_1', 'red_2');
+          garlands.classList.toggle('garland-item__active');
+        break;
+        case 'blue':
+          this.garland.addColorGarland('blue_1', 'blue_2');
+          garlands.classList.toggle('garland-item__active');
+        break;
+        case 'yellow':
+          this.garland.addColorGarland('yellow_1', 'yellow_2');
+          garlands.classList.toggle('garland-item__active');
+        break;
+        case 'green':
+          this.garland.addColorGarland('green_1', 'green_2');
+          garlands.classList.toggle('garland-item__active');
+        break;
+        case 'all':
+          this.garland.addAllColorGarland('green', 'yellow', 'red', 'blue');
+          garlands.classList.toggle('garland-item__active');
+        break;
+      }
+    }
+  }
+
+  cleanGarlandActiveClass() {
+    const garlands = document.querySelectorAll('.garland-container-item');
+
+    garlands.forEach(element => {
+      element.classList.remove('garland-item__active');
+    });
   }
 
   openToysPages() {
