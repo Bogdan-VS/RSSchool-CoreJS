@@ -5,6 +5,7 @@ import { range } from './ui-slider.component';
 import { rangeYear } from './ui-slider.component';
 import { favorite } from '..';
 import { Data } from '../modules/interface';
+import { Audio } from './audio.component';
 
 export class Toys extends App {
   newData: Data[];
@@ -12,12 +13,14 @@ export class Toys extends App {
   sortToys: SortToys;
   localStorage: LocalStorage;
   countCopy: any;
+  audio: Audio;
   constructor(id: string) {
     super(id);
     this.dataToys;
     this.newData;
     this.sortToys = new SortToys();
     this.localStorage = new LocalStorage;
+    this.audio = new Audio;
   }
 
   init() {
@@ -42,6 +45,7 @@ export class Toys extends App {
     this.$el.addEventListener('click', this.applyResetFilters.bind(this));
     this.$el.addEventListener('click', this.applyResetSettings.bind(this));
     this.$el.addEventListener('click', this.addCleanSearch.bind(this));
+    this.$el.addEventListener('click', this.playMusic.bind(this));
   }
 
   async getData() {
@@ -317,6 +321,19 @@ export class Toys extends App {
     cards.forEach(element => {
       element.remove();
     });
+  }
+
+  playMusic() {
+    const musicBtn = (event as any).target.closest('.audio');
+    const currentBtn = musicBtn?.dataset.audio;
+
+    if (musicBtn) {
+      switch (currentBtn) {
+        case 'toys':
+          this.audio.playMusic();
+          break;
+      }
+    }
   }
 
   openChristmasTreePage() {

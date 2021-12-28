@@ -53,6 +53,10 @@
     opacity: 75%;
   }
 
+  .audio_active {
+    filter: invert(54%) sepia(107%) saturate(901%) hue-rotate(25deg) brightness(140%) contrast(93%);
+  }
+
   .snow {
     width: 36px;
     height: 36px;

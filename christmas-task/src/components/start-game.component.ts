@@ -1,8 +1,11 @@
-import { App } from '../app/app'
+import { App } from '../app/app';
+import { Audio } from './audio.component';
 
 export class StartGame extends App {
+  audioStart: Audio;
   constructor(id: string) {
     super(id);
+    this.audioStart = new Audio;
   }
 
   init() {
@@ -15,6 +18,11 @@ export class StartGame extends App {
     toys.addEventListener('click', buttonHandler.bind(this));
     start.addEventListener('click', buttonHandler.bind(this));
     startPage.addEventListener('click', this.openStartPage.bind(this));
+
+    this.$el.addEventListener('click', () => {
+      if (this.audioStart.audioFlag)
+        this.audioStart.playMusic();
+    })
   }
 
   openStartPage() {

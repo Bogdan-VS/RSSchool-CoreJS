@@ -3,6 +3,7 @@ import { favorite } from '..';
 import { toys } from '..';
 import { Data } from '../modules/interface';
 import { Garland } from './garland.component';
+import { Audio } from './audio.component';
 
 
 export class ChristmasTree extends App {
@@ -10,12 +11,14 @@ export class ChristmasTree extends App {
   allDataToys: Data[];
   leaveFlag: boolean;
   garland: Garland;
+  audio: Audio;
   constructor(id: string) {
     super(id);
     this.count = 0;
     this.allDataToys;
     this.leaveFlag;
     this.garland = new Garland;
+    this.audio = new Audio;
   }
 
   init(): void {
@@ -29,6 +32,7 @@ export class ChristmasTree extends App {
     startPage.addEventListener('click', this.openStartPage.bind(this));
     tree.addEventListener('click', this.openChristmasTreePage.bind(this));
     toys.addEventListener('click', this.openToysPages.bind(this));
+    this.$el.addEventListener('click', this.playMusic.bind(this));
     this.$el.addEventListener('click', this.addBackground.bind(this));
     this.$el.addEventListener('click', this.addTree.bind(this));
     this.$el.addEventListener('dragstart', this.startDrag);
@@ -158,7 +162,6 @@ export class ChristmasTree extends App {
     let activeData: Data[];
 
     if (currentData.length === 0) {
-      console.log(this.allDataToys);
       activeData = this.allDataToys.slice(0, 20);
     } else {
       activeData = currentData;
@@ -246,10 +249,22 @@ export class ChristmasTree extends App {
     }
   }
 
+  playMusic() {
+    const musicBtn = (event as any).target.closest('.audio');
+    const currentBtn = musicBtn?.dataset.audio;
+
+    if (musicBtn) {
+      switch (currentBtn) {
+        case 'tree':
+          this.audio.playMusic();
+          break;
+      }
+    }
+  }
+
   garlandOn() {
     const garlands = (event as any).target.closest('.garland-container-item');
-    const garlandItem = garlands.dataset.garland;
-    console.log(garlandItem);
+    const garlandItem = garlands?.dataset.garland;
 
     if (garlands) {
       this.cleanGarlandActiveClass();
