@@ -66,7 +66,6 @@ export class FavoriteToys extends Toys {
     this.count = 0;
     toysContainers.forEach(element => {
       if (this.activeToys.includes(element.getAttribute('data-set'))) {
-        console.log(element);
         element.classList.add('active-toy');
         this.count++;
       }

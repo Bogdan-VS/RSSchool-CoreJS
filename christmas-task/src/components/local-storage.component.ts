@@ -1,7 +1,7 @@
 export class LocalStorage {
 
   setDataLocalStorage(index: string, value: string) {
-    const currentValue = JSON.parse(localStorage.getItem(index));
+    const currentValue: string[] = JSON.parse(localStorage.getItem(index));
     if (currentValue) {
       if (currentValue.includes(value)) {
         const index = currentValue.indexOf(value);
@@ -17,16 +17,16 @@ export class LocalStorage {
   }
 
   setRangeToLocalStorage(index: string, className: string) {
-    const currentValue = JSON.parse(localStorage.getItem(index));
+    const currentValue: string[] = JSON.parse(localStorage.getItem(index));
     const currentRange = document.querySelectorAll(`${className}`);
     if (currentValue) {
-      let currentCopyes = [];
+      let currentCopyes: string[] = [];
       for (let i = +currentRange[0].ariaValueNow; i <= +currentRange[1].ariaValueNow; i++) {
         currentCopyes.push(String(i));
       }
       localStorage.setItem(index, JSON.stringify(currentCopyes));
     } else {
-      let currentCopyes = [];
+      let currentCopyes: string[] = [];
       for (let i = +currentRange[0].ariaValueNow; i <= +currentRange[1].ariaValueNow; i++) {
         currentCopyes.push(String(i));
       }

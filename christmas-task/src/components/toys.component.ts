@@ -51,12 +51,12 @@ export class Toys extends App {
   async getData() {
     const url: string = ('https://raw.githubusercontent.com/Bogdan-VS/image-data/master/data.json');
     const res: Response = await fetch(url);
-    const data = await res.json();
+    const data: Data[] = await res.json();
     this.dataToys = data;
     return this.dataToys;
   }
 
-  drawToys(data: any = this.dataToys) {
+  drawToys(data = this.dataToys) {
     const collection = document.querySelector('.collection-container-wrapper');
     for (let i = 0; i < data.length; i++) {
       const content = document.createElement('aside');
@@ -90,11 +90,11 @@ export class Toys extends App {
     category.classList.toggle('hide');
   }
 
-  getSortToys(event: Event) {
+  getSortToys(event: IntersectionObserverEntryInit) {
     const currentCategories = document.getElementById('current-categories');
-    const target = (event.target as HTMLElement).closest('.sort-item');
+    const target = event.target.closest('.sort-item') as HTMLElement;
 
-    switch(target && (target as HTMLTemplateElement).dataset.sort) {
+    switch(target && (target.dataset.sort)) {
       case 'По возрастанию года выпуска':
         currentCategories.textContent = 'По возрастанию года выпуска';
         this.addSortToys();
@@ -124,9 +124,9 @@ export class Toys extends App {
   }
 
   addResultData() {
-    const massFilter = this.sortToys.getCurrentActiveElements();
+    const massFilter: string[] = this.sortToys.getCurrentActiveElements();
 
-    const succsessFilterForm = this.dataToys.filter((el: any) => {
+    const succsessFilterForm = this.dataToys.filter((el: Data) => {
       return massFilter.includes(el.shape) &&
         massFilter.includes(el.count) &&
         massFilter.includes(el.year) &&
@@ -139,10 +139,10 @@ export class Toys extends App {
   }
 
   applySucsses() {
-    const formTarget = (event.target as HTMLElement).closest('.form-icon');
-    const colorTarget = (event.target as HTMLElement).closest('.color-item');
-    const checkTarget = (event.target as HTMLElement).closest('.checked');
-    const currentCheck = (checkTarget as HTMLTemplateElement)?.dataset.check;
+    const formTarget = (event.target as HTMLElement).closest('.form-icon'); //?
+    const colorTarget = (event.target as HTMLElement).closest('.color-item'); //?
+    const checkTarget = (event.target as HTMLElement).closest('.checked'); //?
+    const currentCheck = (checkTarget as HTMLTemplateElement)?.dataset.check; //?
 
     if (formTarget ||
       colorTarget ||
@@ -207,7 +207,7 @@ export class Toys extends App {
     }
   }
 
-  getResult(arg: any[]) {
+  getResult(arg: Data[]) {
     const message = document.querySelector('.message');
 
     if (arg.length === 0) {
@@ -216,7 +216,7 @@ export class Toys extends App {
       message.classList.remove('message_active');
     }
     
-    let sortData;
+    let sortData: Data[];
     const currentCategories = document.getElementById('current-categories');
 
     switch (currentCategories.textContent) {
@@ -245,12 +245,12 @@ export class Toys extends App {
     const target = (event.target as HTMLElement).closest('#reset-filters');
     const colorContainer = document.querySelectorAll('.color-item');
     const massForm = document.querySelectorAll('.form-icon');
-    const sizeItem = document.querySelectorAll('.size-item');
-    const favorite = document.querySelector('.favorite-item');
+    const sizeItem: NodeListOf<HTMLInputElement> = document.querySelectorAll('.size-item');
+    const favorite: HTMLInputElement = document.querySelector('.favorite-item');
 
     if (target) {
-      (range as any).noUiSlider.reset();
-      (rangeYear as any).noUiSlider.reset();
+      range.noUiSlider.reset();
+      rangeYear.noUiSlider.reset();
 
       massForm.forEach(element => {
         element.classList.add('form-icon__active');
@@ -261,10 +261,10 @@ export class Toys extends App {
       });
 
       sizeItem.forEach(element => {
-        (element as any).checked = 'checked';
+        element.checked = true;
       });
 
-      (favorite as any).checked = '';
+      favorite.checked = false;
 
       this.addResultData();
     }
@@ -284,7 +284,7 @@ export class Toys extends App {
     const massFilter: string[] = this.sortToys.getCurrentActiveElements();
     let massRequest: Data[] = [];
 
-    const succsessFilterForm = this.dataToys.filter((el: any) => {
+    const succsessFilterForm = this.dataToys.filter((el: Data) => {
       return massFilter.includes(el.shape) &&
         massFilter.includes(el.count) &&
         massFilter.includes(el.year) &&
@@ -294,7 +294,7 @@ export class Toys extends App {
     })
 
     if (value != '') {
-      succsessFilterForm.forEach((element: any) => {
+      succsessFilterForm.forEach((element: Data) => {
         if (element.name.toLowerCase().search(value.toLowerCase()) != -1) {
           massRequest.push(element);
         }
@@ -308,10 +308,10 @@ export class Toys extends App {
 
   addCleanSearch() {
     const cleanSearch = (event.target as HTMLElement).closest('.clean-icon');
-    const search: HTMLElement = document.getElementById('search');
+    const search = document.getElementById('search') as HTMLInputElement;
 
     if (cleanSearch) {
-      (search as any).value = '';
+      search.value = '';
       this.addSearch();
     }
   }
@@ -323,8 +323,8 @@ export class Toys extends App {
     });
   }
 
-  playMusic() {
-    const musicBtn = (event as any).target.closest('.audio');
+  playMusic(event: IntersectionObserverEntryInit) {
+    const musicBtn = event.target.closest('.audio') as HTMLElement;
     const currentBtn = musicBtn?.dataset.audio;
 
     if (musicBtn) {

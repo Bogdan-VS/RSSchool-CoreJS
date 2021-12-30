@@ -1,3 +1,5 @@
+import { ISnow } from "../modules/interface";
+
 const snowmax = 40;
 const snowcolor = new Array('#b9dff5', '#7fc7ff', '#7fb1ff', '#7fc7ff', '#b9dff5');
 const snowtype = new Array('Times');
@@ -14,15 +16,15 @@ const christmasBg = document.querySelector('.christmas-bg-current');
 let snowFlag = false;
 let init = true;
 
-const snow: any[] = new Array();
+const snow: any[] = new Array(); // 'это маасив из HTMLElement , в которых есть свойства описаные в интерфейсе Isnow. Не понимаю как это корректно протипизировать.
 let marginbottom: number;
 let marginright: number;
 let timer: any;
 let i_snow = 0;
-let x_mv = new Array();
-let crds = new Array();
-let lftrght = new Array();
-const randommaker  = (range: number) => {
+let x_mv: number[] = new Array();
+let crds: number[] = new Array();
+let lftrght: number[] = new Array();
+const randommaker = (range: number) => {
   const rand: number = Math.floor(range * Math.random());
   return rand;
 }
@@ -106,11 +108,6 @@ const OnOffSnow = (items: NodeListOf<Element>) => {
     });
   }
 }
-
-// treePage.addEventListener('click', () => {
-//   const snowItems = document.querySelectorAll('.snow-item');
-//   OnOffSnow(snowItems);
-// })
 
 toysPage.addEventListener('click', () => {
   const snowItems = document.querySelectorAll('.snow-item');

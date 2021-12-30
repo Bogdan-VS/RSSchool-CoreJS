@@ -1,10 +1,10 @@
 export class Garland {
 
   addColorGarland(class1: string, class2: string) {
-    const garlandItems = document.querySelectorAll('.garland-item');
+    const garlandItems: NodeListOf<any> = document.querySelectorAll('.garland-item'); // Если ставлю NodeListOf<HTMLElemtnt>, пишет что данный элемент можно только читать.
 
     garlandItems.forEach((element, index) => {
-      (element as any).classList = 'garland-item';
+      element.classList = 'garland-item';
       if (index % 2 === 1) {
         element.classList.add(`${class1}`);
       } else {
@@ -14,10 +14,10 @@ export class Garland {
   }
 
   addAllColorGarland(class1: string, class2: string, class3: string, class4: string) {
-    const garlandItems = document.querySelectorAll('.garland-item');
+    const garlandItems: NodeListOf<any> = document.querySelectorAll('.garland-item');
 
     garlandItems.forEach((element, index) => {
-      (element as any).classList = 'garland-item';
+      element.classList = 'garland-item';
       if (index % 2 === 1) {
         element.classList.add(`${class1}`);
       }

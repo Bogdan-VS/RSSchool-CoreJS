@@ -37,36 +37,28 @@ export class ChristmasTree extends App {
     this.$el.addEventListener('click', this.addTree.bind(this));
     this.$el.addEventListener('dragstart', this.startDrag);
     this.$el.addEventListener('dragend', this.endDrag.bind(this));
-    this.$el.addEventListener('dragenter', this.enterDrag.bind(this));
     this.$el.addEventListener('click', this.garlandOn.bind(this));
     area.addEventListener('dragleave', this.dragLeave.bind(this));
     area.addEventListener('dragover', this.dragOver.bind(this));
     area.addEventListener('drop', this.drop.bind(this));
   }
 
-  dragLeave(event: DragEvent) {
-    const tree = document.getElementById('tree') as HTMLTemplateElement;
+  dragLeave() {
     this.leaveFlag = false;
-  }
-
-  enterDrag(event: DragEvent) {
-    const tree = document.getElementById('tree') as HTMLTemplateElement;
   }
 
   drop(event: DragEvent) {
     event.preventDefault();
     const data1 = event.dataTransfer.getData('elemDrag1');
     const data2 = event.dataTransfer.getData('elemDrag2');
-    const toyElement2: HTMLDivElement = document.querySelector(`.toy-on-tree[data-active="${data2}"]`);   
+    const toyElement2: HTMLDivElement = document.querySelector(`.toy-on-tree[data-active="${data2}"]`);  
+    
     if (data2) {
-      
-      // const toyElement2: HTMLDivElement = document.querySelector(`.toy-on-tree[data-active="${data2}"]`);
       toyElement2.style.position = 'absolute';
       toyElement2.style.width = '30px';
       toyElement2.style.height = '30px';
-      (event.target as any).appendChild(toyElement2);
+      (event.target as HTMLElement).appendChild(toyElement2);
       moveAt(event.offsetX, event.offsetY, toyElement2);
-      console.log('drop');
     }
 
     if (data1) {
@@ -77,6 +69,7 @@ export class ChristmasTree extends App {
       if (elemCount.textContent !== '0') {
         elemCount.textContent = `${currentCount - 1}`;
       }
+
       if (elemCount.textContent === '0') {
         elemToy.style.display = 'none';
       }
@@ -91,41 +84,42 @@ export class ChristmasTree extends App {
       toyElement1.style.height = '35px';
       toyElement1.style.zIndex = '100';
       toyElement1.style.background = `top 0 left 0 / 100% 100% url(./assets/images/toys/${data1}.png)`;
-      (event.target as any).appendChild(toyElement1);
+      (event.target as HTMLElement).appendChild(toyElement1);
       moveAt(event.offsetX, event.offsetY, toyElement1);
       
       this.count++;
     }
+
     function moveAt(pageX: any, pageY: any, element: HTMLElement) {
       element.style.left = pageX - element.offsetWidth / 2 + 'px';
       element.style.top = pageY - element.offsetHeight / 2 + 'px';
     }
   }
 
-  dragOver(event: any) {
+  dragOver(event: DragEvent) {
     event.preventDefault();
     this.leaveFlag = true;
   }
 
-  startDrag(event: { target: any; }) {
-    const dragElement1 = (event.target as any).closest('.toy-icon');
-    const dragElement2 = (event.target as any).closest('.toy-on-tree');
+  startDrag(event: DragEvent) {
+    const dragElement1: HTMLElement = (event.target as HTMLElement).closest('.toy-icon');
+    const dragElement2: HTMLElement = (event.target as any).closest('.toy-on-tree');
 
     if (dragElement1) {
-      (event as any).dataTransfer.setData('elemDrag1', `${dragElement1.dataset.itemtoy}`);
+      event.dataTransfer.setData('elemDrag1', `${dragElement1.dataset.itemtoy}`);
       dragElement1.classList.add('selected');
     }
-    if (dragElement2) {
-      (event as any).dataTransfer.setData('elemDrag2', `${dragElement2.dataset.active}`);
-    }
 
+    if (dragElement2) {
+      event.dataTransfer.setData('elemDrag2', `${dragElement2.dataset.active}`);
+    }
   }
 
   endDrag(event: DragEvent) {
     const dragElement: HTMLElement = (event.target as any).closest('.toy-on-tree');
     const upItem = document.querySelector(`[data-itemcount="${dragElement.dataset.toycount}"]`);
     const elemCount = document.querySelector(`[data-itemtoy="${dragElement.dataset.toycount}"]`) as HTMLTemplateElement;
-    console.log(elemCount);
+
     if (dragElement) {
       if (!this.leaveFlag) {
         dragElement.remove();
@@ -166,6 +160,7 @@ export class ChristmasTree extends App {
     } else {
       activeData = currentData;
     }
+
     const toysTreeContainer = document.querySelector('.toys-tree-container');
 
     for (let i = 0; i < activeData.length; i++) {
@@ -179,7 +174,6 @@ export class ChristmasTree extends App {
 
       toysTreeContainer.append(toy);
       const iconToy = document.querySelector(`.icon${i}`) as HTMLDivElement;
-
       iconToy.style.background = `top 0 left 0 / 100% 100% url(./assets/images/toys/${activeData[i].num}.png)`;
     }
 
@@ -250,8 +244,8 @@ export class ChristmasTree extends App {
   }
 
   playMusic() {
-    const musicBtn = (event as any).target.closest('.audio');
-    const currentBtn = musicBtn?.dataset.audio;
+    const musicBtn: HTMLAudioElement = (event.target as HTMLElement).closest('.audio');
+    const currentBtn: string = musicBtn?.dataset.audio;
 
     if (musicBtn) {
       switch (currentBtn) {
@@ -263,7 +257,7 @@ export class ChristmasTree extends App {
   }
 
   garlandOn() {
-    const garlands = (event as any).target.closest('.garland-container-item');
+    const garlands: HTMLDivElement = (event.target as HTMLElement).closest('.garland-container-item');
     const garlandItem = garlands?.dataset.garland;
 
     if (garlands) {
