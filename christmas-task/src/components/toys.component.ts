@@ -155,7 +155,7 @@ export class Toys extends App {
 
   }
 
-  getFilterForm() {
+  getFilterForm(event: Event) {
     const target = (event.target as HTMLElement).closest('.form-icon');
     const currentForm = (target as HTMLTemplateElement)?.dataset.form;
 
@@ -181,7 +181,7 @@ export class Toys extends App {
     }
   }
 
-  addActiveColor() {
+  addActiveColor(event: Event) {
     const target = (event.target as HTMLElement).closest('.color-item');
     const currentColor = (target as HTMLTemplateElement)?.dataset.color;
 
@@ -241,7 +241,7 @@ export class Toys extends App {
     this.drawToys(sortData);
   }
 
-  applyResetFilters() {
+  applyResetFilters(event: Event) {
     const target = (event.target as HTMLElement).closest('#reset-filters');
     const colorContainer = document.querySelectorAll('.color-item');
     const massForm = document.querySelectorAll('.form-icon');
@@ -271,7 +271,7 @@ export class Toys extends App {
 
   }
 
-  applyResetSettings() {
+  applyResetSettings(event: Event) {
     const resetSettings = (event.target as HTMLElement).closest('#reset-setting');
     if (resetSettings) {
       localStorage.clear();
@@ -306,7 +306,7 @@ export class Toys extends App {
     this.getResult(massRequest);
   }
 
-  addCleanSearch() {
+  addCleanSearch(event: Event) {
     const cleanSearch = (event.target as HTMLElement).closest('.clean-icon');
     const search = document.getElementById('search') as HTMLInputElement;
 
