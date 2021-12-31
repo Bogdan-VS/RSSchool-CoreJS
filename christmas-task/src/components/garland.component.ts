@@ -1,10 +1,10 @@
 export class Garland {
 
   addColorGarland(class1: string, class2: string) {
-    const garlandItems: NodeListOf<any> = document.querySelectorAll('.garland-item'); // Если ставлю NodeListOf<HTMLElemtnt>, пишет что данный элемент можно только читать.
+    const garlandItems = document.querySelectorAll('.garland circle');
 
     garlandItems.forEach((element, index) => {
-      element.classList = 'garland-item';
+      element.removeAttribute('class');
       if (index % 2 === 1) {
         element.classList.add(`${class1}`);
       } else {

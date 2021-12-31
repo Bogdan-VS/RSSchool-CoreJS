@@ -9,17 +9,16 @@ const snowmaxsize = 20;
 const snowminsize = 5;
 const snowingzone = 3;
 
-// const treePage = document.getElementById('tree-page');
 const toysPage = document.getElementById('toys-page');
 const snowBtn = document.querySelector('.snow');
 const christmasBg = document.querySelector('.christmas-bg-current');
 let snowFlag = false;
 let init = true;
 
-const snow: any[] = new Array(); // 'это маасив из HTMLElement , в которых есть свойства описаные в интерфейсе Isnow. Не понимаю как это корректно протипизировать.
+const snow: Array<HTMLElement & ISnow> = new Array();
 let marginbottom: number;
 let marginright: number;
-let timer: any;
+let timer: ReturnType<typeof setTimeout>;
 let i_snow = 0;
 let x_mv: number[] = new Array();
 let crds: number[] = new Array();
@@ -117,4 +116,4 @@ toysPage.addEventListener('click', () => {
     (element as any).style.display = 'none';
   });
 })
-// window.onload = initsnow;
+

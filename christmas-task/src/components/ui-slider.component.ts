@@ -2,12 +2,12 @@ import { LocalStorage } from './local-storage.component';
 import noUiSlider from 'noUiSlider';
 import 'nouislider/dist/nouislider.css';
 import { toys } from '../index';
-import { IRange } from '../modules/interface';
+import { target } from 'noUiSlider';
 
 const rangeLocalStorage = new LocalStorage();
 const StartBtn = document.querySelector('.start');
-export const range = document.getElementById('range') as any; // Не понятно как протипизироввать, создал интерфейс, но он не получается абсолютно не корректен.
-export const rangeYear = document.getElementById('range-year') as any; // Аналогичная ситуация
+export const range: target = document.getElementById('range');
+export const rangeYear: target = document.getElementById('range-year');
 
 noUiSlider.create(range, {
   start: [1, 12],

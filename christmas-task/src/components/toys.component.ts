@@ -6,13 +6,15 @@ import { rangeYear } from './ui-slider.component';
 import { favorite } from '..';
 import { Data } from '../modules/interface';
 import { Audio } from './audio.component';
+import { Sort } from '../modules/enum';
+import { Shape } from '../modules/enum';
+import { Color } from '../modules/enum';
 
 export class Toys extends App {
   newData: Data[];
   dataToys: Data[];
   sortToys: SortToys;
   localStorage: LocalStorage;
-  countCopy: any;
   audio: Audio;
   constructor(id: string) {
     super(id);
@@ -95,28 +97,28 @@ export class Toys extends App {
     const target = event.target.closest('.sort-item') as HTMLElement;
 
     switch(target && (target.dataset.sort)) {
-      case 'По возрастанию года выпуска':
-        currentCategories.textContent = 'По возрастанию года выпуска';
+      case Sort.ascending:
+        currentCategories.textContent = `${Sort.ascending}`;
         this.addSortToys();
         this.addResultData();
         break;
-      case 'По убыванию года выпуска':
-        currentCategories.textContent = 'По убыванию года выпуска';
+      case Sort.descending:
+        currentCategories.textContent = `${Sort.descending}`;
         this.addSortToys();
         this.addResultData();
         break;
-      case 'Все игрушки':
-        currentCategories.textContent = 'Все игрушки';
+      case Sort.all:
+        currentCategories.textContent = `${Sort.all}`;
         this.addSortToys();
         this.addResultData();
         break;
-      case 'По имени А-Я':
-        currentCategories.textContent = 'По имени А-Я';
+      case Sort.fromAZ:
+        currentCategories.textContent =  `${Sort.fromAZ}`;
         this.addSortToys();
         this.addResultData();
         break;
-      case 'По имени Я-А':
-        currentCategories.textContent = 'По имени Я-А';
+      case Sort.fromZA:
+        currentCategories.textContent = `${Sort.fromZA}`;
         this.addSortToys();
         this.addResultData();
         break;
@@ -138,11 +140,11 @@ export class Toys extends App {
     this.getResult(succsessFilterForm);
   }
 
-  applySucsses() {
-    const formTarget = (event.target as HTMLElement).closest('.form-icon'); //?
-    const colorTarget = (event.target as HTMLElement).closest('.color-item'); //?
-    const checkTarget = (event.target as HTMLElement).closest('.checked'); //?
-    const currentCheck = (checkTarget as HTMLTemplateElement)?.dataset.check; //?
+  applySucsses(event: Event) {
+    const formTarget = (event.target as HTMLElement).closest('.form-icon');
+    const colorTarget = (event.target as HTMLElement).closest('.color-item');
+    const checkTarget = (event.target as HTMLElement).closest('.checked');
+    const currentCheck = (checkTarget as HTMLTemplateElement)?.dataset.check;
 
     if (formTarget ||
       colorTarget ||
@@ -161,19 +163,19 @@ export class Toys extends App {
 
     if (currentForm) {
       switch (currentForm) {
-        case 'колокольчик':
+        case Shape.bell:
           target.classList.toggle('form-icon__active');
           break;
-        case 'шар':
+        case Shape.ball:
           target.classList.toggle('form-icon__active');
           break;
-        case 'шишка':
+        case Shape.cone:
           target.classList.toggle('form-icon__active');
           break;
-        case 'снежинка':
+        case Shape.snowflake:
           target.classList.toggle('form-icon__active');
           break;
-        case 'фигурка':
+        case Shape.figurine:
           target.classList.toggle('form-icon__active');
           break;
       }
@@ -187,19 +189,19 @@ export class Toys extends App {
 
     if (currentColor) {
       switch (currentColor) {
-        case "белый":
+        case Color.white:
           target.classList.toggle('color-item__active');
           break
-        case "желтый":
+        case Color.yellow:
           target.classList.toggle('color-item__active');
           break
-        case "красный":
+        case Color.red:
           target.classList.toggle('color-item__active');
           break
-        case "синий":
+        case Color.blue:
           target.classList.toggle('color-item__active');
           break
-        case "зелёный":
+        case Color.green:
           target.classList.toggle('color-item__active');
           break
       }
@@ -220,19 +222,19 @@ export class Toys extends App {
     const currentCategories = document.getElementById('current-categories');
 
     switch (currentCategories.textContent) {
-      case 'По возрастанию года выпуска':
+      case Sort.ascending:
         sortData = this.sortToys.sortToIncrease(arg);
         break
-      case 'По убыванию года выпуска':
+      case Sort.descending:
         sortData = this.sortToys.sortToIncreaseReverse(arg);
         break
-      case 'Все игрушки':
+      case Sort.all:
         sortData = this.sortToys.sortALL(arg);
         break
-      case 'По имени А-Я':
+      case Sort.fromAZ:
         sortData = this.sortToys.sortToName(arg);
         break
-      case 'По имени Я-А':
+      case Sort.fromZA:
         sortData = this.sortToys.sortToNameReverse(arg);
         break
     }
@@ -327,12 +329,8 @@ export class Toys extends App {
     const musicBtn = event.target.closest('.audio') as HTMLElement;
     const currentBtn = musicBtn?.dataset.audio;
 
-    if (musicBtn) {
-      switch (currentBtn) {
-        case 'toys':
-          this.audio.playMusic();
-          break;
-      }
+    if (currentBtn === 'toys') {
+      this.audio.playMusic();
     }
   }
 

@@ -13,10 +13,10 @@ export interface Data {
 }
 
 export interface ISnow {
-  posx: number;
-  posy: number;
-  sink: number;
-  size: number;
+  posx?: number;
+  posy?: number;
+  sink?: number;
+  size?: number;
 }
 
 export interface IRange {
