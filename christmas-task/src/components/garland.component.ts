@@ -14,10 +14,10 @@ export class Garland {
   }
 
   addAllColorGarland(class1: string, class2: string, class3: string, class4: string) {
-    const garlandItems: NodeListOf<any> = document.querySelectorAll('.garland-item');
+    const garlandItems = document.querySelectorAll('.garland circle');
 
     garlandItems.forEach((element, index) => {
-      element.classList = 'garland-item';
+      element.removeAttribute('class');
       if (index % 2 === 1) {
         element.classList.add(`${class1}`);
       }
