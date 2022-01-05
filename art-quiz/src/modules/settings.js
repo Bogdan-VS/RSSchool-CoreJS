@@ -1,7 +1,6 @@
 const settingsItem = document.querySelector('.settings-item');
 const main = document.querySelector('main');
 const settings = document.querySelector('.settings');
-
 export const settingsWrapper = document.createElement('div');
 
 let settingsFlag = false;
@@ -10,16 +9,12 @@ settingsItem.addEventListener('click', function() {
     openSettings();
 });
 
-
 const drowSettings = () => {
-
-    //header
     const settingsTitle = document.createElement('div');
     settingsTitle.classList.add('settings-title');
     settingsTitle.innerHTML = '<div class="settings-logo"></div><h3>Settings</h3>'
     settings.prepend(settingsTitle);
 
-    //main
     settingsWrapper.classList.add('settings-wrapper');
     settingsWrapper.innerHTML = `
         <div class="settings-container">
@@ -61,26 +56,23 @@ const drowSettings = () => {
         </div>
     `;
     main.prepend(settingsWrapper);
-    
 }
-drowSettings();
-
 
 const openSettings = () => {
-
     if (!settingsFlag) {
         settingsFlag = true;
-        settings.classList.toggle('settings-active');
-        settingsItem.classList.toggle('settings-item__active');
-        settingsWrapper.classList.toggle('settings-wrapper__active');
-        document.querySelector('.settings-title').classList.toggle('settings-title__active');
-        document.querySelector('.main-container').classList.toggle('main-container__active');
+        toggleActiveSettings();
     } else {
-        settings.classList.toggle('settings-active');
-        settingsItem.classList.toggle('settings-item__active');
-        settingsWrapper.classList.toggle('settings-wrapper__active');
-        document.querySelector('.settings-title').classList.toggle('settings-title__active');
-        document.querySelector('.main-container').classList.toggle('main-container__active');
+        toggleActiveSettings();
     }
-
 }
+
+const toggleActiveSettings = () => {
+    settings.classList.toggle('settings-active');
+    settingsItem.classList.toggle('settings-item__active');
+    settingsWrapper.classList.toggle('settings-wrapper__active');
+    document.querySelector('.settings-title').classList.toggle('settings-title__active');
+    document.querySelector('.main-container').classList.toggle('main-container__active');
+}
+
+window.onload = drowSettings();

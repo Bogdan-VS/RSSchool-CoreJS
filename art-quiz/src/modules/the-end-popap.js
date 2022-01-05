@@ -9,10 +9,7 @@ import { correctAnswer } from "./popaps";
 export const endGame = document.createElement('div');
 const main = document.querySelector('main');
 
-
-
 export const drawEndGame = () => {
-
     endGame.classList.add('end-game-popap');
     main.prepend(endGame);
 
@@ -33,11 +30,8 @@ export const drawEndGame = () => {
             </div>
         </div>
     `;
-
     document.querySelector('.result-counts').textContent = `${correctAnswer}`;
 }
-
-
 
 endGame.addEventListener('click', (event) => {
     let target  = event.target;
@@ -54,8 +48,4 @@ endGame.addEventListener('click', (event) => {
         document.querySelector('.main-container').classList.toggle('main-container__active');
         overlay.classList.toggle('overlay__active');
     }
-
-    // if (target.dataset.homeBtn === 'Next') {
-
-    // }
 })

@@ -2,7 +2,6 @@ const header = document.querySelector('header');
 const main = document.querySelector('main');
 
 export const getHeader = () => {
-
     header.innerHTML = `
         <div class="settings">
             <div class="settings-item"></div>
@@ -10,10 +9,7 @@ export const getHeader = () => {
     `;
 }
 
-getHeader();
-
- export const getMain = () => {
-
+export const getMain = () => {
     main.innerHTML = `
     <div class="main-container main-container__active">
         <div class="logo-container">
@@ -27,7 +23,14 @@ getHeader();
     `;
 }
 
-window.onload = getMain();
+const startGame = () => {
+    getHeader();
+    getMain();
+}
+
+window.onload = startGame();
+
+
 
 
 

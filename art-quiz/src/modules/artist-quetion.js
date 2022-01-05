@@ -1,4 +1,4 @@
-import { artistList } from "./artist-list";
+import { artistList } from "./data/artist-list";
 import { drawSucsses } from "./popaps";
 import { generationData } from "./popaps";
 import { appFlags } from "./artist";
@@ -13,23 +13,21 @@ const artistTitle = document.querySelector('.artist-title');
 const body = document.querySelector('body');
 
 export let listPictures;
+export let cardNumber;
+export let sucssesCard;
+export const counter = {
+    numberQuestion: 0,
+}
+
 const getListPictures = async () => {
     const list = 'https://raw.githubusercontent.com/Bogdan-VS/image-data/master/pictures.json';
     const res = await fetch(list);
     const data = await res.json();
     listPictures = data;
-    return data
+    return data;
 }
 
-getListPictures();
-
-
-export const counter = {
-    numberQuestion: 0,
-}
-export let cardNumber;
 export const drawArtistQuestion = () => {
-
     timeConteiner.classList.add('time-container');
     settings.prepend(timeConteiner);
     timeConteiner.innerHTML = `
@@ -42,7 +40,6 @@ export const drawArtistQuestion = () => {
         </div>
     `;
     
-
     containerQuestionsArtist.classList.add('container-question');
     main.append(containerQuestionsArtist);
     containerQuestionsArtist.innerHTML = `
@@ -74,7 +71,6 @@ export const drawArtistQuestion = () => {
 
     containerQuestionsPictures.classList.add('container-questions-pictures');
     main.prepend(containerQuestionsPictures);
-
     containerQuestionsPictures.innerHTML = `
         <div class="container-content">
             <h4 class="title-pictures"></h4>
@@ -86,18 +82,15 @@ export const drawArtistQuestion = () => {
             </div>
         </div>
     `;
-    
 }
 
-
-drawArtistQuestion();
-
 artistWrapper.addEventListener('click', (event) => {
-    let target = event.target.closest('section');
+    const target = event.target.closest('section');
 
     if (target.dataset.artist) {
         cardNumber = Number(target.dataset.artist) - 1;
     }
+
     if (target.dataset.pictures) {
         cardNumber = Number(target.dataset.pictures) - 1;
     }
@@ -111,41 +104,37 @@ artistWrapper.addEventListener('click', (event) => {
 })
 
 const openQuestionPage = () => {
-    
     if (appFlags.activeArtistPage) {
         containerQuestionsArtist.classList.add('container-question__active');
         containerQuestionsPictures.classList.remove('container-questions-pictures__active');
     }
+
     if (appFlags.activePicturesPage) {
         containerQuestionsPictures.classList.add('container-questions-pictures__active');
         containerQuestionsArtist.classList.remove('container-question__active');
     }
+
     timeConteiner.classList.add('time-container__active');
     settings.classList.toggle('settings-artist__active');
     artistTitle.classList.toggle('artist-title__active');
     artistWrapper.classList.toggle('artist-wrapper__active');
-
 }
 
 export const addData = () => {
-
     if (appFlags.activeArtistPage) {
         const title = document.querySelector('.title');
         const pictures = document.querySelector('.pictures-container')
         title.textContent = `Какой автор нарисовал картину "${artistList[cardNumber][counter.numberQuestion].name}" ?`;
         pictures.style.background = `top 0 left 0 / 100% 100% url(${artistList[cardNumber][counter.numberQuestion].src})`;
     }
+
     if (appFlags.activePicturesPage) {
-        console.log(cardNumber);
         const titlePictures = document.querySelector('.title-pictures');
-        titlePictures.textContent = `Какую картину нарисовал ${listPictures[cardNumber][counter.numberQuestion].author} ?`
+        titlePictures.textContent = `Какую картину нарисовал ${listPictures[cardNumber][counter.numberQuestion].author} ?`;
     }
-    
 }
 
-
 export const getRandom = (min, max) => {
-    
     const mass = [counter.numberQuestion];
 
     for (let i = 0; mass.length < 4; i++) {
@@ -153,16 +142,14 @@ export const getRandom = (min, max) => {
         if (number !== counter.numberQuestion) {
             if (!(mass.includes(number))) {
                 mass.push(number);
-            }
-            
+            }  
         }
     }
 
-    let randomNumbers = mass.map(i=>[Math.random(), i]).sort().map(i=>i[1]);
-
+    const randomNumbers = mass.map(i => [Math.random(), i]).sort().map(i => i[1]);
+    
     if (appFlags.activeArtistPage) {
         const Buttons = document.querySelectorAll('.button');
-
         Buttons.forEach((element, index) => {
             element.textContent = `${artistList[cardNumber][randomNumbers[index]].author}`;
             element.setAttribute('data-btn', `${randomNumbers[index]}`);
@@ -171,7 +158,6 @@ export const getRandom = (min, max) => {
 
     if (appFlags.activePicturesPage) {
         const pictureItems = document.querySelectorAll('.picture-item');
-
         pictureItems.forEach((element, index) => {
             element.style.background = `top 0 left 0 / 100% 100% url(${listPictures[cardNumber][randomNumbers[index]].src})`;
             element.setAttribute('data-pictureSucsses', `${randomNumbers[index]}`);
@@ -185,20 +171,25 @@ export const getRandom = (min, max) => {
     }
 }
 
-export let sucssesCard;
-
 body.addEventListener('click', (event) => {
-    let target = event.target;
+    const target = event.target;
     if (target.dataset.btn) {
         sucssesCard = target.dataset.btn;
         drawSucsses();
         generationData();
     }
+    
     if (target.dataset.picturesucsses) {
         sucssesCard = target.dataset.picturesucsses;
-        console.log(sucssesCard);
         drawSucsses();
         generationData();
     }
 })
+
+const addActiveArtistPage = () => {
+    getListPictures();
+    drawArtistQuestion();
+}
+
+window.onload = addActiveArtistPage();
 

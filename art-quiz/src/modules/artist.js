@@ -1,4 +1,4 @@
-import { category } from "./category";
+import { category } from "./data/category";
 
 const artist = document.querySelector('.artist');
 const pictures = document.querySelector('.pictures');
@@ -6,12 +6,11 @@ const settings = document.querySelector('.settings');
 const main = document.querySelector('main');
 const settingsItem = document.querySelector('.settings-item');
 const body = document.querySelector('body');
-
+const mainContainer = document.querySelector('.main-container');
+const settingsTitle = document.querySelector('.settings-title');
 const artistWrapper = document.createElement('div');
 const artistTitle = document.createElement('div');
-
-
- export const appFlags = {
+export const appFlags = {
     activeSetting: true,
     activeArtistPage: false,
     activePicturesPage: false,
@@ -34,16 +33,13 @@ settingsItem.addEventListener('click', function() {
 })
 
 body.addEventListener('click', (event) => {
-    let target = event.target
+    const target = event.target;
     if (target.dataset.set === 'home') {
         openMainPage();
     }
 })
 
 const drowArtistPage = () => {
-
-
-    //main
     artistWrapper.classList.add('artist-wrapper');
     main.prepend(artistWrapper);
 
@@ -61,11 +57,8 @@ const drowArtistPage = () => {
             </div>
         `;
         artistWrapper.prepend(artistContainer);
-
     }
 
-
-    //header
     artistTitle.classList.add('artist-title');
     artistTitle.innerHTML = `
         <div class="artist-container">
@@ -74,102 +67,83 @@ const drowArtistPage = () => {
             <h3 class="category-title">Category</h3>
         </div>     
     `;
-
     settings.prepend(artistTitle);
     document.querySelector('.category-title').classList.add('active-page');
 }
 
-drowArtistPage();
-
-
 const openArtistPage = () => {
-
     settings.classList.toggle('settings-artist__active');
     artistTitle.classList.toggle('artist-title__active');
     artistWrapper.classList.toggle('artist-wrapper__active');
     document.querySelector('.main-container').classList.toggle('main-container__active');
-    const artistCont = document.querySelectorAll('.artist-container')
 
     if (appFlags.activeArtistPage) {
-
-        artistCont.forEach((element, index) => {
-            element.classList.add('artistCurrent');
-            element.classList.remove('picturesCurrent');
-            element.setAttribute('data-artist', `${index}`);
-            element.removeAttribute('data-pictures');
-        });
+        toggleClassArtistPage('data-artist', 'data-pictures', 'artistCurrent', 'picturesCurrent');
     }
 
     if (appFlags.activePicturesPage) {
-        artistCont.forEach((element, index) => {
-            element.classList.add('picturesCurrent');
-            element.classList.remove('artistCurrent');
-            element.setAttribute('data-pictures', `${index}`);
-            element.removeAttribute('data-artist');
-        });
+        toggleClassArtistPage('data-pictures', 'data-artist', 'picturesCurrent', 'artistCurrent');
     }
+}
 
-    // drawArtistQuestion();
+const toggleClassArtistPage = (setAttibute, removeAttribute, addClass, removeClass) => {
+    const artistCont = document.querySelectorAll('.artist-container');
+
+    artistCont.forEach((element, index) => {
+        element.classList.add(`${addClass}`);
+        element.classList.remove(`${removeClass}`);
+        element.setAttribute(`${setAttibute}`, `${index}`);
+        element.removeAttribute(`${removeAttribute}`);
+    });
 }
 
 const openSettings = () => {
-
     if (appFlags.activeArtistPage) {
         if (appFlags.activeSetting) {
             appFlags.activeSetting = false;
-            settings.classList.toggle('settings-artist__active');
-            artistTitle.classList.toggle('artist-title__active');
-            artistWrapper.classList.toggle('artist-wrapper__active');
-            document.querySelector('.main-container').classList.toggle('main-container__active');
+            toggleActiveSettings();
             settings.classList.add('settings-active');
-            settingsItem.classList.toggle('settings-item__active');
-            document.querySelector('.settings-title').classList.add('settings-title__active');
+            settingsTitle.classList.add('settings-title__active');
         } else {
             appFlags.activeSetting = true;
-            document.querySelector('.settings-title').classList.remove('settings-title__active');
+            toggleActiveSettings();
+            settingsTitle.classList.remove('settings-title__active');
             settings.classList.remove('settings-active');
-            settings.classList.toggle('settings-artist__active');
-            artistTitle.classList.toggle('artist-title__active');
-            artistWrapper.classList.toggle('artist-wrapper__active');
-            document.querySelector('.main-container').classList.toggle('main-container__active');
-            settingsItem.classList.toggle('settings-item__active');
         }
     }
 
     if (appFlags.activePicturesPage) {
         if (appFlags.activeSetting) {
             appFlags.activeSetting = false;
-            settings.classList.toggle('settings-artist__active');
-            artistTitle.classList.toggle('artist-title__active');
-            artistWrapper.classList.toggle('artist-wrapper__active');
-            document.querySelector('.main-container').classList.toggle('main-container__active');
+            toggleActiveSettings();
             settings.classList.add('settings-active');
-            settingsItem.classList.toggle('settings-item__active');
-            document.querySelector('.settings-title').classList.add('settings-title__active');
+            settingsTitle.classList.add('settings-title__active');
         } else {
             appFlags.activeSetting = true;
-            document.querySelector('.settings-title').classList.remove('settings-title__active');
+            toggleActiveSettings();
+            settingsTitle.classList.remove('settings-title__active');
             settings.classList.remove('settings-active');
-            settings.classList.toggle('settings-artist__active');
-            artistTitle.classList.toggle('artist-title__active');
-            artistWrapper.classList.toggle('artist-wrapper__active');
-            document.querySelector('.main-container').classList.toggle('main-container__active');
-            settingsItem.classList.toggle('settings-item__active');
         }
     }
+}
 
+const toggleActiveSettings = () => {
+    settings.classList.toggle('settings-artist__active');
+    artistTitle.classList.toggle('artist-title__active');
+    artistWrapper.classList.toggle('artist-wrapper__active');
+    mainContainer.classList.toggle('main-container__active');
+    settingsItem.classList.toggle('settings-item__active');
 }
 
 const openMainPage = () => {
-
     appFlags.activeArtistPage = false;
-
     settings.classList.toggle('settings-artist__active');
     artistTitle.classList.toggle('artist-title__active');
     artistWrapper.classList.toggle('artist-wrapper__active');
     document.querySelector('.main-container').classList.toggle('main-container__active');
-
 }
+
+window.onload = drowArtistPage();
 
 
 
