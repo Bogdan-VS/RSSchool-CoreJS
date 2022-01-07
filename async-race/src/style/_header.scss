@@ -1,0 +1,22 @@
+.header-container {
+  display: flex;
+  height: inherit;
+  align-items: center;
+  column-gap: 30px;
+}
+
+.render-page {
+  width: 120px;
+  height: 45px;
+  background-color: rgb(94, 9, 9);
+  color: #fff;
+  border-radius: 6px;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.render-page:hover {
+  background-color: rgb(141, 9, 9);
+}
