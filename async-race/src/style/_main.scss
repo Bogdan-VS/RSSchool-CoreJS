@@ -148,12 +148,12 @@
       width: 100px;
       height: 45px;
       fill: aquamarine;
-      transition: 3s;
+      transform: translateX(0);
     }
 
-    .car-active {
-      left: 80%;
-    }
+    // .car:hover {
+    //   transform: translateX(90%);
+    // }
 
     .flag {
       position: absolute;
