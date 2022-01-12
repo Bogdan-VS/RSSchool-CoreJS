@@ -4,6 +4,7 @@ import { toys } from '..';
 import { Data } from '../modules/interface';
 import { Garland } from './garland.component';
 import { Audio } from './audio.component';
+import { dataParametrs } from '../modules/const';
 
 
 export class ChristmasTree extends App {
@@ -90,7 +91,7 @@ export class ChristmasTree extends App {
       this.count++;
     }
 
-    function moveAt(pageX: any, pageY: any, element: HTMLElement) {
+    function moveAt(pageX: number, pageY: number, element: HTMLElement) {
       element.style.left = pageX - element.offsetWidth / 2 + 'px';
       element.style.top = pageY - element.offsetHeight / 2 + 'px';
     }
@@ -136,12 +137,11 @@ export class ChristmasTree extends App {
 
   async drawCurrentdataToys() {
     const allData = await toys.getData();
-    const currentData: Data[] = [];
     const activeToys = this.getActiveData();
 
     allData.forEach((element, index) => {
       if (activeToys.includes(allData[index].num)) {
-        currentData.push(element);
+        dataParametrs.currentData.push(element);
       }
     });
     
@@ -153,28 +153,26 @@ export class ChristmasTree extends App {
       });
     }
 
-    let activeData: Data[];
-
-    if (currentData.length === 0) {
-      activeData = this.allDataToys.slice(0, 20);
+    if (dataParametrs.currentData.length === 0) {
+      dataParametrs.activeData = this.allDataToys.slice(0, 20);
     } else {
-      activeData = currentData;
+      dataParametrs.activeData = dataParametrs.currentData;
     }
 
     const toysTreeContainer = document.querySelector('.toys-tree-container');
 
-    for (let i = 0; i < activeData.length; i++) {
+    for (let i = 0; i < dataParametrs.activeData.length; i++) {
       const toy = document.createElement('div');
       toy.classList.add('toy-for-tree');
-      toy.setAttribute('data-treeToy', `${activeData[i].name}`);
+      toy.setAttribute('data-treeToy', `${dataParametrs.activeData[i].name}`);
       toy.innerHTML = `
-        <div class="toy-icon icon${i}" draggable="true" data-itemToy="${activeData[i].num}"></div>
-        <div class="toy-count" data-itemcount="${activeData[i].num}">${activeData[i].count}</div>
+        <div class="toy-icon icon${i}" draggable="true" data-itemToy="${dataParametrs.activeData[i].num}"></div>
+        <div class="toy-count" data-itemcount="${dataParametrs.activeData[i].num}">${dataParametrs.activeData[i].count}</div>
       `
 
       toysTreeContainer.append(toy);
       const iconToy = document.querySelector(`.icon${i}`) as HTMLDivElement;
-      iconToy.style.background = `top 0 left 0 / 100% 100% url(./assets/images/toys/${activeData[i].num}.png)`;
+      iconToy.style.background = `top 0 left 0 / 100% 100% url(./assets/images/toys/${dataParametrs.activeData[i].num}.png)`;
     }
 
   }

@@ -20,19 +20,18 @@ export class LocalStorage {
     const currentValue: string[] = JSON.parse(localStorage.getItem(index));
     const currentRange = document.querySelectorAll(`${className}`);
     if (currentValue) {
-      let currentCopyes: string[] = [];
-      for (let i = +currentRange[0].ariaValueNow; i <= +currentRange[1].ariaValueNow; i++) {
-        currentCopyes.push(String(i));
-      }
-      localStorage.setItem(index, JSON.stringify(currentCopyes));
+      this.getCurrentCopyesToRange(currentRange, index);
     } else {
-      let currentCopyes: string[] = [];
-      for (let i = +currentRange[0].ariaValueNow; i <= +currentRange[1].ariaValueNow; i++) {
-        currentCopyes.push(String(i));
-      }
-      localStorage.setItem(index, JSON.stringify(currentCopyes));
+      this.getCurrentCopyesToRange(currentRange, index);
     }
+  }
 
+  getCurrentCopyesToRange(currentRange: NodeListOf<Element>, index: string) {
+    const currentCopyes: string[] = [];
+    for (let i = +currentRange[0].ariaValueNow; i <= +currentRange[1].ariaValueNow; i++) {
+      currentCopyes.push(String(i));
+    }
+    localStorage.setItem(index, JSON.stringify(currentCopyes));
   }
 
   getDataLocalStorage(index: string, set: string, className: string, activeClass: string) {

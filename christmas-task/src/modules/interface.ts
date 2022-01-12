@@ -22,3 +22,30 @@ export interface ISnow {
 export interface IRange {
   noUiSlider: typeof noUiSlider;
 }
+
+export interface IDataParametrs {
+  activeData?: Data[];
+  currentData?: Data[];
+}
+
+export interface ISnowSettings {
+  snowMax: number;
+  snowType: string[];
+  snowColor: string[];
+  snowLetter: string;
+  sinkSpeed: number;
+  snowMaxSize: number;
+  snowMinSize: number;
+  snow: Array<HTMLElement & ISnow>
+}
+
+export interface ISnowProperties {
+  marginBottom: number;
+  marginRight: number;
+  timer: ReturnType<typeof setTimeout>;
+  xMv: number[];
+  crds: number[];
+  leftRight: number[];
+  snowFlag: boolean;
+  init: boolean
+}

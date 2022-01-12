@@ -1,57 +1,40 @@
-import { ISnow } from "../modules/interface";
-
-const snowmax = 40;
-const snowcolor = new Array('#b9dff5', '#7fc7ff', '#7fb1ff', '#7fc7ff', '#b9dff5');
-const snowtype = new Array('Times');
-const snowletter = '&#10052;';
-const sinkspeed = 0.4;
-const snowmaxsize = 20;
-const snowminsize = 5;
-const snowingzone = 3;
+import { snowSettings } from "../modules/const";
+import { snowProperties } from "../modules/const";
 
 const toysPage = document.getElementById('toys-page');
 const snowBtn = document.querySelector('.snow');
 const christmasBg = document.querySelector('.christmas-bg-current');
-let snowFlag = false;
-let init = true;
 
-const snow: Array<HTMLElement & ISnow> = new Array();
-let marginbottom: number;
-let marginright: number;
-let timer: ReturnType<typeof setTimeout>;
-let i_snow = 0;
-let x_mv: number[] = new Array();
-let crds: number[] = new Array();
-let lftrght: number[] = new Array();
 const randommaker = (range: number) => {
   const rand: number = Math.floor(range * Math.random());
   return rand;
 }
-const initsnow = () => {
 
-  if (init) {
-    snowFlag = true;
-    init = false;
-    marginbottom = document.documentElement.clientHeight + 50;
-    marginright = document.body.clientWidth - 15;
-    let snowsizerange = snowmaxsize - snowminsize;
-    for (let i: number = 0; i <= snowmax; i++) {
-      crds[i] = 0;
-      lftrght[i] = Math.random() * 15;
-      x_mv[i] = 0.03 + Math.random() / 10;
-      snow[i] = document.getElementById('s' + i);
-      snow[i].classList.add('snow-item');
-      snow[i].style.fontFamily = snowtype[randommaker(snowtype.length)];
-      snow[i].size = randommaker(snowsizerange) + snowminsize;
-      snow[i].style.fontSize = snow[i].size + 'px';
-      snow[i].style.color = snowcolor[randommaker(snowcolor.length)];
-      snow[i].style.zIndex = '1000';
-      snow[i].sink = (sinkspeed * snow[i].size) / 5;
-      snow[i].posx = randommaker(marginright / 2 - snow[i].size) + marginright / 4;
-      snow[i].posy = randommaker(2 * marginbottom - marginbottom - 2 * snow[i].size);
-      snow[i].style.left = snow[i].posx + 'px';
-      snow[i].style.top = snow[i].posy + 'px';
-      christmasBg.append(snow[i])
+const initsnow = () => {
+  if (snowProperties.init) {
+    snowProperties.snowFlag = true;
+    snowProperties.init = false;
+    snowProperties.marginBottom = document.documentElement.clientHeight + 50;
+    snowProperties.marginRight = document.body.clientWidth - 15;
+    let snowsizerange = snowSettings.snowMaxSize - snowSettings.snowMinSize;
+
+    for (let i: number = 0; i <= snowSettings.snowMax; i++) {
+      snowProperties.crds[i] = 0;
+      snowProperties.leftRight[i] = Math.random() * 15;
+      snowProperties.xMv[i] = 0.03 + Math.random() / 10;
+      snowSettings.snow[i] = document.getElementById('s' + i);
+      snowSettings.snow[i].classList.add('snow-item');
+      snowSettings.snow[i].style.fontFamily = snowSettings.snowType[randommaker(snowSettings.snowType.length)];
+      snowSettings.snow[i].size = randommaker(snowsizerange) + snowSettings.snowMinSize;
+      snowSettings.snow[i].style.fontSize = snowSettings.snow[i].size + 'px';
+      snowSettings.snow[i].style.color = snowSettings.snowColor[randommaker(snowSettings.snowColor.length)];
+      snowSettings.snow[i].style.zIndex = '1000';
+      snowSettings.snow[i].sink = (snowSettings.sinkSpeed * snowSettings.snow[i].size) / 5;
+      snowSettings.snow[i].posx = randommaker(snowProperties.marginRight / 2 - snowSettings.snow[i].size) + snowProperties.marginRight / 4;
+      snowSettings.snow[i].posy = randommaker(2 * snowProperties.marginBottom - snowProperties.marginBottom - 2 * snowSettings.snow[i].size);
+      snowSettings.snow[i].style.left = snowSettings.snow[i].posx + 'px';
+      snowSettings.snow[i].style.top = snowSettings.snow[i].posy + 'px';
+      christmasBg.append(snowSettings.snow[i])
     }
   }
 
@@ -59,48 +42,43 @@ const initsnow = () => {
 }
 
 const movesnow = () => {
-  for (let i: number = 0; i <= snowmax; i++) {
-    crds[i] += x_mv[i];
-    snow[i].posy += snow[i].sink;
-    snow[i].style.left = snow[i].posx + lftrght[i] * Math.sin(crds[i]) + 'px';
-    snow[i].style.top = snow[i].posy + 'px';
+  for (let i: number = 0; i <= snowSettings.snowMax; i++) {
+    snowProperties.crds[i] += snowProperties.xMv[i];
+    snowSettings.snow[i].posy += snowSettings.snow[i].sink;
+    snowSettings.snow[i].style.left = snowSettings.snow[i].posx + snowProperties.leftRight[i] * Math.sin(snowProperties.crds[i]) + 'px';
+    snowSettings.snow[i].style.top = snowSettings.snow[i].posy + 'px';
+    const compareSnowPosY = snowSettings.snow[i].posy >= snowProperties.marginBottom - 2 * snowSettings.snow[i].size;
+    const compareSnowStyleLeft = parseInt(snowSettings.snow[i].style.left) > snowProperties.marginRight - 3 * snowProperties.leftRight[i];
 
-    if (
-      snow[i].posy >= marginbottom - 2 * snow[i].size ||
-      parseInt(snow[i].style.left) > marginright - 3 * lftrght[i]
-    ) {
-      snow[i].posx = randommaker(marginright / 2 - snow[i].size) + marginright / 4;
-      snow[i].posy = 0;
+    if (compareSnowPosY || compareSnowStyleLeft) {
+      snowSettings.snow[i].posx = randommaker(snowProperties.marginRight / 2 - snowSettings.snow[i].size) + snowProperties.marginRight / 4;
+      snowSettings.snow[i].posy = 0;
     }
   }
-  timer = setTimeout(() => {
+  snowProperties.timer = setTimeout(() => {
     movesnow();
   }, 50);
 }
 
-for (let i: number = 0; i <= snowmax; i++) {
+for (let i: number = 0; i <= snowSettings.snowMax; i++) {
   document.body.insertAdjacentHTML(
     'beforeend',
-    "<span id='s" + i + "' style='user-select:none;position:fixed;top:-" + snowmaxsize + "'>" + snowletter + '</span>'
+    "<span id='s" + i + "' style='user-select:none;position:fixed;top:-" + snowSettings.snowMaxSize + "'>" + snowSettings.snowLetter + '</span>'
   );
 }
 
 window.onload = initsnow;
 
-snowBtn.addEventListener('click', (event) => {
-  const snowItems = document.querySelectorAll('.snow-item');
+snowBtn.addEventListener('click', () => {
+  const snowItems: NodeListOf<HTMLTemplateElement> = document.querySelectorAll('.snow-item');
   OnOffSnow(snowItems);
 })
 
-const OnOffSnow = (items: NodeListOf<Element>) => {
-  if (snowFlag) {
-    snowFlag = false;
-    clearTimeout(timer);
-    items.forEach(element => {
-      (element as any).style.display = 'none';
-    });
+const OnOffSnow = (items: NodeListOf<HTMLTemplateElement>) => {
+  if (snowProperties.snowFlag) {
+    addClearTimeout(items);
   } else {
-    snowFlag = true;
+    snowProperties.snowFlag = true;
     initsnow();
     items.forEach(element => {
       (element as any).style.display = 'block';
@@ -109,11 +87,15 @@ const OnOffSnow = (items: NodeListOf<Element>) => {
 }
 
 toysPage.addEventListener('click', () => {
-  const snowItems = document.querySelectorAll('.snow-item');
-  snowFlag = false;
-  clearTimeout(timer);
-  snowItems.forEach(element => {
-    (element as any).style.display = 'none';
-  });
+  const snowItems: NodeListOf<HTMLTemplateElement> = document.querySelectorAll('.snow-item');
+  addClearTimeout(snowItems);
 })
+
+const addClearTimeout = (items:NodeListOf<HTMLTemplateElement>) => {
+  snowProperties.snowFlag = false;
+  clearTimeout(snowProperties.timer);
+  items.forEach(element => {
+    element.style.display = 'none';
+  });
+}
 
