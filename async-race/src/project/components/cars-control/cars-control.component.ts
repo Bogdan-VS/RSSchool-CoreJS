@@ -28,22 +28,34 @@ export class CarControl {
       const duration = veloDistance[index].distance / veloDistance[index].velocity;
       const countDuration = +duration / 1000 * 60;
       const currentOffset = (endPosition - startPosition) / countDuration;
+
       const tickAnimation = () => {
-        const error = this.getError(api.error);
         startPosition += currentOffset;
-        
-        if (error) {
-          endPosition = startPosition;
+        const isCarWithError = api.error.includes(Number((element as any).dataset.id));
+
+        if (isCarWithError || startPosition >= endPosition) {
+          window.cancelAnimationFrame(requestAnimationFrame(tickAnimation));
+          // console.log(index);
+          // endPosition = startPosition;
+        } else {
+          window.requestAnimationFrame(tickAnimation);
         }
 
         (element as HTMLElement).style.transform = `translateX(${startPosition}px)`;
 
-        if (startPosition < endPosition) {
-          window.requestAnimationFrame(tickAnimation);
-        }
+        // if (startPosition < endPosition) {
+          
+        // }
       }
       
       tickAnimation();
+    });
+  }
+
+  carsEnd() {
+    const cars: NodeListOf<HTMLTemplateElement> = document.querySelectorAll('.car'); 
+    cars.forEach(element => {
+      element.style.transform = 'translateX(0)';
     });
   }
 

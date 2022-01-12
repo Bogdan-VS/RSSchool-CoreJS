@@ -3,10 +3,10 @@ import { IDataCar, IDistanceParam, IStarts, ISuccses } from "../description/inte
 
 export class Api {
   baseLink: string;
-  error: number;
+  error: number[];
   constructor() {
     this.baseLink = 'http://127.0.0.1:3000';
-    this.error;
+    this.error = [];
   }
 
   getEmloyees = async () => {
@@ -32,8 +32,9 @@ export class Api {
       const data: ISuccses = await responce.json();
       return data;
     } catch (error) {
-      if (!responce.ok) {
-        this.error = responce.status;
+      if (responce.status === 500) {
+        this.error.push(id);
+          // [...this.error, responce.status, id];
       }
     }
     // const data: IDistanceParam = await responce.json();

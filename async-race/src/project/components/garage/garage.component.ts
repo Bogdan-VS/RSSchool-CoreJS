@@ -16,8 +16,13 @@ export class Garage extends App {
   }
 
   init() {
+    const race = document.getElementById('race');
+    const reset = document.getElementById('reset');
+
     this.getDataCar();
     this.$el.addEventListener('click', this.startRace.bind(this));
+    race.addEventListener('click', this.startRaceForAll.bind(this));
+    reset.addEventListener('click', this.getStatusStopAllCars.bind(this));
   }
 
   startRace(event: any) {
@@ -25,10 +30,14 @@ export class Garage extends App {
     const startCar = target?.dataset.start;
 
     if (startCar) {
-      this.startDone();
+      // this.startDone();
+      // this.getStatusCar();
       this.getStatusAllCars();
-      this.getStatusEngine();
     }
+  }
+
+  startRaceForAll() {
+    this.getStatusAllCars();
   }
 
   async getDataCar() {
@@ -51,19 +60,23 @@ export class Garage extends App {
       return api.getStartStopEngine((this.currentData)[index].id, 'started');
     })
 
-    const engineStatus =this.currentData.map((element, index) => {
+    this.currentData.map((element, index) => {
       return api.getSwitchEngine((this.currentData)[index].id, 'drive');
     })
 
     const dataParam = await Promise.all(distance);
-    // const dataStatus = await Promise.all(engineStatus);
-    // console.log(dataStatus);
     this.carControl.carsStart(500, dataParam);
+  }
+  async getStatusStopAllCars() {
+    const distance =this.currentData.map((element, index) => {
+      return api.getStartStopEngine((this.currentData)[index].id, 'stopped');
+    })
 
-
+    const dataParam = await Promise.all(distance);
+    this.carControl.carsEnd();
   }
 
-  async startDone() {
+  async getStatusCar() {
     controls.start = await api.getStartStopEngine((this.currentData)[0].id, 'started');
   }
 
@@ -90,7 +103,7 @@ export class Garage extends App {
                 <path d="M98.249,26.732c0-8.815-5.495-9.87-5.495-9.87c-8.079-1.133-21.999-1.719-21.999-1.719C69.479,12.93,63.581,0,60.149,0  c-1.158,0-25.781,0-30.143,0c-4.368,0-11.523,12.604-13.092,15.456c0,0-5.482,0.938-8.066,1.537c-1.432,0.325-5.41,0.403-5.41,11.51  H0v5.026h8.366c0-6.172,5.007-11.172,11.159-11.172c6.178,0,11.172,5,11.172,11.172H69.46c0-6.172,4.986-11.172,11.172-11.172  c6.165,0,11.165,5,11.165,11.172H100v-6.797H98.249z M44.746,14.284H27.344c2.35-7.331,6.712-12.565,8.555-12.565  c2.311,0,8.848,0,8.848,0V14.284z M47.988,14.284V1.719c0,0,8.978,0,11.289,0c2.324,0,7.422,10.638,8.854,13.359L47.988,14.284z"></path>
               </symbol>
             </svg>
-            <svg class="car" id="cars${i}">
+            <svg class="car" data-id="${data[i].id}">
               <use xlink:href="#car${i}"></use>
             <svg/>
             <div class="flag"></div>
