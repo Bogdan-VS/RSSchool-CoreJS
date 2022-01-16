@@ -1,5 +1,5 @@
 import { Path } from "../description/enum";
-import { IDataCar, IDistanceParam, IStarts, ISuccses } from "../description/interface";
+import { IDataCar, IDistanceParam, INewCar, IPagination, ISuccses } from "../description/interface";
 
 export class Api {
   baseLink: string;
@@ -12,7 +12,6 @@ export class Api {
   getEmloyees = async () => {
     const responce = await fetch(`${this.baseLink}${Path.garage}`);
     const data: IDataCar[] = await responce.json();
-    console.log(data);
     return data;
   }
 
@@ -34,12 +33,46 @@ export class Api {
     } catch (error) {
       if (responce.status === 500) {
         this.error.push(id);
-          // [...this.error, responce.status, id];
       }
     }
-    // const data: IDistanceParam = await responce.json();
-    // return data;
   }
 
+  updateCarProperty = async (params: INewCar, id: number) => {
+    const responce = await fetch(`${this.baseLink}${Path.garage}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(params)
+    })
+    const carProperties = await responce.json();
+    return carProperties;
+  }
 
+  removeCar = async (id: number) => {
+    const responce = await fetch(`${this.baseLink}${Path.garage}/${id}`, {
+      method: 'DELETE',
+    })
+    const carProperties = await responce.json();
+    return carProperties;
+  }
+
+  getCountPages = async (pageParam: IPagination) => {
+    const responce = await fetch(`${this.baseLink}${Path.garage}/?_page=${pageParam.page}&_limit=${pageParam.limit}`);
+    const items = await responce.json();
+    const count = Number(responce.headers.get('X-Total-Count'));
+    return {items, count}
+  }
+
+  createNewCar = async (carParametrs: INewCar) => {
+    const responce = await fetch(`${this.baseLink}${Path.garage}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(carParametrs)
+    })
+    const carProperties: IDataCar = await responce.json();
+    return carProperties;
+  }
 }

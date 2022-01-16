@@ -147,21 +147,47 @@
       left: 0;
       width: 100px;
       height: 45px;
-      fill: aquamarine;
+      fill: #e6e6fa;
       transform: translateX(0);
     }
-
-    // .car:hover {
-    //   transform: translateX(90%);
-    // }
 
     .flag {
       position: absolute;
       top: 8px;
-      right: 20%;
+      right: 110px;
       width: 40px;
       height: 40px;
       background: top 0 left 0 / 100% 100% url(../assets/images/svg/flag.svg);
     }
+  }
+}
+
+.controll-pages {
+  display: flex;
+  column-gap: 10px;
+  margin-bottom: 20px;
+  .controll {
+    width: 70px;
+    height: 25px;
+    background-color: rgb(241, 243, 103);
+    color: #000;
+    font-size: 15px;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+
+  .controll:hover {
+    background-color: rgb(181, 184, 48);
+  }
+
+  .disabled {
+    background-color: rgb(158, 153, 153);
+    cursor: default;
+  }
+
+  .disabled:hover {
+    background-color: rgb(158, 153, 153);
   }
 }
