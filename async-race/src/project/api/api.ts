@@ -1,5 +1,5 @@
 import { Path } from "../description/enum";
-import { IDataCar, IDistanceParam, INewCar, IPagination, ISuccses } from "../description/interface";
+import { IDataCar, IDistanceParam, INewCar, IPagination, ISuccses, IWinner } from "../description/interface";
 
 export class Api {
   baseLink: string;
@@ -74,5 +74,12 @@ export class Api {
     })
     const carProperties: IDataCar = await responce.json();
     return carProperties;
+  }
+
+  getWinner = async (id: number) => {
+    const responce = await fetch(`${this.baseLink}${Path.winner}/${id}`);
+    const winner: IWinner = await responce.json();
+    console.log(winner);
+    return winner;
   }
 }

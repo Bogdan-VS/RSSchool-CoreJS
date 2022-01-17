@@ -50,9 +50,16 @@ export interface IDataPages {
 
 export interface IHtmlElements {
   countCarsToGarage: HTMLElement;
+  winnerCar: HTMLElement;
 }
 
 export interface IArrPropertiesOfCars {
   name: string[];
   color: string[];
+}
+
+export interface IWinner {
+  id: number;
+  wins: number;
+  time: number;
 }

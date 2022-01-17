@@ -1,6 +1,6 @@
 import { App } from "../../app/app";
 import { Api } from "../../api/api";
-import { ICarId, IDataCar } from "../../description/interface";
+import { ICarId, IDataCar, ISuccses, IDataPages, IWinner } from "../../description/interface";
 import { CarControl } from "../cars-control/cars-control.component";
 import { distanceTrack, newCar, carId, pagination, dataPages, htmlElements, arrPropertiesOfCars } from "../../description/const";
 import { CreateCars } from "../create-cars/create-cars.component";
@@ -41,21 +41,31 @@ export class Garage extends App {
   }
 
   startRace(event: Event) {
-    const target = (event.target as HTMLElement).closest('.subtitle-car-btn') as HTMLElement;
+    const target = (event.target as HTMLElement).closest('.subtitle-car-btn') as HTMLButtonElement;
     const startCar = target?.dataset.start;
 
     if (startCar) {
+      this.addControlsStyleDriveBtn(startCar, target, 'stop');
       this.getStatusStartCar(+startCar);
     }
   }
 
   stopRace(event: Event) {
-    const target: HTMLElement = (event.target as HTMLElement).closest('.subtitle-car-btn');
+    const target = (event.target as HTMLElement).closest('.subtitle-car-btn') as HTMLButtonElement;
     const stopCar = target?.dataset.stop;
 
     if (stopCar) {
+      this.addControlsStyleDriveBtn(stopCar, target, 'start');
       this.getStatusStopCar(+stopCar);
     }
+  }
+
+  addControlsStyleDriveBtn(id: string, target: HTMLButtonElement, state: string) {
+    const stateCar = document.getElementById(`${state}-car-${id}`) as HTMLButtonElement;
+    target.classList.add('disabled');
+    target.disabled = true;
+    stateCar.classList.remove('disabled');
+    stateCar.disabled = false;
   }
 
   startRaceForAll() {
@@ -152,6 +162,7 @@ export class Garage extends App {
   async getStatusStopCar(id: number) {
     api.getStartStopEngine((this.currentData)[id - 1].id, 'stopped');
     this.carControl.carEnd(id);
+    htmlElements.winnerCar.classList.remove('winner_active');
   }
 
   async getPages() {
@@ -166,13 +177,30 @@ export class Garage extends App {
       return api.getStartStopEngine((dataPages.items)[index].id, 'started');
     })
 
-    dataPages.items.map((element, index) => {
+    const sucsses = dataPages.items.map((element, index) => {
       return api.getSwitchEngine((dataPages.items)[index].id, 'drive');
     })
 
     distanceTrack.currentDistance = this.getCurrentDistance();
     const dataParam = await Promise.all(distance);
     this.carControl.carsStart(distanceTrack.currentDistance, dataParam);
+    const succsesRace = await Promise.all(sucsses);
+    // this.getWinnersId(succsesRace, dataPages.items);
+  }
+
+  async getWinnersId(arrSuccses: ISuccses[], arrCars: IDataCar[]) {
+    const respIdWinnerCars: number[] = [];
+    arrSuccses.filter((value, index) => {
+      if (value) {
+        return respIdWinnerCars.push(arrCars[index].id);
+      }
+    })
+
+    const idWinnerscars = await Promise.all(respIdWinnerCars);
+    const winnersCars = idWinnerscars.map((value) => {
+      return api.getWinner(value);
+    })
+    console.log(await Promise.all(winnersCars));
   }
 
   async getStatusStopAllCars() {
@@ -181,6 +209,7 @@ export class Garage extends App {
     })
 
     this.carControl.carsEnd();
+    htmlElements.winnerCar.classList.remove('winner_active');
   }
 
   getCurrentDistance() {
@@ -297,8 +326,8 @@ export class Garage extends App {
         <h3 class="title-car-name" id="car-name-${data[index].id}">${data[index].name}</h3>
       </div>
       <div class="car-container-subtitle">
-        <button class="subtitle-car-btn" data-start="${data[index].id}">A</button>
-        <button class="subtitle-car-btn" data-stop="${data[index].id}">B</button>
+        <button class="subtitle-car-btn" data-start="${data[index].id}" id="start-car-${data[index].id}">A</button>
+        <button class="subtitle-car-btn stop-btn disabled" data-stop="${data[index].id}" id="stop-car-${data[index].id}" disabled>B</button>
         <div class="track">
           <svg display="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
             <symbol id="car${index}" viewBox="0 0 100 42.591">

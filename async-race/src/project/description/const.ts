@@ -33,6 +33,7 @@ export const dataPages: IDataPages = {
 
 export const htmlElements: IHtmlElements = {
   countCarsToGarage: document.getElementById('countCarsToGarage'),
+  winnerCar: document.getElementById('winner-car'),
 }
 
 export const carModels = {
