@@ -1,8 +1,20 @@
 import { App } from "../../app/app";
 import { Api } from "../../api/api";
-import { ICarId, IDataCar, ISuccses, IDataPages, IWinner } from "../../description/interface";
+import {
+  ICarId,
+  IDataCar,
+  ISuccses,
+} from "../../description/interface";
 import { CarControl } from "../cars-control/cars-control.component";
-import { distanceTrack, newCar, carId, pagination, dataPages, htmlElements, arrPropertiesOfCars } from "../../description/const";
+import {
+  distanceTrack,
+  newCar,
+  carId,
+  pagination,
+  dataPages,
+  arrPropertiesOfCars,
+  stopAnimation,
+} from "../../description/const";
 import { CreateCars } from "../create-cars/create-cars.component";
 export const api = new Api;
 
@@ -10,11 +22,19 @@ export class Garage extends App {
   currentData: IDataCar[];
   carControl: CarControl;
   createCars: CreateCars;
+  winnerCar: HTMLElement;
+  countCarsToGarage: HTMLElement;
+  reset: HTMLButtonElement;
+  race: HTMLButtonElement;
   constructor(id: string) {
     super(id);
     this.currentData;
     this.createCars = new CreateCars;
     this.carControl = new CarControl;
+    this.countCarsToGarage = document.getElementById('countCarsToGarage');
+    this.winnerCar = document.getElementById('winner-car');
+    this.race = document.getElementById('race') as HTMLButtonElement;
+    this.reset = document.getElementById('reset') as HTMLButtonElement;
   }
 
   init() {
@@ -31,7 +51,7 @@ export class Garage extends App {
     this.$el.addEventListener('click', this.stopRace.bind(this));
     this.$el.addEventListener('click', this.getCurrentCarId.bind(this));
     this.$el.addEventListener('click', this.getIdRemoveCar.bind(this));
-    race.addEventListener('click', this.startRaceForAll.bind(this));
+    race.addEventListener('click', this.getStatusStartAllCars.bind(this));
     reset.addEventListener('click', this.getStatusStopAllCars.bind(this));
     createCar.addEventListener('click', this.getNewCar.bind(this));
     updateCar.addEventListener('click', this.getUpdateCarProperty.bind(this));
@@ -66,10 +86,6 @@ export class Garage extends App {
     target.disabled = true;
     stateCar.classList.remove('disabled');
     stateCar.disabled = false;
-  }
-
-  startRaceForAll() {
-    this.getStatusStartAllCars();
   }
 
   async openNextPage() {
@@ -147,6 +163,7 @@ export class Garage extends App {
 
   async getDataCar() {
     this.currentData = await api.getEmloyees();
+    document.getElementById('countCarsToGarage').textContent = `Garage (${this.currentData.length})`;
     await this.getPages();
     this.drawCarContainer(dataPages.items);
   }
@@ -155,14 +172,15 @@ export class Garage extends App {
     const distance = await api.getStartStopEngine((this.currentData)[id - 1].id, 'started');
     api.getSwitchEngine((this.currentData)[id - 1].id, 'drive');
     distanceTrack.currentDistance = this.getCurrentDistance();
+    stopAnimation.stopCar = false;
     this.getCurrentDistance();
     this.carControl.carStart(distanceTrack.currentDistance, distance, id);
   }
 
   async getStatusStopCar(id: number) {
-    api.getStartStopEngine((this.currentData)[id - 1].id, 'stopped');
+    await api.getStartStopEngine((this.currentData)[id - 1].id, 'stopped');
     this.carControl.carEnd(id);
-    htmlElements.winnerCar.classList.remove('winner_active');
+    this.winnerCar.classList.remove('winner_active');
   }
 
   async getPages() {
@@ -181,6 +199,8 @@ export class Garage extends App {
       return api.getSwitchEngine((dataPages.items)[index].id, 'drive');
     })
 
+    this.getStateRaceBtn(document.getElementById('race') as HTMLButtonElement, this.reset);
+    stopAnimation.stopAllCars = false;
     distanceTrack.currentDistance = this.getCurrentDistance();
     const dataParam = await Promise.all(distance);
     this.carControl.carsStart(distanceTrack.currentDistance, dataParam);
@@ -197,19 +217,26 @@ export class Garage extends App {
     })
 
     const idWinnerscars = await Promise.all(respIdWinnerCars);
-    const winnersCars = idWinnerscars.map((value) => {
-      return api.getWinner(value);
-    })
-    console.log(await Promise.all(winnersCars));
+    // const winnersCars = idWinnerscars.map((value) => {
+    //   return api.getWinner(value);
+    // })
   }
 
   async getStatusStopAllCars() {
-    dataPages.items.map((element, index) => {
+    const stopCars = dataPages.items.map((element, index) => {
       return api.getStartStopEngine((dataPages.items)[index].id, 'stopped');
     })
-
+    this.getStateRaceBtn(this.reset, document.getElementById('race') as HTMLButtonElement);
+    await Promise.all(stopCars);
     this.carControl.carsEnd();
-    htmlElements.winnerCar.classList.remove('winner_active');
+    this.winnerCar.classList.remove('winner_active');
+  }
+
+  getStateRaceBtn(firstBtn: HTMLButtonElement, secondBtn: HTMLButtonElement) {
+    firstBtn.classList.add('disabled');
+    firstBtn.disabled = true;
+    secondBtn.classList.remove('disabled');
+    secondBtn.disabled = false;
   }
 
   getCurrentDistance() {
@@ -234,7 +261,7 @@ export class Garage extends App {
     this.currentData = await api.getEmloyees();
     await this.getPages();
     this.checkToPageCount(nextPage);
-    htmlElements.countCarsToGarage.textContent = `Garage (${dataPages.count})`;
+    this.countCarsToGarage.textContent = `Garage (${dataPages.count})`;
   }
 
   async getNewCar() {
@@ -250,7 +277,7 @@ export class Garage extends App {
     this.currentData = await api.getEmloyees();
     await this.getPages();
     this.checkToPageCount(nextPage);
-    htmlElements.countCarsToGarage.textContent = `Garage (${dataPages.count})`;
+    this.countCarsToGarage.textContent = `Garage (${dataPages.count})`;
     console.log(this.currentData);
     console.log(await this.getPages());
   }
@@ -274,7 +301,7 @@ export class Garage extends App {
     this.currentData = await api.getEmloyees();
     await this.getPages();
     this.checkToPageCount(nextPage);
-    htmlElements.countCarsToGarage.textContent = `Garage (${dataPages.count})`;
+    this.countCarsToGarage.textContent = `Garage (${dataPages.count})`;
   }
 
   async drawCarContainer(data = this.currentData) {

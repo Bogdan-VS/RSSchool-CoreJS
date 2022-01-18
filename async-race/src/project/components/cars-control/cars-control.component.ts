@@ -1,8 +1,12 @@
 import { IDistanceParam } from "../../description/interface";
 import { api } from "../garage/garage.component";
-import { htmlElements } from "../../description/const";
+import { stopAnimation } from "../../description/const";
 
 export class CarControl {
+  winnerCar: HTMLElement;
+  constructor() {
+    this.winnerCar = document.getElementById('winner-car');
+  }
 
   carStart(endPosition: number, veloDistance: IDistanceParam, id: number) {
     const car = document.getElementById(`car-${id}`);
@@ -16,7 +20,13 @@ export class CarControl {
       const isCarWithError = api.error.includes(Number(car.dataset.id));
       car.style.transform = `translateX(${startPosition}px)`;
 
-      if (isCarWithError || startPosition >= endPosition) {
+      if (stopAnimation.stopCar) {
+        window.cancelAnimationFrame(requestAnimationFrame(tickAnimation));
+        const car = document.getElementById(`car-${id}`);
+        car.style.transform = 'translateX(0)';
+      }
+
+      if (isCarWithError || startPosition >= endPosition || stopAnimation.stopCar) {
         window.cancelAnimationFrame(requestAnimationFrame(tickAnimation));
       } else {
         window.requestAnimationFrame(tickAnimation);
@@ -40,11 +50,18 @@ export class CarControl {
         const isCarWithError = api.error.includes(Number(element.dataset.id));
         element.style.transform = `translateX(${startPosition}px)`;
 
-        if (isCarWithError || startPosition >= endPosition) {
+        if (stopAnimation.stopAllCars) {
+          window.cancelAnimationFrame(requestAnimationFrame(tickAnimation));
+          const cars: NodeListOf<HTMLTemplateElement> = document.querySelectorAll('.car');
+          cars.forEach(element => {
+            element.style.transform = 'translateX(0)';
+          });
+        }
+
+        if (isCarWithError || startPosition >= endPosition || stopAnimation.stopAllCars) {
           window.cancelAnimationFrame(requestAnimationFrame(tickAnimation));
         } else {
           window.requestAnimationFrame(tickAnimation);
-          console.log(endPosition);
           if (startPosition > (endPosition - 120) && winner) {
             winner = false;
             this.showWinnerCar(element.dataset.id, (duration / 1000).toFixed(2));
@@ -58,11 +75,12 @@ export class CarControl {
 
   showWinnerCar(id: string, time: string) {
     const winnerName = document.getElementById(`car-name-${id}`);
-    htmlElements.winnerCar.textContent = `${winnerName.textContent} winner. Time ${time} seconds`;
-    htmlElements.winnerCar.classList.add('winner_active');
+    this.winnerCar.textContent = `${winnerName.textContent} winner. Time ${time} seconds`;
+    this.winnerCar.classList.add('winner_active');
   }
 
   carEnd(id: number) {
+    stopAnimation.stopCar = true;
     const car = document.getElementById(`car-${id}`);
     car.style.transform = 'translateX(0)';
     api.error = [];
@@ -70,6 +88,7 @@ export class CarControl {
 
   carsEnd() {
     const cars: NodeListOf<HTMLTemplateElement> = document.querySelectorAll('.car');
+    stopAnimation.stopAllCars = true;
     api.error = [];
     cars.forEach(element => {
       element.style.transform = 'translateX(0)';

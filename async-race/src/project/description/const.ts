@@ -1,4 +1,4 @@
-import { IArrPropertiesOfCars, ICarId, IConrtols, IDataPages, IDistanceTrack, IHtmlElements, INewCar, IPagination } from "./interface"
+import { IArrPropertiesOfCars, IBasicLayout, ICarId, IConrtols, IDataPages, IDistanceTrack, INewCar, IPagination, IStopAnimation } from "./interface"
 
 
 export const controls: IConrtols = {
@@ -31,11 +31,6 @@ export const dataPages: IDataPages = {
   items: null
 }
 
-export const htmlElements: IHtmlElements = {
-  countCarsToGarage: document.getElementById('countCarsToGarage'),
-  winnerCar: document.getElementById('winner-car'),
-}
-
 export const carModels = {
   firstName: ['Audi', 'BMW', 'Bugatti', 'Cadillac', 'Chevrolet', 'Citroen', 'Dodge', 'Ferrari', 'Ford', 'Honda'],
   secondName: ['Q8', 'X6', 'Chiron', 'Fleetwood', 'Montana', 'DS3', 'Challenger', 'Testarossa', 'Mondeo', 'Accord']
@@ -44,4 +39,15 @@ export const carModels = {
 export const arrPropertiesOfCars: IArrPropertiesOfCars = {
   name: null,
   color: null
+}
+
+export const stopAnimation: IStopAnimation = {
+  stopAllCars: false,
+  stopCar: false
+}
+
+export const basicLayout: IBasicLayout = {
+  body: document.querySelector('body'),
+  header: document.createElement('header'),
+  main: document.createElement('main'),
 }

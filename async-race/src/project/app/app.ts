@@ -1,3 +1,5 @@
+import { BasicHtml } from "../components/basic-html.component";
+
 export class App {
   $el: HTMLElement;
   constructor(id: string) {
@@ -5,8 +7,9 @@ export class App {
     this.init();
   }
 
-  init() { }
-  
+  init() {
+  }
+
   hide() {
     this.$el.classList.add('hide');
   }

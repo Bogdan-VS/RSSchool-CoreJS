@@ -51,6 +51,16 @@
       background-color: rgb(181, 184, 48);
     }
 
+    .disabled {
+      background-color: rgb(158, 153, 153);
+      color: dimgray;
+      cursor: default;
+    }
+  
+    .disabled:hover {
+      background-color: rgb(158, 153, 153);
+    }
+
     .generate-btn {
       width: 130px;
       height: 25px;
