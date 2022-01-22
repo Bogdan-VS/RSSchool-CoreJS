@@ -1,4 +1,4 @@
-import { IArrPropertiesOfCars, IBasicLayout, ICarId, IConrtols, IDataPages, IDistanceTrack, INewCar, IPagination, IStopAnimation } from "./interface"
+import { IArrPropertiesOfCars, IBasicLayout, ICarId, IConrtols, ICountWinnerToPage, IDataPages, IDistanceTrack, INewCar, IPagination, IScoreParams, IScoreSortState, IStopAnimation, IWinner, IWinnerId } from "./interface"
 
 
 export const controls: IConrtols = {
@@ -50,4 +50,30 @@ export const basicLayout: IBasicLayout = {
   body: document.querySelector('body'),
   header: document.createElement('header'),
   main: document.createElement('main'),
+  arrow: document.createElement('span'),
+}
+
+export const winnerId: IWinnerId = {
+  id: null
+}
+
+export const winnerParam: IWinner = {
+  id: 1,
+  wins: 1,
+  time: 10,
+} 
+
+export const scoreSortState: IScoreSortState = {
+sortState: 'number-conteiner',
+}
+
+export const scoreParams: IScoreParams = {
+  sort: 'id',
+  order: 'ASC',
+  page: 1,
+  countToPage: 10,
+}
+
+export const countWinnerToPage: ICountWinnerToPage = {
+  count: 1,
 }

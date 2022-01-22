@@ -1,6 +1,11 @@
-import { IDistanceParam } from "../../description/interface";
-import { api } from "../garage/garage.component";
-import { stopAnimation } from "../../description/const";
+import { IDistanceParam } from "../description/interface";
+import { api } from "./garage.component";
+import {
+  scoreParams,
+  stopAnimation,
+  winnerParam,
+} from "../description/const";
+import { winner } from "../..";
 
 export class CarControl {
   winnerCar: HTMLElement;
@@ -77,6 +82,9 @@ export class CarControl {
     const winnerName = document.getElementById(`car-name-${id}`);
     this.winnerCar.textContent = `${winnerName.textContent} winner. Time ${time} seconds`;
     this.winnerCar.classList.add('winner_active');
+    winnerParam.id = +id;
+    winnerParam.time = +time;
+    winner.hendlingRequire(winnerParam.id, scoreParams);
   }
 
   carEnd(id: number) {
@@ -90,6 +98,7 @@ export class CarControl {
     const cars: NodeListOf<HTMLTemplateElement> = document.querySelectorAll('.car');
     stopAnimation.stopAllCars = true;
     api.error = [];
+
     cars.forEach(element => {
       element.style.transform = 'translateX(0)';
     });

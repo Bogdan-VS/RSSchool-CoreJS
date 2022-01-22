@@ -54,7 +54,7 @@ export interface IArrPropertiesOfCars {
 }
 
 export interface IWinner {
-  id: number;
+  id?: number;
   wins: number;
   time: number;
 }
@@ -68,4 +68,24 @@ export interface IBasicLayout {
   body: HTMLBodyElement;
   header: HTMLElement;
   main: HTMLElement;
+  arrow: HTMLSpanElement;
+}
+
+export interface IWinnerId {
+  id: number;
+}
+
+export interface IScoreSortState {
+  sortState: string;
+}
+
+export interface IScoreParams {
+  sort: string;
+  order: string;
+  page: number;
+  countToPage: number;
+}
+
+export interface ICountWinnerToPage {
+  count: number;
 }

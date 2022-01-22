@@ -1,11 +1,10 @@
-import { App } from "../../app/app";
-import { Api } from "../../api/api";
+import { App } from "../app/app";
+import { Api } from "../api/api";
 import {
   ICarId,
   IDataCar,
-  ISuccses,
-} from "../../description/interface";
-import { CarControl } from "../cars-control/cars-control.component";
+} from "../description/interface";
+import { CarControl } from "./cars-control.component";
 import {
   distanceTrack,
   newCar,
@@ -14,8 +13,10 @@ import {
   dataPages,
   arrPropertiesOfCars,
   stopAnimation,
-} from "../../description/const";
-import { CreateCars } from "../create-cars/create-cars.component";
+  scoreParams
+} from "../description/const";
+import { CreateCars } from "./create-cars.component";
+import { winner } from "../..";
 export const api = new Api;
 
 export class Garage extends App {
@@ -26,6 +27,8 @@ export class Garage extends App {
   countCarsToGarage: HTMLElement;
   reset: HTMLButtonElement;
   race: HTMLButtonElement;
+  nextPage: HTMLButtonElement;
+  prevPage: HTMLButtonElement;
   constructor(id: string) {
     super(id);
     this.currentData;
@@ -35,6 +38,8 @@ export class Garage extends App {
     this.winnerCar = document.getElementById('winner-car');
     this.race = document.getElementById('race') as HTMLButtonElement;
     this.reset = document.getElementById('reset') as HTMLButtonElement;
+    this.nextPage = document.getElementById('next-page') as HTMLButtonElement;
+    this.prevPage = document.getElementById('prev-page') as HTMLButtonElement;
   }
 
   init() {
@@ -45,8 +50,11 @@ export class Garage extends App {
     const nextPage = document.getElementById('next-page');
     const prevPage = document.getElementById('prev-page');
     const generateCars = document.getElementById('generate-cars');
+    const winnersPageBtn = document.getElementById('winners-page-btn');
+    const garagePageBtn = document.getElementById('garage-page-btn');
 
     this.getDataCar();
+
     this.$el.addEventListener('click', this.startRace.bind(this));
     this.$el.addEventListener('click', this.stopRace.bind(this));
     this.$el.addEventListener('click', this.getCurrentCarId.bind(this));
@@ -58,6 +66,8 @@ export class Garage extends App {
     nextPage.addEventListener('click', this.openNextPage.bind(this));
     prevPage.addEventListener('click', this.openPrevPage.bind(this));
     generateCars.addEventListener('click', this.getNewCars.bind(this));
+    winnersPageBtn.addEventListener('click', this.openWinners.bind(this));
+    garagePageBtn.addEventListener('click', this.openGarage.bind(this));
   }
 
   startRace(event: Event) {
@@ -91,20 +101,7 @@ export class Garage extends App {
   async openNextPage() {
     pagination.page++;
 
-    const nextPage = document.getElementById('next-page') as HTMLButtonElement;
-    const prevPage = document.getElementById('prev-page') as HTMLButtonElement;
-
-    this.removeDisabled(prevPage);
-    const count = `car-conteiner-${dataPages.count}`;
-
-    await this.renderPage();
-    const currentCount = document.getElementById(`${count}`)?.getAttribute('id');
-
-    if (currentCount === count) {
-      this.addDisabled(nextPage);
-    } else {
-      this.removeDisabled(nextPage);
-    }
+    this.getCurrentPage();
   }
 
   checkToPageCount(className: HTMLButtonElement) {
@@ -119,21 +116,34 @@ export class Garage extends App {
     }
   }
 
+  accessToNextBtn() {
+    const count = pagination.limit * pagination.page;
+
+    if (count < dataPages.count) {
+      this.removeDisabled(this.nextPage);
+    } else {
+      this.addDisabled(this.nextPage);
+    }
+  }
+
+  accessToPrevBtn() {
+    if (pagination.page === 1) {
+      this.addDisabled(this.prevPage);
+    } else {
+      this.removeDisabled(this.prevPage);
+    }
+  }
+
   async openPrevPage() {
     pagination.page--;
-    console.log(dataPages.count);
-    const prevPage = document.getElementById('prev-page') as HTMLButtonElement;
-    const nextPage = document.getElementById('next-page') as HTMLButtonElement;
 
-    this.removeDisabled(prevPage);
-    this.removeDisabled(nextPage);
-    await this.renderPage();
-    this.checkToPageCount(nextPage);
+    this.getCurrentPage();
+  }
 
-    if (pagination.page === 1) {
-      console.log('second');
-      this.addDisabled(prevPage);
-    }
+  getCurrentPage() {
+    this.accessToNextBtn();
+    this.accessToPrevBtn();
+    this.renderPage();
   }
 
   addDisabled(className: HTMLButtonElement) {
@@ -158,7 +168,6 @@ export class Garage extends App {
 
     await this.getPages();
     this.drawCarContainer(dataPages.items);
-    console.log('first');
   }
 
   async getDataCar() {
@@ -166,6 +175,8 @@ export class Garage extends App {
     document.getElementById('countCarsToGarage').textContent = `Garage (${this.currentData.length})`;
     await this.getPages();
     this.drawCarContainer(dataPages.items);
+    this.accessToNextBtn();
+    this.accessToPrevBtn();
   }
 
   async getStatusStartCar(id: number) {
@@ -185,8 +196,10 @@ export class Garage extends App {
 
   async getPages() {
     const dataPage = await api.getCountPages(pagination);
+
     dataPages.count = dataPage.count;
     dataPages.items = dataPage.items;
+
     return dataPages;
   }
 
@@ -194,32 +207,16 @@ export class Garage extends App {
     const distance = dataPages.items.map((element, index) => {
       return api.getStartStopEngine((dataPages.items)[index].id, 'started');
     })
-
     const sucsses = dataPages.items.map((element, index) => {
       return api.getSwitchEngine((dataPages.items)[index].id, 'drive');
     })
+    const dataParam = await Promise.all(distance);
 
     this.getStateRaceBtn(document.getElementById('race') as HTMLButtonElement, this.reset);
     stopAnimation.stopAllCars = false;
     distanceTrack.currentDistance = this.getCurrentDistance();
-    const dataParam = await Promise.all(distance);
     this.carControl.carsStart(distanceTrack.currentDistance, dataParam);
-    const succsesRace = await Promise.all(sucsses);
-    // this.getWinnersId(succsesRace, dataPages.items);
-  }
-
-  async getWinnersId(arrSuccses: ISuccses[], arrCars: IDataCar[]) {
-    const respIdWinnerCars: number[] = [];
-    arrSuccses.filter((value, index) => {
-      if (value) {
-        return respIdWinnerCars.push(arrCars[index].id);
-      }
-    })
-
-    const idWinnerscars = await Promise.all(respIdWinnerCars);
-    // const winnersCars = idWinnerscars.map((value) => {
-    //   return api.getWinner(value);
-    // })
+    await Promise.all(sucsses);
   }
 
   async getStatusStopAllCars() {
@@ -241,6 +238,7 @@ export class Garage extends App {
 
   getCurrentDistance() {
     const track = document.querySelector('.track');
+    
     return track.clientWidth - 110;
   }
 
@@ -256,19 +254,20 @@ export class Garage extends App {
   async removeCar(id: number) {
     await api.removeCar(id);
     const car = document.getElementById(`car-conteiner-${id}`);
-    const nextPage = document.getElementById('next-page') as HTMLButtonElement;
     car.remove();
     this.currentData = await api.getEmloyees();
+    this.renderPage();
     await this.getPages();
-    this.checkToPageCount(nextPage);
     this.countCarsToGarage.textContent = `Garage (${dataPages.count})`;
+    this.getCurrentPage();
+    await api.deleteWinner(id);
+    await winner.getCurrentWinners(scoreParams);
   }
 
   async getNewCar() {
     this.createCars.createCar();
     const data: IDataCar = await api.createNewCar(newCar);
     const carConteiner = document.querySelectorAll('.car-conteiner');
-    const nextPage = document.getElementById('next-page') as HTMLButtonElement;
 
     if (carConteiner.length < pagination.limit) {
       this.drawCarContainer([data]);
@@ -276,21 +275,19 @@ export class Garage extends App {
 
     this.currentData = await api.getEmloyees();
     await this.getPages();
-    this.checkToPageCount(nextPage);
     this.countCarsToGarage.textContent = `Garage (${dataPages.count})`;
-    console.log(this.currentData);
-    console.log(await this.getPages());
+    this.getCurrentPage();
   }
 
   async getNewCars() {
     this.createCars.getPropertiesOfCars();
+
     const arrCars: number[] = new Array(100);
     const carConteiner = document.querySelectorAll('.car-conteiner');
     const nextPage = document.getElementById('next-page') as HTMLButtonElement;
     const dataArrCars: Promise<IDataCar>[] = arrCars.fill(0, 0, arrCars.length).map((value, index) => {
       return api.createNewCar({ name: arrPropertiesOfCars.name[index], color: arrPropertiesOfCars.color[index] });
     })
-
     const countCarsInPage = pagination.limit - carConteiner.length;
     const data = await Promise.all(dataArrCars);
 
@@ -310,6 +307,7 @@ export class Garage extends App {
     for (let i = 0; i < data.length; i++) {
       this.getPatternCar(data, i, garageCarsConteiner);
     }
+    
     this.currentData = await api.getEmloyees();
   }
 
@@ -318,6 +316,7 @@ export class Garage extends App {
     const data: ICarId = await api.updateCarProperty({ name: carId.name, color: carId.color }, carId.id);
     this.addCarProperty(data.id, data.name, data.color);
     this.currentData = await api.getEmloyees();
+    winner.getCurrentWinners(scoreParams);
   }
 
   addCarProperty(id: number, name: string, color: string) {
@@ -373,5 +372,13 @@ export class Garage extends App {
 
     className.append(carConteiner);
     document.getElementById(`car-${data[index].id}`).style.fill = `${data[index].color}`;
+  }
+
+  openWinners() {
+    this.hide();
+  }
+
+  openGarage() {
+    this.show();
   }
 }

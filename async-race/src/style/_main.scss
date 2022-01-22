@@ -1,3 +1,7 @@
+.hide {
+  display: none;
+}
+
 .operate-container {
   display: flex;
   flex-direction: column;
@@ -239,3 +243,95 @@
 .winner_active {
   opacity: 100%;
 }
+
+.winner-cars {
+  margin: 10px 0;
+  color: #fff;
+}
+
+.score {
+  display: inline-flex;
+  background-color: #f1f367;
+  column-gap: 10px;
+  padding: 5px;
+  border-radius: 3px;
+  .score-param {
+    color: #000;
+    font-size: 16px;
+  }
+  .score-param:nth-child(1) {
+    display: flex;
+    column-gap: 5px;
+    width: 70px;
+    .number {
+      cursor: pointer;
+    }
+  }
+  .score-param:nth-child(2) {
+    width: 50px;
+  }
+
+  .score-param:nth-child(3) {
+    width: 130px;
+  }
+  .score-param:nth-child(4) {
+    display: flex;
+    column-gap: 5px;
+    width: 55px;
+    .win {
+      cursor: pointer;
+    }
+  }
+  .score-param:nth-child(5) {
+    display: flex;
+    column-gap: 5px;
+    width: 150px;
+    .best-time {
+      cursor: pointer;
+    }
+  }
+}
+
+.score-conteiner {
+  padding: 15px 0;
+}
+
+.winner-container {
+  display: flex;
+  column-gap: 10px;
+  padding: 5px;
+  align-items: center;
+  .conteiner-content {
+    color: #fff;
+    font-size: 16px;
+  }
+
+  .win-car {
+    width: 50px;
+    height: 21.5px;
+  }
+  .conteiner-content:nth-child(1) {
+    width: 70px;
+    text-align: center;
+  }
+
+  .conteiner-content:nth-child(6) {
+    width: 130px;
+  }
+  .conteiner-content:nth-child(5) {
+    width: 55px;
+  }
+  .conteiner-content:nth-child(4) {
+    width: 130px;
+  }
+}
+
+.arrow {
+  color: green;
+  font-weight: 500;
+}
+
+.arrow-down {
+  transform: rotate(180deg);
+}
+

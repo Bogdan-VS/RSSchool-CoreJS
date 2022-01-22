@@ -1,5 +1,3 @@
-import { BasicHtml } from "../components/basic-html.component";
-
 export class App {
   $el: HTMLElement;
   constructor(id: string) {
