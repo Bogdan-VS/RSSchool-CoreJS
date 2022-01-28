@@ -60,10 +60,10 @@ rangeYear.noUiSlider.on('change', () => {
 StartBtn.addEventListener('click', () => {
   if (localStorage.getItem('dataRangeCount')) {
     const currentValues: string[] = JSON.parse(localStorage.getItem('dataRangeCount'));
-    (range as any).noUiSlider.set([`${currentValues[0]}`, `${currentValues[currentValues.length - 1]}`]);
+    range.noUiSlider.set([`${currentValues[0]}`, `${currentValues[currentValues.length - 1]}`]);
   }
   if (localStorage.getItem('dataRangeYear')) {
     const currentValues: string[] = JSON.parse(localStorage.getItem('dataRangeYear'));
-    (rangeYear as any).noUiSlider.set([`${currentValues[0]}`, `${currentValues[currentValues.length - 1]}`]);
+    rangeYear.noUiSlider.set([`${currentValues[0]}`, `${currentValues[currentValues.length - 1]}`]);
   }
 });

@@ -7,8 +7,6 @@ import { favorite } from '..';
 import { Data } from '../modules/interface';
 import { Audio } from './audio.component';
 import { Sort } from '../modules/enum';
-import { Shape } from '../modules/enum';
-import { Color } from '../modules/enum';
 
 export class Toys extends App {
   newData: Data[];
@@ -96,32 +94,27 @@ export class Toys extends App {
     const currentCategories = document.getElementById('current-categories');
     const target = event.target.closest('.sort-item') as HTMLElement;
 
-    switch(target && (target.dataset.sort)) {
-      case Sort.ascending:
-        currentCategories.textContent = `${Sort.ascending}`;
-        this.addSortToys();
-        this.addResultData();
-        break;
-      case Sort.descending:
-        currentCategories.textContent = `${Sort.descending}`;
-        this.addSortToys();
-        this.addResultData();
-        break;
-      case Sort.all:
-        currentCategories.textContent = `${Sort.all}`;
-        this.addSortToys();
-        this.addResultData();
-        break;
-      case Sort.fromAZ:
-        currentCategories.textContent =  `${Sort.fromAZ}`;
-        this.addSortToys();
-        this.addResultData();
-        break;
-      case Sort.fromZA:
-        currentCategories.textContent = `${Sort.fromZA}`;
-        this.addSortToys();
-        this.addResultData();
-        break;
+    if (target) {
+      switch (target.dataset.sort) {
+        case Sort.ascending:
+          currentCategories.textContent = `${Sort.ascending}`;
+          break;
+        case Sort.descending:
+          currentCategories.textContent = `${Sort.descending}`;
+          break;
+        case Sort.all:
+          currentCategories.textContent = `${Sort.all}`;
+          break;
+        case Sort.fromAZ:
+          currentCategories.textContent = `${Sort.fromAZ}`;
+          break;
+        case Sort.fromZA:
+          currentCategories.textContent = `${Sort.fromZA}`;
+          break;
+      }
+
+      this.addSortToys();
+      this.addResultData();
     }
   }
 
@@ -154,7 +147,6 @@ export class Toys extends App {
       }
       this.addResultData();
     }
-
   }
 
   getFilterForm(event: Event) {
@@ -162,23 +154,7 @@ export class Toys extends App {
     const currentForm = (target as HTMLTemplateElement)?.dataset.form;
 
     if (currentForm) {
-      switch (currentForm) {
-        case Shape.bell:
-          target.classList.toggle('form-icon__active');
-          break;
-        case Shape.ball:
-          target.classList.toggle('form-icon__active');
-          break;
-        case Shape.cone:
-          target.classList.toggle('form-icon__active');
-          break;
-        case Shape.snowflake:
-          target.classList.toggle('form-icon__active');
-          break;
-        case Shape.figurine:
-          target.classList.toggle('form-icon__active');
-          break;
-      }
+      target.classList.toggle('form-icon__active');
       this.localStorage.setDataLocalStorage('dataForm', currentForm);
     }
   }
@@ -188,23 +164,7 @@ export class Toys extends App {
     const currentColor = (target as HTMLTemplateElement)?.dataset.color;
 
     if (currentColor) {
-      switch (currentColor) {
-        case Color.white:
-          target.classList.toggle('color-item__active');
-          break
-        case Color.yellow:
-          target.classList.toggle('color-item__active');
-          break
-        case Color.red:
-          target.classList.toggle('color-item__active');
-          break
-        case Color.blue:
-          target.classList.toggle('color-item__active');
-          break
-        case Color.green:
-          target.classList.toggle('color-item__active');
-          break
-      }
+      target.classList.toggle('color-item__active');
       this.localStorage.setDataLocalStorage('dataColor', currentColor);
     }
   }
@@ -363,6 +323,3 @@ export class Toys extends App {
     }
   }
 }
-
-
-

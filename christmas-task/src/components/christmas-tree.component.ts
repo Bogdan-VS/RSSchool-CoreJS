@@ -1,5 +1,4 @@
 import { App } from '../app/app';
-import { favorite } from '..';
 import { toys } from '..';
 import { Data } from '../modules/interface';
 import { Garland } from './garland.component';

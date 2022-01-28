@@ -98,4 +98,3 @@ const addClearTimeout = (items:NodeListOf<HTMLTemplateElement>) => {
     element.style.display = 'none';
   });
 }
-

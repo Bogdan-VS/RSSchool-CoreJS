@@ -9,15 +9,6 @@ import { Audio } from './components/audio.component';
 
 new StartGame('start');
 export const toys: Toys = new Toys('toys');
-const christmasTree = new ChristmasTree('christmas-tree');
+new ChristmasTree('christmas-tree');
 export const favorite = new FavoriteToys('collection');
-const audio = new Audio();
-
-
-
-
-
-
-
-
-
+new Audio();

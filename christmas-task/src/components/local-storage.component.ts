@@ -42,7 +42,6 @@ export class LocalStorage {
         element.classList.toggle(`${activeClass}`);
       }
     });
-
   }
 
   getCheckedLocalStorage(index: string, set: string, className: string) {
