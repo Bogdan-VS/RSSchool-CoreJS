@@ -103,10 +103,4 @@ export class CarControl {
       element.style.transform = 'translateX(0)';
     });
   }
-
-  getError(error: number) {
-    if (error === 500) {
-      return error;
-    } 
-  }
 }

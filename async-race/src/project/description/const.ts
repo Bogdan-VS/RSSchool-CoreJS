@@ -1,4 +1,21 @@
-import { IArrPropertiesOfCars, IBasicLayout, ICarId, IConrtols, ICountWinnerToPage, IDataPages, IDistanceTrack, INewCar, IPagination, IScoreParams, IScoreSortState, IStopAnimation, IWinner, IWinnerId } from "./interface"
+import { BaseLink, Path } from "./enum"
+import {
+  IArrPropertiesOfCars,
+  IBasicLayout,
+  ICarId,
+  IConrtols,
+  ICountWinnerToPage,
+  IDataPages,
+  IDistanceTrack,
+  INewCar,
+  IPagination,
+  IScoreParams,
+  IScoreSortState,
+  ISortParams,
+  IStopAnimation,
+  IWinner,
+  IWinnerId
+} from "./interface"
 
 
 export const controls: IConrtols = {
@@ -74,6 +91,20 @@ export const scoreParams: IScoreParams = {
   countToPage: 10,
 }
 
+export const sortParams: ISortParams = {
+  asc: 'ASC',
+  desc: 'DESC',
+  sortId: 'id',
+  sortWins: 'wins',
+  sortTime: 'time',
+}
+
 export const countWinnerToPage: ICountWinnerToPage = {
   count: 1,
 }
+
+export const path = {
+  garage: `${BaseLink.link}${Path.garage}`,
+  winners: `${BaseLink.link}${Path.winner}`,
+  start: `${BaseLink.link}${Path.start}`,
+} 

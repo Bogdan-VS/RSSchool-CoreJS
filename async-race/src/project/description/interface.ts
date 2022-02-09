@@ -89,3 +89,11 @@ export interface IScoreParams {
 export interface ICountWinnerToPage {
   count: number;
 }
+
+export interface ISortParams {
+  asc: string;
+  desc: string;
+  sortId: string;
+  sortWins: string;
+  sortTime: string;
+}

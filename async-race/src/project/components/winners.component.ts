@@ -5,6 +5,7 @@ import {
   countWinnerToPage,
   scoreParams,
   scoreSortState,
+  sortParams,
   winnerParam,
 } from "../description/const";
 import {
@@ -196,10 +197,10 @@ export class Winners extends App{
     if (basicLayout.arrow.classList.contains('arrow-down') ||
       className.getAttribute('id') !== scoreSortState.sortState) {
       basicLayout.arrow.classList.remove('arrow-down');
-      scoreParams.order = 'ASC';
+      scoreParams.order = sortParams.asc;
     } else {
       basicLayout.arrow.classList.add('arrow-down');
-      scoreParams.order = 'DESC';
+      scoreParams.order = sortParams.desc;
     }
   }
 
