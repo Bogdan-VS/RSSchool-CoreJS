@@ -15,5 +15,4 @@ export class App {
   show() {
     this.$el.classList.remove('hide');
   }
-
 }

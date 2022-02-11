@@ -13,5 +13,3 @@ basicHtml.generateMain();
 
 export const garage = new Garage('garage');
 export const winner = new Winners('winners');
-
-

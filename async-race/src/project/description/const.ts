@@ -14,38 +14,37 @@ import {
   ISortParams,
   IStopAnimation,
   IWinner,
-  IWinnerId
+  IWinnerId,
 } from "./interface"
-
 
 export const controls: IConrtols = {
   start: null,
-  switch: null
+  switch: null,
 }
 
 export const distanceTrack: IDistanceTrack = {
-  currentDistance: null
+  currentDistance: null,
 }
 
 export const newCar: INewCar = {
   name: null,
-  color: null
+  color: null,
 }
 
 export const carId: ICarId = {
   id: null,
   name: null,
-  color: null
+  color: null,
 }
 
 export const pagination: IPagination = {
   page: 1,
-  limit: 7
+  limit: 7,
 }
 
 export const dataPages: IDataPages = {
   count: null,
-  items: null
+  items: null,
 }
 
 export const carModels = {
@@ -55,12 +54,12 @@ export const carModels = {
 
 export const arrPropertiesOfCars: IArrPropertiesOfCars = {
   name: null,
-  color: null
+  color: null,
 }
 
 export const stopAnimation: IStopAnimation = {
   stopAllCars: false,
-  stopCar: false
+  stopCar: false,
 }
 
 export const basicLayout: IBasicLayout = {
@@ -71,7 +70,7 @@ export const basicLayout: IBasicLayout = {
 }
 
 export const winnerId: IWinnerId = {
-  id: null
+  id: null,
 }
 
 export const winnerParam: IWinner = {

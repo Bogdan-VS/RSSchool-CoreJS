@@ -18,7 +18,6 @@ export class BasicHtml {
     basicLayout.main.innerHTML = `
       <div class="wrapper">
         <section class="garage" id="garage">
-
           <div class="operate-container">
             <div class="operate-content">
                 <input type="text" id="create-name" class="text">
@@ -36,27 +35,21 @@ export class BasicHtml {
                 <button class="generate-btn" id="generate-cars">Generate cars</button>
             </div>
           </div>
-
           <div class="garage-cars" id="garage-car">
             <h2 class="title" id="countCarsToGarage">Garage (4)</h2>
             <h3 class="subtitle" id="page">Page #1</h3>
           </div>
-
           <div class="controll-pages">
             <button class="controll disabled" id="prev-page" disabled>Prev page</button>
             <button class="controll disabled" id="next-page" disabled>Next page</button>
           </div>
-
           <h4 class="winner" id="winner-car"></h4>
-
         </section>
         <section class="winners hide" id="winners">
-
           <div class="winner-cars" id="winner-cars">
             <h2 class="title" id="count-winners-cars">Winners (0)</h2>
             <h3 class="subtitle" id="winner-page">Page #1</h3>
           </div>
-
           <div class="score" id="score">
             <div class="score-param" id="number-conteiner">
               <p class="number" id="car-id">Number</p>
@@ -70,14 +63,11 @@ export class BasicHtml {
               <p class="best-time" id="best-time">Best time (seconds)</p>
             </div>
           </div>
-
           <div class="score-conteiner" id="score-conteiner"></div>
-
           <div class="controll-pages">
             <button class="controll disabled" id="prev-page-win" disabled>Prev page</button>
             <button class="controll disabled" id="next-page-win" disabled>Next page</button>
           </div>
-
         </section>
       </div>
     `
