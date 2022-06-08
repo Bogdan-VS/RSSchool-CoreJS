@@ -121,15 +121,34 @@ window.onload = function() {
 /**Video */
 const moveLine = document.querySelector('.move-line'),
       volumeLine = document.querySelector('.volume-line')
-      
+const volumeLineAdaptive768 = document.querySelector('.volume-line__adaptive-768');      
+const moveLineAdaptive1024 = document.querySelector('.move-line__adaptive-1024');
+const moveLineAdaptive768 = document.querySelector('.move-line__adaptive-768');
+const moveLineAdaptive420 = document.querySelector('.move-line__adaptive-420');
 
 
 moveLine.addEventListener('input', function() {
     let value = this.value;
     this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
 })
+moveLineAdaptive1024.addEventListener('input', function() {
+    let value = this.value;
+    this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
+})
+moveLineAdaptive768.addEventListener('input', function() {
+    let value = this.value;
+    this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
+})
+moveLineAdaptive420.addEventListener('input', function() {
+    let value = this.value;
+    this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
+})
 
 volumeLine.addEventListener('input', function() {
+    let value = this.value;
+    this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
+})
+volumeLineAdaptive768.addEventListener('input', function() {
     let value = this.value;
     this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
 })
@@ -143,12 +162,34 @@ new Swiper('.video-slider', {
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
-      },
+    },
     pagination: {
         el: '.swiper-pagination',
         type: 'bullets',
         clickable: true,
-      },
+    },
+    breakpoints: {
+        300: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        420: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        // 850: {
+        //   slidesPerView: 2,
+        //   spaceBetween: 20
+        // },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 42
+        }
+    }
 });
 
 /**Booking-tickets */
